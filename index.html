@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Tetris</title>
+  <title>Games</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,12 +20,53 @@
       user-select: none;
     }
 
+    /* ── Game nav ─────────────────────────────────────────────────────── */
+    #game-nav {
+      display: flex;
+      gap: 0;
+      flex-shrink: 0;
+      width: 100%;
+      justify-content: center;
+      border-bottom: 1px solid #1e1e2e;
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: #555;
+      font-family: 'Courier New', monospace;
+      font-size: clamp(0.65rem, 2.5vw, 0.85rem);
+      letter-spacing: 4px;
+      padding: 7px 20px 5px;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .nav-btn.active { color: #e94560; border-bottom-color: #e94560; }
+
+    /* ── Shared title ─────────────────────────────────────────────────── */
     h1 {
-      font-size: clamp(0.9rem, 3vw, 1.4rem);
+      font-size: clamp(0.85rem, 3vw, 1.3rem);
       letter-spacing: 6px;
       color: #e94560;
-      padding: 6px 0 4px;
+      padding: 5px 0 4px;
       flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       TETRIS
+    ══════════════════════════════════════════════════════════ */
+
+    #tetris-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      overflow: hidden;
+      width: 100%;
     }
 
     #game-wrap {
@@ -49,32 +90,13 @@
       width: 72px;
     }
 
-    .box {
-      border: 1px solid #333;
-      padding: 5px;
-      text-align: center;
-    }
-
-    .box-label {
-      font-size: 0.55rem;
-      letter-spacing: 2px;
-      color: #777;
-      margin-bottom: 2px;
-    }
-
-    .box-val {
-      font-size: 1rem;
-      color: #e94560;
-      font-weight: bold;
-    }
-
-    #next-canvas {
-      display: block;
-      margin: 4px auto 0;
-    }
+    .box { border: 1px solid #333; padding: 5px; text-align: center; }
+    .box-label { font-size: 0.55rem; letter-spacing: 2px; color: #777; margin-bottom: 2px; }
+    .box-val   { font-size: 1rem; color: #e94560; font-weight: bold; }
+    #next-canvas { display: block; margin: 4px auto 0; }
 
     /* Mobile controls */
-    #controls {
+    #t-controls {
       display: none;
       flex-direction: column;
       align-items: center;
@@ -86,16 +108,13 @@
     .ctrl-row { display: flex; gap: 6px; }
 
     .btn {
-      width: 58px;
-      height: 52px;
+      width: 58px; height: 52px;
       background: rgba(233,69,96,0.15);
       border: 2px solid #e94560;
       color: #e94560;
       font-size: 1.3rem;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
@@ -106,148 +125,295 @@
 
     /* Overlay */
     #overlay {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(0,0,0,0.88);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 20;
-      gap: 10px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 20; gap: 10px;
     }
 
-    #overlay h2 {
-      font-size: clamp(1.4rem, 6vw, 2.2rem);
-      color: #e94560;
-      letter-spacing: 5px;
-    }
-
-    #overlay p { color: #999; font-size: 0.85rem; }
+    #overlay h2 { font-size: clamp(1.4rem, 6vw, 2.2rem); color: #e94560; letter-spacing: 5px; }
+    #overlay p  { color: #999; font-size: 0.85rem; }
     #overlay .hint { color: #555; font-size: 0.72rem; margin-top: 4px; text-align: center; line-height: 1.7; }
 
     #start-btn {
-      margin-top: 14px;
-      padding: 12px 36px;
-      background: #e94560;
-      color: #fff;
-      border: none;
+      margin-top: 14px; padding: 12px 36px;
+      background: #e94560; color: #fff; border: none;
       font-family: 'Courier New', monospace;
-      font-size: 1rem;
-      letter-spacing: 3px;
-      cursor: pointer;
-      border-radius: 4px;
+      font-size: 1rem; letter-spacing: 3px;
+      cursor: pointer; border-radius: 4px;
     }
     #start-btn:hover { background: #c73652; }
 
     @media (pointer: coarse), (max-width: 500px) {
-      #controls { display: flex; }
+      #t-controls { display: flex; }
     }
+
+    /* ══════════════════════════════════════════════════════════
+       SUDOKU
+    ══════════════════════════════════════════════════════════ */
+
+    #sudoku-section {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      overflow: hidden;
+      width: 100%;
+      padding: 0 8px;
+      gap: 7px;
+    }
+
+    .sudoku-controls {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .diff-btn {
+      background: none;
+      border: 1px solid #333;
+      color: #555;
+      font-family: 'Courier New', monospace;
+      font-size: 0.62rem; letter-spacing: 2px;
+      padding: 5px 10px; cursor: pointer; border-radius: 3px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .diff-btn.active { border-color: #e94560; color: #e94560; }
+
+    .new-game-btn {
+      background: #e94560; border: none; color: #fff;
+      font-family: 'Courier New', monospace;
+      font-size: 0.62rem; letter-spacing: 2px;
+      padding: 5px 12px; cursor: pointer; border-radius: 3px;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .new-game-btn:active { background: #c73652; }
+
+    /* Sudoku grid */
+    #sudoku-grid {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+      border: 2px solid #e94560;
+      flex-shrink: 0;
+      width: min(calc(100vw - 16px), calc(100dvh - 210px));
+      aspect-ratio: 1;
+    }
+
+    .s-cell {
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(0.75rem, 3.8vw, 1.1rem);
+      font-weight: bold;
+      border: 0.5px solid #252535;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      color: #aaa;
+    }
+
+    .s-cell.given      { color: #eee; }
+    .s-cell.error      { color: #ff4455; }
+    .s-cell.highlighted{ background: rgba(255,255,255,0.04); }
+    .s-cell.same-num   { background: rgba(233,69,96,0.12); }
+    .s-cell.selected   { background: rgba(233,69,96,0.28) !important; }
+
+    /* Inner box borders (columns 3,6 and rows 3,6) */
+    .s-cell.bl { border-left:   2px solid #484860; }
+    .s-cell.bt { border-top:    2px solid #484860; }
+
+    /* Number pad */
+    #numpad {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+      flex-shrink: 0;
+      width: min(calc(100vw - 16px), calc(100dvh - 210px));
+    }
+
+    .num-btn {
+      background: rgba(233,69,96,0.1);
+      border: 1px solid #333;
+      color: #e94560;
+      font-family: 'Courier New', monospace;
+      font-size: clamp(0.95rem, 3.5vw, 1.3rem);
+      font-weight: bold;
+      padding: 10px 0;
+      border-radius: 6px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .num-btn:active { background: rgba(233,69,96,0.35); }
+    .erase-btn { font-size: clamp(0.85rem, 3vw, 1.1rem); }
+
+    /* Sudoku win overlay */
+    #sudoku-win {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.88);
+      display: none; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 20; gap: 14px;
+    }
+    #sudoku-win h2 { font-size: clamp(1.4rem, 6vw, 2.2rem); color: #e94560; letter-spacing: 5px; }
+    #sudoku-win p  { color: #999; font-size: 0.85rem; }
+    #sw-btn {
+      padding: 12px 36px; background: #e94560; color: #fff; border: none;
+      font-family: 'Courier New', monospace; font-size: 1rem; letter-spacing: 3px;
+      cursor: pointer; border-radius: 4px;
+    }
+    #sw-btn:hover { background: #c73652; }
   </style>
 </head>
 <body>
 
-<h1>TETRIS</h1>
+<!-- ── Game selector ──────────────────────────────────────────────── -->
+<nav id="game-nav">
+  <button class="nav-btn active" data-game="tetris">TETRIS</button>
+  <button class="nav-btn"        data-game="sudoku">SUDOKU</button>
+</nav>
 
-<div id="game-wrap">
-  <canvas id="board"></canvas>
-  <div id="side">
-    <div class="box">
-      <div class="box-label">SCORE</div>
-      <div class="box-val" id="score">0</div>
+<!-- ══════════════════════════════════════════════════════════════════
+     TETRIS SECTION
+══════════════════════════════════════════════════════════════════ -->
+<div id="tetris-section">
+  <h1>TETRIS</h1>
+
+  <div id="game-wrap">
+    <canvas id="board"></canvas>
+    <div id="side">
+      <div class="box"><div class="box-label">SCORE</div><div class="box-val" id="score">0</div></div>
+      <div class="box"><div class="box-label">LEVEL</div><div class="box-val" id="level">1</div></div>
+      <div class="box"><div class="box-label">LINES</div><div class="box-val" id="lines">0</div></div>
+      <div class="box"><div class="box-label">NEXT</div><canvas id="next-canvas" width="64" height="64"></canvas></div>
     </div>
-    <div class="box">
-      <div class="box-label">LEVEL</div>
-      <div class="box-val" id="level">1</div>
+  </div>
+
+  <div id="t-controls">
+    <div class="ctrl-row"><button class="btn" id="btn-rotate">↻</button></div>
+    <div class="ctrl-row">
+      <button class="btn" id="btn-left">◀</button>
+      <button class="btn" id="btn-down">▼</button>
+      <button class="btn" id="btn-right">▶</button>
     </div>
-    <div class="box">
-      <div class="box-label">LINES</div>
-      <div class="box-val" id="lines">0</div>
-    </div>
-    <div class="box">
-      <div class="box-label">NEXT</div>
-      <canvas id="next-canvas" width="64" height="64"></canvas>
-    </div>
+    <div class="ctrl-row"><button class="btn btn-wide" id="btn-drop">⬇ DROP</button></div>
+  </div>
+
+  <div id="overlay">
+    <h2 id="ov-title">TETRIS</h2>
+    <p id="ov-msg">Stack tetrominoes. Clear lines. Score big.</p>
+    <p class="hint">← → &nbsp; Move &nbsp;|&nbsp; ↑ / Z &nbsp; Rotate<br>↓ &nbsp; Soft drop &nbsp;|&nbsp; Space &nbsp; Hard drop</p>
+    <button id="start-btn">START</button>
   </div>
 </div>
 
-<div id="controls">
-  <div class="ctrl-row">
-    <button class="btn" id="btn-rotate">↻</button>
-  </div>
-  <div class="ctrl-row">
-    <button class="btn" id="btn-left">◀</button>
-    <button class="btn" id="btn-down">▼</button>
-    <button class="btn" id="btn-right">▶</button>
-  </div>
-  <div class="ctrl-row">
-    <button class="btn btn-wide" id="btn-drop">⬇ DROP</button>
-  </div>
-</div>
+<!-- ══════════════════════════════════════════════════════════════════
+     SUDOKU SECTION
+══════════════════════════════════════════════════════════════════ -->
+<div id="sudoku-section">
+  <h1>SUDOKU</h1>
 
-<div id="overlay">
-  <h2 id="ov-title">TETRIS</h2>
-  <p id="ov-msg">Stack tetrominoes. Clear lines. Score big.</p>
-  <p class="hint">
-    ← → &nbsp; Move &nbsp;|&nbsp; ↑ / Z &nbsp; Rotate<br>
-    ↓ &nbsp; Soft drop &nbsp;|&nbsp; Space &nbsp; Hard drop
-  </p>
-  <button id="start-btn">START</button>
+  <div class="sudoku-controls">
+    <button class="diff-btn"        data-diff="easy">EASY</button>
+    <button class="diff-btn active" data-diff="medium">MEDIUM</button>
+    <button class="diff-btn"        data-diff="hard">HARD</button>
+    <button class="new-game-btn" id="new-game-btn">NEW GAME</button>
+  </div>
+
+  <div id="sudoku-grid"></div>
+  <div id="numpad"></div>
+
+  <div id="sudoku-win">
+    <h2>SOLVED!</h2>
+    <p id="sw-msg"></p>
+    <button id="sw-btn">PLAY AGAIN</button>
+  </div>
 </div>
 
 <script>
 (function () {
   'use strict';
 
+  // ══════════════════════════════════════════════════════════════════
+  //  Game switching
+  // ══════════════════════════════════════════════════════════════════
+
+  let activeGame = 'tetris';
+  const tetrisSection = document.getElementById('tetris-section');
+  const sudokuSection = document.getElementById('sudoku-section');
+  const overlay       = document.getElementById('overlay');
+
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    const handler = () => switchGame(btn.dataset.game);
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchstart', e => { e.preventDefault(); handler(); }, { passive: false });
+  });
+
+  function switchGame(game) {
+    if (game === activeGame) return;
+    activeGame = game;
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.game === game));
+
+    if (game === 'tetris') {
+      sudokuSection.style.display = 'none';
+      tetrisSection.style.display = 'flex';
+      document.getElementById('sudoku-win').style.display = 'none';
+      if (!tRunning) overlay.style.display = 'flex';
+      else tetrisResume();
+    } else {
+      tetrisSection.style.display = 'none';
+      sudokuSection.style.display = 'flex';
+      overlay.style.display = 'none';
+      tetrisPause();
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════════
+  //  TETRIS
+  // ══════════════════════════════════════════════════════════════════
+
   const COLS = 10, ROWS = 20;
-  let B = 24; // block size in px, recalculated on resize
+  let B = 24;
 
   const COLORS = [
     null,
-    '#00e5ff', // I
-    '#ffd600', // O
-    '#aa00ff', // T
-    '#00e676', // S
-    '#ff1744', // Z
-    '#2979ff', // J
-    '#ff6d00', // L
+    '#00e5ff', '#ffd600', '#aa00ff', '#00e676',
+    '#ff1744', '#2979ff', '#ff6d00',
   ];
 
   const SHAPES = [
     null,
-    [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]], // I
-    [[1,1],[1,1]],                               // O
-    [[0,1,0],[1,1,1],[0,0,0]],                   // T
-    [[0,1,1],[1,1,0],[0,0,0]],                   // S
-    [[1,1,0],[0,1,1],[0,0,0]],                   // Z
-    [[1,0,0],[1,1,1],[0,0,0]],                   // J
-    [[0,0,1],[1,1,1],[0,0,0]],                   // L
+    [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
+    [[1,1],[1,1]],
+    [[0,1,0],[1,1,1],[0,0,0]],
+    [[0,1,1],[1,1,0],[0,0,0]],
+    [[1,1,0],[0,1,1],[0,0,0]],
+    [[1,0,0],[1,1,1],[0,0,0]],
+    [[0,0,1],[1,1,1],[0,0,0]],
   ];
 
   const LINE_POINTS = [0, 100, 300, 500, 800];
 
-  // DOM
-  const canvas    = document.getElementById('board');
-  const ctx       = canvas.getContext('2d');
-  const nextCvs   = document.getElementById('next-canvas');
-  const nextCtx   = nextCvs.getContext('2d');
-  const scoreEl   = document.getElementById('score');
-  const levelEl   = document.getElementById('level');
-  const linesEl   = document.getElementById('lines');
-  const overlay   = document.getElementById('overlay');
-  const ovTitle   = document.getElementById('ov-title');
-  const ovMsg     = document.getElementById('ov-msg');
-  const startBtn  = document.getElementById('start-btn');
+  const canvas   = document.getElementById('board');
+  const ctx      = canvas.getContext('2d');
+  const nextCvs  = document.getElementById('next-canvas');
+  const nextCtx  = nextCvs.getContext('2d');
+  const scoreEl  = document.getElementById('score');
+  const levelEl  = document.getElementById('level');
+  const linesEl  = document.getElementById('lines');
+  const ovTitle  = document.getElementById('ov-title');
+  const ovMsg    = document.getElementById('ov-msg');
+  const startBtn = document.getElementById('start-btn');
 
-  // Game state
-  let board, piece, next, score, level, linesCleared;
-  let dropInterval, dropCounter, lastTime, running, animId;
+  let tBoard, tPiece, tNext, tScore, tLevel, tLines;
+  let tDropInterval, tDropCounter, tLastTime, tRunning, tAnimId, tPaused;
 
-  // ── Helpers ──────────────────────────────────────────────────────────────
-
-  function makeBoard() {
-    return Array.from({ length: ROWS }, () => new Array(COLS).fill(0));
-  }
+  function makeBoard() { return Array.from({ length: ROWS }, () => new Array(COLS).fill(0)); }
 
   function randPiece() {
     const type = Math.floor(Math.random() * 7) + 1;
@@ -266,51 +432,38 @@
 
   function collides(b, p, dx, dy, shape) {
     shape = shape || p.shape;
-    for (let y = 0; y < shape.length; y++) {
+    for (let y = 0; y < shape.length; y++)
       for (let x = 0; x < shape[y].length; x++) {
         if (!shape[y][x]) continue;
         const nx = p.x + x + dx, ny = p.y + y + dy;
         if (nx < 0 || nx >= COLS || ny >= ROWS) return true;
         if (ny >= 0 && b[ny][nx]) return true;
       }
-    }
     return false;
   }
 
   function merge(b, p) {
-    p.shape.forEach((row, y) =>
-      row.forEach((v, x) => { if (v) b[p.y + y][p.x + x] = p.type; })
-    );
+    p.shape.forEach((row, y) => row.forEach((v, x) => { if (v) b[p.y + y][p.x + x] = p.type; }));
   }
 
   function sweepLines(b) {
     let count = 0;
     for (let y = ROWS - 1; y >= 0; y--) {
-      if (b[y].every(v => v)) {
-        b.splice(y, 1);
-        b.unshift(new Array(COLS).fill(0));
-        count++;
-        y++;
-      }
+      if (b[y].every(v => v)) { b.splice(y, 1); b.unshift(new Array(COLS).fill(0)); count++; y++; }
     }
     return count;
   }
 
-  // ── Resize ───────────────────────────────────────────────────────────────
-
-  function resize() {
-    // Available height: total - title - controls (if visible) - padding
+  function tetrisResize() {
     const ctrlH = window.matchMedia('(pointer: coarse)').matches ? 140 : 0;
-    const availH = window.innerHeight - 40 - ctrlH - 20;
-    const availW = window.innerWidth - 72 - 20; // side panel + gap
-
+    const navH  = document.getElementById('game-nav').offsetHeight;
+    const titH  = document.querySelector('#tetris-section h1').offsetHeight;
+    const availH = window.innerHeight - navH - titH - ctrlH - 20;
+    const availW = window.innerWidth - 72 - 20;
     B = Math.max(16, Math.floor(Math.min(availH / ROWS, availW / COLS)));
-
     canvas.width  = COLS * B;
     canvas.height = ROWS * B;
   }
-
-  // ── Drawing ───────────────────────────────────────────────────────────────
 
   function drawBlock(c, x, y, color, size) {
     size = size || B;
@@ -325,85 +478,62 @@
 
   function ghostOffset() {
     let dy = 0;
-    while (!collides(board, piece, 0, dy + 1)) dy++;
+    while (!collides(tBoard, tPiece, 0, dy + 1)) dy++;
     return dy;
   }
 
   function draw() {
-    // Background
     ctx.fillStyle = '#0f0e17';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Grid
     ctx.strokeStyle = 'rgba(255,255,255,0.03)';
     ctx.lineWidth = 0.5;
-    for (let r = 0; r <= ROWS; r++) {
-      ctx.beginPath(); ctx.moveTo(0, r * B); ctx.lineTo(canvas.width, r * B); ctx.stroke();
-    }
-    for (let c = 0; c <= COLS; c++) {
-      ctx.beginPath(); ctx.moveTo(c * B, 0); ctx.lineTo(c * B, canvas.height); ctx.stroke();
-    }
-
-    // Placed blocks
-    board.forEach((row, y) =>
-      row.forEach((v, x) => { if (v) drawBlock(ctx, x, y, COLORS[v]); })
-    );
-
-    // Ghost piece
+    for (let r = 0; r <= ROWS; r++) { ctx.beginPath(); ctx.moveTo(0, r * B); ctx.lineTo(canvas.width, r * B); ctx.stroke(); }
+    for (let c = 0; c <= COLS; c++) { ctx.beginPath(); ctx.moveTo(c * B, 0); ctx.lineTo(c * B, canvas.height); ctx.stroke(); }
+    tBoard.forEach((row, y) => row.forEach((v, x) => { if (v) drawBlock(ctx, x, y, COLORS[v]); }));
     const gy = ghostOffset();
     if (gy > 0) {
-      piece.shape.forEach((row, y) =>
-        row.forEach((v, x) => {
-          if (!v) return;
-          ctx.fillStyle = 'rgba(255,255,255,0.1)';
-          ctx.fillRect((piece.x + x) * B + 1, (piece.y + y + gy) * B + 1, B - 2, B - 2);
-        })
-      );
+      tPiece.shape.forEach((row, y) => row.forEach((v, x) => {
+        if (!v) return;
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        ctx.fillRect((tPiece.x + x) * B + 1, (tPiece.y + y + gy) * B + 1, B - 2, B - 2);
+      }));
     }
-
-    // Active piece
-    piece.shape.forEach((row, y) =>
-      row.forEach((v, x) => { if (v) drawBlock(ctx, piece.x + x, piece.y + y, COLORS[piece.type]); })
-    );
+    tPiece.shape.forEach((row, y) => row.forEach((v, x) => {
+      if (v) drawBlock(ctx, tPiece.x + x, tPiece.y + y, COLORS[tPiece.type]);
+    }));
   }
 
   function drawNext() {
     const NB = 16;
     nextCtx.fillStyle = '#0f0e17';
     nextCtx.fillRect(0, 0, nextCvs.width, nextCvs.height);
-    const s = next.shape;
+    const s = tNext.shape;
     const ox = Math.floor((4 - s[0].length) / 2);
     const oy = Math.floor((4 - s.length) / 2);
-    s.forEach((row, y) =>
-      row.forEach((v, x) => {
-        if (v) drawBlock(nextCtx, ox + x, oy + y, COLORS[next.type], NB);
-      })
-    );
+    s.forEach((row, y) => row.forEach((v, x) => { if (v) drawBlock(nextCtx, ox + x, oy + y, COLORS[tNext.type], NB); }));
   }
 
-  // ── Game logic ────────────────────────────────────────────────────────────
-
   function spawn() {
-    piece = next;
-    next  = randPiece();
+    tPiece = tNext;
+    tNext  = randPiece();
     drawNext();
-    if (collides(board, piece, 0, 0)) endGame();
+    if (collides(tBoard, tPiece, 0, 0)) endTetris();
   }
 
   function softDrop() {
-    if (!collides(board, piece, 0, 1)) {
-      piece.y++;
+    if (!collides(tBoard, tPiece, 0, 1)) {
+      tPiece.y++;
     } else {
-      merge(board, piece);
-      const cleared = sweepLines(board);
+      merge(tBoard, tPiece);
+      const cleared = sweepLines(tBoard);
       if (cleared) {
-        score += LINE_POINTS[cleared] * level;
-        linesCleared += cleared;
-        level = Math.floor(linesCleared / 10) + 1;
-        dropInterval = Math.max(80, 1000 - (level - 1) * 85);
-        scoreEl.textContent = score;
-        levelEl.textContent = level;
-        linesEl.textContent = linesCleared;
+        tScore += LINE_POINTS[cleared] * tLevel;
+        tLines += cleared;
+        tLevel = Math.floor(tLines / 10) + 1;
+        tDropInterval = Math.max(80, 1000 - (tLevel - 1) * 85);
+        scoreEl.textContent = tScore;
+        levelEl.textContent = tLevel;
+        linesEl.textContent = tLines;
       }
       spawn();
     }
@@ -411,146 +541,345 @@
 
   function hardDrop() {
     const dy = ghostOffset();
-    piece.y += dy;
-    score += dy * 2;
-    scoreEl.textContent = score;
+    tPiece.y += dy;
+    tScore += dy * 2;
+    scoreEl.textContent = tScore;
     softDrop();
-    dropCounter = 0;
+    tDropCounter = 0;
   }
 
-  function moveLeft()  { if (!collides(board, piece, -1, 0)) piece.x--; }
-  function moveRight() { if (!collides(board, piece,  1, 0)) piece.x++; }
+  function moveLeft()  { if (!collides(tBoard, tPiece, -1, 0)) tPiece.x--; }
+  function moveRight() { if (!collides(tBoard, tPiece,  1, 0)) tPiece.x++; }
 
   function rotatePiece() {
-    const r = rotate90(piece.shape);
+    const r = rotate90(tPiece.shape);
     for (const kick of [0, 1, -1, 2, -2]) {
-      if (!collides(board, piece, kick, 0, r)) {
-        piece.x += kick;
-        piece.shape = r;
-        return;
-      }
+      if (!collides(tBoard, tPiece, kick, 0, r)) { tPiece.x += kick; tPiece.shape = r; return; }
     }
   }
 
-  // ── Loop ─────────────────────────────────────────────────────────────────
-
-  function loop(ts) {
-    if (!running) return;
-    const delta = ts - lastTime;
-    lastTime = ts;
-    dropCounter += delta;
-    if (dropCounter >= dropInterval) {
-      softDrop();
-      dropCounter = 0;
-    }
+  function tLoop(ts) {
+    if (!tRunning || tPaused) return;
+    const delta = ts - tLastTime;
+    tLastTime = ts;
+    tDropCounter += delta;
+    if (tDropCounter >= tDropInterval) { softDrop(); tDropCounter = 0; }
     draw();
-    animId = requestAnimationFrame(loop);
+    tAnimId = requestAnimationFrame(tLoop);
   }
 
-  function startGame() {
-    resize();
-    board         = makeBoard();
-    score         = 0;
-    level         = 1;
-    linesCleared  = 0;
-    dropInterval  = 1000;
-    dropCounter   = 0;
-    lastTime      = 0;
-    scoreEl.textContent = '0';
-    levelEl.textContent = '1';
-    linesEl.textContent = '0';
-    next = randPiece();
+  function startTetris() {
+    tetrisResize();
+    tBoard = makeBoard();
+    tScore = 0; tLevel = 1; tLines = 0;
+    tDropInterval = 1000; tDropCounter = 0; tLastTime = 0;
+    scoreEl.textContent = '0'; levelEl.textContent = '1'; linesEl.textContent = '0';
+    tNext = randPiece();
     spawn();
-    running = true;
+    tRunning = true; tPaused = false;
     overlay.style.display = 'none';
-    animId = requestAnimationFrame(loop);
+    tAnimId = requestAnimationFrame(tLoop);
   }
 
-  function endGame() {
-    running = false;
-    cancelAnimationFrame(animId);
-    ovTitle.textContent = 'GAME OVER';
-    ovMsg.textContent   = 'Score: ' + score;
+  function endTetris() {
+    tRunning = false;
+    cancelAnimationFrame(tAnimId);
+    ovTitle.textContent  = 'GAME OVER';
+    ovMsg.textContent    = 'Score: ' + tScore;
     startBtn.textContent = 'PLAY AGAIN';
     overlay.style.display = 'flex';
   }
 
-  // ── Input: keyboard ───────────────────────────────────────────────────────
+  function tetrisPause() {
+    if (tRunning && !tPaused) { tPaused = true; cancelAnimationFrame(tAnimId); }
+  }
+
+  function tetrisResume() {
+    if (tRunning && tPaused) {
+      tPaused = false;
+      tAnimId = requestAnimationFrame(ts => { tLastTime = ts; tLoop(ts); });
+    }
+    tetrisResize();
+    if (tRunning) draw();
+  }
 
   document.addEventListener('keydown', e => {
-    if (!running) return;
+    if (activeGame !== 'tetris' || !tRunning || tPaused) return;
     switch (e.key) {
-      case 'ArrowLeft':  e.preventDefault(); moveLeft();    break;
-      case 'ArrowRight': e.preventDefault(); moveRight();   break;
-      case 'ArrowDown':  e.preventDefault(); softDrop(); dropCounter = 0; break;
+      case 'ArrowLeft':  e.preventDefault(); moveLeft();  break;
+      case 'ArrowRight': e.preventDefault(); moveRight(); break;
+      case 'ArrowDown':  e.preventDefault(); softDrop(); tDropCounter = 0; break;
       case 'ArrowUp':    e.preventDefault(); rotatePiece(); break;
-      case ' ':          e.preventDefault(); hardDrop();    break;
+      case ' ':          e.preventDefault(); hardDrop();  break;
       case 'z': case 'Z': rotatePiece(); break;
     }
   });
-
-  // ── Input: touch buttons ──────────────────────────────────────────────────
 
   function holdButton(id, fn, interval) {
     const el = document.getElementById(id);
     let tid;
     el.addEventListener('touchstart', e => {
       e.preventDefault();
-      if (!running) return;
+      if (!tRunning || tPaused) return;
       fn();
       if (interval) tid = setInterval(fn, interval);
     }, { passive: false });
     const stop = e => { e.preventDefault(); clearInterval(tid); };
-    el.addEventListener('touchend',   stop, { passive: false });
+    el.addEventListener('touchend',    stop, { passive: false });
     el.addEventListener('touchcancel', stop, { passive: false });
   }
 
   holdButton('btn-left',   moveLeft,   110);
   holdButton('btn-right',  moveRight,  110);
-  holdButton('btn-down',   () => { softDrop(); dropCounter = 0; }, 80);
+  holdButton('btn-down',   () => { softDrop(); tDropCounter = 0; }, 80);
   holdButton('btn-rotate', rotatePiece, null);
   holdButton('btn-drop',   hardDrop,   null);
-
-  // ── Input: swipe on canvas ────────────────────────────────────────────────
 
   let tx, ty, tt;
   canvas.addEventListener('touchstart', e => {
     e.preventDefault();
-    tx = e.touches[0].clientX;
-    ty = e.touches[0].clientY;
-    tt = Date.now();
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY; tt = Date.now();
   }, { passive: false });
 
   canvas.addEventListener('touchend', e => {
     e.preventDefault();
-    if (!running) return;
+    if (!tRunning || tPaused) return;
     const dx = e.changedTouches[0].clientX - tx;
     const dy = e.changedTouches[0].clientY - ty;
     const dt = Date.now() - tt;
     const ax = Math.abs(dx), ay = Math.abs(dy);
-
     if (ax < 12 && ay < 12 && dt < 220) { rotatePiece(); return; }
-
-    if (ax > ay) {
-      if (dx >  30) moveRight();
-      else if (dx < -30) moveLeft();
-    } else {
-      if (dy > 40) hardDrop();
-    }
+    if (ax > ay) { if (dx > 30) moveRight(); else if (dx < -30) moveLeft(); }
+    else         { if (dy > 40) hardDrop(); }
   }, { passive: false });
 
-  // ── Start button ──────────────────────────────────────────────────────────
-
-  startBtn.addEventListener('click', startGame);
-
-  // ── Resize handler ────────────────────────────────────────────────────────
+  startBtn.addEventListener('click', startTetris);
 
   window.addEventListener('resize', () => {
-    resize();
-    if (running) draw();
+    if (activeGame === 'tetris') { tetrisResize(); if (tRunning && !tPaused) draw(); }
+    else { renderSudokuGrid(); }
   });
 
-  resize();
+  tetrisResize();
+
+  // ══════════════════════════════════════════════════════════════════
+  //  SUDOKU
+  // ══════════════════════════════════════════════════════════════════
+
+  const REMOVE_COUNT = { easy: 36, medium: 46, hard: 54 };
+
+  let sPuzzle   = [];   // current state (0 = empty)
+  let sGiven    = [];   // boolean grid — pre-filled cells
+  let sSel      = null; // {row, col}
+  let sDiff     = 'medium';
+  let sSolved   = false;
+  let sStartTime = 0;
+
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function validPlace(board, row, col, num) {
+    for (let c = 0; c < 9; c++) if (board[row][c] === num) return false;
+    for (let r = 0; r < 9; r++) if (board[r][col] === num) return false;
+    const br = Math.floor(row / 3) * 3, bc = Math.floor(col / 3) * 3;
+    for (let r = br; r < br + 3; r++)
+      for (let c = bc; c < bc + 3; c++)
+        if (board[r][c] === num) return false;
+    return true;
+  }
+
+  function backtrack(board) {
+    for (let row = 0; row < 9; row++)
+      for (let col = 0; col < 9; col++)
+        if (board[row][col] === 0) {
+          for (const num of shuffle([1,2,3,4,5,6,7,8,9])) {
+            if (validPlace(board, row, col, num)) {
+              board[row][col] = num;
+              if (backtrack(board)) return true;
+              board[row][col] = 0;
+            }
+          }
+          return false;
+        }
+    return true;
+  }
+
+  function generateSudoku(difficulty) {
+    sSolved = false;
+    // Build solved board: fill diagonal boxes first, then backtrack
+    const solved = Array.from({ length: 9 }, () => new Array(9).fill(0));
+    [0, 3, 6].forEach(start => {
+      const nums = shuffle([1,2,3,4,5,6,7,8,9]);
+      let i = 0;
+      for (let r = start; r < start + 3; r++)
+        for (let c = start; c < start + 3; c++)
+          solved[r][c] = nums[i++];
+    });
+    backtrack(solved);
+
+    // Remove cells
+    const cells = [];
+    for (let r = 0; r < 9; r++) for (let c = 0; c < 9; c++) cells.push([r, c]);
+    shuffle(cells);
+    const board = solved.map(r => [...r]);
+    const toRemove = REMOVE_COUNT[difficulty];
+    for (let i = 0; i < toRemove; i++) board[cells[i][0]][cells[i][1]] = 0;
+
+    sPuzzle = board.map(r => [...r]);
+    sGiven  = board.map(r => r.map(v => v !== 0));
+    sSel    = null;
+    sStartTime = Date.now();
+    renderSudokuGrid();
+  }
+
+  function validInPuzzle(row, col, num) {
+    for (let c = 0; c < 9; c++) if (c !== col && sPuzzle[row][c] === num) return false;
+    for (let r = 0; r < 9; r++) if (r !== row && sPuzzle[r][col] === num) return false;
+    const br = Math.floor(row / 3) * 3, bc = Math.floor(col / 3) * 3;
+    for (let r = br; r < br + 3; r++)
+      for (let c = bc; c < bc + 3; c++)
+        if ((r !== row || c !== col) && sPuzzle[r][c] === num) return false;
+    return true;
+  }
+
+  function renderSudokuGrid() {
+    const grid = document.getElementById('sudoku-grid');
+    grid.innerHTML = '';
+
+    const selVal = sSel ? sPuzzle[sSel.row][sSel.col] : 0;
+
+    for (let r = 0; r < 9; r++) {
+      for (let c = 0; c < 9; c++) {
+        const cell = document.createElement('div');
+        cell.className = 's-cell';
+
+        // Box separator borders (inner lines only)
+        if (c === 3 || c === 6) cell.classList.add('bl');
+        if (r === 3 || r === 6) cell.classList.add('bt');
+
+        const val     = sPuzzle[r][c];
+        const isGiven = sGiven[r][c];
+        const isSel   = sSel && sSel.row === r && sSel.col === c;
+
+        if (isGiven) cell.classList.add('given');
+        if (val && !isGiven && !validInPuzzle(r, c, val)) cell.classList.add('error');
+
+        if (isSel) {
+          cell.classList.add('selected');
+        } else if (sSel) {
+          const inRow = r === sSel.row;
+          const inCol = c === sSel.col;
+          const inBox = Math.floor(r / 3) === Math.floor(sSel.row / 3) &&
+                        Math.floor(c / 3) === Math.floor(sSel.col / 3);
+          if (inRow || inCol || inBox) cell.classList.add('highlighted');
+          if (val && selVal && val === selVal) cell.classList.add('same-num');
+        }
+
+        if (val) cell.textContent = val;
+
+        cell.addEventListener('click', () => sSelect(r, c));
+        cell.addEventListener('touchstart', e => { e.preventDefault(); sSelect(r, c); }, { passive: false });
+
+        grid.appendChild(cell);
+      }
+    }
+  }
+
+  function sSelect(r, c) { sSel = { row: r, col: c }; renderSudokuGrid(); }
+
+  function sInput(num) {
+    if (!sSel || sSolved) return;
+    const { row, col } = sSel;
+    if (sGiven[row][col]) return;
+    sPuzzle[row][col] = num;
+    renderSudokuGrid();
+    checkSudokuWin();
+  }
+
+  function checkSudokuWin() {
+    for (let r = 0; r < 9; r++)
+      for (let c = 0; c < 9; c++) {
+        if (!sPuzzle[r][c]) return;
+        if (!validInPuzzle(r, c, sPuzzle[r][c])) return;
+      }
+    sSolved = true;
+    const secs = Math.round((Date.now() - sStartTime) / 1000);
+    const mm = String(Math.floor(secs / 60)).padStart(2, '0');
+    const ss = String(secs % 60).padStart(2, '0');
+    document.getElementById('sw-msg').textContent =
+      `${sDiff.toUpperCase()} · solved in ${mm}:${ss}`;
+    document.getElementById('sudoku-win').style.display = 'flex';
+  }
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (activeGame !== 'sudoku') return;
+    if (!sSel || sSolved) return;
+    const n = parseInt(e.key);
+    if (n >= 1 && n <= 9) { e.preventDefault(); sInput(n); return; }
+    if (e.key === 'Backspace' || e.key === 'Delete' || e.key === '0') { sInput(0); return; }
+    const { row, col } = sSel;
+    if (e.key === 'ArrowUp')    { e.preventDefault(); sSelect(Math.max(0, row - 1), col); }
+    if (e.key === 'ArrowDown')  { e.preventDefault(); sSelect(Math.min(8, row + 1), col); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); sSelect(row, Math.max(0, col - 1)); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); sSelect(row, Math.min(8, col + 1)); }
+  });
+
+  // Build numpad [1..9] + erase in 5-column grid
+  (function () {
+    const pad = document.getElementById('numpad');
+    for (let n = 1; n <= 9; n++) {
+      const btn = document.createElement('button');
+      btn.className = 'num-btn';
+      btn.textContent = n;
+      btn.addEventListener('click', () => sInput(n));
+      btn.addEventListener('touchstart', e => { e.preventDefault(); sInput(n); }, { passive: false });
+      pad.appendChild(btn);
+    }
+    const erase = document.createElement('button');
+    erase.className = 'num-btn erase-btn';
+    erase.textContent = '⌫';
+    erase.addEventListener('click', () => sInput(0));
+    erase.addEventListener('touchstart', e => { e.preventDefault(); sInput(0); }, { passive: false });
+    pad.appendChild(erase);
+  })();
+
+  // Difficulty buttons
+  document.querySelectorAll('.diff-btn').forEach(btn => {
+    const handler = () => {
+      sDiff = btn.dataset.diff;
+      document.querySelectorAll('.diff-btn').forEach(b => b.classList.toggle('active', b === btn));
+      generateSudoku(sDiff);
+    };
+    btn.addEventListener('click', handler);
+    btn.addEventListener('touchstart', e => { e.preventDefault(); handler(); }, { passive: false });
+  });
+
+  // New game button
+  const ngBtn = document.getElementById('new-game-btn');
+  ngBtn.addEventListener('click', () => generateSudoku(sDiff));
+  ngBtn.addEventListener('touchstart', e => { e.preventDefault(); generateSudoku(sDiff); }, { passive: false });
+
+  // Win overlay
+  const swBtn = document.getElementById('sw-btn');
+  swBtn.addEventListener('click', () => {
+    document.getElementById('sudoku-win').style.display = 'none';
+    generateSudoku(sDiff);
+  });
+  swBtn.addEventListener('touchstart', e => {
+    e.preventDefault();
+    document.getElementById('sudoku-win').style.display = 'none';
+    generateSudoku(sDiff);
+  }, { passive: false });
+
+  // Pre-generate puzzle (runs on page load)
+  generateSudoku('medium');
+
 })();
 </script>
 </body>
