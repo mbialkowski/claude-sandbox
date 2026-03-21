@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TamaPets 🐾</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1a0a2e;font-family:'Courier New',monospace;overflow:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(1px 1px at 15% 25%,#fff 0%,transparent 100%),radial-gradient(2px 2px at 35% 10%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 55% 45%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 75% 20%,#fff 0%,transparent 100%),radial-gradient(2px 2px at 90% 65%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 5% 70%,#fff 0%,transparent 100%),radial-gradient(1px 1px at 45% 80%,#fff 0%,transparent 100%),radial-gradient(2px 2px at 65% 90%,#fff 0%,transparent 100%);pointer-events:none}
+
+.screen{display:none;flex-direction:column;align-items:center;position:relative;z-index:1}
+.screen.active{display:flex}
+
+/* SELECTION */
+.sel-title{color:#fff;font-size:2.6em;letter-spacing:4px;text-align:center;margin-bottom:.2em;text-shadow:0 0 30px rgba(200,150,255,.8)}
+.sel-sub{color:rgba(255,255,255,.6);letter-spacing:3px;margin-bottom:2em;font-size:.9em}
+.pet-choices{display:flex;gap:1.5em}
+.pet-choice{cursor:pointer;padding:1.5em 1.2em;background:rgba(255,255,255,.08);border-radius:22px;border:2px solid rgba(255,255,255,.15);transition:all .3s cubic-bezier(.34,1.56,.64,1);text-align:center;width:115px;backdrop-filter:blur(10px)}
+.pet-choice:hover{border-color:#ffd700;transform:translateY(-10px) scale(1.05);box-shadow:0 20px 40px rgba(0,0,0,.4),0 0 25px rgba(255,215,0,.25)}
+.pet-choice h3{color:#fff;margin-top:1em;font-size:.85em;letter-spacing:3px}
+.preview-box{width:72px;height:72px;background:#9dc462;border-radius:8px;margin:0 auto;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;padding:4px}
+
+/* DEVICE */
+.device{width:258px;border-radius:50% 50% 44% 44%/52% 52% 48% 48%;padding:28px 18px 48px;position:relative;box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 3px 6px rgba(255,255,255,.4),inset 0 -8px 12px rgba(0,0,0,.25)}
+.device.dog{background:linear-gradient(160deg,#89cff0,#4169e1);box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 3px 6px rgba(255,255,255,.4),0 0 0 5px #1a35a0}
+.device.cat{background:linear-gradient(160deg,#ffd080,#ff8c00);box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 3px 6px rgba(255,255,255,.4),0 0 0 5px #b05000}
+.device.duck{background:linear-gradient(160deg,#80e880,#2ecc40);box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 3px 6px rgba(255,255,255,.4),0 0 0 5px #157025}
+.device::before{content:'';position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:16px;height:22px;border:4px solid rgba(0,0,0,.3);border-radius:8px 8px 50% 50%;background:transparent}
+.device-dots{display:flex;justify-content:flex-end;gap:5px;margin-bottom:5px;padding-right:8px}
+.device-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3)}
+
+/* LCD */
+.screen-bezel{background:#111;border-radius:14px;padding:10px;margin-bottom:18px;box-shadow:inset 0 4px 12px rgba(0,0,0,.9),0 3px 6px rgba(255,255,255,.15)}
+.lcd{background:#9dc462;border-radius:8px;height:148px;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.lcd::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 3px);pointer-events:none;z-index:100}
+
+.lcd-status{display:flex;justify-content:space-between;padding:5px 7px 2px;z-index:5;position:relative}
+.pip-group{display:flex;align-items:center;gap:2px}
+.pip-lbl{font-size:7px;color:#2d5a1b;font-weight:bold}
+.pips{display:flex;gap:1.5px}
+.pip{width:7px;height:7px;border-radius:1px;border:1.5px solid #2d5a1b;background:transparent;transition:background .3s}
+.pip.on{background:#2d5a1b}
+
+.pet-stage{flex:1;position:relative;display:flex;align-items:flex-end;justify-content:center}
+.ground{position:absolute;bottom:8px;left:8px;right:8px;height:2px;background:#2d5a1b;opacity:.35;border-radius:1px}
+.lcd-msg{position:absolute;top:5px;width:100%;text-align:center;font-size:7px;color:#2d5a1b;font-weight:bold;letter-spacing:2px;z-index:10;pointer-events:none}
+
+.zzz-wrap{position:absolute;top:8px;right:12px;z-index:10;display:none}
+.zzz-wrap.show{display:block}
+.z-ltr{position:absolute;color:#2d5a1b;font-weight:bold;opacity:0;animation:floatZ 1.8s ease-out infinite}
+.z-ltr:nth-child(1){font-size:7px;right:0;top:0;animation-delay:0s}
+.z-ltr:nth-child(2){font-size:9px;right:-6px;top:-4px;animation-delay:.6s}
+.z-ltr:nth-child(3){font-size:11px;right:-12px;top:-8px;animation-delay:1.2s}
+@keyframes floatZ{0%{opacity:0;transform:translateY(0) rotate(-10deg)}30%{opacity:.8}100%{opacity:0;transform:translateY(-18px) rotate(10deg)}}
+
+/* BUTTONS */
+.btn-row{display:flex;justify-content:space-around;padding:0 12px}
+.dev-btn{width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 6px 0 rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.4);transition:transform .1s}
+.dev-btn:active{transform:translateY(5px);box-shadow:0 1px 0 rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.4)}
+.dev-btn.feed{background:radial-gradient(circle at 35% 30%,#ffe566,#ffb800)}
+.dev-btn.play{background:radial-gradient(circle at 35% 30%,#66ee66,#22bb22)}
+.dev-btn.sleep{background:radial-gradient(circle at 35% 30%,#c8a0f0,#7c3aed)}
+.dev-btn:disabled{opacity:.45;cursor:not-allowed}
+.btn-lbls{display:flex;justify-content:space-around;padding:6px 12px 0}
+.btn-lbl{font-size:7px;color:rgba(255,255,255,.75);text-align:center;width:50px;letter-spacing:1.5px;font-weight:bold}
+
+.reset-wrap{margin-top:14px}
+.reset-btn{background:transparent;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.45);padding:6px 18px;border-radius:20px;cursor:pointer;font-size:.65em;font-family:inherit;letter-spacing:2px;transition:all .2s}
+.reset-btn:hover{border-color:rgba(255,100,100,.5);color:rgba(255,100,100,.7)}
+
+/* NOTIFICATION */
+.notif{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);background:rgba(30,10,50,.95);color:#fff;padding:12px 24px;border-radius:30px;font-size:.85em;border:1px solid rgba(255,215,0,.4);box-shadow:0 10px 30px rgba(0,0,0,.5);transition:transform .4s cubic-bezier(.34,1.56,.64,1);z-index:1000;letter-spacing:1px;white-space:nowrap}
+.notif.show{transform:translateX(-50%) translateY(0)}
+
+/* ========== CSS PET ART ========== */
+:root{--d:#2d5a1b;--m:#5a8a30;--l:#b8d48a;--bg:#9dc462}
+
+.pet-wrap{position:relative;margin-bottom:12px;transform-origin:bottom center;transition:transform .8s}
+.pet-wrap.stage-baby{transform:scale(.55)}
+.pet-wrap.stage-child{transform:scale(.75)}
+.pet-wrap.stage-adult{transform:scale(1)}
+
+/* animations on pet element */
+@keyframes petBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes petJump{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes petShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+@keyframes eggWobble{0%,100%{transform:rotate(0)}25%{transform:rotate(-12deg)}75%{transform:rotate(12deg)}}
+@keyframes tearFall{0%{opacity:.8;transform:translateX(-50%) translateY(0)}100%{opacity:0;transform:translateX(-50%) translateY(9px)}}
+@keyframes heartPop{0%{opacity:0;transform:scale(.5) translateY(0)}50%{opacity:1;transform:scale(1.3) translateY(-4px)}100%{opacity:0;transform:scale(1) translateY(-8px)}}
+
+.pet-anim.mood-happy{animation:petBob 2s ease-in-out infinite}
+.pet-anim.mood-playing{animation:petJump .5s ease-in-out infinite}
+.pet-anim.mood-hungry,.pet-anim.mood-crying{animation:petShake .35s ease-in-out infinite}
+
+/* EGG */
+.egg-shape{width:42px;height:52px;background:var(--d);border-radius:50% 50% 45% 45%/60% 60% 40% 40%;position:relative;animation:eggWobble .9s ease-in-out infinite}
+.egg-shine{position:absolute;width:10px;height:14px;background:var(--m);border-radius:50%;top:8px;left:8px;transform:rotate(-20deg);opacity:.5}
+.egg-crack{display:none;position:absolute;background:var(--bg)}
+.cracking .egg-crack{display:block}
+.ec1{width:2px;height:14px;top:16px;left:50%;transform:translateX(-50%) rotate(5deg)}
+.ec2{width:9px;height:2px;top:20px;left:38%}
+.ec3{width:9px;height:2px;top:26px;left:48%;transform:rotate(15deg)}
+
+/* DOG */
+.dog{display:flex;flex-direction:column;align-items:center}
+.dog-hw{position:relative;display:flex;align-items:center;margin-bottom:-3px}
+.dog-head{width:38px;height:34px;background:var(--d);border-radius:50%;position:relative;z-index:2}
+.dog-ear{width:13px;height:19px;background:var(--d);border-radius:50% 50% 60% 60%;position:absolute;top:-4px;z-index:1}
+.dog-ear.l{left:-6px;transform:rotate(-15deg)}
+.dog-ear.r{right:-6px;transform:rotate(15deg)}
+.dog-eye{position:absolute;width:7px;height:7px;background:var(--l);border-radius:50%;top:10px}
+.dog-eye.l{left:6px}.dog-eye.r{right:6px}
+.dog-eye::after{content:'';position:absolute;width:3px;height:3px;background:var(--d);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.dog-nose{position:absolute;width:10px;height:7px;background:var(--m);border-radius:50% 50% 40% 40%;bottom:8px;left:50%;transform:translateX(-50%)}
+.dog-mouth{position:absolute;width:14px;height:5px;border-bottom:2px solid var(--m);border-radius:0 0 50% 50%;bottom:3px;left:50%;transform:translateX(-50%)}
+.dog-body{width:34px;height:30px;background:var(--d);border-radius:40% 40% 50% 50%;position:relative;z-index:2}
+.dog-tail{position:absolute;width:8px;height:16px;background:var(--d);border-radius:50%;right:-5px;top:-8px;transform:rotate(20deg);z-index:1}
+.dog-feet{display:flex;gap:10px;margin-top:-2px}
+.dog-foot{width:11px;height:8px;background:var(--d);border-radius:50%}
+
+/* CAT */
+.cat{display:flex;flex-direction:column;align-items:center}
+.cat-hw{position:relative;margin-bottom:-3px}
+.cat-head{width:36px;height:32px;background:var(--d);border-radius:50%;position:relative;z-index:2;margin-top:10px}
+.cat-ear{position:absolute;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid var(--d);top:-10px;z-index:1}
+.cat-ear.l{left:3px;transform:rotate(-10deg)}
+.cat-ear.r{right:3px;transform:rotate(10deg)}
+.cat-ear::after{content:'';position:absolute;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:8px solid var(--m);top:3px;left:-4px}
+.cat-eye{position:absolute;width:7px;height:7px;background:var(--l);border-radius:50%;top:10px}
+.cat-eye.l{left:5px}.cat-eye.r{right:5px}
+.cat-eye::after{content:'';position:absolute;width:3px;height:4px;background:var(--d);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.cat-nose{position:absolute;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--m);bottom:9px;left:50%;transform:translateX(-50%)}
+.cat-wh{position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:34px}
+.w{position:absolute;height:1.5px;background:var(--m);opacity:.7}
+.w1{width:12px;right:19px;top:0;transform:rotate(-10deg)}
+.w2{width:12px;right:19px;top:4px;transform:rotate(5deg)}
+.w3{width:12px;left:19px;top:0;transform:rotate(10deg)}
+.w4{width:12px;left:19px;top:4px;transform:rotate(-5deg)}
+.cat-mouth{position:absolute;width:12px;height:5px;border-bottom:2px solid var(--m);border-radius:0 0 50% 50%;bottom:3px;left:50%;transform:translateX(-50%)}
+.cat-body{width:30px;height:28px;background:var(--d);border-radius:40% 40% 50% 50%;position:relative}
+.cat-tail{position:absolute;right:-12px;bottom:0;width:14px;height:24px;border:4px solid var(--d);border-radius:0 50% 50% 0;border-left:none}
+.cat-feet{display:flex;gap:8px;margin-top:-2px}
+.cat-foot{width:10px;height:7px;background:var(--d);border-radius:50%}
+
+/* DUCK */
+.duck{display:flex;flex-direction:column;align-items:center}
+.duck-hw{position:relative;display:flex;align-items:center;margin-bottom:-5px}
+.duck-head{width:28px;height:26px;background:var(--d);border-radius:50%;position:relative;z-index:2}
+.duck-beak{width:13px;height:7px;background:var(--m);border-radius:0 50% 50% 0;position:absolute;right:-11px;top:50%;transform:translateY(-50%)}
+.duck-eye{position:absolute;width:6px;height:6px;background:var(--l);border-radius:50%;top:6px;right:6px}
+.duck-eye::after{content:'';position:absolute;width:3px;height:3px;background:var(--d);border-radius:50%;top:50%;left:50%;transform:translate(-50%,-50%)}
+.duck-body{width:42px;height:35px;background:var(--d);border-radius:55% 55% 45% 45%;position:relative;z-index:2}
+.duck-wing{position:absolute;width:14px;height:18px;background:var(--m);border-radius:50% 0 50% 50%;top:5px;right:-3px;transform:rotate(-15deg)}
+.duck-wing.l{left:-3px;right:auto;border-radius:0 50% 50% 50%;transform:rotate(15deg)}
+.duck-tail{position:absolute;right:-6px;top:-2px;width:10px;height:12px;background:var(--d);border-radius:0 50% 50% 0;z-index:1}
+.duck-feet{display:flex;gap:8px;margin-top:-2px}
+.duck-foot{width:14px;height:6px;background:var(--m);border-radius:50% 50% 50% 50%/40% 40% 60% 60%}
+
+/* MOOD OVERRIDES */
+/* Crying tears */
+.pet-anim.mood-crying .dog-eye::before,
+.pet-anim.mood-crying .cat-eye::before,
+.pet-anim.mood-crying .duck-eye::before{content:'';position:absolute;width:3px;height:6px;background:var(--m);border-radius:50%;bottom:-8px;left:50%;transform:translateX(-50%);animation:tearFall .8s ease-in infinite}
+
+/* Crying mouth */
+.pet-anim.mood-crying .dog-mouth,
+.pet-anim.mood-crying .cat-mouth{border-bottom:none;border-top:2px solid var(--m);border-radius:50% 50% 0 0;bottom:2px}
+
+/* Sleeping eyes */
+.pet-anim.mood-sleeping .dog-eye,
+.pet-anim.mood-sleeping .cat-eye,
+.pet-anim.mood-sleeping .duck-eye{height:3px;border-radius:0;background:var(--d)}
+.pet-anim.mood-sleeping .dog-eye::after,
+.pet-anim.mood-sleeping .cat-eye::after,
+.pet-anim.mood-sleeping .duck-eye::after{display:none}
+
+/* Playing heart */
+.pet-anim.mood-playing::after{content:'♥';position:absolute;top:-12px;right:-5px;color:var(--d);font-size:13px;animation:heartPop .7s ease-out infinite}
+</style>
+</head>
+<body>
+
+<div class="notif" id="notif"></div>
+
+<!-- SELECTION -->
+<div id="sel" class="screen active">
+  <h1 class="sel-title">TAMAPETS</h1>
+  <p class="sel-sub">— choose your companion —</p>
+  <div class="pet-choices">
+
+    <div class="pet-choice" onclick="selectPet('dog')">
+      <div class="preview-box">
+        <div class="dog" style="transform:scale(.75);transform-origin:bottom center">
+          <div class="dog-hw"><div class="dog-ear l"></div><div class="dog-head"><div class="dog-eye l"></div><div class="dog-eye r"></div><div class="dog-nose"></div><div class="dog-mouth"></div></div><div class="dog-ear r"></div></div>
+          <div class="dog-body"><div class="dog-tail"></div></div>
+          <div class="dog-feet"><div class="dog-foot"></div><div class="dog-foot"></div></div>
+        </div>
+      </div>
+      <h3>DOG</h3>
+    </div>
+
+    <div class="pet-choice" onclick="selectPet('cat')">
+      <div class="preview-box">
+        <div class="cat" style="transform:scale(.75);transform-origin:bottom center">
+          <div class="cat-hw"><div class="cat-head"><div class="cat-ear l"></div><div class="cat-ear r"></div><div class="cat-eye l"></div><div class="cat-eye r"></div><div class="cat-nose"></div><div class="cat-wh"><div class="w w1"></div><div class="w w2"></div><div class="w w3"></div><div class="w w4"></div></div><div class="cat-mouth"></div></div></div>
+          <div class="cat-body"><div class="cat-tail"></div></div>
+          <div class="cat-feet"><div class="cat-foot"></div><div class="cat-foot"></div></div>
+        </div>
+      </div>
+      <h3>CAT</h3>
+    </div>
+
+    <div class="pet-choice" onclick="selectPet('duck')">
+      <div class="preview-box">
+        <div class="duck" style="transform:scale(.75);transform-origin:bottom center">
+          <div class="duck-hw"><div class="duck-head"><div class="duck-beak"></div><div class="duck-eye"></div></div></div>
+          <div class="duck-body"><div class="duck-wing l"></div><div class="duck-wing"></div><div class="duck-tail"></div></div>
+          <div class="duck-feet"><div class="duck-foot"></div><div class="duck-foot"></div></div>
+        </div>
+      </div>
+      <h3>DUCK</h3>
+    </div>
+
+  </div>
+</div>
+
+<!-- GAME -->
+<div id="game" class="screen">
+  <div class="device" id="device">
+    <div class="device-dots"><div class="device-dot"></div><div class="device-dot"></div><div class="device-dot"></div></div>
+    <div class="screen-bezel">
+      <div class="lcd">
+        <div class="lcd-status">
+          <div class="pip-group">
+            <span class="pip-lbl">❤</span>
+            <div class="pips" id="h-pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div>
+          </div>
+          <div class="pip-group">
+            <span class="pip-lbl">★</span>
+            <div class="pips" id="s-pips"><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div><div class="pip on"></div></div>
+          </div>
+        </div>
+        <div class="pet-stage" id="stage">
+          <div class="ground"></div>
+          <div class="lcd-msg" id="msg"></div>
+          <div class="zzz-wrap" id="zzz"><span class="z-ltr">z</span><span class="z-ltr">Z</span><span class="z-ltr">Z</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="dev-btn feed" onclick="feedPet()">🍎</button>
+      <button class="dev-btn play" onclick="playPet()">⚽</button>
+      <button class="dev-btn sleep" onclick="sleepPet()">💤</button>
+    </div>
+    <div class="btn-lbls"><span class="btn-lbl">FEED</span><span class="btn-lbl">PLAY</span><span class="btn-lbl">SLEEP</span></div>
+  </div>
+  <div class="reset-wrap"><button class="reset-btn" onclick="confirmReset()">↺ RESET PET</button></div>
+</div>
+
+<script>
+const KEY = 'tamapets_v3';
+const HUNGER_MS = 4000;   // lose 1 hunger per 4s → empty in 20s
+const HAPPY_MS  = 8000;   // lose 1 happiness per 8s
+const CRY_MS    = 20000;  // cry after 20s without food
+const IDLE_MS   = 30000;  // sleep after 30s idle
+const EGG_MS    = 12000;
+const BABY_MS   = 60000;
+const CHILD_MS  = 180000;
+
+let S = null, loop = null, playTmr = null, notifTmr = null;
+
+function defState(type){
+  const n=Date.now();
+  return{petType:type,stage:'egg',birthTime:n,lastFed:n,lastInteraction:n,lastTick:n,hunger:5,happiness:5,mood:'egg',isSleeping:false,isPlaying:false};
+}
+function save(){if(S)localStorage.setItem(KEY,JSON.stringify(S))}
+function load(){try{const d=localStorage.getItem(KEY);return d?JSON.parse(d):null}catch{return null}}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  const saved=load();
+  if(saved){S=saved;startGame();}
+});
+
+function selectPet(type){
+  S=defState(type);save();startGame();
+  notify('✨ Your egg is hatching!');
+}
+
+function startGame(){
+  document.getElementById('sel').classList.remove('active');
+  document.getElementById('game').classList.add('active');
+  document.getElementById('device').className='device '+S.petType;
+  renderPet();
+  if(loop)clearInterval(loop);
+  loop=setInterval(tick,500);
+}
+
+/* ── Pet HTML ── */
+function petHTML(type){
+  if(type==='dog')return`<div class="dog"><div class="dog-hw"><div class="dog-ear l"></div><div class="dog-head"><div class="dog-eye l"></div><div class="dog-eye r"></div><div class="dog-nose"></div><div class="dog-mouth"></div></div><div class="dog-ear r"></div></div><div class="dog-body"><div class="dog-tail"></div></div><div class="dog-feet"><div class="dog-foot"></div><div class="dog-foot"></div></div></div>`;
+  if(type==='cat')return`<div class="cat"><div class="cat-hw"><div class="cat-head"><div class="cat-ear l"></div><div class="cat-ear r"></div><div class="cat-eye l"></div><div class="cat-eye r"></div><div class="cat-nose"></div><div class="cat-wh"><div class="w w1"></div><div class="w w2"></div><div class="w w3"></div><div class="w w4"></div></div><div class="cat-mouth"></div></div></div><div class="cat-body"><div class="cat-tail"></div></div><div class="cat-feet"><div class="cat-foot"></div><div class="cat-foot"></div></div></div>`;
+  return`<div class="duck"><div class="duck-hw"><div class="duck-head"><div class="duck-beak"></div><div class="duck-eye"></div></div></div><div class="duck-body"><div class="duck-wing l"></div><div class="duck-wing"></div><div class="duck-tail"></div></div><div class="duck-feet"><div class="duck-foot"></div><div class="duck-foot"></div></div></div>`;
+}
+
+function renderPet(){
+  const stage=document.getElementById('stage');
+  let old=stage.querySelector('.pet-wrap');
+  if(old)old.remove();
+  const wrap=document.createElement('div');
+  wrap.className='pet-wrap stage-'+(S.stage==='egg'?'baby':S.stage);
+  if(S.stage==='egg'){
+    wrap.innerHTML=`<div class="pet-anim"><div class="egg-shape"><div class="egg-shine"></div><div class="egg-crack ec1"></div><div class="egg-crack ec2"></div><div class="egg-crack ec3"></div></div></div>`;
+  } else {
+    wrap.innerHTML=`<div class="pet-anim mood-${S.mood}">${petHTML(S.petType)}</div>`;
+  }
+  stage.appendChild(wrap);
+}
+
+/* ── Tick ── */
+function tick(){
+  if(!S)return;
+  const now=Date.now();
+  const elapsed=Math.min(now-(S.lastTick||now),2000);
+  S.lastTick=now;
+
+  if(!S.isSleeping){
+    S.hunger=Math.max(0,S.hunger-elapsed/HUNGER_MS);
+    S.happiness=Math.max(0,S.happiness-elapsed/HAPPY_MS);
+  } else {
+    S.hunger=Math.max(0,S.hunger-elapsed/HUNGER_MS*.3); // hunger still drops slowly while sleeping
+  }
+
+  // Stage
+  const age=now-S.birthTime;
+  let ns=age<EGG_MS?'egg':age<EGG_MS+BABY_MS?'baby':age<EGG_MS+BABY_MS+CHILD_MS?'child':'adult';
+  if(ns!==S.stage){
+    const prev=S.stage; S.stage=ns;
+    if(prev==='egg'&&ns==='baby'){notify('🐣 It hatched!');renderPet();}
+    else if(ns==='child'){notify('🌱 Growing bigger!');}
+    else if(ns==='adult'){notify('🌟 Fully grown!');}
+  }
+
+  // Auto-sleep
+  if(!S.isSleeping&&S.stage!=='egg'&&now-S.lastInteraction>=IDLE_MS){
+    S.isSleeping=true;notify('😴 Fell asleep...');
+  }
+
+  // Mood
+  if(S.stage==='egg') S.mood='egg';
+  else if(S.isSleeping) S.mood='sleeping';
+  else if(S.isPlaying) S.mood='playing';
+  else if(now-S.lastFed>=CRY_MS||S.hunger<0.5) S.mood='crying';
+  else if(S.hunger<2||S.happiness<2) S.mood='hungry';
+  else S.mood='happy';
+
+  updateDisplay();
+  save();
+}
+
+function updateDisplay(){
+  const stage=document.getElementById('stage');
+  const wrap=stage.querySelector('.pet-wrap');
+  if(!wrap)return;
+
+  // Scale class
+  wrap.className='pet-wrap stage-'+(S.stage==='egg'?'baby':S.stage);
+
+  // Egg crack
+  if(S.stage==='egg'){
+    const age=Date.now()-S.birthTime;
+    if(age>EGG_MS*.55)wrap.querySelector('.egg-shape')?.classList.add('cracking');
+  } else {
+    const anim=wrap.querySelector('.pet-anim');
+    if(anim) anim.className='pet-anim mood-'+S.mood;
+  }
+
+  // ZZZ
+  document.getElementById('zzz').classList.toggle('show',S.mood==='sleeping');
+
+  // Message
+  const msgs={egg:'...HATCHING...',sleeping:'SLEEPING...',crying:'SO HUNGRY!!',hungry:'HUNGRY...',playing:'YAY!! ♥',happy:''};
+  document.getElementById('msg').textContent=msgs[S.mood]||'';
+
+  // Pips
+  setPips('h-pips',S.hunger);
+  setPips('s-pips',S.happiness);
+}
+
+function setPips(id,val){
+  const ps=document.getElementById(id)?.querySelectorAll('.pip');
+  const n=Math.round(val);
+  ps?.forEach((p,i)=>p.classList.toggle('on',i<n));
+}
+
+/* ── Actions ── */
+function feedPet(){
+  if(!S||S.stage==='egg')return;
+  if(S.isSleeping){notify('😴 Pet is sleeping!');return;}
+  S.hunger=Math.min(5,S.hunger+2);
+  S.lastFed=S.lastInteraction=Date.now();
+  S.isPlaying=false;
+  notify('🍎 Nom nom nom!');
+  updateDisplay();save();
+}
+
+function playPet(){
+  if(!S||S.stage==='egg')return;
+  if(S.isSleeping){notify('😴 Let them sleep!');return;}
+  S.happiness=Math.min(5,S.happiness+2);
+  S.lastInteraction=Date.now();
+  S.isPlaying=true;
+  if(playTmr)clearTimeout(playTmr);
+  playTmr=setTimeout(()=>{S.isPlaying=false;},3000);
+  notify('⚽ So much fun!');
+  updateDisplay();save();
+}
+
+function sleepPet(){
+  if(!S||S.stage==='egg')return;
+  S.isSleeping=!S.isSleeping;
+  S.lastInteraction=Date.now();
+  S.isPlaying=false;
+  notify(S.isSleeping?'💤 Sweet dreams!':'☀️ Good morning!');
+  updateDisplay();save();
+}
+
+function confirmReset(){
+  if(confirm('Start over with a new pet?')){
+    localStorage.removeItem(KEY);S=null;
+    if(loop)clearInterval(loop);
+    if(playTmr)clearTimeout(playTmr);
+    document.getElementById('game').classList.remove('active');
+    document.getElementById('sel').classList.add('active');
+  }
+}
+
+function notify(txt){
+  const el=document.getElementById('notif');
+  el.textContent=txt;el.classList.add('show');
+  if(notifTmr)clearTimeout(notifTmr);
+  notifTmr=setTimeout(()=>el.classList.remove('show'),2500);
+}
+</script>
+</body>
+</html>
