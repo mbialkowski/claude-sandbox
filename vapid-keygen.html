@@ -63,8 +63,15 @@
         crypto.subtle.exportKey('pkcs8', keyPair.privateKey),
       ]);
 
-      // VAPID private key = raw 32-byte scalar, extracted from PKCS#8 DER tail
-      const privRaw = new Uint8Array(privPkcs8).slice(-32);
+      // Find the 04 20 (OCTET STRING, 32 bytes) marker in the PKCS#8 DER to locate
+      // the raw private key scalar (slice(-32) is wrong when the public key is appended)
+      const der = new Uint8Array(privPkcs8);
+      let offset = -1;
+      for (let i = 0; i < der.length - 33; i++) {
+        if (der[i] === 0x04 && der[i + 1] === 0x20) { offset = i + 2; break; }
+      }
+      if (offset < 0) throw new Error('Cannot locate private key in PKCS#8 DER');
+      const privRaw = der.slice(offset, offset + 32);
 
       document.getElementById('pubKey').value = toBase64url(pubRaw);
       document.getElementById('privKey').value = toBase64url(privRaw);
