@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VAPID Key Generator</title>
+  <style>
+    body { font-family: monospace; max-width: 700px; margin: 40px auto; padding: 0 20px; background: #0d1117; color: #e6edf3; }
+    h1 { color: #58a6ff; font-size: 1.4rem; margin-bottom: 4px; }
+    p { color: #8b949e; margin-top: 0; font-size: 0.9rem; }
+    button { background: #238636; color: #fff; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1rem; margin-bottom: 24px; }
+    button:hover { background: #2ea043; }
+    .field { margin-bottom: 16px; }
+    label { display: block; color: #8b949e; font-size: 0.8rem; margin-bottom: 4px; }
+    .key-box { display: flex; gap: 8px; }
+    input[type=text] { flex: 1; background: #161b22; border: 1px solid #30363d; color: #e6edf3; padding: 8px 10px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; }
+    .copy-btn { background: #21262d; border: 1px solid #30363d; color: #c9d1d9; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; white-space: nowrap; }
+    .copy-btn:hover { background: #30363d; }
+    .copy-btn.copied { background: #238636; border-color: #238636; }
+    .note { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 12px 16px; font-size: 0.82rem; color: #8b949e; line-height: 1.6; }
+    .note code { color: #79c0ff; background: #0d1117; padding: 1px 4px; border-radius: 3px; }
+    #output { display: none; }
+  </style>
+</head>
+<body>
+  <h1>VAPID Key Generator</h1>
+  <p>Generates a P-256 keypair for Web Push (RFC 8292) entirely in your browser.</p>
+
+  <button id="generateBtn" onclick="generate()">Generate VAPID Keypair</button>
+
+  <div id="output">
+    <div class="field">
+      <label>PUBLIC KEY (Base64url) — share with your push service / front-end</label>
+      <div class="key-box">
+        <input type="text" id="pubKey" readonly>
+        <button class="copy-btn" onclick="copy('pubKey', this)">Copy</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>PRIVATE KEY (Base64url) — keep secret, used to sign push requests</label>
+      <div class="key-box">
+        <input type="text" id="privKey" readonly>
+        <button class="copy-btn" onclick="copy('privKey', this)">Copy</button>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Usage examples:</strong><br>
+      <code>web-push</code> (Node): <code>webpush.setVapidDetails('mailto:you@example.com', PUBLIC_KEY, PRIVATE_KEY)</code><br>
+      <code>pywebpush</code> (Python): <code>webpush(subscription, data, vapid_private_key=PRIVATE_KEY, vapid_claims={"sub":"mailto:you@example.com"})</code><br><br>
+      Keys are generated locally using the <strong>Web Crypto API</strong> and never leave your browser.
+    </div>
+  </div>
+
+  <script>
+    async function generate() {
+      const keyPair = await crypto.subtle.generateKey(
+        { name: 'ECDH', namedCurve: 'P-256' },
+        true,
+        ['deriveKey', 'deriveBits']
+      );
+
+      const [pubRaw, privPkcs8] = await Promise.all([
+        crypto.subtle.exportKey('raw', keyPair.publicKey),
+        crypto.subtle.exportKey('pkcs8', keyPair.privateKey),
+      ]);
+
+      // VAPID private key = raw 32-byte scalar, extracted from PKCS#8 DER tail
+      const privRaw = new Uint8Array(privPkcs8).slice(-32);
+
+      document.getElementById('pubKey').value = toBase64url(pubRaw);
+      document.getElementById('privKey').value = toBase64url(privRaw);
+      document.getElementById('output').style.display = 'block';
+    }
+
+    function toBase64url(buffer) {
+      return btoa(String.fromCharCode(...new Uint8Array(buffer)))
+        .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    function copy(id, btn) {
+      navigator.clipboard.writeText(document.getElementById(id).value);
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+    }
+  </script>
+</body>
+</html>
