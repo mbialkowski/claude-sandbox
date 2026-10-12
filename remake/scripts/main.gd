@@ -21,6 +21,7 @@ const ACTIONS := ["left", "right", "up", "down", "fire", "use", "jetpack", "item
 		"weapon_next", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_6", "pause",
 		"fullscreen"]
 const CONTINUE_ACTIONS := ["fire", "use", "jetpack"]
+const LANGS := ["pl", "en"]
 
 var D
 var viewport: SubViewport
@@ -402,7 +403,7 @@ func _on_press(a: String) -> void:
 		return
 	match mode:
 		"press":
-			_intro()
+			_press_input(a)
 			return
 		"intro":
 			if a in CONTINUE_ACTIONS or a == "pause":
@@ -438,6 +439,10 @@ func tap(pos: Vector2) -> void:
 				return
 		return
 	if mode == "press":
+		var rects := _lang_rects()
+		for i in rects.size():
+			if rects[i].has_point(p):
+				_set_language(LANGS[i])
 		_intro()
 		return
 	if mode == "intro":
@@ -793,9 +798,38 @@ func explode() -> void:
 # modes
 # ---------------------------------------------------------------------------
 func _press_key() -> void:
+	"""The browser's first screen (audio starts only after an input): pick the language, then any key."""
 	mode = "press"
 	palette.set_now("game")
 	screen.refresh_all()
+
+
+func _press_input(a: String) -> void:
+	if a in ["left", "right", "up", "down"]:
+		var i := LANGS.find(D.settings["language"])
+		var step := -1 if a in ["left", "up"] else 1
+		_set_language(LANGS[(i + step + LANGS.size()) % LANGS.size()])
+	else:
+		_intro()
+
+
+func _set_language(lang: String) -> void:
+	if D.settings["language"] == lang:
+		return
+	D.settings["language"] = lang
+	D.save_settings()
+	screen.refresh_all()
+
+
+func _lang_rects() -> Array:
+	"""Where the language names are on the first screen (logical pixels)."""
+	var rects := []
+	for i in LANGS.size():
+		var label: String = Strings.T[LANGS[i]]["lang_name"]
+		var w: int = screen.string_width(label)
+		var cx: int = logical_w / 2 + (i * 2 - 1) * 45
+		rects.append(Rect2(cx - w / 2 - 8, 132, w + 16, 18))
+	return rects
 
 
 func _intro_wait(ticks: int) -> void:
@@ -1256,9 +1290,19 @@ func draw_overlay(ci: CanvasItem) -> void:
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
 			if mode == "press":
 				var t := "LAZARUS"
-				screen.draw_string_at(ci, t, Vector2(W / 2 - screen.string_width(t) / 2, 100), 29)
+				screen.draw_string_at(ci, t, Vector2(W / 2 - screen.string_width(t) / 2, 88), 29)
+				var h: String = Strings.T["pl"]["opt_language"]
+				screen.draw_string_at(ci, h, Vector2(W / 2 - screen.string_width(h) / 2, 114), 1)
+				var rects := _lang_rects()
+				for i in LANGS.size():
+					var r: Rect2 = rects[i]
+					var label: String = Strings.T[LANGS[i]]["lang_name"]
+					var sel: bool = D.settings["language"] == LANGS[i]
+					screen.draw_string_at(ci, label, Vector2(r.position.x + 8, r.position.y + 4), 0x10 if sel else 1)
+					if sel:
+						screen.fill(ci, Rect2(r.position.x + 6, r.end.y - 2, r.size.x - 12, 1), 0x10)
 				var p := Strings.t("press_key")
-				screen.draw_string_at(ci, p, Vector2(W / 2 - screen.string_width(p) / 2, 124), 12)
+				screen.draw_string_at(ci, p, Vector2(W / 2 - screen.string_width(p) / 2, 164), 12)
 		"title":
 			var ox := (W - 320) / 2
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
