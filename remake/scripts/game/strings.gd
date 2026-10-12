@@ -13,7 +13,7 @@ const T := {
 		"opt_music": "Muzyka", "opt_sfx": "Efekty", "opt_fullscreen": "Pełny ekran",
 		"on": "tak", "off": "nie", "back": "Powrót", "paused": "Pauza", "continue": "Graj dalej",
 		"quit_title": "Wyjdź do menu", "thanks": "Dzięki za grę w Lazarusa!",
-		"fire": "OGIEŃ", "jump": "SKOK", "use": "UŻYJ", "jet": "PLECAK", "full": "[ ]", "inv": "RZECZ", "wpn": "BROŃ",
+		"fire": "STRZAŁ", "jump": "SKOK", "use": "UŻYJ", "jet": "PLECAK", "full": "[ ]", "inv": "RZECZ", "wpn": "BROŃ",
 		"press_key": "Naciśnij klawisz lub dotknij ekranu", "skip": "Spacja / Esc / dotknij - pomiń",
 	},
 	"en": {
