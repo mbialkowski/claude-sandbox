@@ -1,0 +1,36 @@
+{
+ "group": 160,
+ "name": "red bug",
+ "image": "group_160.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 745,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 9,
+   "duration": 12,
+   "box": [
+    0,
+    0,
+    11,
+    8
+   ]
+  },
+  {
+   "frame": 746,
+   "x": 14,
+   "y": 0,
+   "w": 12,
+   "h": 8,
+   "duration": 6,
+   "box": [
+    0,
+    1,
+    11,
+    7
+   ]
+  }
+ ]
+}

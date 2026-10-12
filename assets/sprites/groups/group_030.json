@@ -1,0 +1,50 @@
+{
+ "group": 30,
+ "name": "white energy ball?",
+ "image": "group_030.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 188,
+   "x": 0,
+   "y": 0,
+   "w": 8,
+   "h": 10,
+   "duration": 6,
+   "box": [
+    2,
+    1,
+    6,
+    9
+   ]
+  },
+  {
+   "frame": 189,
+   "x": 10,
+   "y": 0,
+   "w": 8,
+   "h": 10,
+   "duration": 6,
+   "box": [
+    1,
+    1,
+    6,
+    9
+   ]
+  },
+  {
+   "frame": 190,
+   "x": 20,
+   "y": 0,
+   "w": 12,
+   "h": 10,
+   "duration": 6,
+   "box": [
+    0,
+    1,
+    8,
+    9
+   ]
+  }
+ ]
+}

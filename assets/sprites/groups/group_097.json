@@ -1,0 +1,22 @@
+{
+ "group": 97,
+ "name": "chest",
+ "image": "group_097.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 453,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 18,
+   "duration": 1,
+   "box": [
+    2,
+    0,
+    10,
+    17
+   ]
+  }
+ ]
+}

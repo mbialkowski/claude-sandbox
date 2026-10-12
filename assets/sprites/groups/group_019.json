@@ -1,0 +1,22 @@
+{
+ "group": 19,
+ "name": "vending machine / talk zone",
+ "image": "group_019.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 144,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 45,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    31,
+    44
+   ]
+  }
+ ]
+}

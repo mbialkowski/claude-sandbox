@@ -1,0 +1,22 @@
+{
+ "group": 96,
+ "name": "purple card",
+ "image": "group_096.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 451,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 8,
+   "duration": 1,
+   "box": [
+    2,
+    0,
+    14,
+    7
+   ]
+  }
+ ]
+}

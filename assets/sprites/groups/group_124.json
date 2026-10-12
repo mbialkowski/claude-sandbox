@@ -1,0 +1,22 @@
+{
+ "group": 124,
+ "name": "riddle man",
+ "image": "group_124.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 509,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 35,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    14,
+    34
+   ]
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "group": 199,
+ "name": "Hero - jump/jetpack left",
+ "image": "group_199.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 1005,
+   "x": 0,
+   "y": 0,
+   "w": 20,
+   "h": 31,
+   "duration": 2,
+   "box": [
+    6,
+    2,
+    16,
+    30
+   ]
+  },
+  {
+   "frame": 1006,
+   "x": 22,
+   "y": 0,
+   "w": 20,
+   "h": 31,
+   "duration": 2,
+   "box": [
+    6,
+    2,
+    16,
+    30
+   ]
+  },
+  {
+   "frame": 1007,
+   "x": 44,
+   "y": 0,
+   "w": 20,
+   "h": 31,
+   "duration": 2,
+   "box": [
+    6,
+    2,
+    16,
+    30
+   ]
+  }
+ ]
+}

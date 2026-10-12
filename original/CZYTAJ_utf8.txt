@@ -1,0 +1,299 @@
+Polskie znaki - Mazovia
+
+OSTATNIE UWAGI DOTYCZĄCE KORZYSTANIA Z PROGRAMU LAZARUS
+
+W związku z występowaniem na rynku wielu rodzajów kart dzwiękowych i brakiem
+jednego ustalonego standardu, może się zdarzyć, że gra nie będzie mogła
+poradzić sobie z ustaleniem parametrów karty dzwiękowej. W najlepszym przypadku
+spowoduje to brak jakichkolwiek odglosow w grze, ale może także doprowadzić
+do nieprawidlowej pracy lub zawieszenia komputera.
+
+Aby jak najbardziej pomóc Ci w samodzielnym usunięciu problemu, plik ten 
+zawiera rady dotyczące uruchamiania gry, głównie pod kątem uzyskania
+prawidłowego dźwięku.
+
+Plik został zorganizowany w formie pytań i odpowiedzi.
+
+-------------------------------------------------------------------------------
+PYTANIE 1.
+Wygląda na to, że gra działa niepoprawnie.
+
+ODPOWIEDŹ
+Sprawdź, czy zostały poprawnie zainstalowane wszystkie plik.
+Sprawdź także, czy w systemie nie zagnieździł się jakiś wirus.
+
+
+-------------------------------------------------------------------------------
+PYTANIE 2.
+Program nie chce się uruchomić wypisując komunikat, że jest uszkodzony.
+
+ODPOWIEDŹ
+Prawdopodobnie nastąpiło uszkodzenie pliku programu. W takim wypadku należy
+ponownie zainstalować program z oryginalnych dyskietek instalacyjnych.
+
+-------------------------------------------------------------------------------
+PYTANIE 3.
+Program nie chce się uruchomić.
+
+ODPOWIEDŹ
+A. Upewnij się, czy gra została poprawnie zainstalowana.
+
+B. Sprawdź, czy komputer jest klasy co najmniej 386. Gra nie działa na
+   komputerach starszego typu.
+
+C. Sprawdź, czy komputer posiada wystarczającą ilość pamięci.
+   Do działania programu potrzebne jest ok. 2,9 MB wolnej pamięci.
+
+D. Jeśli uruchamiasz grę w systemie Windows 3.x.
+   Program nie będzie poprawnie pracował w środowisku Windows 3.x - należy go
+   uruchomić bezpośrednio po włączeniu komputera z linii poleceń DOS.
+
+E. Jeśli uruchamiasz grę w systemie Windows 95.
+   1. Spróbuj ustawić właściwości programu. W tym celu kliknij prawym 
+      przyciskiem myszy na ikonie programu LAZARUS.EXE. Z podręcznego menu 
+      wybierz polecenie Właściwości. Kliknij na zakładce Program, a następnie
+      na przycisku Zaawansowane. Zaznacz opcję Zapobiegaj wykrywaniu systemu 
+      Windows przez programy MS-DOS.
+
+      Kliknij na zakładce Pamięć. We wszystkich listach opcji powinna widnieć
+      wartość Automatycznie. Jeśli tak nie jest - zmień inne opcje.
+      W grupie Pamięć konwencjonalna włącz opcję Chroniona.
+      
+      Kliknij na zakładce Ekran. Wybierz opcję Pełny ekran.
+
+      Kliknij na zakładce Inne. Wyłącz opcje Wygaszacz ekranu dozwolony oraz -
+      w grupie Tło - Zawsze wstrzymuj. Ustaw niskie Wykrywanie bezczynności.
+
+      Kliknij na przycisku OK i ponownie spróbuj uruchomić program.
+
+      W przypadku korzystania z karty dźwiękowej SOUND BLASTER mogą wystąpić 
+      kłopty z dźwiękiem. W tym wypadku sugerujemy uruchomienie gry w trybie
+      MS-DOS (co opisano w następnym punkcie).
+        
+   2. Jeśli nie pomogło wykonanie poleceń punktu E1, uruchamiaj program
+      w trybie MS-DOS. W tym celu w oknie dialogowym Właściwości programu,
+      na zakładce Program, kliknij na przycisku Zaawansowane. 
+      Włącz opcję Tryb MS-DOS. Pamiętaj o dopisaniu koniecznych sterowników
+      karty dźwiękowej w znajdujących się poniżej plikach AUTOEXEC.BAT
+      i CONFIG.SYS. (Dane dotyczące poleceń ładowania sterowników 
+      powinieneś znaleźć w dokumentacji karty dźwiekowej.)
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 4.
+Program uruchamia się, ale zawiesza się.
+
+ODPOWIEDŹ
+A.  Powodem może być niewłaściwa współpraca komputera z kartą dźwiękową;
+    w takim wypadku, jeśli korzystasz z karty dźwiękowej typu Sound Blaster,
+    wyłącz dźwięk w grze.
+    W tym celu uruchom program z parametrem /N, na przykład tak:
+  
+        LAZARUS.EXE /N
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 5.
+Program uruchamia się, ale nie słychać żadnego dźwięku.
+
+ODPOWIEDŹ
+A.  Sprawdź, czy w komputerze zainstalowana jest karta dźwiękowa zgodna
+    z kartą ULTRASOUND (dowolny typ) firmy GRAVIS lub zgodna z kartą
+    typu SOUND BLASTER (najlepiej oryginalna karta firmy CREATIVE LABS).
+
+B.  Jeśli karta jest zainstalowana, sprawdź, czy działa z innymi programami.
+    Jeśli także w innych programach nie ma dźwięku, prawdopoodbnie karta
+    nie jest w pełni zainstalowna lub nieprawidłowo podłączona do wzmacaniacza.
+    Spróbuj ponownie zainstalować niezbędne oprogramowanie.
+
+    Jeśli dźwięk występuje w innych programach, a nie występuje w grze,
+    najprawdopodobniej nie jest zdefiniowana zmienna środowiskowa BLASTER lub
+    ULTRASND albo podane w niej parametry są nieprawdziwe. Upewnij się, że
+    parametry odpowiednich zmiennych środowiskowych odpowiadają rzeczywiście
+    ustawionym parametrom karty.
+
+    Zmienna BLASTER definiowana jest zwykle w pliku AUTOEXEC.BAT w linii 
+    o postaci
+
+        SET BLASTER=AXXX IYY DZ ...
+
+    gdzie:  XXX - jest liczbą szesnastkową określającą adres portu I/O
+                  (standardowo 220, ale może też być 200, 210, 230, 240, 250
+                   lub 260).
+            YY  - określa numer wykorzystywanego przerwania IRQ
+                  (standardowo 7, ale wykorzystywane są też przerwania
+                   2, 3, 5, 10 lub 11).
+            Z   - określa numer wykorzystywanego kanału DMA
+                  (standardowym kanałem DMA wykorzytywanem w kartach typu
+                   SOUND BLASTER jest kanał 1, w niektórych kartach mozliwe
+                   jest wykorzystanie kanału nr 0 lub 3, a także, w nielicznych
+                   przypadkach, kanału nr 2).
+
+    UWAGA: Gra LAZARUS nie obsługuje przerwań IRQ o numerach większych od 7.
+
+
+
+    Podczas wykrywania rodzaju karty dźwiękowej program pobiera ustawienia
+    zmiennej środowiskowej ULTRASND oraz BLASTER, a następnie kolejno próbuje
+    potwierdzić adres portu I/O, numer przerwania IRQ oraz numer kanału DMA.
+    Jeśli którakolwiek ze sprawdzanych wartości nie zostanie potwierdzona,
+    program przyjmuje, że karta nie jest zainstalowana.
+
+    Jeśli chcesz sprawdzić, gdzie wystąpiła niezgodność, uruchom program
+    z parametrem /D, na przykład tak:
+
+        LAZARUS.EXE /D
+
+    Program przeprowadzi detekcję karty wyświetlając kolejne wykonywane kroki,
+    a następnie powróci do DOS-u.
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 6.
+    Po uruchomieniu gra natychmiast kończy działanie wypisując komunikat
+    informujący, że kończy pracę w związku z wykryciem karty Sound Blaster
+    i niemożnością wykrycia kanału DMA lub numeru używanego przerwania IRQ.
+
+ODPOWIEDŹ
+A.  Jeśli używasz karty dźwiękowej innej niż oryginalny SOUND BLASTER firmy
+    Creative Labs, ustaw ją w tryb pracy zgodny z kartą SOUND BLASTER.
+    Sposób ustawienia trybu pracy karty powinien znajdować się w dokumentacji
+    karty dźwiękowej.
+    UWAGA: Nie należy włączać emulacji SOUND BLASTER-a dla karty GRAVIS
+           ULTRASOUND. Karta ta powinna pracować w swoim zwykłym trybie.
+
+C.  Mógł także wystąpić konflikt sprzętowy z innymi urządzeniami w komputerze.
+    Sprawdź działanie karty dźwiękowej programem testującym dostarczonym 
+    wraz z kartą. Spróbuj inaczej skonfigurować kartę dźwiękową.
+
+D.  Jeśli powyższe rady nie przyniosły rezultatu, pozostaje zrezygnować
+    z dźwięku. W tym celu uruchom program z parametrem /N, na przykład tak:
+
+        LAZARUS.EXE /N
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 7.
+Program natychmiast kończy działanie informując, że karta GRAVIS ULTRASOUND
+nie obsługuje przerwania o numerze wyższym od 7.
+
+ODPOWIEDŹ
+    W związku z tym, że program pracuje w 32-bitowym trybie wirtualnym 
+    z ochroną, nie potrafi obsłużyć przerwań IRQ o numerach wyższych od 7.
+    Przy pomocy programu SETUP.EXE karty dźwiękowej ULATRSOUND ustaw inne 
+    przerwanie GF1 karty dźwiękowej, o numerze mniejszym lub równym 7.
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 8.
+W moim komputerze zainstalowane są dwie karty dźwiękowe: jedna z nich to GRAVIS
+ULTRASOUND, a druga to karta typu SOUND BLASTER. Gra wykrywa jedynie kartę
+ULTRASOUND. Co zrobić, jeśli chcę skorzystać z drugiej karty?
+
+ODPOWIEDŹ
+    Uruchom program z parametrem /S1, na przykład tak:
+    
+        LAZARUS.EXE /S1
+
+    Spowoduje to, że program pominie detekcję karty ULTRASOUND. Podobnie, jeśli
+    nie chcesz wykrywać karty dźwiękowej typu SOUND BLASTER, uruchom grę
+    z parametrem /S2, na przykład tak:
+
+        LAZARUS.EXE /S2
+
+    Zostanie wtedy przeprowadzona detekcja tylko karty ULTRASOUND.
+
+    Jeśli nie powiedzie się detekcja karty wybranej w parametrze /S,
+    program przyjmie brak karty dźwiękowej.
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 9.
+Po uruchomieniu gra natychmiast kończy pracę wypisując komunikat, że jest
+uszkodzona. Co należy wtedy zrobić?
+
+ODPOWIEDŹ
+    Został uszkodzony któryś z plików. Należy ponownie zainstalować grę 
+    z dyskietek instalacyjnych.
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 10.
+W moim komputerze animacje odtwarzane są "skokami" i trwają bardzo długo.
+Podobnie, bohater i wszystkie obiekty w grze poruszają się, jakby były
+zanurzone w kleju. Co może być przyczyną?
+
+ODPOWIEDŹ
+A.  Program został uruchomiony w sesji DOS-a w systemie Windows 3.x.
+    Należy uruchomić program bezpośrednio z linii poleceń systemu MS-DOS.
+
+B.  Sprawdź, czy komputer pracuje wystarczająco wydajnie dla potrzeb gry.
+    Gra działa poprawnie już z komputerami 386 DX 40MHz.
+    W celu sprawdzenia wydajności komputera, uruchom grę z parametrami 
+    /I oraz /M, na przykład tak:
+        
+        LAZARUS.EXE /I /M
+
+    (możesz także w trakcie gry wpisać z klawiatury hasło IDMTER)
+
+    Pierwszy parametr, /I powoduje wyłączenie początkowej animacji 
+    (zastosowany jedynie dla skrócenia czasu uruchomienia właściwej gry).
+    Drugi parametr uaktywnia tzw. licznik ramek. Gdy licznik jest aktywny,
+    w prawym górnym rogu ekranu właściwej gry wyświetlana jest pewna wartość.
+    Określa ona liczbę ramek animacji wyświetlanych w ciągu sekundy i powinna
+    być stale równa 50 (po sekundzie przebywania w danej komnacie).
+    Jeśli wartość ta jest mniejsza od 50, oznacza to, że komputer pracuje
+    za mało wydajnie.
+
+    W przypadku korzystania z karty dźwiękowej typu SOUND BLASTER rozwiązanie
+    może polegać na uruchomieniu gry bez dźwięku. 
+    Jeśli to nie pomoże, należy rozważyć wymianę procesora na szybszy lub 
+    wymianę karty graficznej na model posiadający magistralę lokalną 
+    (na przykład VESA LOCAL BUS lub PCI).
+
+    Jeśli chcesz sprawdzić ogólną wydajność procesora i karty graficznej,
+    uruchom program z parametrami /T oraz /M. Wartość w prawym górnym rogu
+    oznacza liczbę ramek animacji wyświetlanych w ciągu sekundy.
+    Mozesz także w trakcie działania programu wpisać z klawiatury hasła
+    IDMTER (włączenie licznika) oraz IDFRME (wyłączenie oczekiwania na ramkę).
+    Ponowne wpisanie tych haseł spowoduje wyłączenie ich funkcji.
+    
+
+
+
+-------------------------------------------------------------------------------
+PYTANIE 11.
+Gdy uruchamiam grę w systemie Windows 95, wszystkie dźwięki odtwarzane są
+z kilkusekundowym opóźnieniem. Co jest tego przyczyną?
+
+ODPOWIEDŹ
+    Problem leży w sterownikach urządzeń wirtualnych stosowanych w systemie
+    Windows 95. W przypadku karty dźwiękowej typu SOUND BLASTER, system dźwięku
+    w grze zapisuje dane do bufora DMA w pamięci RAM, z którego mechanizm DMA
+    przesyła je cyklicznie do przetworników karty. Należące do jądra systemu
+    Windows 95 sterowniki VxD zwracają wartość licznika DMA z pewnym
+    opóźnieniem, przez co występuje "poślizg" między odtwarzanym dźwiękiem,
+    a tym, co się dzieje na ekranie. Należy wtedy uruchomić grę w trybie MS-DOS.
+
+
+                        
+       
+-------------------------------------------------------------------------------
+PYTANIE 12.
+Program natychmiast kończy pracę wyświetlając komunikat:
+
+    stub exec failed
+    dos4gw.exe
+    no such file or directory
+
+ODPOWIEDŻ
+    Program nie mógł odnaleźć extendera DOS4GW niezbędnego do działania gry.
+    Należy ponownie zainstalować grę lub udostepnić program dos4gw.exe.
+

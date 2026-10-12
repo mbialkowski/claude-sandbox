@@ -1,0 +1,50 @@
+{
+ "group": 202,
+ "name": "Hero - crouch right",
+ "image": "group_202.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 1017,
+   "x": 0,
+   "y": 0,
+   "w": 24,
+   "h": 31,
+   "duration": 2,
+   "box": [
+    7,
+    4,
+    16,
+    30
+   ]
+  },
+  {
+   "frame": 1018,
+   "x": 26,
+   "y": 0,
+   "w": 24,
+   "h": 31,
+   "duration": 2,
+   "box": [
+    7,
+    7,
+    17,
+    30
+   ]
+  },
+  {
+   "frame": 1019,
+   "x": 52,
+   "y": 0,
+   "w": 20,
+   "h": 31,
+   "duration": 2,
+   "box": [
+    7,
+    12,
+    17,
+    30
+   ]
+  }
+ ]
+}

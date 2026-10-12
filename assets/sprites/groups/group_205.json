@@ -1,0 +1,22 @@
+{
+ "group": 205,
+ "name": "Hero - stand right",
+ "image": "group_205.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 1027,
+   "x": 0,
+   "y": 0,
+   "w": 24,
+   "h": 31,
+   "duration": 8,
+   "box": [
+    6,
+    2,
+    16,
+    30
+   ]
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "group": 165,
+ "name": "orange ring?",
+ "image": "group_165.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 761,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 9,
+   "duration": 6,
+   "box": [
+    0,
+    0,
+    8,
+    8
+   ]
+  },
+  {
+   "frame": 762,
+   "x": 14,
+   "y": 0,
+   "w": 12,
+   "h": 9,
+   "duration": 6,
+   "box": [
+    0,
+    0,
+    8,
+    8
+   ]
+  },
+  {
+   "frame": 763,
+   "x": 28,
+   "y": 0,
+   "w": 12,
+   "h": 9,
+   "duration": 6,
+   "box": [
+    0,
+    0,
+    8,
+    8
+   ]
+  }
+ ]
+}

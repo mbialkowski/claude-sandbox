@@ -1,0 +1,22 @@
+{
+ "group": 128,
+ "name": "Door of Time frame",
+ "image": "group_128.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 521,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 18,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    29,
+    17
+   ]
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+# Scratch locations for local experiments (the original game itself is committed in original/).
+/game/
+/extracted/
+/decomp/
+# local reverse-engineering artefacts (regenerate with tools/)
+*.asm
+*.bin
+__pycache__/
+*.pyc

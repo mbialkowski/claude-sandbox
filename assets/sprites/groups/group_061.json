@@ -1,0 +1,36 @@
+{
+ "group": 61,
+ "name": null,
+ "image": "group_061.png",
+ "loop_ticks": 1,
+ "frames": [
+  {
+   "frame": 312,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 17,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    11,
+    16
+   ]
+  },
+  {
+   "frame": 313,
+   "x": 14,
+   "y": 0,
+   "w": 12,
+   "h": 17,
+   "duration": 1,
+   "box": [
+    1,
+    0,
+    11,
+    16
+   ]
+  }
+ ]
+}

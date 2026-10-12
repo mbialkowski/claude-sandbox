@@ -1,0 +1,3730 @@
+{
+ "note": "Hard-coded handlers of LAZARUS.EXE as data. Op set: tools/lazarus_scripts.py docstring and docs 04-game-content.md 4.9. Message ids index text/messages.json; item ids gamedata/items.json. dialog = runs inside Dlg_Begin/Dlg_End (game frozen, sound effects paused).",
+ "state": {
+  "choice": {
+   "addr": null,
+   "init": null,
+   "note": "result of the last menu"
+  },
+  "bomb_wire": {
+   "addr": "89348",
+   "init": [
+    "random",
+    3
+   ],
+   "note": "wire that defuses the bomb: 0 red, 1 green, 2 blue"
+  },
+  "secret_door": {
+   "addr": "89368",
+   "init": [
+    "random",
+    3
+   ],
+   "note": "which secret door of (8,7) hides magic key 5; also sets g_gameFlags[76 + n]"
+  },
+  "sock_chest": {
+   "addr": "89350",
+   "init": [
+    "random",
+    11
+   ],
+   "note": "index into the 11 sock spots (EXE 0x5442C)"
+  },
+  "sock_found": {
+   "addr": "89354",
+   "init": 0,
+   "note": ""
+  },
+  "riddle": {
+   "addr": "89314",
+   "init": [
+    "random",
+    3
+   ],
+   "note": "riddle asked by the riddle man (answers 14/19/97)"
+  },
+  "shop_map": {
+   "addr": "8947c",
+   "init": [
+    "random_of",
+    [
+     1079,
+     1078
+    ]
+   ],
+   "note": "picture shown by the shop map (item 37)"
+  },
+  "magazines": {
+   "addr": "89310",
+   "init": 0,
+   "note": "stack count of item 36"
+  },
+  "cauldron_flowers": {
+   "addr": "89360",
+   "init": 0,
+   "note": "magic flowers dropped into the cauldron"
+  },
+  "key_slots": {
+   "addr": "8938c",
+   "init": 0,
+   "note": "magic keys inserted in the hub"
+  },
+  "bomb_active": {
+   "addr": "8934c",
+   "init": 0,
+   "note": "countdown g_bombTimer = 3000 ticks runs while set"
+  },
+  "infinite_ammo_fuel": {
+   "addr": "89390",
+   "init": 0,
+   "note": "also the IDSIAR cheat"
+  },
+  "pw_temple": {
+   "addr": "89330",
+   "init": 1,
+   "note": "teleport passwords, in hub-menu order"
+  },
+  "pw_netherworld": {
+   "addr": "89334",
+   "init": 0,
+   "note": ""
+  },
+  "pw_abyss": {
+   "addr": "89338",
+   "init": 0,
+   "note": ""
+  },
+  "pw_valley": {
+   "addr": "8933c",
+   "init": 0,
+   "note": ""
+  },
+  "pw_terror": {
+   "addr": "89340",
+   "init": 0,
+   "note": ""
+  },
+  "pw_training": {
+   "addr": "89344",
+   "init": 1,
+   "note": ""
+  },
+  "stock_energy": {
+   "addr": "8936c",
+   "init": 1,
+   "note": "vending machine stock (energy: recomputed = not full)"
+  },
+  "stock_clip": {
+   "addr": "89370",
+   "init": 1,
+   "note": ""
+  },
+  "stock_uzi": {
+   "addr": "89374",
+   "init": 1,
+   "note": ""
+  },
+  "stock_ticket": {
+   "addr": "89378",
+   "init": 1,
+   "note": ""
+  },
+  "stock_map": {
+   "addr": "8937c",
+   "init": 1,
+   "note": ""
+  },
+  "stock_leave": {
+   "addr": "89380",
+   "init": 1,
+   "note": "'Może innym razem.' - always listed"
+  },
+  "witch_death": {
+   "addr": "89388",
+   "init": 0,
+   "note": "written, never read"
+  },
+  "unused_8935c": {
+   "addr": "8935c",
+   "init": null,
+   "note": "cleared by the witch death, never read"
+  }
+ },
+ "palettes": {
+  "game": "DATA25",
+  "alarm": "DATA16",
+  "black": "all black",
+  "current": "the palette in use"
+ },
+ "scripts": [
+  {
+   "id": 32,
+   "fn": "1b660",
+   "dialog": true,
+   "name": "merchant 1 (8,1)",
+   "note": "buying the wire cutters does not set flag 36, so the second merchant only appears after the other choices",
+   "ops": [
+    [
+     "print",
+     37
+    ],
+    [
+     "menu",
+     [
+      38,
+      39,
+      40,
+      41
+     ]
+    ],
+    [
+     "if",
+     [
+      "eq",
+      "choice",
+      3
+     ],
+     [
+      [
+       "set_flag",
+       36
+      ],
+      [
+       "say",
+       44
+      ]
+     ],
+     [
+      [
+       "if",
+       [
+        "money_lt",
+        10
+       ],
+       [
+        [
+         "say",
+         43
+        ],
+        [
+         "set_flag",
+         36
+        ]
+       ],
+       [
+        [
+         "switch",
+         "choice",
+         {
+          "0": [
+           [
+            "set_flag",
+            36
+           ],
+           [
+            "set",
+            "pw_abyss",
+            1
+           ],
+           [
+            "say",
+            53
+           ]
+          ],
+          "1": [
+           [
+            "set_flag",
+            36
+           ],
+           [
+            "give",
+            6
+           ]
+          ],
+          "default": [
+           [
+            "give",
+            7
+           ]
+          ]
+         }
+        ],
+        [
+         "say",
+         42
+        ],
+        [
+         "money",
+         -10
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 33,
+   "fn": "1b794",
+   "ops": [
+    [
+     "give",
+     6
+    ]
+   ],
+   "name": "lift card pickup"
+  },
+  {
+   "id": 34,
+   "fn": "1b7e8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     9
+    ]
+   ],
+   "name": "hanging man asks for help"
+  },
+  {
+   "id": 35,
+   "fn": "1b864",
+   "dialog": true,
+   "name": "hanging man rescued",
+   "ops": [
+    [
+     "print",
+     10
+    ],
+    [
+     "say_indexed",
+     11,
+     "bomb_wire"
+    ],
+    [
+     "say",
+     22
+    ]
+   ]
+  },
+  {
+   "id": 37,
+   "fn": "1b8e4",
+   "dialog": true,
+   "name": "merchant 2 (9,3)",
+   "ops": [
+    [
+     "print",
+     45
+    ],
+    [
+     "menu",
+     [
+      46,
+      47,
+      48,
+      49
+     ]
+    ],
+    [
+     "if",
+     [
+      "eq",
+      "choice",
+      3
+     ],
+     [
+      [
+       "say",
+       51
+      ]
+     ],
+     [
+      [
+       "if",
+       [
+        "money_lt",
+        14
+       ],
+       [
+        [
+         "say",
+         43
+        ]
+       ],
+       [
+        [
+         "say",
+         50
+        ],
+        [
+         "money",
+         -14
+        ],
+        [
+         "if",
+         [
+          "eq",
+          "choice",
+          1
+         ],
+         [
+          [
+           "give",
+           7
+          ]
+         ],
+         [
+          [
+           "wait"
+          ],
+          [
+           "clear"
+          ],
+          [
+           "say",
+           52
+          ]
+         ]
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 38,
+   "fn": "1b9d8",
+   "dialog": true,
+   "name": "deaf prisoner arms the bomb",
+   "ops": [
+    [
+     "say",
+     14
+    ],
+    [
+     "say",
+     15
+    ],
+    [
+     "say",
+     16
+    ],
+    [
+     "say",
+     17
+    ],
+    [
+     "bomb_sound",
+     "start"
+    ],
+    [
+     "fade",
+     "game",
+     "alarm",
+     7
+    ],
+    [
+     "say",
+     18
+    ],
+    [
+     "say",
+     19
+    ],
+    [
+     "say",
+     20
+    ],
+    [
+     "say",
+     21
+    ],
+    [
+     "set",
+     "bomb_active",
+     1
+    ]
+   ]
+  },
+  {
+   "id": 39,
+   "fn": "1ba4c",
+   "dialog": true,
+   "name": "bomb: cut a wire",
+   "ops": [
+    [
+     "print",
+     25
+    ],
+    [
+     "menu",
+     [
+      26,
+      27,
+      28
+     ]
+    ],
+    [
+     "if",
+     [
+      "eq",
+      "choice",
+      {
+       "var": "bomb_wire"
+      }
+     ],
+     [
+      [
+       "bomb_sound",
+       "stop"
+      ],
+      [
+       "fade",
+       "alarm",
+       "game",
+       7
+      ],
+      [
+       "set",
+       "bomb_active",
+       0
+      ],
+      [
+       "take",
+       7
+      ],
+      [
+       "say",
+       35
+      ]
+     ],
+     [
+      [
+       "print",
+       36
+      ],
+      [
+       "delay",
+       100
+      ],
+      [
+       "clear"
+      ],
+      [
+       "explode"
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 41,
+   "fn": "1bb38",
+   "ops": [
+    [
+     "give",
+     8
+    ]
+   ],
+   "name": "cage key pickup"
+  },
+  {
+   "id": 42,
+   "fn": "1bb58",
+   "dialog": true,
+   "name": "prisoner freed",
+   "ops": [
+    [
+     "say",
+     30
+    ],
+    [
+     "say",
+     31
+    ],
+    [
+     "say",
+     32
+    ],
+    [
+     "say",
+     33
+    ],
+    [
+     "set",
+     "pw_netherworld",
+     1
+    ]
+   ]
+  },
+  {
+   "id": 43,
+   "fn": "1bb98",
+   "ops": [
+    [
+     "give",
+     19
+    ]
+   ],
+   "name": "magic key 2"
+  },
+  {
+   "id": 44,
+   "fn": "1bbb8",
+   "ops": [
+    [
+     "give",
+     32
+    ]
+   ],
+   "name": "magic flower 3"
+  },
+  {
+   "id": 45,
+   "fn": "1bbd8",
+   "ops": [
+    [
+     "teleport",
+     4,
+     5,
+     14,
+     83
+    ]
+   ],
+   "name": "booth (8,6) -> (4,5)"
+  },
+  {
+   "id": 64,
+   "fn": "1bc08",
+   "dialog": true,
+   "name": "the witch",
+   "ops": [
+    [
+     "say",
+     88
+    ],
+    [
+     "say",
+     89
+    ],
+    [
+     "say",
+     90
+    ],
+    [
+     "say",
+     91
+    ],
+    [
+     "take",
+     33
+    ],
+    [
+     "print",
+     92
+    ],
+    [
+     "menu",
+     [
+      93,
+      94,
+      95
+     ]
+    ],
+    [
+     "if",
+     [
+      "eq",
+      "choice",
+      1
+     ],
+     [
+      [
+       "say",
+       96
+      ],
+      [
+       "say",
+       97
+      ],
+      [
+       "give",
+       34
+      ]
+     ],
+     [
+      [
+       "say",
+       99
+      ],
+      [
+       "say_keep",
+       100
+      ],
+      [
+       "wait"
+      ],
+      [
+       "say_keep",
+       101
+      ],
+      [
+       "wait"
+      ],
+      [
+       "say",
+       102
+      ],
+      [
+       "say",
+       103
+      ],
+      [
+       "switch",
+       "choice",
+       {
+        "0": [
+         [
+          "set",
+          "witch_death",
+          1
+         ],
+         [
+          "set",
+          "unused_8935c",
+          0
+         ],
+         [
+          "delay",
+          100
+         ],
+         [
+          "end_game",
+          "death"
+         ],
+         [
+          "say",
+          122
+         ]
+        ],
+        "default": [
+         [
+          "fade",
+          "game",
+          "black",
+          6
+         ],
+         [
+          "show_pcx",
+          "DATA21.RES"
+         ],
+         [
+          "end_game",
+          "joke_ending"
+         ]
+        ]
+       }
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 65,
+   "fn": "1bd98",
+   "name": "cauldron",
+   "note": "silent unless the hero has the shears; the dialogue opens after the flowers are counted",
+   "ops": [
+    [
+     "if",
+     [
+      "and",
+      [
+       "has_item",
+       34
+      ],
+      [
+       "ne",
+       "cauldron_flowers",
+       3
+      ]
+     ],
+     [
+      [
+       "if",
+       [
+        "has_item",
+        30
+       ],
+       [
+        [
+         "take",
+         30
+        ],
+        [
+         "add",
+         "cauldron_flowers",
+         1
+        ]
+       ],
+       []
+      ],
+      [
+       "if",
+       [
+        "has_item",
+        31
+       ],
+       [
+        [
+         "take",
+         31
+        ],
+        [
+         "add",
+         "cauldron_flowers",
+         1
+        ]
+       ],
+       []
+      ],
+      [
+       "if",
+       [
+        "has_item",
+        32
+       ],
+       [
+        [
+         "take",
+         32
+        ],
+        [
+         "add",
+         "cauldron_flowers",
+         1
+        ]
+       ],
+       []
+      ],
+      [
+       "if",
+       [
+        "eq",
+        "cauldron_flowers",
+        3
+       ],
+       [
+        [
+         "say",
+         99
+        ],
+        [
+         "say_keep",
+         100
+        ],
+        [
+         "wait"
+        ],
+        [
+         "say_keep",
+         101
+        ],
+        [
+         "wait"
+        ],
+        [
+         "say",
+         102
+        ],
+        [
+         "say",
+         104
+        ],
+        [
+         "take",
+         34
+        ],
+        [
+         "give",
+         14
+        ]
+       ],
+       [
+        [
+         "say",
+         98
+        ]
+       ]
+      ]
+     ],
+     []
+    ]
+   ]
+  },
+  {
+   "id": 66,
+   "fn": "1bea8",
+   "ops": [
+    [
+     "give",
+     9
+    ]
+   ],
+   "name": "empty bucket"
+  },
+  {
+   "id": 67,
+   "fn": "1bec8",
+   "dialog": true,
+   "name": "tap fills the bucket",
+   "ops": [
+    [
+     "take_selected"
+    ],
+    [
+     "give",
+     10
+    ],
+    [
+     "say_keep",
+     65
+    ],
+    [
+     "wait"
+    ],
+    [
+     "say",
+     66
+    ]
+   ]
+  },
+  {
+   "id": 68,
+   "fn": "1bf20",
+   "dialog": true,
+   "name": "burning-hat man extinguished",
+   "ops": [
+    [
+     "take_selected"
+    ],
+    [
+     "give",
+     11
+    ],
+    [
+     "say",
+     73
+    ],
+    [
+     "say",
+     74
+    ],
+    [
+     "say",
+     75
+    ],
+    [
+     "say",
+     83
+    ],
+    [
+     "say",
+     84
+    ],
+    [
+     "say",
+     85
+    ],
+    [
+     "set",
+     "pw_abyss",
+     1
+    ]
+   ]
+  },
+  {
+   "id": 69,
+   "fn": "1bf88",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     67
+    ],
+    [
+     "say",
+     68
+    ],
+    [
+     "say",
+     69
+    ],
+    [
+     "say",
+     70
+    ],
+    [
+     "say",
+     71
+    ]
+   ],
+   "name": "burning-hat man talks"
+  },
+  {
+   "id": 70,
+   "fn": "1bfbc",
+   "ops": [
+    [
+     "give",
+     13
+    ]
+   ],
+   "name": "grey card"
+  },
+  {
+   "id": 71,
+   "fn": "1bfdc",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     78
+    ]
+   ],
+   "name": "grave: Long John Silver"
+  },
+  {
+   "id": 72,
+   "fn": "1c00c",
+   "dialog": true,
+   "ops": [
+    [
+     "say_keep",
+     79
+    ],
+    [
+     "say",
+     80
+    ]
+   ],
+   "name": "grave: a hand"
+  },
+  {
+   "id": 73,
+   "fn": "1c04c",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     81
+    ]
+   ],
+   "name": "grave: Gereon Świniopas"
+  },
+  {
+   "id": 74,
+   "fn": "1c07c",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     82
+    ]
+   ],
+   "name": "grave: Jaksra Tokwili"
+  },
+  {
+   "id": 75,
+   "fn": "1c0ac",
+   "dialog": true,
+   "name": "undertaker (7,6)",
+   "ops": [
+    [
+     "say",
+     54
+    ],
+    [
+     "print",
+     55
+    ],
+    [
+     "menu",
+     [
+      56,
+      57,
+      58,
+      59
+     ]
+    ],
+    [
+     "if",
+     [
+      "eq",
+      "choice",
+      3
+     ],
+     [
+      [
+       "say",
+       63
+      ]
+     ],
+     [
+      [
+       "if",
+       [
+        "money_lt",
+        10
+       ],
+       [
+        [
+         "say",
+         43
+        ]
+       ],
+       [
+        [
+         "money",
+         -10
+        ],
+        [
+         "switch",
+         "choice",
+         {
+          "0": [
+           [
+            "set",
+            "pw_abyss",
+            1
+           ],
+           [
+            "say",
+            60
+           ]
+          ],
+          "1": [
+           [
+            "say",
+            61
+           ]
+          ],
+          "default": [
+           [
+            "give",
+            15
+           ]
+          ]
+         }
+        ],
+        [
+         "say",
+         62
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 79,
+   "fn": "1c1d8",
+   "ops": [
+    [
+     "give",
+     22
+    ]
+   ],
+   "name": "magic key 5"
+  },
+  {
+   "id": 80,
+   "fn": "1c1f8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     106
+    ],
+    [
+     "say",
+     107
+    ],
+    [
+     "say",
+     108
+    ],
+    [
+     "say",
+     109
+    ],
+    [
+     "say",
+     110
+    ],
+    [
+     "say",
+     111
+    ],
+    [
+     "say",
+     112
+    ],
+    [
+     "say",
+     113
+    ],
+    [
+     "say",
+     114
+    ],
+    [
+     "say",
+     115
+    ],
+    [
+     "say",
+     116
+    ],
+    [
+     "say",
+     117
+    ],
+    [
+     "say",
+     118
+    ],
+    [
+     "say",
+     119
+    ],
+    [
+     "say",
+     120
+    ],
+    [
+     "give",
+     35
+    ]
+   ],
+   "name": "Jouler de Generat"
+  },
+  {
+   "id": 81,
+   "fn": "1c238",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     121
+    ]
+   ],
+   "name": "Jouler buried again"
+  },
+  {
+   "id": 97,
+   "fn": "1c268",
+   "ops": [
+    [
+     "give",
+     16
+    ]
+   ],
+   "name": "purple card 2"
+  },
+  {
+   "id": 98,
+   "fn": "1c288",
+   "dialog": true,
+   "ops": [
+    [
+     "teleport",
+     4,
+     2,
+     100,
+     121
+    ],
+    [
+     "set",
+     "pw_valley",
+     1
+    ]
+   ],
+   "name": "trigger (2,9) -> Hidden Valley"
+  },
+  {
+   "id": 99,
+   "fn": "1c2cc",
+   "ops": [
+    [
+     "give",
+     20
+    ]
+   ],
+   "name": "magic key 3"
+  },
+  {
+   "id": 100,
+   "fn": "1c2ec",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     123
+    ]
+   ],
+   "name": "man attacked by a monster"
+  },
+  {
+   "id": 101,
+   "fn": "1c318",
+   "dialog": true,
+   "name": "rescued man: secret-door hint",
+   "ops": [
+    [
+     "say",
+     124
+    ],
+    [
+     "say",
+     125
+    ],
+    [
+     "print",
+     126
+    ],
+    [
+     "say_indexed",
+     127,
+     "secret_door"
+    ],
+    [
+     "say",
+     130
+    ]
+   ]
+  },
+  {
+   "id": 102,
+   "fn": "1c388",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     145
+    ],
+    [
+     "say",
+     146
+    ],
+    [
+     "say",
+     147
+    ],
+    [
+     "say",
+     148
+    ],
+    [
+     "say",
+     149
+    ],
+    [
+     "say",
+     150
+    ],
+    [
+     "say",
+     151
+    ],
+    [
+     "say",
+     152
+    ],
+    [
+     "say",
+     153
+    ],
+    [
+     "say",
+     154
+    ],
+    [
+     "say",
+     155
+    ],
+    [
+     "set",
+     "pw_terror",
+     1
+    ]
+   ],
+   "name": "the Devil's daughter"
+  },
+  {
+   "id": 103,
+   "fn": "1c3c8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     133
+    ],
+    [
+     "say",
+     134
+    ],
+    [
+     "say",
+     135
+    ],
+    [
+     "say",
+     136
+    ],
+    [
+     "say",
+     137
+    ],
+    [
+     "say",
+     138
+    ],
+    [
+     "say",
+     139
+    ]
+   ],
+   "name": "man missing a sock"
+  },
+  {
+   "id": 104,
+   "fn": "1c3fc",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     141
+    ],
+    [
+     "say",
+     142
+    ],
+    [
+     "say",
+     143
+    ],
+    [
+     "say",
+     144
+    ],
+    [
+     "take",
+     25
+    ],
+    [
+     "give",
+     26
+    ]
+   ],
+   "name": "sock -> decoder"
+  },
+  {
+   "id": 105,
+   "fn": "1c448",
+   "dialog": true,
+   "name": "chest",
+   "ops": [
+    [
+     "if",
+     [
+      "and",
+      [
+       "sock_here"
+      ],
+      [
+       "eq",
+       "sock_found",
+       0
+      ]
+     ],
+     [
+      [
+       "say",
+       132
+      ],
+      [
+       "give",
+       25
+      ],
+      [
+       "set",
+       "sock_found",
+       1
+      ]
+     ],
+     [
+      [
+       "say",
+       131
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 106,
+   "fn": "1c4e0",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     131
+    ]
+   ],
+   "name": "empty chest"
+  },
+  {
+   "id": 107,
+   "fn": "1c510",
+   "dialog": true,
+   "ops": [
+    [
+     "take",
+     17
+    ],
+    [
+     "say",
+     157
+    ]
+   ],
+   "name": "ferryman"
+  },
+  {
+   "id": 108,
+   "fn": "1c550",
+   "ops": [
+    [
+     "fuel",
+     0
+    ]
+   ],
+   "name": "no-fly zone over the river"
+  },
+  {
+   "id": 128,
+   "fn": "1c578",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     0
+    ],
+    [
+     "give",
+     5
+    ]
+   ],
+   "name": "fuel can (with remark)"
+  },
+  {
+   "id": 129,
+   "fn": "1c5b0",
+   "ops": [
+    [
+     "give",
+     3
+    ]
+   ],
+   "name": "purple card"
+  },
+  {
+   "id": 130,
+   "fn": "1c5d0",
+   "ops": [
+    [
+     "give",
+     1
+    ]
+   ],
+   "name": "first-aid kit"
+  },
+  {
+   "id": 131,
+   "fn": "1c5f0",
+   "ops": [
+    [
+     "give",
+     4
+    ]
+   ],
+   "name": "fuse"
+  },
+  {
+   "id": 132,
+   "fn": "1c610",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     6
+    ],
+    [
+     "take",
+     4
+    ],
+    [
+     "call",
+     241
+    ]
+   ],
+   "name": "fuse fitted"
+  },
+  {
+   "id": 134,
+   "fn": "1c654",
+   "ops": [
+    [
+     "fuel",
+     "+third"
+    ]
+   ],
+   "name": "fuel pick-up"
+  },
+  {
+   "id": 136,
+   "fn": "1c690",
+   "ops": [
+    [
+     "energy",
+     "+third"
+    ]
+   ],
+   "name": "energy potion (unused id)"
+  },
+  {
+   "id": 137,
+   "fn": "1c690",
+   "ops": [
+    [
+     "energy",
+     "+third"
+    ]
+   ],
+   "name": "energy potion"
+  },
+  {
+   "id": 138,
+   "fn": "1c6cc",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     7
+    ]
+   ],
+   "name": "'too far to jump'"
+  },
+  {
+   "id": 139,
+   "fn": "1c6fc",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     2
+    ]
+   ],
+   "name": "bleeding man"
+  },
+  {
+   "id": 140,
+   "fn": "1c72c",
+   "dialog": true,
+   "ops": [
+    [
+     "take_selected"
+    ],
+    [
+     "give",
+     2
+    ],
+    [
+     "say",
+     4
+    ]
+   ],
+   "name": "bleeding man healed"
+  },
+  {
+   "id": 141,
+   "fn": "1c770",
+   "ops": [
+    [
+     "give",
+     21
+    ]
+   ],
+   "name": "magic key 4"
+  },
+  {
+   "id": 142,
+   "fn": "1c790",
+   "ops": [
+    [
+     "give",
+     30
+    ]
+   ],
+   "name": "magic flower 1"
+  },
+  {
+   "id": 160,
+   "fn": "1c7b0",
+   "dialog": true,
+   "name": "vending machine (0,0)",
+   "note": "the energy refill is +1/3 and is only listed when energy is not full",
+   "ops": [
+    [
+     "set",
+     "stock_energy",
+     [
+      "not",
+      [
+       "energy_full"
+      ]
+     ]
+    ],
+    [
+     "print",
+     232
+    ],
+    [
+     "menu",
+     [
+      {
+       "msg": 233,
+       "if": [
+        "ne",
+        "stock_energy",
+        0
+       ]
+      },
+      {
+       "msg": 234,
+       "if": [
+        "ne",
+        "stock_clip",
+        0
+       ]
+      },
+      {
+       "msg": 235,
+       "if": [
+        "ne",
+        "stock_uzi",
+        0
+       ]
+      },
+      {
+       "msg": 236,
+       "if": [
+        "ne",
+        "stock_ticket",
+        0
+       ]
+      },
+      {
+       "msg": 237,
+       "if": [
+        "ne",
+        "stock_map",
+        0
+       ]
+      },
+      {
+       "msg": 238,
+       "if": [
+        "ne",
+        "stock_leave",
+        0
+       ]
+      }
+     ]
+    ],
+    [
+     "switch",
+     "choice",
+     {
+      "0": [
+       [
+        "if",
+        [
+         "money_lt",
+         5
+        ],
+        [
+         [
+          "say",
+          239
+         ]
+        ],
+        [
+         [
+          "money",
+          -5
+         ],
+         [
+          "energy",
+          "+third"
+         ],
+         [
+          "say",
+          240
+         ]
+        ]
+       ]
+      ],
+      "1": [
+       [
+        "if",
+        [
+         "money_lt",
+         2
+        ],
+        [
+         [
+          "say",
+          239
+         ]
+        ],
+        [
+         [
+          "money",
+          -2
+         ],
+         [
+          "if",
+          [
+           "has_item",
+           36
+          ],
+          [],
+          [
+           [
+            "give",
+            36
+           ]
+          ]
+         ],
+         [
+          "add",
+          "magazines",
+          1
+         ],
+         [
+          "say",
+          240
+         ]
+        ]
+       ]
+      ],
+      "2": [
+       [
+        "if",
+        [
+         "money_lt",
+         20
+        ],
+        [
+         [
+          "say",
+          239
+         ]
+        ],
+        [
+         [
+          "money",
+          -20
+         ],
+         [
+          "weapon",
+          3
+         ],
+         [
+          "set",
+          "stock_uzi",
+          0
+         ],
+         [
+          "say",
+          240
+         ]
+        ]
+       ]
+      ],
+      "3": [
+       [
+        "if",
+        [
+         "money_lt",
+         95
+        ],
+        [
+         [
+          "say",
+          239
+         ]
+        ],
+        [
+         [
+          "money",
+          -95
+         ],
+         [
+          "give",
+          17
+         ],
+         [
+          "set",
+          "stock_ticket",
+          0
+         ],
+         [
+          "say",
+          240
+         ]
+        ]
+       ]
+      ],
+      "4": [
+       [
+        "if",
+        [
+         "money_lt",
+         30
+        ],
+        [
+         [
+          "say",
+          239
+         ]
+        ],
+        [
+         [
+          "money",
+          -30
+         ],
+         [
+          "give",
+          37
+         ],
+         [
+          "set",
+          "stock_map",
+          0
+         ],
+         [
+          "say",
+          240
+         ]
+        ]
+       ]
+      ],
+      "default": []
+     }
+    ]
+   ]
+  },
+  {
+   "id": 161,
+   "fn": "1cab8",
+   "name": "magic key slot (hub)",
+   "ops": [
+    [
+     "if",
+     [
+      "ne",
+      "key_slots",
+      5
+     ],
+     [
+      [
+       "add",
+       "key_slots",
+       1
+      ],
+      [
+       "take_selected"
+      ],
+      [
+       "if",
+       [
+        "eq",
+        "key_slots",
+        5
+       ],
+       [
+        [
+         "activate_object",
+         12
+        ]
+       ],
+       []
+      ]
+     ],
+     []
+    ]
+   ]
+  },
+  {
+   "id": 162,
+   "fn": "1cb30",
+   "dialog": true,
+   "ops": [
+    [
+     "take",
+     35
+    ],
+    [
+     "say",
+     231
+    ]
+   ],
+   "name": "Time Key delivered"
+  },
+  {
+   "id": 163,
+   "fn": "1cb70",
+   "dialog": true,
+   "name": "Time Guardian",
+   "ops": [
+    [
+     "say",
+     208
+    ],
+    [
+     "say",
+     209
+    ],
+    [
+     "say",
+     210
+    ],
+    [
+     "say",
+     211
+    ],
+    [
+     "say",
+     212
+    ],
+    [
+     "say",
+     213
+    ],
+    [
+     "say",
+     214
+    ],
+    [
+     "say",
+     215
+    ],
+    [
+     "say",
+     216
+    ],
+    [
+     "say",
+     217
+    ],
+    [
+     "say",
+     218
+    ],
+    [
+     "say",
+     219
+    ],
+    [
+     "say",
+     220
+    ],
+    [
+     "say",
+     221
+    ],
+    [
+     "say",
+     222
+    ],
+    [
+     "say",
+     223
+    ],
+    [
+     "say",
+     224
+    ],
+    [
+     "say",
+     225
+    ],
+    [
+     "say",
+     226
+    ],
+    [
+     "say",
+     227
+    ],
+    [
+     "say",
+     228
+    ],
+    [
+     "say",
+     241
+    ],
+    [
+     "say",
+     242
+    ],
+    [
+     "set",
+     "infinite_ammo_fuel",
+     1
+    ],
+    [
+     "ammo",
+     "all_full"
+    ],
+    [
+     "give",
+     33
+    ]
+   ]
+  },
+  {
+   "id": 164,
+   "fn": "1cc00",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     207
+    ]
+   ],
+   "name": "'Zaufaj mocy, Lucek!'"
+  },
+  {
+   "id": 165,
+   "fn": "1cc2c",
+   "ops": [
+    [
+     "fade",
+     "game",
+     "black",
+     6
+    ],
+    [
+     "end_game",
+     "win"
+    ]
+   ],
+   "name": "door of time: WIN"
+  },
+  {
+   "id": 192,
+   "fn": "1cc70",
+   "ops": [
+    [
+     "give",
+     18
+    ]
+   ],
+   "name": "magic key 1"
+  },
+  {
+   "id": 193,
+   "fn": "1cc90",
+   "ops": [
+    [
+     "give",
+     12
+    ]
+   ],
+   "name": "shaped key piece"
+  },
+  {
+   "id": 194,
+   "fn": "1ccb0",
+   "dialog": true,
+   "name": "gum-chewer trade",
+   "ops": [
+    [
+     "say",
+     161
+    ],
+    [
+     "say",
+     164
+    ],
+    [
+     "say",
+     165
+    ],
+    [
+     "say",
+     166
+    ],
+    [
+     "print",
+     167
+    ],
+    [
+     "menu",
+     [
+      168,
+      169,
+      170,
+      171
+     ]
+    ],
+    [
+     "if",
+     [
+      "eq",
+      "choice",
+      3
+     ],
+     [
+      [
+       "say",
+       172
+      ]
+     ],
+     [
+      [
+       "take",
+       26
+      ],
+      [
+       "switch",
+       "choice",
+       {
+        "2": [
+         [
+          "say",
+          174
+         ],
+         [
+          "fade",
+          "current",
+          "black",
+          7
+         ],
+         [
+          "delay_ms",
+          5000
+         ],
+         [
+          "fade",
+          "black",
+          "current",
+          7
+         ],
+         [
+          "say",
+          175
+         ],
+         [
+          "say",
+          173
+         ]
+        ],
+        "1": [
+         [
+          "give",
+          27
+         ],
+         [
+          "say",
+          173
+         ]
+        ],
+        "default": [
+         [
+          "money",
+          30
+         ],
+         [
+          "say",
+          173
+         ]
+        ]
+       }
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 195,
+   "fn": "1ce20",
+   "dialog": true,
+   "name": "riddle man gives the riddle",
+   "ops": [
+    [
+     "say",
+     176
+    ],
+    [
+     "say",
+     177
+    ],
+    [
+     "say",
+     178
+    ],
+    [
+     "say",
+     179
+    ],
+    [
+     "say",
+     180
+    ],
+    [
+     "say",
+     181
+    ],
+    [
+     "switch",
+     "riddle",
+     {
+      "0": [
+       [
+        "picture",
+        1081
+       ]
+      ],
+      "1": [
+       [
+        "picture",
+        1082
+       ]
+      ],
+      "default": [
+       [
+        "picture",
+        1083
+       ]
+      ]
+     }
+    ],
+    [
+     "say",
+     182
+    ],
+    [
+     "give",
+     28
+    ]
+   ]
+  },
+  {
+   "id": 196,
+   "fn": "1ceac",
+   "dialog": true,
+   "name": "riddle answer",
+   "note": "options are messages 185+3r..187+3r; correct = option 1 for riddles 0-1, option 2 for riddle 2",
+   "ops": [
+    [
+     "print",
+     184
+    ],
+    [
+     "menu",
+     [
+      {
+       "msg": 185,
+       "per_riddle_offset": 3
+      },
+      {
+       "msg": 186,
+       "per_riddle_offset": 3
+      },
+      {
+       "msg": 187,
+       "per_riddle_offset": 3
+      }
+     ]
+    ],
+    [
+     "if",
+     [
+      "or",
+      [
+       "and",
+       [
+        "eq",
+        "choice",
+        1
+       ],
+       [
+        "lt",
+        "riddle",
+        2
+       ]
+      ],
+      [
+       "and",
+       [
+        "eq",
+        "choice",
+        2
+       ],
+       [
+        "eq",
+        "riddle",
+        2
+       ]
+      ]
+     ],
+     [
+      [
+       "say",
+       194
+      ],
+      [
+       "set_flag",
+       197
+      ]
+     ],
+     [
+      [
+       "say",
+       195
+      ]
+     ]
+    ],
+    [
+     "take",
+     28
+    ]
+   ]
+  },
+  {
+   "id": 198,
+   "fn": "1cfb8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     196
+    ],
+    [
+     "say",
+     197
+    ],
+    [
+     "say",
+     198
+    ],
+    [
+     "say",
+     199
+    ],
+    [
+     "say",
+     200
+    ],
+    [
+     "say",
+     201
+    ]
+   ],
+   "name": "crying girl"
+  },
+  {
+   "id": 199,
+   "fn": "1cfec",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     204
+    ],
+    [
+     "say",
+     205
+    ],
+    [
+     "take",
+     29
+    ],
+    [
+     "money",
+     100
+    ]
+   ],
+   "name": "teddy returned"
+  },
+  {
+   "id": 200,
+   "fn": "1d038",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     203
+    ]
+   ],
+   "name": "girl insists"
+  },
+  {
+   "id": 201,
+   "fn": "1d068",
+   "ops": [
+    [
+     "give",
+     29
+    ]
+   ],
+   "name": "teddy bear"
+  },
+  {
+   "id": 202,
+   "fn": "1d088",
+   "ops": [
+    [
+     "give",
+     31
+    ]
+   ],
+   "name": "magic flower 2"
+  },
+  {
+   "id": 203,
+   "fn": "1d0a8",
+   "name": "damaged teleport (4,5)",
+   "ops": [
+    [
+     "random",
+     "r",
+     3
+    ],
+    [
+     "if",
+     [
+      "eq",
+      "r",
+      0
+     ],
+     [
+      [
+       "teleport",
+       9,
+       6,
+       186,
+       178
+      ]
+     ],
+     [
+      [
+       "teleport",
+       8,
+       8,
+       108,
+       125
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 204,
+   "fn": "1d100",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     206
+    ]
+   ],
+   "name": "damaged teleport warning"
+  },
+  {
+   "id": 224,
+   "fn": "1d130",
+   "ops": [
+    [
+     "money",
+     1
+    ]
+   ],
+   "name": "coin"
+  },
+  {
+   "id": 225,
+   "fn": "1d150",
+   "ops": [
+    [
+     "weapon",
+     1
+    ]
+   ],
+   "name": "rocket launcher"
+  },
+  {
+   "id": 226,
+   "fn": "1d190",
+   "ops": [
+    [
+     "weapon",
+     3
+    ]
+   ],
+   "name": "Uzi"
+  },
+  {
+   "id": 227,
+   "fn": "1d1b0",
+   "ops": [
+    [
+     "weapon",
+     4
+    ]
+   ],
+   "name": "flame-thrower"
+  },
+  {
+   "id": 228,
+   "fn": "1d170",
+   "ops": [
+    [
+     "weapon",
+     2
+    ]
+   ],
+   "name": "heavy rocket launcher"
+  },
+  {
+   "id": 229,
+   "fn": "1d1d0",
+   "ops": [
+    [
+     "weapon",
+     5
+    ]
+   ],
+   "name": "plasma gun"
+  },
+  {
+   "id": 230,
+   "fn": "1d1f0",
+   "ops": [
+    [
+     "money",
+     10
+    ]
+   ],
+   "name": "big coin"
+  },
+  {
+   "id": 231,
+   "fn": "1d210",
+   "ops": [
+    [
+     "ammo",
+     "+third"
+    ]
+   ],
+   "name": "ammo pick-up"
+  },
+  {
+   "id": 232,
+   "fn": "1d270",
+   "ops": [
+    [
+     "give",
+     5
+    ]
+   ],
+   "name": "fuel can"
+  },
+  {
+   "id": 233,
+   "fn": "1d290",
+   "ops": [
+    [
+     "energy",
+     "full"
+    ]
+   ],
+   "name": "full energy"
+  },
+  {
+   "id": 240,
+   "fn": "1d2b8",
+   "dialog": true,
+   "name": "hub teleport terminal",
+   "ops": [
+    [
+     "if",
+     [
+      "and",
+      [
+       "eq",
+       "pw_temple",
+       0
+      ],
+      [
+       "eq",
+       "pw_netherworld",
+       0
+      ],
+      [
+       "eq",
+       "pw_abyss",
+       0
+      ],
+      [
+       "eq",
+       "pw_valley",
+       0
+      ],
+      [
+       "eq",
+       "pw_terror",
+       0
+      ],
+      [
+       "eq",
+       "pw_training",
+       0
+      ]
+     ],
+     [
+      [
+       "say",
+       250
+      ]
+     ],
+     [
+      [
+       "print",
+       249
+      ],
+      [
+       "menu",
+       [
+        {
+         "msg": 243,
+         "if": [
+          "ne",
+          "pw_temple",
+          0
+         ]
+        },
+        {
+         "msg": 244,
+         "if": [
+          "ne",
+          "pw_netherworld",
+          0
+         ]
+        },
+        {
+         "msg": 245,
+         "if": [
+          "ne",
+          "pw_abyss",
+          0
+         ]
+        },
+        {
+         "msg": 246,
+         "if": [
+          "ne",
+          "pw_valley",
+          0
+         ]
+        },
+        {
+         "msg": 247,
+         "if": [
+          "ne",
+          "pw_terror",
+          0
+         ]
+        },
+        {
+         "msg": 248,
+         "if": [
+          "ne",
+          "pw_training",
+          0
+         ]
+        }
+       ]
+      ],
+      [
+       "clear"
+      ],
+      [
+       "switch",
+       "choice",
+       {
+        "0": [
+         [
+          "teleport",
+          7,
+          0,
+          22,
+          83
+         ]
+        ],
+        "1": [
+         [
+          "teleport",
+          7,
+          8,
+          38,
+          178
+         ]
+        ],
+        "2": [
+         [
+          "teleport",
+          1,
+          6,
+          27,
+          64
+         ]
+        ],
+        "3": [
+         [
+          "teleport",
+          4,
+          2,
+          100,
+          121
+         ]
+        ],
+        "4": [
+         [
+          "teleport",
+          1,
+          1,
+          94,
+          26
+         ]
+        ],
+        "5": [
+         [
+          "teleport",
+          5,
+          5,
+          124,
+          26
+         ]
+        ]
+       }
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 241,
+   "fn": "1d4b8",
+   "ops": [
+    [
+     "teleport",
+     0,
+     0,
+     53,
+     178
+    ]
+   ],
+   "name": "teleport booth -> hub"
+  },
+  {
+   "id": 255,
+   "fn": "1d4e0",
+   "ops": [
+    [
+     "take_selected"
+    ]
+   ],
+   "name": "consume the selected item (locks)"
+  }
+ ],
+ "item_use": [
+  {
+   "id": 0,
+   "fn": "1ac50",
+   "ops": []
+  },
+  {
+   "id": 1,
+   "fn": "1ac68",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     256
+    ]
+   ]
+  },
+  {
+   "id": 2,
+   "fn": "1acf8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     257
+    ]
+   ]
+  },
+  {
+   "id": 3,
+   "fn": "1af04",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     258
+    ]
+   ]
+  },
+  {
+   "id": 4,
+   "fn": "1ac98",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     259
+    ]
+   ]
+  },
+  {
+   "id": 5,
+   "fn": "1acc8",
+   "ops": [
+    [
+     "fuel",
+     "full"
+    ],
+    [
+     "take_selected"
+    ]
+   ]
+  },
+  {
+   "id": 6,
+   "fn": "1acf8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     257
+    ]
+   ]
+  },
+  {
+   "id": 7,
+   "fn": "1ad28",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     276
+    ]
+   ]
+  },
+  {
+   "id": 8,
+   "fn": "1ad58",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     260
+    ]
+   ]
+  },
+  {
+   "id": 9,
+   "fn": "1ad88",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     261
+    ]
+   ]
+  },
+  {
+   "id": 10,
+   "fn": "1adb8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     262
+    ]
+   ]
+  },
+  {
+   "id": 11,
+   "fn": "1ade8",
+   "dialog": true,
+   "note": "the magic whistle becomes the golden key in room (1,5) (TARAPATY)",
+   "ops": [
+    [
+     "if",
+     [
+      "in_room",
+      1,
+      5
+     ],
+     [
+      [
+       "say",
+       160
+      ],
+      [
+       "take",
+       11
+      ],
+      [
+       "give",
+       23
+      ]
+     ],
+     [
+      [
+       "say",
+       159
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 12,
+   "fn": "1ae54",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     263
+    ]
+   ]
+  },
+  {
+   "id": 13,
+   "fn": "1ae84",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     264
+    ]
+   ]
+  },
+  {
+   "id": 14,
+   "fn": "1aeb4",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     265
+    ]
+   ]
+  },
+  {
+   "id": 15,
+   "fn": "1aee4",
+   "ops": [
+    [
+     "picture",
+     1077
+    ]
+   ]
+  },
+  {
+   "id": 16,
+   "fn": "1af04",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     258
+    ]
+   ]
+  },
+  {
+   "id": 17,
+   "fn": "1af34",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     266
+    ]
+   ]
+  },
+  {
+   "id": 18,
+   "fn": "1af64",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     267
+    ]
+   ]
+  },
+  {
+   "id": 19,
+   "fn": "1af64",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     267
+    ]
+   ]
+  },
+  {
+   "id": 20,
+   "fn": "1af64",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     267
+    ]
+   ]
+  },
+  {
+   "id": 21,
+   "fn": "1af64",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     267
+    ]
+   ]
+  },
+  {
+   "id": 22,
+   "fn": "1af64",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     267
+    ]
+   ]
+  },
+  {
+   "id": 23,
+   "fn": "1af94",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     268
+    ]
+   ]
+  },
+  {
+   "id": 24,
+   "fn": "1afc4",
+   "dialog": true,
+   "ops": [
+    [
+     "if",
+     [
+      "money_eq",
+      0
+     ],
+     [
+      [
+       "say",
+       253
+      ]
+     ],
+     [
+      [
+       "print",
+       252
+      ],
+      [
+       "print_number",
+       "money"
+      ],
+      [
+       "wait"
+      ],
+      [
+       "clear"
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 25,
+   "fn": "1b024",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     269
+    ]
+   ]
+  },
+  {
+   "id": 26,
+   "fn": "1b054",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     270
+    ]
+   ]
+  },
+  {
+   "id": 27,
+   "fn": "1b084",
+   "ops": [
+    [
+     "picture",
+     1080
+    ]
+   ]
+  },
+  {
+   "id": 28,
+   "fn": "1b0a4",
+   "note": "BUG in the original: riddle 2 shows riddle 1's picture (1082 instead of 1083)",
+   "ops": [
+    [
+     "switch",
+     "riddle",
+     {
+      "0": [
+       [
+        "picture",
+        1081
+       ]
+      ],
+      "1": [
+       [
+        "picture",
+        1082
+       ]
+      ],
+      "default": [
+       [
+        "picture",
+        1082
+       ]
+      ]
+     }
+    ]
+   ]
+  },
+  {
+   "id": 29,
+   "fn": "1b0f8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     271
+    ]
+   ]
+  },
+  {
+   "id": 30,
+   "fn": "1b128",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     272
+    ]
+   ]
+  },
+  {
+   "id": 31,
+   "fn": "1b128",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     272
+    ]
+   ]
+  },
+  {
+   "id": 32,
+   "fn": "1b128",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     272
+    ]
+   ]
+  },
+  {
+   "id": 33,
+   "fn": "1b158",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     273
+    ]
+   ]
+  },
+  {
+   "id": 34,
+   "fn": "1b188",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     274
+    ]
+   ]
+  },
+  {
+   "id": 35,
+   "fn": "1b1b8",
+   "dialog": true,
+   "ops": [
+    [
+     "say",
+     275
+    ]
+   ]
+  },
+  {
+   "id": 36,
+   "fn": "1b1e8",
+   "dialog": true,
+   "note": "magazine: +1/3 ammo for the current weapon",
+   "ops": [
+    [
+     "if",
+     [
+      "ammo_full"
+     ],
+     [
+      [
+       "say",
+       278
+      ]
+     ],
+     [
+      [
+       "ammo",
+       "+third"
+      ],
+      [
+       "sound",
+       38
+      ],
+      [
+       "add",
+       "magazines",
+       -1
+      ],
+      [
+       "if",
+       [
+        "eq",
+        "magazines",
+        0
+       ],
+       [
+        [
+         "take",
+         36
+        ]
+       ],
+       [
+        [
+         "print",
+         277
+        ],
+        [
+         "print_number",
+         "magazines"
+        ],
+        [
+         "wait"
+        ],
+        [
+         "clear"
+        ]
+       ]
+      ]
+     ]
+    ]
+   ]
+  },
+  {
+   "id": 37,
+   "fn": "1b290",
+   "ops": [
+    [
+     "picture_var",
+     "shop_map"
+    ]
+   ]
+  }
+ ],
+ "missing_item": [
+  {
+   "id": 1,
+   "fn": "1b2c8",
+   "ops": [
+    [
+     "say",
+     3
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 2,
+   "fn": "1b2f8",
+   "ops": [
+    [
+     "say",
+     8
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 3,
+   "fn": "1b328",
+   "ops": [
+    [
+     "say",
+     1
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 4,
+   "fn": "1b358",
+   "ops": [
+    [
+     "say",
+     5
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 6,
+   "fn": "1b388",
+   "ops": [
+    [
+     "say",
+     34
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 7,
+   "fn": "1b3b8",
+   "ops": [
+    [
+     "say_keep",
+     23
+    ],
+    [
+     "say_keep",
+     24
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 8,
+   "fn": "1b3f8",
+   "ops": [
+    [
+     "say_keep",
+     29
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 9,
+   "fn": "1b428",
+   "ops": [
+    [
+     "say",
+     64
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 10,
+   "fn": "1b454",
+   "ops": [
+    [
+     "say",
+     72
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 12,
+   "fn": "1b484",
+   "ops": [
+    [
+     "say",
+     76
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 13,
+   "fn": "1b4b4",
+   "ops": [
+    [
+     "say",
+     77
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 14,
+   "fn": "1b4e4",
+   "ops": [
+    [
+     "say",
+     105
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 16,
+   "fn": "1b328",
+   "ops": [
+    [
+     "say",
+     1
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 17,
+   "fn": "1b514",
+   "ops": [
+    [
+     "say",
+     156
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 18,
+   "fn": "1b544",
+   "ops": [
+    [
+     "say",
+     230
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 19,
+   "fn": "1b544",
+   "ops": [
+    [
+     "say",
+     230
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 20,
+   "fn": "1b544",
+   "ops": [
+    [
+     "say",
+     230
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 21,
+   "fn": "1b544",
+   "ops": [
+    [
+     "say",
+     230
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 22,
+   "fn": "1b544",
+   "ops": [
+    [
+     "say",
+     230
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 23,
+   "fn": "1b574",
+   "ops": [
+    [
+     "say",
+     158
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 25,
+   "fn": "1b5a4",
+   "ops": [
+    [
+     "say",
+     140
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 26,
+   "fn": "1b5d4",
+   "ops": [
+    [
+     "say",
+     161
+    ],
+    [
+     "say",
+     162
+    ],
+    [
+     "say",
+     161
+    ],
+    [
+     "say",
+     163
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 29,
+   "fn": "1b630",
+   "ops": [
+    [
+     "say",
+     202
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 33,
+   "fn": "1b7b4",
+   "ops": [
+    [
+     "say",
+     86
+    ],
+    [
+     "say",
+     87
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 34,
+   "fn": "1b814",
+   "ops": [
+    [
+     "if",
+     [
+      "has_item",
+      34
+     ],
+     [
+      [
+       "say",
+       255
+      ]
+     ],
+     [
+      [
+       "say",
+       254
+      ]
+     ]
+    ]
+   ],
+   "dialog": true
+  },
+  {
+   "id": 35,
+   "fn": "1b8b4",
+   "ops": [
+    [
+     "say",
+     229
+    ]
+   ],
+   "dialog": true
+  }
+ ],
+ "messages_referenced": 277
+}

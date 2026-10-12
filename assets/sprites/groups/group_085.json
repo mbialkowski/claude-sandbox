@@ -1,0 +1,22 @@
+{
+ "group": 85,
+ "name": "keyhole lock",
+ "image": "group_085.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 411,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 16,
+   "duration": 1,
+   "box": [
+    4,
+    0,
+    12,
+    15
+   ]
+  }
+ ]
+}

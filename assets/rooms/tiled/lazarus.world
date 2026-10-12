@@ -1,0 +1,706 @@
+{
+ "type": "world",
+ "maps": [
+  {
+   "fileName": "room_0_0.tmj",
+   "x": 0,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_1.tmj",
+   "x": 0,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_2.tmj",
+   "x": 0,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_3.tmj",
+   "x": 0,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_4.tmj",
+   "x": 0,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_5.tmj",
+   "x": 0,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_6.tmj",
+   "x": 0,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_7.tmj",
+   "x": 0,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_8.tmj",
+   "x": 0,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_0_9.tmj",
+   "x": 0,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_0.tmj",
+   "x": 224,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_1.tmj",
+   "x": 224,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_2.tmj",
+   "x": 224,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_3.tmj",
+   "x": 224,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_4.tmj",
+   "x": 224,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_5.tmj",
+   "x": 224,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_6.tmj",
+   "x": 224,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_7.tmj",
+   "x": 224,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_8.tmj",
+   "x": 224,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_1_9.tmj",
+   "x": 224,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_0.tmj",
+   "x": 448,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_1.tmj",
+   "x": 448,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_2.tmj",
+   "x": 448,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_3.tmj",
+   "x": 448,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_4.tmj",
+   "x": 448,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_5.tmj",
+   "x": 448,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_6.tmj",
+   "x": 448,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_7.tmj",
+   "x": 448,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_8.tmj",
+   "x": 448,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_2_9.tmj",
+   "x": 448,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_0.tmj",
+   "x": 672,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_1.tmj",
+   "x": 672,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_2.tmj",
+   "x": 672,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_3.tmj",
+   "x": 672,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_4.tmj",
+   "x": 672,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_5.tmj",
+   "x": 672,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_6.tmj",
+   "x": 672,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_7.tmj",
+   "x": 672,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_8.tmj",
+   "x": 672,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_3_9.tmj",
+   "x": 672,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_0.tmj",
+   "x": 896,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_1.tmj",
+   "x": 896,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_2.tmj",
+   "x": 896,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_3.tmj",
+   "x": 896,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_4.tmj",
+   "x": 896,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_5.tmj",
+   "x": 896,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_6.tmj",
+   "x": 896,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_7.tmj",
+   "x": 896,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_8.tmj",
+   "x": 896,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_4_9.tmj",
+   "x": 896,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_0.tmj",
+   "x": 1120,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_1.tmj",
+   "x": 1120,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_2.tmj",
+   "x": 1120,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_3.tmj",
+   "x": 1120,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_4.tmj",
+   "x": 1120,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_5.tmj",
+   "x": 1120,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_6.tmj",
+   "x": 1120,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_7.tmj",
+   "x": 1120,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_8.tmj",
+   "x": 1120,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_5_9.tmj",
+   "x": 1120,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_0.tmj",
+   "x": 1344,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_1.tmj",
+   "x": 1344,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_2.tmj",
+   "x": 1344,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_3.tmj",
+   "x": 1344,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_4.tmj",
+   "x": 1344,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_5.tmj",
+   "x": 1344,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_6.tmj",
+   "x": 1344,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_7.tmj",
+   "x": 1344,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_8.tmj",
+   "x": 1344,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_6_9.tmj",
+   "x": 1344,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_0.tmj",
+   "x": 1568,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_1.tmj",
+   "x": 1568,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_2.tmj",
+   "x": 1568,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_3.tmj",
+   "x": 1568,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_4.tmj",
+   "x": 1568,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_5.tmj",
+   "x": 1568,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_6.tmj",
+   "x": 1568,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_7.tmj",
+   "x": 1568,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_8.tmj",
+   "x": 1568,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_7_9.tmj",
+   "x": 1568,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_0.tmj",
+   "x": 1792,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_1.tmj",
+   "x": 1792,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_2.tmj",
+   "x": 1792,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_3.tmj",
+   "x": 1792,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_4.tmj",
+   "x": 1792,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_5.tmj",
+   "x": 1792,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_6.tmj",
+   "x": 1792,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_7.tmj",
+   "x": 1792,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_8.tmj",
+   "x": 1792,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_8_9.tmj",
+   "x": 1792,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_0.tmj",
+   "x": 2016,
+   "y": 0,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_1.tmj",
+   "x": 2016,
+   "y": 228,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_2.tmj",
+   "x": 2016,
+   "y": 456,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_3.tmj",
+   "x": 2016,
+   "y": 684,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_4.tmj",
+   "x": 2016,
+   "y": 912,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_5.tmj",
+   "x": 2016,
+   "y": 1140,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_6.tmj",
+   "x": 2016,
+   "y": 1368,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_7.tmj",
+   "x": 2016,
+   "y": 1596,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_8.tmj",
+   "x": 2016,
+   "y": 1824,
+   "width": 224,
+   "height": 228
+  },
+  {
+   "fileName": "room_9_9.tmj",
+   "x": 2016,
+   "y": 2052,
+   "width": 224,
+   "height": 228
+  }
+ ],
+ "onlyShowAdjacentMaps": false
+}

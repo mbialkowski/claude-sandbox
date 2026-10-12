@@ -1,0 +1,22 @@
+{
+ "group": 4,
+ "name": "lift platform",
+ "image": "group_004.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 40,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 22,
+   "duration": 1,
+   "box": [
+    0,
+    13,
+    31,
+    16
+   ]
+  }
+ ]
+}

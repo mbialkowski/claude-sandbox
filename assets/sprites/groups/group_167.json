@@ -1,0 +1,22 @@
+{
+ "group": 167,
+ "name": "blue capsule (destructible)?",
+ "image": "group_167.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 767,
+   "x": 0,
+   "y": 0,
+   "w": 24,
+   "h": 28,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    20,
+    27
+   ]
+  }
+ ]
+}

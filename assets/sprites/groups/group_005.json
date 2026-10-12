@@ -1,0 +1,22 @@
+{
+ "group": 5,
+ "name": "lift platform (alt)",
+ "image": "group_005.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 42,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 25,
+   "duration": 1,
+   "box": [
+    0,
+    13,
+    31,
+    16
+   ]
+  }
+ ]
+}

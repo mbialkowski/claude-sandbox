@@ -1,0 +1,22 @@
+{
+ "group": 94,
+ "name": "witch",
+ "image": "group_094.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 442,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 34,
+   "duration": 1,
+   "box": [
+    1,
+    0,
+    14,
+    33
+   ]
+  }
+ ]
+}

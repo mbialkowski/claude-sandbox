@@ -1,0 +1,22 @@
+{
+ "group": 116,
+ "name": "magic key 5 (pickup)",
+ "image": "group_116.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 491,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 13,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    12,
+    12
+   ]
+  }
+ ]
+}

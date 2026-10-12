@@ -1,0 +1,36 @@
+{
+ "group": 126,
+ "name": "gum-chewing man",
+ "image": "group_126.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 513,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 37,
+   "duration": 15,
+   "box": [
+    0,
+    0,
+    15,
+    36
+   ]
+  },
+  {
+   "frame": 514,
+   "x": 18,
+   "y": 0,
+   "w": 16,
+   "h": 37,
+   "duration": 15,
+   "box": [
+    0,
+    0,
+    15,
+    36
+   ]
+  }
+ ]
+}

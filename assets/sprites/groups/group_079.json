@@ -1,0 +1,22 @@
+{
+ "group": 79,
+ "name": null,
+ "image": "group_079.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 399,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 28,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    31,
+    27
+   ]
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "group": 179,
+ "name": "small arrow?",
+ "image": "group_179.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 856,
+   "x": 0,
+   "y": 0,
+   "w": 8,
+   "h": 10,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    6,
+    9
+   ]
+  }
+ ]
+}

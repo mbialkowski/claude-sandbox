@@ -1,0 +1,22 @@
+{
+ "group": 106,
+ "name": "magic key 2 inserted",
+ "image": "group_106.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 471,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 15,
+   "duration": 1,
+   "box": [
+    1,
+    1,
+    14,
+    14
+   ]
+  }
+ ]
+}

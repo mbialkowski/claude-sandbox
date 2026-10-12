@@ -1,0 +1,5593 @@
+{
+ "note": "Room-to-room connectivity computed from tile collision (DATA32 types + DATA38 boxes, animated tiles never block). An edge is open when a gap at least as large as the hero box (11x29 px) exists across the shared border; openings_x/_y are pixel ranges along the border. gated_by lists solid objects (doors, lifts, force fields) overlapping an opening. Vertical edges may be one-way without the jetpack. Regions are connected components of open edges; warps are the scripted teleports between them. fake_walls are animated tiles that look solid but are not (secret passages; foreground ones hide the hero). mechanisms: every lift, door, gate, invisible wall and no-fly zone with what opens it (object chains followed back to the thing the player uses / shoots, or the game flag that opens it on room entry, with the objects that set that flag).",
+ "hero_box": [
+  6,
+  2,
+  16,
+  30
+ ],
+ "regions": [
+  {
+   "id": 0,
+   "name_pl": "Zapomniana Świątynia",
+   "name_en": "Forgotten Temple",
+   "rooms": [
+    [
+     7,
+     0
+    ],
+    [
+     8,
+     0
+    ],
+    [
+     9,
+     0
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     9,
+     1
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     9,
+     2
+    ],
+    [
+     5,
+     3
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     8,
+     3
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     8,
+     4
+    ],
+    [
+     9,
+     4
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     9,
+     5
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     9,
+     6
+    ]
+   ]
+  },
+  {
+   "id": 1,
+   "name_pl": "Kraina Grozy",
+   "name_en": "Land of Terror",
+   "rooms": [
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     2,
+     3
+    ],
+    [
+     3,
+     3
+    ],
+    [
+     4,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     5,
+     4
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     1,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     4,
+     5
+    ]
+   ]
+  },
+  {
+   "id": 2,
+   "name_pl": "Otchłań",
+   "name_en": "Abyss",
+   "rooms": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     4,
+     6
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     1,
+     7
+    ],
+    [
+     2,
+     7
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     0,
+     8
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     2,
+     8
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     0,
+     9
+    ],
+    [
+     1,
+     9
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     9
+    ],
+    [
+     5,
+     9
+    ]
+   ]
+  },
+  {
+   "id": 3,
+   "name_pl": "Zaświaty",
+   "name_en": "Netherworld",
+   "rooms": [
+    [
+     5,
+     6
+    ],
+    [
+     6,
+     6
+    ],
+    [
+     7,
+     6
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     7,
+     7
+    ],
+    [
+     8,
+     7
+    ],
+    [
+     9,
+     7
+    ],
+    [
+     6,
+     8
+    ],
+    [
+     7,
+     8
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     9,
+     8
+    ],
+    [
+     6,
+     9
+    ],
+    [
+     7,
+     9
+    ],
+    [
+     8,
+     9
+    ],
+    [
+     9,
+     9
+    ]
+   ]
+  },
+  {
+   "id": 4,
+   "name_pl": "Ukryta Dolina",
+   "name_en": "Hidden Valley",
+   "rooms": [
+    [
+     2,
+     0
+    ],
+    [
+     3,
+     0
+    ],
+    [
+     4,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     5,
+     2
+    ],
+    [
+     6,
+     2
+    ]
+   ]
+  },
+  {
+   "id": 5,
+   "name_pl": "Węzeł teleportów",
+   "name_en": "Teleport hub",
+   "rooms": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ]
+   ]
+  },
+  {
+   "id": 6,
+   "name_pl": "Sala treningowa",
+   "name_en": "Training Room",
+   "rooms": [
+    [
+     5,
+     5
+    ]
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "a": [
+    0,
+    0
+   ],
+   "b": [
+    1,
+    0
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     114,
+     151
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      0,
+      0
+     ],
+     "object": 12,
+     "sprite_group": 195,
+     "name": "force field"
+    }
+   ]
+  },
+  {
+   "a": [
+    0,
+    0
+   ],
+   "b": [
+    0,
+    1
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    0
+   ],
+   "b": [
+    2,
+    0
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    0
+   ],
+   "b": [
+    1,
+    1
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    0
+   ],
+   "b": [
+    3,
+    0
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     1,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    0
+   ],
+   "b": [
+    2,
+    1
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    0
+   ],
+   "b": [
+    4,
+    0
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     1,
+     113
+    ],
+    [
+     124,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    0
+   ],
+   "b": [
+    3,
+    1
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     112,
+     159
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    0
+   ],
+   "b": [
+    5,
+    0
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     1,
+     189
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    0
+   ],
+   "b": [
+    4,
+    1
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    0
+   ],
+   "b": [
+    6,
+    0
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     1,
+     113
+    ],
+    [
+     124,
+     189
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    0
+   ],
+   "b": [
+    5,
+    1
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    0
+   ],
+   "b": [
+    7,
+    0
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    0
+   ],
+   "b": [
+    6,
+    1
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     128,
+     159
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    0
+   ],
+   "b": [
+    8,
+    0
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     17,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    0
+   ],
+   "b": [
+    7,
+    1
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     80,
+     143
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    0
+   ],
+   "b": [
+    9,
+    0
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    0
+   ],
+   "b": [
+    8,
+    1
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    0
+   ],
+   "b": [
+    9,
+    1
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     128,
+     175
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    1
+   ],
+   "b": [
+    1,
+    1
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     76,
+     151
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    1
+   ],
+   "b": [
+    0,
+    2
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     32,
+     79
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    1
+   ],
+   "b": [
+    2,
+    1
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     94
+    ],
+    [
+     110,
+     151
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    1
+   ],
+   "b": [
+    1,
+    2
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     112,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    1
+   ],
+   "b": [
+    3,
+    1
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    1
+   ],
+   "b": [
+    2,
+    2
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    1
+   ],
+   "b": [
+    4,
+    1
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     152,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    1
+   ],
+   "b": [
+    3,
+    2
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     32,
+     79
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    1
+   ],
+   "b": [
+    5,
+    1
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     133,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    1
+   ],
+   "b": [
+    4,
+    2
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    1
+   ],
+   "b": [
+    6,
+    1
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     43,
+     132
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    1
+   ],
+   "b": [
+    5,
+    2
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    1
+   ],
+   "b": [
+    7,
+    1
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    1
+   ],
+   "b": [
+    6,
+    2
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     175
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 3,
+     "sprite_group": 52,
+     "name": "lift platform (small)"
+    },
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 52,
+     "name": "lift platform (small)"
+    }
+   ]
+  },
+  {
+   "a": [
+    7,
+    1
+   ],
+   "b": [
+    8,
+    1
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     149,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    1
+   ],
+   "b": [
+    7,
+    2
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    1
+   ],
+   "b": [
+    9,
+    1
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     95,
+     151
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    1
+   ],
+   "b": [
+    8,
+    2
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    1
+   ],
+   "b": [
+    9,
+    2
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     48,
+     95
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    2
+   ],
+   "b": [
+    1,
+    2
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     56
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    2
+   ],
+   "b": [
+    0,
+    3
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    2
+   ],
+   "b": [
+    2,
+    2
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    2
+   ],
+   "b": [
+    1,
+    3
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    2
+   ],
+   "b": [
+    3,
+    2
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    2
+   ],
+   "b": [
+    2,
+    3
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     32,
+     79
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    2
+   ],
+   "b": [
+    4,
+    2
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    2
+   ],
+   "b": [
+    3,
+    3
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    2
+   ],
+   "b": [
+    5,
+    2
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     57,
+     113
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    2
+   ],
+   "b": [
+    4,
+    3
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    2
+   ],
+   "b": [
+    6,
+    2
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    2
+   ],
+   "b": [
+    5,
+    3
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    2
+   ],
+   "b": [
+    7,
+    2
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    2
+   ],
+   "b": [
+    6,
+    3
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    2
+   ],
+   "b": [
+    8,
+    2
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     114,
+     151
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    2
+   ],
+   "b": [
+    7,
+    3
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     64,
+     127
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    2
+   ],
+   "b": [
+    9,
+    2
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     114,
+     151
+    ],
+    [
+     167,
+     227
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    2
+   ],
+   "b": [
+    8,
+    3
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    2
+   ],
+   "b": [
+    9,
+    3
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     0,
+     63
+    ],
+    [
+     128,
+     175
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    3
+   ],
+   "b": [
+    1,
+    3
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     132
+    ],
+    [
+     148,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    3
+   ],
+   "b": [
+    0,
+    4
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     32,
+     79
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    3
+   ],
+   "b": [
+    2,
+    3
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     148,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    3
+   ],
+   "b": [
+    1,
+    4
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    3
+   ],
+   "b": [
+    3,
+    3
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     152,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    3
+   ],
+   "b": [
+    2,
+    4
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     112,
+     159
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    3
+   ],
+   "b": [
+    4,
+    3
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     15,
+     75
+    ],
+    [
+     91,
+     151
+    ],
+    [
+     167,
+     208
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      4,
+      3
+     ],
+     "object": 7,
+     "sprite_group": 173,
+     "name": "green stone pillar (192 HP)"
+    }
+   ]
+  },
+  {
+   "a": [
+    3,
+    3
+   ],
+   "b": [
+    3,
+    4
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     80,
+     127
+    ],
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    3
+   ],
+   "b": [
+    5,
+    3
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    3
+   ],
+   "b": [
+    4,
+    4
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     112,
+     159
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    3
+   ],
+   "b": [
+    6,
+    3
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     75
+    ],
+    [
+     93,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    3
+   ],
+   "b": [
+    5,
+    4
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    3
+   ],
+   "b": [
+    7,
+    3
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    3
+   ],
+   "b": [
+    6,
+    4
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    3
+   ],
+   "b": [
+    8,
+    3
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     95,
+     151
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    3
+   ],
+   "b": [
+    7,
+    4
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    3
+   ],
+   "b": [
+    9,
+    3
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    3
+   ],
+   "b": [
+    8,
+    4
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     96,
+     143
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    3
+   ],
+   "b": [
+    9,
+    4
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     48,
+     111
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    4
+   ],
+   "b": [
+    1,
+    4
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     152,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    4
+   ],
+   "b": [
+    0,
+    5
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     48,
+     95
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    4
+   ],
+   "b": [
+    2,
+    4
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     94
+    ],
+    [
+     110,
+     151
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    4
+   ],
+   "b": [
+    1,
+    5
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    4
+   ],
+   "b": [
+    3,
+    4
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    4
+   ],
+   "b": [
+    2,
+    5
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     128,
+     175
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    4
+   ],
+   "b": [
+    4,
+    4
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     15,
+     56
+    ],
+    [
+     72,
+     113
+    ],
+    [
+     129,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    4
+   ],
+   "b": [
+    3,
+    5
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    4
+   ],
+   "b": [
+    5,
+    4
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 2,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 3,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 22,
+     "name": null
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 5,
+     "sprite_group": 22,
+     "name": null
+    }
+   ]
+  },
+  {
+   "a": [
+    4,
+    4
+   ],
+   "b": [
+    4,
+    5
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    4
+   ],
+   "b": [
+    6,
+    4
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     15,
+     75
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    4
+   ],
+   "b": [
+    5,
+    5
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    4
+   ],
+   "b": [
+    7,
+    4
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    4
+   ],
+   "b": [
+    6,
+    5
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    4
+   ],
+   "b": [
+    8,
+    4
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     76,
+     151
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    4
+   ],
+   "b": [
+    7,
+    5
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    4
+   ],
+   "b": [
+    9,
+    4
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    4
+   ],
+   "b": [
+    8,
+    5
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     128,
+     175
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 8,
+     "name": "panel / trigger zone"
+    }
+   ]
+  },
+  {
+   "a": [
+    9,
+    4
+   ],
+   "b": [
+    9,
+    5
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    5
+   ],
+   "b": [
+    1,
+    5
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 5,
+     "sprite_group": 22,
+     "name": null
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 6,
+     "sprite_group": 22,
+     "name": null
+    }
+   ]
+  },
+  {
+   "a": [
+    0,
+    5
+   ],
+   "b": [
+    0,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    5
+   ],
+   "b": [
+    2,
+    5
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     56
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    5
+   ],
+   "b": [
+    1,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    5
+   ],
+   "b": [
+    3,
+    5
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     114,
+     151
+    ],
+    [
+     167,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    5
+   ],
+   "b": [
+    2,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    5
+   ],
+   "b": [
+    4,
+    5
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     167,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    5
+   ],
+   "b": [
+    3,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    5
+   ],
+   "b": [
+    5,
+    5
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    5
+   ],
+   "b": [
+    4,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    5
+   ],
+   "b": [
+    6,
+    5
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    5
+   ],
+   "b": [
+    5,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    5
+   ],
+   "b": [
+    7,
+    5
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     94
+    ],
+    [
+     114,
+     170
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    5
+   ],
+   "b": [
+    6,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    5
+   ],
+   "b": [
+    8,
+    5
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    5
+   ],
+   "b": [
+    7,
+    6
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    5
+   ],
+   "b": [
+    9,
+    5
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    5
+   ],
+   "b": [
+    8,
+    6
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     16,
+     79
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    5
+   ],
+   "b": [
+    9,
+    6
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     128,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    6
+   ],
+   "b": [
+    1,
+    6
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     114,
+     151
+    ],
+    [
+     167,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    6
+   ],
+   "b": [
+    0,
+    7
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "b": [
+    2,
+    6
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     110,
+     151
+    ],
+    [
+     167,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    6
+   ],
+   "b": [
+    1,
+    7
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    6
+   ],
+   "b": [
+    3,
+    6
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     18,
+     151
+    ],
+    [
+     167,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    6
+   ],
+   "b": [
+    2,
+    7
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    6
+   ],
+   "b": [
+    4,
+    6
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     24,
+     94
+    ],
+    [
+     111,
+     151
+    ],
+    [
+     168,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    6
+   ],
+   "b": [
+    3,
+    7
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     32,
+     79
+    ],
+    [
+     112,
+     159
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    6
+   ],
+   "b": [
+    5,
+    6
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    6
+   ],
+   "b": [
+    4,
+    7
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    6
+   ],
+   "b": [
+    6,
+    6
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     1,
+     151
+    ],
+    [
+     164,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    6
+   ],
+   "b": [
+    5,
+    7
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    6
+   ],
+   "b": [
+    7,
+    6
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     1,
+     132
+    ],
+    [
+     164,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    6
+   ],
+   "b": [
+    6,
+    7
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     16,
+     95
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    6
+   ],
+   "b": [
+    8,
+    6
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    6
+   ],
+   "b": [
+    7,
+    7
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     80,
+     127
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    6
+   ],
+   "b": [
+    9,
+    6
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     76,
+     132
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    6
+   ],
+   "b": [
+    8,
+    7
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    6
+   ],
+   "b": [
+    9,
+    7
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    7
+   ],
+   "b": [
+    1,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     168,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    7
+   ],
+   "b": [
+    0,
+    8
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     16,
+     63
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    7
+   ],
+   "b": [
+    2,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     15,
+     56
+    ],
+    [
+     72,
+     189
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    7
+   ],
+   "b": [
+    1,
+    8
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     80,
+     111
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    7
+   ],
+   "b": [
+    3,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     15,
+     56
+    ],
+    [
+     72,
+     189
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    7
+   ],
+   "b": [
+    2,
+    8
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    7
+   ],
+   "b": [
+    4,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     16,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    7
+   ],
+   "b": [
+    3,
+    8
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     48,
+     79
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    7
+   ],
+   "b": [
+    5,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     18,
+     151
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    7
+   ],
+   "b": [
+    4,
+    8
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    7
+   ],
+   "b": [
+    6,
+    7
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    7
+   ],
+   "b": [
+    5,
+    8
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    7
+   ],
+   "b": [
+    7,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     113
+    ],
+    [
+     133,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    7
+   ],
+   "b": [
+    6,
+    8
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    7
+   ],
+   "b": [
+    8,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     113
+    ],
+    [
+     133,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    7
+   ],
+   "b": [
+    7,
+    8
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     96,
+     175
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    7
+   ],
+   "b": [
+    9,
+    7
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     56
+    ],
+    [
+     95,
+     132
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 2,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 3,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 4,
+     "sprite_group": 22,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 5,
+     "sprite_group": 22,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 8,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 9,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 10,
+     "sprite_group": 22,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 11,
+     "sprite_group": 22,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 14,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 15,
+     "sprite_group": 21,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 16,
+     "sprite_group": 22,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 17,
+     "sprite_group": 22,
+     "name": null
+    }
+   ]
+  },
+  {
+   "a": [
+    8,
+    7
+   ],
+   "b": [
+    8,
+    8
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     96,
+     143
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    7
+   ],
+   "b": [
+    9,
+    8
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    8
+   ],
+   "b": [
+    1,
+    8
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    8
+   ],
+   "b": [
+    0,
+    9
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    8
+   ],
+   "b": [
+    2,
+    8
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     6,
+     221
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    8
+   ],
+   "b": [
+    1,
+    9
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     80,
+     175
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    8
+   ],
+   "b": [
+    3,
+    8
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     11,
+     56
+    ],
+    [
+     75,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    8
+   ],
+   "b": [
+    2,
+    9
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     74,
+     95
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    8
+   ],
+   "b": [
+    4,
+    8
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     18,
+     56
+    ],
+    [
+     81,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    8
+   ],
+   "b": [
+    3,
+    9
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    8
+   ],
+   "b": [
+    5,
+    8
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    8
+   ],
+   "b": [
+    4,
+    9
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     144,
+     191
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    8
+   ],
+   "b": [
+    6,
+    8
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    8
+   ],
+   "b": [
+    5,
+    9
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     48,
+     95
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    8
+   ],
+   "b": [
+    7,
+    8
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     94
+    ],
+    [
+     114,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    8
+   ],
+   "b": [
+    6,
+    9
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     32,
+     79
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    8
+   ],
+   "b": [
+    8,
+    8
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    8
+   ],
+   "b": [
+    7,
+    9
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    8
+   ],
+   "b": [
+    9,
+    8
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     38,
+     94
+    ],
+    [
+     114,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    8
+   ],
+   "b": [
+    8,
+    9
+   ],
+   "dir": "south",
+   "open": false,
+   "openings_x": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    9,
+    8
+   ],
+   "b": [
+    9,
+    9
+   ],
+   "dir": "south",
+   "open": true,
+   "openings_x": [
+    [
+     128,
+     207
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    0,
+    9
+   ],
+   "b": [
+    1,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     6,
+     75
+    ],
+    [
+     83,
+     221
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    1,
+    9
+   ],
+   "b": [
+    2,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     6,
+     221
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    2,
+    9
+   ],
+   "b": [
+    3,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     18,
+     56
+    ],
+    [
+     75,
+     151
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    3,
+    9
+   ],
+   "b": [
+    4,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     114,
+     151
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    4,
+    9
+   ],
+   "b": [
+    5,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     152,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    5,
+    9
+   ],
+   "b": [
+    6,
+    9
+   ],
+   "dir": "east",
+   "open": false,
+   "openings_y": [],
+   "gated_by": []
+  },
+  {
+   "a": [
+    6,
+    9
+   ],
+   "b": [
+    7,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     56
+    ],
+    [
+     76,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    7,
+    9
+   ],
+   "b": [
+    8,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     56
+    ],
+    [
+     171,
+     208
+    ]
+   ],
+   "gated_by": []
+  },
+  {
+   "a": [
+    8,
+    9
+   ],
+   "b": [
+    9,
+    9
+   ],
+   "dir": "east",
+   "open": true,
+   "openings_y": [
+    [
+     19,
+     56
+    ],
+    [
+     76,
+     208
+    ]
+   ],
+   "gated_by": [
+    {
+     "room": [
+      8,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 5,
+     "name": "lift platform (alt)"
+    },
+    {
+     "room": [
+      9,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 5,
+     "name": "lift platform (alt)"
+    }
+   ]
+  }
+ ],
+ "warps": [
+  {
+   "script": 241,
+   "to": [
+    0,
+    0
+   ],
+   "pos": [
+    53,
+    178
+   ],
+   "note": "teleport booth -> hub",
+   "from": [
+    0,
+    1
+   ],
+   "object": 1,
+   "from_region": 1,
+   "to_region": 5
+  },
+  {
+   "script": 241,
+   "to": [
+    0,
+    0
+   ],
+   "pos": [
+    53,
+    178
+   ],
+   "note": "teleport booth -> hub",
+   "from": [
+    2,
+    0
+   ],
+   "object": 11,
+   "from_region": 4,
+   "to_region": 5
+  },
+  {
+   "script": 241,
+   "to": [
+    0,
+    0
+   ],
+   "pos": [
+    53,
+    178
+   ],
+   "note": "teleport booth -> hub",
+   "from": [
+    4,
+    7
+   ],
+   "object": 0,
+   "from_region": 2,
+   "to_region": 5
+  },
+  {
+   "script": 241,
+   "to": [
+    0,
+    0
+   ],
+   "pos": [
+    53,
+    178
+   ],
+   "note": "teleport booth -> hub",
+   "from": [
+    5,
+    5
+   ],
+   "object": 0,
+   "from_region": 6,
+   "to_region": 5
+  },
+  {
+   "script": 241,
+   "to": [
+    0,
+    0
+   ],
+   "pos": [
+    53,
+    178
+   ],
+   "note": "teleport booth -> hub",
+   "from": [
+    6,
+    7
+   ],
+   "object": 0,
+   "from_region": 3,
+   "to_region": 5
+  },
+  {
+   "script": 241,
+   "to": [
+    0,
+    0
+   ],
+   "pos": [
+    53,
+    178
+   ],
+   "note": "teleport booth -> hub",
+   "from": [
+    8,
+    2
+   ],
+   "object": 2,
+   "from_region": 0,
+   "to_region": 5
+  },
+  {
+   "script": 132,
+   "to": [
+    0,
+    0
+   ],
+   "pos": [
+    53,
+    178
+   ],
+   "note": "fuse fitted: repaired booth -> hub (calls script 241)",
+   "from": [
+    2,
+    0
+   ],
+   "object": 10,
+   "from_region": 4,
+   "to_region": 5
+  },
+  {
+   "script": 98,
+   "to": [
+    4,
+    2
+   ],
+   "pos": [
+    100,
+    121
+   ],
+   "note": "also teaches the password Ukryta Dolina",
+   "from": [
+    2,
+    9
+   ],
+   "object": 4,
+   "from_region": 2,
+   "to_region": 4
+  },
+  {
+   "script": 45,
+   "to": [
+    4,
+    5
+   ],
+   "pos": [
+    14,
+    83
+   ],
+   "note": "",
+   "from": [
+    8,
+    6
+   ],
+   "object": 0,
+   "from_region": 0,
+   "to_region": 1
+  },
+  {
+   "script": 203,
+   "to": [
+    9,
+    6
+   ],
+   "pos": [
+    186,
+    178
+   ],
+   "probability": 0.3333333333333333,
+   "note": "damaged teleport",
+   "from": [
+    4,
+    5
+   ],
+   "object": 5,
+   "from_region": 1,
+   "to_region": 0
+  },
+  {
+   "script": 203,
+   "to": [
+    8,
+    8
+   ],
+   "pos": [
+    108,
+    125
+   ],
+   "probability": 0.6666666666666666,
+   "note": "damaged teleport",
+   "from": [
+    4,
+    5
+   ],
+   "object": 5,
+   "from_region": 1,
+   "to_region": 3
+  },
+  {
+   "script": 240,
+   "from": [
+    0,
+    0
+   ],
+   "object": 0,
+   "to": [
+    7,
+    0
+   ],
+   "pos": [
+    22,
+    83
+   ],
+   "note": "hub terminal menu: Zapomniana Świątynia",
+   "from_region": 5,
+   "to_region": 0
+  },
+  {
+   "script": 240,
+   "from": [
+    0,
+    0
+   ],
+   "object": 0,
+   "to": [
+    7,
+    8
+   ],
+   "pos": [
+    38,
+    178
+   ],
+   "note": "hub terminal menu: Zaświaty (password needed)",
+   "from_region": 5,
+   "to_region": 3
+  },
+  {
+   "script": 240,
+   "from": [
+    0,
+    0
+   ],
+   "object": 0,
+   "to": [
+    1,
+    6
+   ],
+   "pos": [
+    27,
+    64
+   ],
+   "note": "hub terminal menu: Otchłań (password needed)",
+   "from_region": 5,
+   "to_region": 2
+  },
+  {
+   "script": 240,
+   "from": [
+    0,
+    0
+   ],
+   "object": 0,
+   "to": [
+    4,
+    2
+   ],
+   "pos": [
+    100,
+    121
+   ],
+   "note": "hub terminal menu: Ukryta Dolina (password needed)",
+   "from_region": 5,
+   "to_region": 4
+  },
+  {
+   "script": 240,
+   "from": [
+    0,
+    0
+   ],
+   "object": 0,
+   "to": [
+    1,
+    1
+   ],
+   "pos": [
+    94,
+    26
+   ],
+   "note": "hub terminal menu: Kraina Grozy (password needed)",
+   "from_region": 5,
+   "to_region": 1
+  },
+  {
+   "script": 240,
+   "from": [
+    0,
+    0
+   ],
+   "object": 0,
+   "to": [
+    5,
+    5
+   ],
+   "pos": [
+    124,
+    26
+   ],
+   "note": "hub terminal menu: Sala treningowa",
+   "from_region": 5,
+   "to_region": 6
+  }
+ ],
+ "fake_walls": [
+  {
+   "room": [
+    7,
+    0
+   ],
+   "cell": [
+    2,
+    7
+   ],
+   "foreground": true,
+   "sequence": 23,
+   "tile": 266,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    8,
+    0
+   ],
+   "cell": [
+    12,
+    7
+   ],
+   "foreground": true,
+   "sequence": 37,
+   "tile": 98,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    9,
+    0
+   ],
+   "cell": [
+    1,
+    6
+   ],
+   "foreground": true,
+   "sequence": 37,
+   "tile": 98,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    4,
+    1
+   ],
+   "cell": [
+    13,
+    2
+   ],
+   "foreground": false,
+   "sequence": 26,
+   "tile": 277,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    9,
+    1
+   ],
+   "cell": [
+    10,
+    4
+   ],
+   "foreground": true,
+   "sequence": 37,
+   "tile": 98,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    0,
+    2
+   ],
+   "cell": [
+    13,
+    1
+   ],
+   "foreground": true,
+   "sequence": 74,
+   "tile": 102,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    0,
+    2
+   ],
+   "cell": [
+    0,
+    2
+   ],
+   "foreground": false,
+   "sequence": 11,
+   "tile": 197,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    0,
+    2
+   ],
+   "cell": [
+    13,
+    2
+   ],
+   "foreground": true,
+   "sequence": 75,
+   "tile": 91,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    2,
+    2
+   ],
+   "cell": [
+    0,
+    1
+   ],
+   "foreground": false,
+   "sequence": 11,
+   "tile": 197,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    6,
+    2
+   ],
+   "cell": [
+    0,
+    1
+   ],
+   "foreground": false,
+   "sequence": 23,
+   "tile": 266,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "cell": [
+    8,
+    3
+   ],
+   "foreground": false,
+   "sequence": 56,
+   "tile": 111,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "cell": [
+    9,
+    3
+   ],
+   "foreground": false,
+   "sequence": 57,
+   "tile": 112,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "cell": [
+    10,
+    3
+   ],
+   "foreground": false,
+   "sequence": 58,
+   "tile": 113,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "cell": [
+    11,
+    3
+   ],
+   "foreground": false,
+   "sequence": 57,
+   "tile": 112,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    7,
+    3
+   ],
+   "cell": [
+    4,
+    4
+   ],
+   "foreground": true,
+   "sequence": 37,
+   "tile": 98,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    8,
+    3
+   ],
+   "cell": [
+    11,
+    5
+   ],
+   "foreground": true,
+   "sequence": 37,
+   "tile": 98,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    0,
+    4
+   ],
+   "cell": [
+    9,
+    9
+   ],
+   "foreground": false,
+   "sequence": 11,
+   "tile": 197,
+   "map_tile_below": 1
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "cell": [
+    5,
+    1
+   ],
+   "foreground": false,
+   "sequence": 11,
+   "tile": 197,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    7,
+    4
+   ],
+   "cell": [
+    0,
+    7
+   ],
+   "foreground": true,
+   "sequence": 23,
+   "tile": 266,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    7,
+    4
+   ],
+   "cell": [
+    0,
+    9
+   ],
+   "foreground": true,
+   "sequence": 23,
+   "tile": 266,
+   "map_tile_below": 265
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "cell": [
+    0,
+    4
+   ],
+   "foreground": true,
+   "sequence": 72,
+   "tile": 93,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "cell": [
+    0,
+    7
+   ],
+   "foreground": true,
+   "sequence": 41,
+   "tile": 97,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "cell": [
+    0,
+    5
+   ],
+   "foreground": true,
+   "sequence": 72,
+   "tile": 93,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "cell": [
+    0,
+    6
+   ],
+   "foreground": true,
+   "sequence": 72,
+   "tile": 93,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    1,
+    5
+   ],
+   "cell": [
+    0,
+    8
+   ],
+   "foreground": true,
+   "sequence": 53,
+   "tile": 334,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    6,
+    5
+   ],
+   "cell": [
+    0,
+    2
+   ],
+   "foreground": true,
+   "sequence": 11,
+   "tile": 197,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    6,
+    5
+   ],
+   "cell": [
+    0,
+    7
+   ],
+   "foreground": true,
+   "sequence": 11,
+   "tile": 197,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "cell": [
+    6,
+    9
+   ],
+   "foreground": true,
+   "sequence": 23,
+   "tile": 266,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    5,
+    6
+   ],
+   "cell": [
+    10,
+    7
+   ],
+   "foreground": true,
+   "sequence": 44,
+   "tile": 61,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    5,
+    6
+   ],
+   "cell": [
+    10,
+    6
+   ],
+   "foreground": true,
+   "sequence": 43,
+   "tile": 60,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    6,
+    6
+   ],
+   "cell": [
+    9,
+    7
+   ],
+   "foreground": true,
+   "sequence": 44,
+   "tile": 61,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    6,
+    6
+   ],
+   "cell": [
+    9,
+    6
+   ],
+   "foreground": true,
+   "sequence": 43,
+   "tile": 60,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    7,
+    6
+   ],
+   "cell": [
+    6,
+    5
+   ],
+   "foreground": true,
+   "sequence": 43,
+   "tile": 60,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    7,
+    6
+   ],
+   "cell": [
+    6,
+    4
+   ],
+   "foreground": true,
+   "sequence": 43,
+   "tile": 60,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    7,
+    6
+   ],
+   "cell": [
+    6,
+    6
+   ],
+   "foreground": true,
+   "sequence": 44,
+   "tile": 61,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    0,
+    7
+   ],
+   "cell": [
+    10,
+    10
+   ],
+   "foreground": true,
+   "sequence": 26,
+   "tile": 277,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    5,
+    7
+   ],
+   "cell": [
+    5,
+    7
+   ],
+   "foreground": true,
+   "sequence": 59,
+   "tile": 140,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    5,
+    7
+   ],
+   "cell": [
+    5,
+    6
+   ],
+   "foreground": true,
+   "sequence": 42,
+   "tile": 505,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    5,
+    7
+   ],
+   "cell": [
+    5,
+    5
+   ],
+   "foreground": true,
+   "sequence": 67,
+   "tile": 56,
+   "map_tile_below": 0
+  },
+  {
+   "room": [
+    0,
+    8
+   ],
+   "cell": [
+    0,
+    5
+   ],
+   "foreground": true,
+   "sequence": 23,
+   "tile": 266,
+   "map_tile_below": 0
+  }
+ ],
+ "mechanisms": [
+  {
+   "room": [
+    0,
+    0
+   ],
+   "object": 12,
+   "kind": "force field",
+   "pos": [
+    208,
+    114
+   ],
+   "opened_by": [
+    {
+     "action": "fifth magic key in the hub slots",
+     "script": 161
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 8,
+   "kind": "lizard man (enemy)",
+   "pos": [
+    95,
+    117
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "shoot",
+     "name": "lizard man (enemy)"
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 9,
+   "kind": "lizard man (enemy)",
+   "pos": [
+    39,
+    62
+   ],
+   "opened_by": [
+    {
+     "object": 3,
+     "action": "shoot",
+     "name": "lizard man (enemy)"
+    }
+   ]
+  },
+  {
+   "room": [
+    9,
+    0
+   ],
+   "object": 3,
+   "kind": "lift platform",
+   "pos": [
+    96,
+    148
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 6
+    }
+   ]
+  },
+  {
+   "room": [
+    3,
+    1
+   ],
+   "object": 1,
+   "kind": "lift platform",
+   "pos": [
+    112,
+    177
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "panel / trigger zone",
+     "touch": true
+    }
+   ]
+  },
+  {
+   "room": [
+    6,
+    1
+   ],
+   "object": 3,
+   "kind": "lift platform (small)",
+   "pos": [
+    144,
+    209
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 3
+    }
+   ]
+  },
+  {
+   "room": [
+    5,
+    2
+   ],
+   "object": 3,
+   "kind": "lift platform",
+   "pos": [
+    64,
+    101
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 2
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 0,
+   "kind": "lift platform",
+   "pos": [
+    128,
+    44
+   ],
+   "opened_by": [],
+   "appears_with_flag": 197,
+   "flag_set_by": [
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 1,
+     "script": 196,
+     "name": "riddle man"
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 1,
+   "kind": "lift platform",
+   "pos": [
+    160,
+    44
+   ],
+   "opened_by": [],
+   "appears_with_flag": 197,
+   "flag_set_by": [
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 1,
+     "script": 196,
+     "name": "riddle man"
+    }
+   ]
+  },
+  {
+   "room": [
+    5,
+    3
+   ],
+   "object": 4,
+   "kind": "panel / trigger zone",
+   "pos": [
+    85,
+    42
+   ],
+   "opened_by": [
+    {
+     "object": 3,
+     "action": "shoot",
+     "name": "orange beast (other way)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    6,
+    3
+   ],
+   "object": 0,
+   "kind": "lift platform",
+   "pos": [
+    96,
+    196
+   ],
+   "opened_by": [
+    {
+     "action": "opens on room entry",
+     "flag": 40,
+     "flag_set_by": [
+      {
+       "room": [
+        8,
+        2
+       ],
+       "object": 0,
+       "script": 40,
+       "name": "switch (active)?"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "object": 2,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "switch (active)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "object": 4,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "switch (active)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    9,
+    4
+   ],
+   "object": 5,
+   "kind": "lift platform",
+   "pos": [
+    163,
+    139
+   ],
+   "opened_by": [
+    {
+     "object": 4,
+     "action": "use",
+     "name": "keyhole lock",
+     "item": 8
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    5
+   ],
+   "object": 3,
+   "kind": "door / wall",
+   "pos": [
+    0,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "use",
+     "name": "keyhole lock",
+     "item": 23
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    5
+   ],
+   "object": 5,
+   "kind": "door / wall",
+   "pos": [
+    0,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "use",
+     "name": "keyhole lock",
+     "item": 23
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    5
+   ],
+   "object": 4,
+   "kind": "panel / trigger zone",
+   "pos": [
+    165,
+    32
+   ],
+   "opened_by": [
+    {
+     "object": 3,
+     "action": "shoot",
+     "name": "orange beast (other way)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    7
+   ],
+   "object": 3,
+   "kind": "door / wall",
+   "pos": [
+    16,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 16
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    7
+   ],
+   "object": 5,
+   "kind": "door / wall",
+   "pos": [
+    16,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 16
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    7
+   ],
+   "object": 4,
+   "kind": "no-fly zone",
+   "pos": [
+    96,
+    113
+   ],
+   "opened_by": [
+    {
+     "action": "take the ferry",
+     "script": 107,
+     "item": 17
+    }
+   ]
+  },
+  {
+   "room": [
+    3,
+    7
+   ],
+   "object": 1,
+   "kind": "lift platform",
+   "pos": [
+    124,
+    196
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "panel / trigger zone"
+    }
+   ]
+  },
+  {
+   "room": [
+    6,
+    7
+   ],
+   "object": 4,
+   "kind": "lift platform (alt)",
+   "pos": [
+    12,
+    197
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "use",
+     "name": null,
+     "item": 13
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 2,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    23
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 4,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    38
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 8,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    99
+   ],
+   "opened_by": [
+    {
+     "object": 6,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 10,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    114
+   ],
+   "opened_by": [
+    {
+     "object": 6,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 14,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 12,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 16,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 12,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    7,
+    8
+   ],
+   "object": 5,
+   "kind": "lift platform (alt)",
+   "pos": [
+    93,
+    88
+   ],
+   "opened_by": [
+    {
+     "object": 4,
+     "action": "use",
+     "name": "panel / interaction marker (graves, tap)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    9
+   ],
+   "object": 0,
+   "kind": "door / wall",
+   "pos": [
+    80,
+    175
+   ],
+   "opened_by": [
+    {
+     "action": "opens on room entry",
+     "flag": 96,
+     "flag_set_by": [
+      {
+       "room": [
+        0,
+        9
+       ],
+       "object": 0,
+       "script": 96,
+       "name": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    9
+   ],
+   "object": 2,
+   "kind": "door / wall",
+   "pos": [
+    80,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "opens on room entry",
+     "flag": 96,
+     "flag_set_by": [
+      {
+       "room": [
+        0,
+        9
+       ],
+       "object": 0,
+       "script": 96,
+       "name": null
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "teleport_menu": [
+  {
+   "name_pl": "Zapomniana Świątynia",
+   "name_en": "Forgotten Temple",
+   "room": [
+    7,
+    0
+   ],
+   "pos": [
+    22,
+    83
+   ],
+   "known_at_start": true
+  },
+  {
+   "name_pl": "Zaświaty",
+   "name_en": "Netherworld",
+   "room": [
+    7,
+    8
+   ],
+   "pos": [
+    38,
+    178
+   ],
+   "known_at_start": false
+  },
+  {
+   "name_pl": "Otchłań",
+   "name_en": "Abyss",
+   "room": [
+    1,
+    6
+   ],
+   "pos": [
+    27,
+    64
+   ],
+   "known_at_start": false
+  },
+  {
+   "name_pl": "Ukryta Dolina",
+   "name_en": "Hidden Valley",
+   "room": [
+    4,
+    2
+   ],
+   "pos": [
+    100,
+    121
+   ],
+   "known_at_start": false
+  },
+  {
+   "name_pl": "Kraina Grozy",
+   "name_en": "Land of Terror",
+   "room": [
+    1,
+    1
+   ],
+   "pos": [
+    94,
+    26
+   ],
+   "known_at_start": false
+  },
+  {
+   "name_pl": "Sala treningowa",
+   "name_en": "Training Room",
+   "room": [
+    5,
+    5
+   ],
+   "pos": [
+    124,
+    26
+   ],
+   "known_at_start": true
+  }
+ ]
+}

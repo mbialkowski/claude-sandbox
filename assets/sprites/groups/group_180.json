@@ -1,0 +1,22 @@
+{
+ "group": 180,
+ "name": null,
+ "image": "group_180.png",
+ "loop_ticks": 0,
+ "frames": [
+  {
+   "frame": 858,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 10,
+   "duration": 1,
+   "box": [
+    0,
+    3,
+    8,
+    9
+   ]
+  }
+ ]
+}

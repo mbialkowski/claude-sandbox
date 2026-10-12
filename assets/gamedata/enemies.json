@@ -1,0 +1,12102 @@
+{
+ "note": "All harmful and shootable room objects. kind: enemy (harmful + shootable), hazard (harmful, bullet-proof), destructible (harmless but shootable). Contact with anything harmful drains 0x6000 energy every 4 ticks (~10 s from full). hits_to_kill uses each weapon's damage; ticks_to_kill_auto = (hits-1) * (cooldown+1) for auto-fire weapons held down. HP is restored when the object's path restarts. path: one pass through the object's steps.",
+ "weapons": [
+  {
+   "name": "starting gun",
+   "damage": 1,
+   "cooldown_ticks": 7,
+   "auto_fire": false
+  },
+  {
+   "name": "rocket launcher",
+   "damage": 2,
+   "cooldown_ticks": 0,
+   "auto_fire": false
+  },
+  {
+   "name": "heavy rocket launcher",
+   "damage": 3,
+   "cooldown_ticks": 0,
+   "auto_fire": false
+  },
+  {
+   "name": "Uzi",
+   "damage": 2,
+   "cooldown_ticks": 3,
+   "auto_fire": true
+  },
+  {
+   "name": "flame-thrower",
+   "damage": 3,
+   "cooldown_ticks": 3,
+   "auto_fire": true
+  },
+  {
+   "name": "plasma gun",
+   "damage": 100,
+   "cooldown_ticks": 100,
+   "auto_fire": false
+  }
+ ],
+ "summary": [
+  {
+   "kind": "destructible",
+   "sprite_group": 167,
+   "name": "blue capsule (destructible)?",
+   "count": 2,
+   "hp": [
+    19
+   ],
+   "rooms": [
+    [
+     7,
+     1
+    ],
+    [
+     8,
+     4
+    ]
+   ],
+   "max_speed": 0.0
+  },
+  {
+   "kind": "destructible",
+   "sprite_group": 71,
+   "name": "rope",
+   "count": 1,
+   "hp": [
+    0
+   ],
+   "rooms": [
+    [
+     8,
+     0
+    ]
+   ],
+   "max_speed": 0.0
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "count": 19,
+   "hp": [
+    0,
+    1,
+    3,
+    4,
+    5,
+    15
+   ],
+   "rooms": [
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     9,
+     5
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     9
+    ]
+   ],
+   "max_speed": 5.101
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 160,
+   "name": "red bug",
+   "count": 12,
+   "hp": [
+    0,
+    3,
+    16,
+    48
+   ],
+   "rooms": [
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     5
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     9
+    ]
+   ],
+   "max_speed": 5.375
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "count": 10,
+   "hp": [
+    4,
+    10
+   ],
+   "rooms": [
+    [
+     2,
+     3
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     9
+    ]
+   ],
+   "max_speed": 4.535
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "count": 9,
+   "hp": [
+    0
+   ],
+   "rooms": [
+    [
+     3,
+     0
+    ],
+    [
+     5,
+     0
+    ],
+    [
+     6,
+     0
+    ],
+    [
+     7,
+     1
+    ],
+    [
+     8,
+     4
+    ]
+   ],
+   "max_speed": 7.295
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 164,
+   "name": "black spider?",
+   "count": 6,
+   "hp": [
+    0,
+    1,
+    32,
+    48
+   ],
+   "rooms": [
+    [
+     9,
+     2
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     9,
+     3
+    ],
+    [
+     9,
+     6
+    ]
+   ],
+   "max_speed": 6.625
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 163,
+   "name": "green bug",
+   "count": 6,
+   "hp": [
+    3,
+    16
+   ],
+   "rooms": [
+    [
+     3,
+     5
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "max_speed": 5.375
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "count": 5,
+   "hp": [
+    4,
+    10
+   ],
+   "rooms": [
+    [
+     2,
+     3
+    ],
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     9
+    ]
+   ],
+   "max_speed": 4.535
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 45,
+   "name": "falling stone",
+   "count": 4,
+   "hp": [
+    0
+   ],
+   "rooms": [
+    [
+     6,
+     0
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     2,
+     6
+    ]
+   ],
+   "max_speed": 4.528
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 150,
+   "name": "grey ghoul?",
+   "count": 4,
+   "hp": [
+    3,
+    19,
+    32
+   ],
+   "rooms": [
+    [
+     8,
+     1
+    ],
+    [
+     9,
+     1
+    ],
+    [
+     9,
+     2
+    ],
+    [
+     8,
+     5
+    ]
+   ],
+   "max_speed": 0.25
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 165,
+   "name": "orange ring?",
+   "count": 4,
+   "hp": [
+    0,
+    2,
+    7,
+    21
+   ],
+   "rooms": [
+    [
+     9,
+     1
+    ],
+    [
+     7,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     9,
+     5
+    ]
+   ],
+   "max_speed": 3.438
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 147,
+   "name": "hooded hunchback (other way)?",
+   "count": 4,
+   "hp": [
+    48
+   ],
+   "rooms": [
+    [
+     0,
+     2
+    ],
+    [
+     2,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     3,
+     5
+    ]
+   ],
+   "max_speed": 0.688
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 185,
+   "name": "green slime (flying)?",
+   "count": 4,
+   "hp": [
+    16
+   ],
+   "rooms": [
+    [
+     2,
+     2
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "max_speed": 3.5
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 162,
+   "name": "orange bug",
+   "count": 4,
+   "hp": [
+    3,
+    48
+   ],
+   "rooms": [
+    [
+     3,
+     3
+    ],
+    [
+     3,
+     8
+    ],
+    [
+     3,
+     9
+    ]
+   ],
+   "max_speed": 5.836
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 155,
+   "name": "winged gargoyle (other way)?",
+   "count": 4,
+   "hp": [
+    8,
+    16,
+    21
+   ],
+   "rooms": [
+    [
+     4,
+     3
+    ],
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "max_speed": 0.5
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 177,
+   "name": "thrown bone",
+   "count": 4,
+   "hp": [
+    0,
+    1
+   ],
+   "rooms": [
+    [
+     7,
+     7
+    ],
+    [
+     6,
+     9
+    ]
+   ],
+   "max_speed": 2.764
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 15,
+   "name": "blue beetle?",
+   "count": 3,
+   "hp": [
+    0,
+    1,
+    3
+   ],
+   "rooms": [
+    [
+     5,
+     0
+    ],
+    [
+     3,
+     8
+    ]
+   ],
+   "max_speed": 3.875
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 16,
+   "name": "green slime blob?",
+   "count": 3,
+   "hp": [
+    7,
+    9,
+    19
+   ],
+   "rooms": [
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "max_speed": 0.5
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 197,
+   "name": "kneeling hag?",
+   "count": 3,
+   "hp": [
+    9,
+    15,
+    19
+   ],
+   "rooms": [
+    [
+     6,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     4,
+     2
+    ]
+   ],
+   "max_speed": 0.375
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 191,
+   "name": "dragon?",
+   "count": 3,
+   "hp": [
+    16,
+    32,
+    48
+   ],
+   "rooms": [
+    [
+     2,
+     6
+    ],
+    [
+     3,
+     7
+    ],
+    [
+     2,
+     8
+    ]
+   ],
+   "max_speed": 1.946
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 157,
+   "name": "zombie (other way)?",
+   "count": 3,
+   "hp": [
+    10,
+    15
+   ],
+   "rooms": [
+    [
+     5,
+     6
+    ],
+    [
+     6,
+     6
+    ],
+    [
+     7,
+     6
+    ]
+   ],
+   "max_speed": 0.25
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 179,
+   "name": "small arrow?",
+   "count": 3,
+   "hp": [
+    0
+   ],
+   "rooms": [
+    [
+     5,
+     6
+    ],
+    [
+     7,
+     6
+    ]
+   ],
+   "max_speed": 2.525
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 170,
+   "name": "magenta spiked mine",
+   "count": 3,
+   "hp": [
+    4
+   ],
+   "rooms": [
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     9
+    ]
+   ],
+   "max_speed": 4.535
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 193,
+   "name": "lizard man (enemy)",
+   "count": 2,
+   "hp": [
+    19
+   ],
+   "rooms": [
+    [
+     2,
+     0
+    ]
+   ],
+   "max_speed": 0.0
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 13,
+   "name": "green parrot?",
+   "count": 2,
+   "hp": [
+    7,
+    15
+   ],
+   "rooms": [
+    [
+     4,
+     0
+    ],
+    [
+     6,
+     0
+    ]
+   ],
+   "max_speed": 3.209
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 149,
+   "name": "helmeted skeleton warrior?",
+   "count": 2,
+   "hp": [
+    5
+   ],
+   "rooms": [
+    [
+     8,
+     0
+    ],
+    [
+     7,
+     1
+    ]
+   ],
+   "max_speed": 0.688
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 3,
+   "name": "caveman with a club?",
+   "count": 2,
+   "hp": [
+    8,
+    31
+   ],
+   "rooms": [
+    [
+     3,
+     2
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "max_speed": 0.375
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 151,
+   "name": "grey ghoul (other way)?",
+   "count": 2,
+   "hp": [
+    19
+   ],
+   "rooms": [
+    [
+     8,
+     2
+    ],
+    [
+     8,
+     3
+    ]
+   ],
+   "max_speed": 0.25
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 168,
+   "name": "orange beast (other way)?",
+   "count": 2,
+   "hp": [
+    6,
+    19
+   ],
+   "rooms": [
+    [
+     5,
+     3
+    ],
+    [
+     8,
+     5
+    ]
+   ],
+   "max_speed": 0.0
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 2,
+   "name": "orange beast?",
+   "count": 2,
+   "hp": [
+    12
+   ],
+   "rooms": [
+    [
+     7,
+     3
+    ],
+    [
+     8,
+     3
+    ]
+   ],
+   "max_speed": 0.5
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "count": 2,
+   "hp": [
+    19,
+    24
+   ],
+   "rooms": [
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ]
+   ],
+   "max_speed": 5.523
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 172,
+   "name": "yellow spiked mine",
+   "count": 2,
+   "hp": [
+    4
+   ],
+   "rooms": [
+    [
+     5,
+     8
+    ],
+    [
+     5,
+     9
+    ]
+   ],
+   "max_speed": 4.535
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 136,
+   "name": "skeleton?",
+   "count": 2,
+   "hp": [
+    9
+   ],
+   "rooms": [
+    [
+     6,
+     8
+    ],
+    [
+     7,
+     8
+    ]
+   ],
+   "max_speed": 0.625
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 178,
+   "name": "thrown bone (other way)",
+   "count": 2,
+   "hp": [
+    1
+   ],
+   "rooms": [
+    [
+     6,
+     8
+    ]
+   ],
+   "max_speed": 3.29
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 27,
+   "name": "green slime blob (bouncing)?",
+   "count": 1,
+   "hp": [
+    9
+   ],
+   "rooms": [
+    [
+     1,
+     1
+    ]
+   ],
+   "max_speed": 0.625
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 56,
+   "name": "blue wall turret",
+   "count": 1,
+   "hp": [
+    9
+   ],
+   "rooms": [
+    [
+     6,
+     1
+    ]
+   ],
+   "max_speed": 0.0
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 31,
+   "name": "metal ball?",
+   "count": 1,
+   "hp": [
+    7
+   ],
+   "rooms": [
+    [
+     3,
+     2
+    ]
+   ],
+   "max_speed": 1.28
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 14,
+   "name": "green parrot (other way)?",
+   "count": 1,
+   "hp": [
+    2
+   ],
+   "rooms": [
+    [
+     4,
+     2
+    ]
+   ],
+   "max_speed": 2.493
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 173,
+   "name": "green stone pillar (192 HP)",
+   "count": 1,
+   "hp": [
+    192
+   ],
+   "rooms": [
+    [
+     4,
+     3
+    ]
+   ],
+   "max_speed": 0.25
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 146,
+   "name": "hooded hunchback?",
+   "count": 1,
+   "hp": [
+    32
+   ],
+   "rooms": [
+    [
+     1,
+     4
+    ]
+   ],
+   "max_speed": 0.688
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 154,
+   "name": "winged gargoyle?",
+   "count": 1,
+   "hp": [
+    23
+   ],
+   "rooms": [
+    [
+     5,
+     4
+    ]
+   ],
+   "max_speed": 0.5
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 156,
+   "name": "zombie?",
+   "count": 1,
+   "hp": [
+    10
+   ],
+   "rooms": [
+    [
+     6,
+     6
+    ]
+   ],
+   "max_speed": 0.25
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 161,
+   "name": "pink bug",
+   "count": 1,
+   "hp": [
+    3
+   ],
+   "rooms": [
+    [
+     3,
+     8
+    ]
+   ],
+   "max_speed": 2.74
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 159,
+   "name": "orange crawler (other way)?",
+   "count": 1,
+   "hp": [
+    0
+   ],
+   "rooms": [
+    [
+     9,
+     8
+    ]
+   ],
+   "max_speed": 5.66
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 137,
+   "name": "skeleton (other way)?",
+   "count": 1,
+   "hp": [
+    6
+   ],
+   "rooms": [
+    [
+     9,
+     8
+    ]
+   ],
+   "max_speed": 0.625
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 192,
+   "name": "dragon (other way)?",
+   "count": 1,
+   "hp": [
+    16
+   ],
+   "rooms": [
+    [
+     1,
+     9
+    ]
+   ],
+   "max_speed": 1.105
+  },
+  {
+   "kind": "enemy",
+   "sprite_group": 158,
+   "name": "orange crawler?",
+   "count": 1,
+   "hp": [
+    4
+   ],
+   "rooms": [
+    [
+     7,
+     9
+    ]
+   ],
+   "max_speed": 2.072
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "count": 11,
+   "hp": [],
+   "rooms": [
+    [
+     3,
+     4
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     8,
+     5
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     9,
+     6
+    ]
+   ],
+   "max_speed": 5.523
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 175,
+   "name": "orange bouncing bomb?",
+   "count": 3,
+   "hp": [],
+   "rooms": [
+    [
+     3,
+     3
+    ],
+    [
+     8,
+     3
+    ],
+    [
+     8,
+     4
+    ]
+   ],
+   "max_speed": 6.043
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 174,
+   "name": "green bouncing bomb?",
+   "count": 2,
+   "hp": [],
+   "rooms": [
+    [
+     2,
+     4
+    ],
+    [
+     2,
+     5
+    ]
+   ],
+   "max_speed": 6.644
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 27,
+   "name": "green slime blob (bouncing)?",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     3,
+     0
+    ]
+   ],
+   "max_speed": 0.625
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 139,
+   "name": "steam puff?",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     3,
+     0
+    ]
+   ],
+   "max_speed": 0.25
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     4,
+     7
+    ]
+   ],
+   "max_speed": 3.607
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 172,
+   "name": "yellow spiked mine",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     4,
+     7
+    ]
+   ],
+   "max_speed": 3.607
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     4,
+     7
+    ]
+   ],
+   "max_speed": 3.607
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 170,
+   "name": "magenta spiked mine",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     4,
+     7
+    ]
+   ],
+   "max_speed": 3.607
+  },
+  {
+   "kind": "hazard (absorbs bullets)",
+   "sprite_group": 191,
+   "name": "dragon?",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     2,
+     8
+    ]
+   ],
+   "max_speed": 0.0
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 11,
+   "name": "water drip",
+   "count": 39,
+   "hp": [],
+   "rooms": [
+    [
+     9,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     8,
+     1
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     2
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     5
+    ],
+    [
+     2,
+     5
+    ],
+    [
+     6,
+     5
+    ],
+    [
+     7,
+     5
+    ],
+    [
+     8,
+     6
+    ],
+    [
+     6,
+     7
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     8,
+     8
+    ],
+    [
+     9,
+     8
+    ]
+   ],
+   "max_speed": 5.812
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "count": 15,
+   "hp": [],
+   "rooms": [
+    [
+     7,
+     0
+    ],
+    [
+     4,
+     1
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     7,
+     4
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     0,
+     7
+    ],
+    [
+     0,
+     8
+    ]
+   ],
+   "max_speed": 7.0
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 144,
+   "name": "red drip",
+   "count": 9,
+   "hp": [],
+   "rooms": [
+    [
+     3,
+     3
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     2,
+     9
+    ],
+    [
+     3,
+     9
+    ],
+    [
+     4,
+     9
+    ]
+   ],
+   "max_speed": 5.719
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 66,
+   "name": "blue spark",
+   "count": 6,
+   "hp": [],
+   "rooms": [
+    [
+     5,
+     0
+    ],
+    [
+     5,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "max_speed": 4.812
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 140,
+   "name": "green acid drip",
+   "count": 4,
+   "hp": [],
+   "rooms": [
+    [
+     4,
+     7
+    ],
+    [
+     5,
+     7
+    ],
+    [
+     4,
+     8
+    ],
+    [
+     2,
+     9
+    ]
+   ],
+   "max_speed": 5.719
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 44,
+   "name": "harmful debris",
+   "count": 3,
+   "hp": [],
+   "rooms": [
+    [
+     2,
+     0
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "max_speed": 6.0
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 142,
+   "name": "magenta drip",
+   "count": 3,
+   "hp": [],
+   "rooms": [
+    [
+     5,
+     4
+    ],
+    [
+     4,
+     8
+    ]
+   ],
+   "max_speed": 4.781
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 43,
+   "name": "harmful debris",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     1,
+     1
+    ]
+   ],
+   "max_speed": 5.5
+  },
+  {
+   "kind": "hazard (bullets pass)",
+   "sprite_group": 25,
+   "name": "spark",
+   "count": 1,
+   "hp": [],
+   "rooms": [
+    [
+     6,
+     1
+    ]
+   ],
+   "max_speed": 7.0
+  }
+ ],
+ "objects": [
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 193,
+   "name": "lizard man (enemy)",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "fires-trigger"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "on_death": {
+    "activates_object": 8
+   },
+   "path": {
+    "ticks": 31,
+    "bbox": [
+     96.8,
+     117.0,
+     96.8,
+     117.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 44,
+   "name": "harmful debris",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 21,
+    "bbox": [
+     128.0,
+     131.0,
+     212.0,
+     131.0
+    ],
+    "max_speed": 4.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 193,
+   "name": "lizard man (enemy)",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "fires-trigger"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "on_death": {
+    "activates_object": 9
+   },
+   "path": {
+    "ticks": 96,
+    "bbox": [
+     40.0,
+     62.0,
+     40.0,
+     62.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 44,
+   "name": "harmful debris",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 23,
+    "bbox": [
+     73.0,
+     77.0,
+     211.0,
+     77.0
+    ],
+    "max_speed": 6.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    0
+   ],
+   "object": 0,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 27,
+   "name": "green slime blob (bouncing)?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 98,
+    "bbox": [
+     31.8,
+     140.0,
+     63.0,
+     140.0
+    ],
+    "max_speed": 0.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    0
+   ],
+   "object": 4,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 139,
+   "name": "steam puff?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 538,
+    "bbox": [
+     136.0,
+     99.0,
+     203.8,
+     99.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    0
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 261,
+    "bbox": [
+     5.5,
+     87.4,
+     171.4,
+     205.0
+    ],
+    "max_speed": 5.641,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    0
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 735,
+    "bbox": [
+     15.4,
+     21.0,
+     201.9,
+     126.0
+    ],
+    "max_speed": 5.473,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    0
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 13,
+   "name": "green parrot?",
+   "hp": 7,
+   "hp_max": 7,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 7,
+    "rocket launcher": 4,
+    "heavy rocket launcher": 3,
+    "Uzi": 4,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 12,
+    "flame-thrower": 8
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 311,
+    "bbox": [
+     17.0,
+     10.0,
+     174.0,
+     130.9
+    ],
+    "max_speed": 3.209,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    0
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 15,
+   "name": "blue beetle?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 89,
+    "bbox": [
+     129.0,
+     133.3,
+     189.0,
+     181.0
+    ],
+    "max_speed": 3.816,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    0
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 16,
+   "name": "green slime blob?",
+   "hp": 7,
+   "hp_max": 7,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 7,
+    "rocket launcher": 4,
+    "heavy rocket launcher": 3,
+    "Uzi": 4,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 12,
+    "flame-thrower": 8
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 481,
+    "bbox": [
+     112.0,
+     98.0,
+     197.0,
+     98.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    0
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 66,
+   "name": "blue spark",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 77,
+    "bbox": [
+     5.3,
+     100.0,
+     193.0,
+     100.0
+    ],
+    "max_speed": 4.812,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    0
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 66,
+   "name": "blue spark",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 55,
+    "bbox": [
+     120.0,
+     100.0,
+     216.2,
+     100.0
+    ],
+    "max_speed": 3.438,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    0
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 15,
+   "name": "blue beetle?",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 220,
+    "bbox": [
+     14.0,
+     147.7,
+     91.5,
+     203.0
+    ],
+    "max_speed": 3.44,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    0
+   ],
+   "object": 10,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 301,
+    "bbox": [
+     15.4,
+     21.0,
+     201.9,
+     126.0
+    ],
+    "max_speed": 5.473,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    0
+   ],
+   "object": 11,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 112,
+    "bbox": [
+     15.0,
+     123.0,
+     98.0,
+     191.0
+    ],
+    "max_speed": 4.929,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    0
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 197,
+   "name": "kneeling hag?",
+   "hp": 15,
+   "hp_max": 15,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 15,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 5,
+    "Uzi": 8,
+    "flame-thrower": 5,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 16
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 628,
+    "bbox": [
+     12.9,
+     85.0,
+     131.0,
+     85.0
+    ],
+    "max_speed": 0.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    0
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 13,
+   "name": "green parrot?",
+   "hp": 15,
+   "hp_max": 15,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 15,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 5,
+    "Uzi": 8,
+    "flame-thrower": 5,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 16
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 310,
+    "bbox": [
+     12.0,
+     3.0,
+     169.0,
+     79.4
+    ],
+    "max_speed": 2.172,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    0
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 45,
+   "name": "falling stone",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "fires-trigger",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "on_death": {
+    "script": 133,
+    "note": "flag only"
+   },
+   "path": {
+    "ticks": 50,
+    "bbox": [
+     88.5,
+     26.0,
+     107.0,
+     110.0
+    ],
+    "max_speed": 4.528,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    0
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 154,
+    "bbox": [
+     9.8,
+     151.0,
+     76.0,
+     179.0
+    ],
+    "max_speed": 3.104,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    0
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 111,
+    "bbox": [
+     47.0,
+     136.0,
+     212.0,
+     136.0
+    ],
+    "max_speed": 3.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    0
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 149,
+    "bbox": [
+     47.0,
+     136.0,
+     212.0,
+     136.0
+    ],
+    "max_speed": 3.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    0
+   ],
+   "object": 0,
+   "kind": "destructible",
+   "class": "inert",
+   "sprite_group": 71,
+   "name": "rope",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": null,
+   "death_sound": null,
+   "path": {
+    "ticks": 0,
+    "bbox": [
+     96.0,
+     76.0,
+     96.0,
+     76.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    8,
+    0
+   ],
+   "object": 8,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 149,
+   "name": "helmeted skeleton warrior?",
+   "hp": 5,
+   "hp_max": 5,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 5,
+    "rocket launcher": 3,
+    "heavy rocket launcher": 2,
+    "Uzi": 3,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 8,
+    "flame-thrower": 4
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 572,
+    "bbox": [
+     34.5,
+     179.0,
+     186.4,
+     179.0
+    ],
+    "max_speed": 0.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    0
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 121,
+    "bbox": [
+     80.0,
+     14.0,
+     80.0,
+     195.0
+    ],
+    "max_speed": 5.719,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    0
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 163,
+    "bbox": [
+     176.0,
+     10.0,
+     176.0,
+     195.0
+    ],
+    "max_speed": 5.812,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    1
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 148,
+    "bbox": [
+     96.0,
+     76.0,
+     96.0,
+     157.0
+    ],
+    "max_speed": 3.75,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    1
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 27,
+   "name": "green slime blob (bouncing)?",
+   "hp": 9,
+   "hp_max": 9,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 9,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 3,
+    "Uzi": 5,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 8
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 651,
+    "bbox": [
+     8.0,
+     116.0,
+     163.6,
+     139.0
+    ],
+    "max_speed": 0.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    1
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 44,
+   "name": "harmful debris",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 31,
+    "bbox": [
+     40.0,
+     130.0,
+     210.5,
+     130.0
+    ],
+    "max_speed": 5.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    1
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 43,
+   "name": "harmful debris",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 28,
+    "bbox": [
+     7.0,
+     130.0,
+     161.0,
+     130.0
+    ],
+    "max_speed": 5.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    1
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 109,
+    "bbox": [
+     112.0,
+     15.0,
+     112.0,
+     138.0
+    ],
+    "max_speed": 4.594,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    1
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 105,
+    "bbox": [
+     144.0,
+     76.0,
+     144.0,
+     176.0
+    ],
+    "max_speed": 4.219,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    1
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 313,
+    "bbox": [
+     47.2,
+     33.9,
+     212.0,
+     177.5
+    ],
+    "max_speed": 4.239,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    1
+   ],
+   "object": 1,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 70,
+    "bbox": [
+     2.0,
+     41.0,
+     198.0,
+     41.0
+    ],
+    "max_speed": 7.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    1
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 534,
+    "bbox": [
+     27.0,
+     100.3,
+     206.0,
+     203.6
+    ],
+    "max_speed": 3.616,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    1
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 753,
+    "bbox": [
+     12.0,
+     86.3,
+     72.0,
+     203.0
+    ],
+    "max_speed": 3.273,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    1
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 683,
+    "bbox": [
+     25.6,
+     54.0,
+     212.0,
+     190.4
+    ],
+    "max_speed": 2.344,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    1
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 16,
+   "name": "green slime blob?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 415,
+    "bbox": [
+     63.0,
+     59.0,
+     131.5,
+     59.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    1
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 66,
+   "name": "blue spark",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 61,
+    "bbox": [
+     13.8,
+     60.0,
+     132.0,
+     60.0
+    ],
+    "max_speed": 3.812,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    1
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 66,
+   "name": "blue spark",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 66,
+    "bbox": [
+     71.0,
+     60.0,
+     209.2,
+     60.0
+    ],
+    "max_speed": 4.125,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    1
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 197,
+   "name": "kneeling hag?",
+   "hp": 9,
+   "hp_max": 9,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 9,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 3,
+    "Uzi": 5,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 8
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 686,
+    "bbox": [
+     8.9,
+     180.0,
+     110.5,
+     180.0
+    ],
+    "max_speed": 0.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    1
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 56,
+   "name": "blue wall turret",
+   "hp": 9,
+   "hp_max": 9,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 9,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 3,
+    "Uzi": 5,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 8
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 67,
+    "bbox": [
+     192.0,
+     152.0,
+     192.0,
+     152.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    6,
+    1
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 25,
+   "name": "spark",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 26,
+    "bbox": [
+     33.0,
+     160.0,
+     194.0,
+     160.0
+    ],
+    "max_speed": 7.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    1
+   ],
+   "object": 7,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 488,
+    "bbox": [
+     34.1,
+     22.0,
+     212.0,
+     180.3
+    ],
+    "max_speed": 2.017,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    1
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 149,
+   "name": "helmeted skeleton warrior?",
+   "hp": 5,
+   "hp_max": 5,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 5,
+    "rocket launcher": 3,
+    "heavy rocket launcher": 2,
+    "Uzi": 3,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 8,
+    "flame-thrower": 4
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 572,
+    "bbox": [
+     34.5,
+     179.0,
+     186.4,
+     179.0
+    ],
+    "max_speed": 0.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    1
+   ],
+   "object": 2,
+   "kind": "destructible",
+   "class": "inert",
+   "sprite_group": 167,
+   "name": "blue capsule (destructible)?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use",
+    "fires-trigger"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "on_death": {
+    "activates_object": 5
+   },
+   "path": {
+    "ticks": 496,
+    "bbox": [
+     176.0,
+     16.0,
+     176.0,
+     16.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    7,
+    1
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 351,
+    "bbox": [
+     53.0,
+     45.0,
+     211.0,
+     183.0
+    ],
+    "max_speed": 6.587,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    1
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 299,
+    "bbox": [
+     58.0,
+     45.0,
+     216.0,
+     202.9
+    ],
+    "max_speed": 7.295,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    1
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 150,
+   "name": "grey ghoul?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 620,
+    "bbox": [
+     1.3,
+     174.0,
+     79.0,
+     174.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    1
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 94,
+    "bbox": [
+     160.0,
+     16.0,
+     160.0,
+     150.2
+    ],
+    "max_speed": 4.969,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    1
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 150,
+   "name": "grey ghoul?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 620,
+    "bbox": [
+     106.3,
+     174.0,
+     184.0,
+     174.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    1
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 165,
+   "name": "orange ring?",
+   "hp": 2,
+   "hp_max": 2,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 2,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 416,
+    "bbox": [
+     35.4,
+     21.1,
+     199.6,
+     195.5
+    ],
+    "max_speed": 2.719,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    2
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 147,
+   "name": "hooded hunchback (other way)?",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 403,
+    "bbox": [
+     32.0,
+     173.0,
+     171.6,
+     173.0
+    ],
+    "max_speed": 0.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    2
+   ],
+   "object": 1,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 96,
+    "bbox": [
+     16.0,
+     132.0,
+     16.0,
+     195.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    2
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 103,
+    "bbox": [
+     32.0,
+     132.0,
+     32.0,
+     195.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    2
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 111,
+    "bbox": [
+     48.0,
+     132.0,
+     48.0,
+     195.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    2
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 119,
+    "bbox": [
+     64.0,
+     132.0,
+     64.0,
+     195.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    2
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 127,
+    "bbox": [
+     80.0,
+     132.0,
+     80.0,
+     195.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    2
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 147,
+   "name": "hooded hunchback (other way)?",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 403,
+    "bbox": [
+     48.0,
+     21.0,
+     187.6,
+     21.0
+    ],
+    "max_speed": 0.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    2
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 185,
+   "name": "green slime (flying)?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 361,
+    "bbox": [
+     55.0,
+     72.0,
+     126.0,
+     72.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    2
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 3,
+   "name": "caveman with a club?",
+   "hp": 31,
+   "hp_max": 31,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 31,
+    "rocket launcher": 16,
+    "heavy rocket launcher": 11,
+    "Uzi": 16,
+    "flame-thrower": 11,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 60,
+    "flame-thrower": 40
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 424,
+    "bbox": [
+     25.1,
+     180.0,
+     105.0,
+     180.0
+    ],
+    "max_speed": 0.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    2
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 31,
+   "name": "metal ball?",
+   "hp": 7,
+   "hp_max": 7,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 7,
+    "rocket launcher": 4,
+    "heavy rocket launcher": 3,
+    "Uzi": 4,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 12,
+    "flame-thrower": 8
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 131,
+    "bbox": [
+     149.8,
+     153.9,
+     187.8,
+     195.5
+    ],
+    "max_speed": 1.28,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    2
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 107,
+    "bbox": [
+     128.0,
+     14.0,
+     128.0,
+     119.8
+    ],
+    "max_speed": 4.406,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    2
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 101,
+    "bbox": [
+     80.0,
+     19.0,
+     80.0,
+     100.0
+    ],
+    "max_speed": 3.844,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    2
+   ],
+   "object": 0,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 89,
+    "bbox": [
+     128.0,
+     13.0,
+     128.0,
+     100.0
+    ],
+    "max_speed": 4.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    2
+   ],
+   "object": 1,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 103,
+    "bbox": [
+     176.0,
+     14.0,
+     176.0,
+     100.0
+    ],
+    "max_speed": 4.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    2
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 197,
+   "name": "kneeling hag?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 470,
+    "bbox": [
+     6.5,
+     182.0,
+     95.0,
+     182.0
+    ],
+    "max_speed": 0.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    2
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 14,
+   "name": "green parrot (other way)?",
+   "hp": 2,
+   "hp_max": 2,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 2,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 414,
+    "bbox": [
+     43.8,
+     31.5,
+     186.0,
+     118.6
+    ],
+    "max_speed": 2.493,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    2
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 45,
+   "name": "falling stone",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "fires-trigger",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "on_death": {
+    "script": 135,
+    "note": "flag only"
+   },
+   "path": {
+    "ticks": 145,
+    "bbox": [
+     45.0,
+     119.3,
+     108.0,
+     201.6
+    ],
+    "max_speed": 2.635,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    2
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 3,
+   "name": "caveman with a club?",
+   "hp": 8,
+   "hp_max": 8,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 8,
+    "rocket launcher": 4,
+    "heavy rocket launcher": 3,
+    "Uzi": 4,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 12,
+    "flame-thrower": 8
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 470,
+    "bbox": [
+     92.5,
+     85.0,
+     181.0,
+     85.0
+    ],
+    "max_speed": 0.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    2
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 16,
+   "name": "green slime blob?",
+   "hp": 9,
+   "hp_max": 9,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 9,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 3,
+    "Uzi": 5,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 8
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 851,
+    "bbox": [
+     18.0,
+     192.0,
+     195.5,
+     192.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    2
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 66,
+   "name": "blue spark",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 76,
+    "bbox": [
+     12.1,
+     193.0,
+     195.0,
+     193.0
+    ],
+    "max_speed": 4.75,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    2
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 66,
+   "name": "blue spark",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use",
+    "conditional"
+   ],
+   "path": {
+    "ticks": 75,
+    "bbox": [
+     26.0,
+     193.0,
+     204.1,
+     193.0
+    ],
+    "max_speed": 4.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    2
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 111,
+    "bbox": [
+     64.0,
+     14.0,
+     64.0,
+     138.3
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    2
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 70,
+    "bbox": [
+     15.0,
+     22.0,
+     211.0,
+     22.0
+    ],
+    "max_speed": 7.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    2
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 151,
+   "name": "grey ghoul (other way)?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 485,
+    "bbox": [
+     82.0,
+     117.0,
+     203.2,
+     117.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    2
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 90,
+    "bbox": [
+     80.0,
+     19.0,
+     80.0,
+     81.0
+    ],
+    "max_speed": 3.75,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    2
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 164,
+   "name": "black spider?",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 193,
+    "bbox": [
+     29.0,
+     17.0,
+     146.0,
+     214.0
+    ],
+    "max_speed": 5.422,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    2
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 150,
+   "name": "grey ghoul?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 714,
+    "bbox": [
+     3.8,
+     117.0,
+     93.3,
+     117.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 185,
+    "bbox": [
+     38.0,
+     161.0,
+     210.0,
+     201.6
+    ],
+    "max_speed": 3.162,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 215,
+    "bbox": [
+     24.0,
+     161.0,
+     209.0,
+     201.6
+    ],
+    "max_speed": 3.162,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 217,
+    "bbox": [
+     32.0,
+     162.0,
+     208.0,
+     202.6
+    ],
+    "max_speed": 3.162,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 206,
+    "bbox": [
+     49.0,
+     161.0,
+     208.0,
+     201.6
+    ],
+    "max_speed": 3.162,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    3
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 320,
+    "bbox": [
+     43.9,
+     33.9,
+     167.9,
+     157.8
+    ],
+    "max_speed": 1.574,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    3
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 400,
+    "bbox": [
+     43.9,
+     33.9,
+     167.9,
+     157.8
+    ],
+    "max_speed": 1.574,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    3
+   ],
+   "object": 7,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 480,
+    "bbox": [
+     43.9,
+     33.9,
+     167.9,
+     157.8
+    ],
+    "max_speed": 1.574,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    3
+   ],
+   "object": 8,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 560,
+    "bbox": [
+     43.9,
+     33.9,
+     167.9,
+     157.8
+    ],
+    "max_speed": 1.574,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    3
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 62,
+    "bbox": [
+     147.0,
+     97.5,
+     147.0,
+     144.0
+    ],
+    "max_speed": 2.906,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    3
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 162,
+   "name": "orange bug",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 54,
+    "bbox": [
+     161.0,
+     96.8,
+     161.0,
+     144.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    3
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 60,
+    "bbox": [
+     175.0,
+     93.6,
+     175.0,
+     144.0
+    ],
+    "max_speed": 3.266,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    3
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 96,
+    "bbox": [
+     16.0,
+     15.0,
+     16.0,
+     81.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    3
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 110,
+    "bbox": [
+     48.0,
+     15.0,
+     48.0,
+     138.0
+    ],
+    "max_speed": 4.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    3
+   ],
+   "object": 5,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 175,
+   "name": "orange bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "path": {
+    "ticks": 272,
+    "bbox": [
+     2.1,
+     17.0,
+     183.0,
+     198.0
+    ],
+    "max_speed": 5.667,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    3
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 173,
+   "name": "green stone pillar (192 HP)",
+   "hp": 192,
+   "hp_max": 192,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use",
+    "fires-trigger",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 192,
+    "rocket launcher": 96,
+    "heavy rocket launcher": 64,
+    "Uzi": 96,
+    "flame-thrower": 64,
+    "plasma gun": 2
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 380,
+    "flame-thrower": 252
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "on_death": {
+    "activates_object": 8
+   },
+   "path": {
+    "ticks": 603,
+    "bbox": [
+     16.0,
+     114.0,
+     167.0,
+     114.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    3
+   ],
+   "object": 9,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 155,
+   "name": "winged gargoyle (other way)?",
+   "hp": 21,
+   "hp_max": 21,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 21,
+    "rocket launcher": 11,
+    "heavy rocket launcher": 7,
+    "Uzi": 11,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 40,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 362,
+    "bbox": [
+     0.0,
+     181.0,
+     91.0,
+     181.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    3
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 168,
+   "name": "orange beast (other way)?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use",
+    "fires-trigger"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "on_death": {
+    "script": 46,
+    "note": null
+   },
+   "path": {
+    "ticks": 167,
+    "bbox": [
+     80.0,
+     44.0,
+     80.0,
+     44.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    6,
+    3
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 164,
+   "name": "black spider?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 528,
+    "bbox": [
+     0.0,
+     14.0,
+     207.0,
+     199.6
+    ],
+    "max_speed": 6.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    3
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 164,
+   "name": "black spider?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 552,
+    "bbox": [
+     0.0,
+     14.0,
+     207.0,
+     199.6
+    ],
+    "max_speed": 6.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    3
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 2,
+   "name": "orange beast?",
+   "hp": 12,
+   "hp_max": 12,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 12,
+    "rocket launcher": 6,
+    "heavy rocket launcher": 4,
+    "Uzi": 6,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 20,
+    "flame-thrower": 12
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 908,
+    "bbox": [
+     0.5,
+     177.0,
+     173.5,
+     177.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    3
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 165,
+   "name": "orange ring?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "rearm"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 493,
+    "bbox": [
+     16.3,
+     23.4,
+     191.8,
+     190.5
+    ],
+    "max_speed": 2.655,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    3
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 151,
+   "name": "grey ghoul (other way)?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 750,
+    "bbox": [
+     19.0,
+     41.0,
+     113.0,
+     41.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    3
+   ],
+   "object": 4,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 175,
+   "name": "orange bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "path": {
+    "ticks": 451,
+    "bbox": [
+     16.0,
+     65.0,
+     194.0,
+     215.0
+    ],
+    "max_speed": 4.279,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    3
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 2,
+   "name": "orange beast?",
+   "hp": 12,
+   "hp_max": 12,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 12,
+    "rocket launcher": 6,
+    "heavy rocket launcher": 4,
+    "Uzi": 6,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 20,
+    "flame-thrower": 12
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 952,
+    "bbox": [
+     61.5,
+     120.0,
+     174.0,
+     125.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    3
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 164,
+   "name": "black spider?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 425,
+    "bbox": [
+     67.0,
+     20.0,
+     194.0,
+     142.0
+    ],
+    "max_speed": 4.244,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    4
+   ],
+   "object": 1,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 111,
+    "bbox": [
+     128.0,
+     9.0,
+     128.0,
+     138.2
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    4
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 149,
+    "bbox": [
+     80.0,
+     17.0,
+     80.0,
+     100.0
+    ],
+    "max_speed": 3.844,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    4
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 320,
+    "bbox": [
+     79.9,
+     17.0,
+     192.9,
+     132.1
+    ],
+    "max_speed": 1.419,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    4
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 400,
+    "bbox": [
+     79.9,
+     17.0,
+     192.9,
+     132.1
+    ],
+    "max_speed": 1.419,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    4
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 480,
+    "bbox": [
+     79.9,
+     17.0,
+     192.9,
+     132.1
+    ],
+    "max_speed": 1.419,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    4
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 560,
+    "bbox": [
+     79.9,
+     17.0,
+     192.9,
+     132.1
+    ],
+    "max_speed": 1.419,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    4
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 147,
+   "name": "hooded hunchback (other way)?",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 577,
+    "bbox": [
+     32.9,
+     59.0,
+     184.9,
+     59.0
+    ],
+    "max_speed": 0.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    4
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 146,
+   "name": "hooded hunchback?",
+   "hp": 32,
+   "hp_max": 32,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 32,
+    "rocket launcher": 16,
+    "heavy rocket launcher": 11,
+    "Uzi": 16,
+    "flame-thrower": 11,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 60,
+    "flame-thrower": 40
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 582,
+    "bbox": [
+     7.3,
+     173.0,
+     185.3,
+     173.0
+    ],
+    "max_speed": 0.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    4
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 155,
+   "name": "winged gargoyle (other way)?",
+   "hp": 8,
+   "hp_max": 8,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 8,
+    "rocket launcher": 4,
+    "heavy rocket launcher": 3,
+    "Uzi": 4,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 12,
+    "flame-thrower": 8
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 318,
+    "bbox": [
+     59.0,
+     67.0,
+     139.0,
+     67.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    4
+   ],
+   "object": 5,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 174,
+   "name": "green bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 111,
+    "bbox": [
+     140.0,
+     16.0,
+     196.0,
+     212.5
+    ],
+    "max_speed": 6.644,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    4
+   ],
+   "object": 7,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 165,
+   "name": "orange ring?",
+   "hp": 21,
+   "hp_max": 21,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 21,
+    "rocket launcher": 11,
+    "heavy rocket launcher": 7,
+    "Uzi": 11,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 40,
+    "flame-thrower": 24
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 128,
+    "bbox": [
+     124.6,
+     119.0,
+     180.9,
+     174.0
+    ],
+    "max_speed": 1.769,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": 24,
+   "hp_max": 24,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 24,
+    "rocket launcher": 12,
+    "heavy rocket launcher": 8,
+    "Uzi": 12,
+    "flame-thrower": 8,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 44,
+    "flame-thrower": 28
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 339,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 1,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 355,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 2,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 371,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 3,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 387,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 4,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 403,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 5,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 419,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 6,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 435,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    4
+   ],
+   "object": 7,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 451,
+    "bbox": [
+     19.0,
+     81.1,
+     194.0,
+     188.0
+    ],
+    "max_speed": 5.021,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 185,
+   "name": "green slime (flying)?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": null,
+   "death_sound": 6,
+   "path": {
+    "ticks": 388,
+    "bbox": [
+     49.0,
+     167.0,
+     108.5,
+     167.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "object": 7,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 259,
+    "bbox": [
+     0.9,
+     14.0,
+     197.0,
+     198.6
+    ],
+    "max_speed": 5.523,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "object": 8,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "path": {
+    "ticks": 335,
+    "bbox": [
+     0.9,
+     14.0,
+     197.0,
+     198.6
+    ],
+    "max_speed": 5.523,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    4
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 154,
+   "name": "winged gargoyle?",
+   "hp": 23,
+   "hp_max": 23,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 23,
+    "rocket launcher": 12,
+    "heavy rocket launcher": 8,
+    "Uzi": 12,
+    "flame-thrower": 8,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 44,
+    "flame-thrower": 28
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 647,
+    "bbox": [
+     1.0,
+     181.0,
+     163.0,
+     181.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    4
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 142,
+   "name": "magenta drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 106,
+    "bbox": [
+     96.0,
+     90.0,
+     96.0,
+     195.8
+    ],
+    "max_speed": 4.312,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    4
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 142,
+   "name": "magenta drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 116,
+    "bbox": [
+     128.0,
+     90.0,
+     128.0,
+     195.8
+    ],
+    "max_speed": 4.312,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    4
+   ],
+   "object": 0,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 148,
+    "bbox": [
+     15.0,
+     136.0,
+     211.0,
+     136.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    4
+   ],
+   "object": 1,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 186,
+    "bbox": [
+     15.0,
+     136.0,
+     211.0,
+     136.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    4
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 224,
+    "bbox": [
+     15.0,
+     136.0,
+     211.0,
+     136.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    4
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 94,
+    "bbox": [
+     12.0,
+     174.0,
+     213.0,
+     174.0
+    ],
+    "max_speed": 3.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    4
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 133,
+    "bbox": [
+     12.0,
+     174.0,
+     213.0,
+     174.0
+    ],
+    "max_speed": 3.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "object": 0,
+   "kind": "destructible",
+   "class": "inert",
+   "sprite_group": 167,
+   "name": "blue capsule (destructible)?",
+   "hp": 19,
+   "hp_max": 19,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 19,
+    "rocket launcher": 10,
+    "heavy rocket launcher": 7,
+    "Uzi": 10,
+    "flame-thrower": 7,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 36,
+    "flame-thrower": 24
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 416,
+    "bbox": [
+     184.0,
+     15.0,
+     184.0,
+     15.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 312,
+    "bbox": [
+     0.0,
+     44.0,
+     197.4,
+     139.7
+    ],
+    "max_speed": 6.739,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 152,
+   "name": "small dart?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 296,
+    "bbox": [
+     0.0,
+     44.0,
+     200.8,
+     176.3
+    ],
+    "max_speed": 7.013,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    4
+   ],
+   "object": 3,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 175,
+   "name": "orange bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 324,
+    "bbox": [
+     104.0,
+     0.0,
+     199.4,
+     219.8
+    ],
+    "max_speed": 6.043,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    5
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 5,
+   "hp_max": 5,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 5,
+    "rocket launcher": 3,
+    "heavy rocket launcher": 2,
+    "Uzi": 3,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 8,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 206,
+    "bbox": [
+     16.0,
+     49.0,
+     211.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    5
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 5,
+   "hp_max": 5,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 5,
+    "rocket launcher": 3,
+    "heavy rocket launcher": 2,
+    "Uzi": 3,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 8,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 275,
+    "bbox": [
+     16.0,
+     49.0,
+     211.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    5
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 5,
+   "hp_max": 5,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 5,
+    "rocket launcher": 3,
+    "heavy rocket launcher": 2,
+    "Uzi": 3,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 8,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 339,
+    "bbox": [
+     16.0,
+     49.0,
+     211.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    5
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 96,
+    "bbox": [
+     112.0,
+     15.0,
+     112.0,
+     81.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    5
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 109,
+    "bbox": [
+     144.0,
+     15.0,
+     144.0,
+     138.0
+    ],
+    "max_speed": 4.594,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    5
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 185,
+   "name": "green slime (flying)?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 622,
+    "bbox": [
+     82.0,
+     167.0,
+     200.0,
+     167.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    5
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 155,
+   "name": "winged gargoyle (other way)?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 362,
+    "bbox": [
+     92.0,
+     124.0,
+     183.0,
+     124.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    5
+   ],
+   "object": 2,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 174,
+   "name": "green bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 411,
+    "bbox": [
+     94.5,
+     0.0,
+     211.0,
+     141.0
+    ],
+    "max_speed": 4.776,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    5
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 120,
+    "bbox": [
+     32.0,
+     15.0,
+     32.0,
+     195.0
+    ],
+    "max_speed": 5.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    5
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 138,
+    "bbox": [
+     48.0,
+     15.0,
+     48.0,
+     195.0
+    ],
+    "max_speed": 5.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    5
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 155,
+    "bbox": [
+     64.0,
+     15.0,
+     64.0,
+     195.0
+    ],
+    "max_speed": 5.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    5
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 147,
+   "name": "hooded hunchback (other way)?",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 660,
+    "bbox": [
+     2.3,
+     173.0,
+     184.4,
+     173.0
+    ],
+    "max_speed": 0.688,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    5
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 78,
+    "bbox": [
+     48.0,
+     46.5,
+     48.0,
+     144.0
+    ],
+    "max_speed": 4.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    5
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 163,
+   "name": "green bug",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 62,
+    "bbox": [
+     64.0,
+     82.0,
+     64.0,
+     144.0
+    ],
+    "max_speed": 3.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    5
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 86,
+    "bbox": [
+     79.0,
+     25.8,
+     79.0,
+     144.0
+    ],
+    "max_speed": 5.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    5
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 163,
+   "name": "green bug",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 70,
+    "bbox": [
+     94.0,
+     65.2,
+     94.0,
+     144.0
+    ],
+    "max_speed": 4.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    5
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 185,
+   "name": "green slime (flying)?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 715,
+    "bbox": [
+     22.0,
+     15.0,
+     156.5,
+     82.0
+    ],
+    "max_speed": 3.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    5
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 155,
+   "name": "winged gargoyle (other way)?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 352,
+    "bbox": [
+     89.0,
+     181.0,
+     177.5,
+     181.0
+    ],
+    "max_speed": 0.5,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    5
+   ],
+   "object": 1,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 99,
+    "bbox": [
+     160.0,
+     11.0,
+     160.0,
+     171.4
+    ],
+    "max_speed": 5.438,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    5
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 106,
+    "bbox": [
+     144.0,
+     12.0,
+     144.0,
+     172.4
+    ],
+    "max_speed": 5.438,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    5
+   ],
+   "object": 0,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 97,
+    "bbox": [
+     64.0,
+     10.0,
+     64.0,
+     81.0
+    ],
+    "max_speed": 3.469,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    5
+   ],
+   "object": 1,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 103,
+    "bbox": [
+     48.0,
+     10.0,
+     48.0,
+     81.0
+    ],
+    "max_speed": 3.469,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    5
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 108,
+    "bbox": [
+     32.0,
+     10.0,
+     32.0,
+     81.0
+    ],
+    "max_speed": 3.469,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    5
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 112,
+    "bbox": [
+     16.0,
+     13.0,
+     16.0,
+     81.0
+    ],
+    "max_speed": 3.469,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    5
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 101,
+    "bbox": [
+     48.0,
+     109.0,
+     48.0,
+     195.0
+    ],
+    "max_speed": 3.844,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    5
+   ],
+   "object": 2,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 292,
+    "bbox": [
+     53.5,
+     0.0,
+     142.0,
+     219.4
+    ],
+    "max_speed": 4.901,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    5
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 168,
+   "name": "orange beast (other way)?",
+   "hp": 6,
+   "hp_max": 6,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 6,
+    "rocket launcher": 3,
+    "heavy rocket launcher": 2,
+    "Uzi": 3,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 8,
+    "flame-thrower": 4
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 167,
+    "bbox": [
+     160.0,
+     25.0,
+     160.0,
+     25.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    8,
+    5
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 150,
+   "name": "grey ghoul?",
+   "hp": 32,
+   "hp_max": 32,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 32,
+    "rocket launcher": 16,
+    "heavy rocket launcher": 11,
+    "Uzi": 16,
+    "flame-thrower": 11,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 60,
+    "flame-thrower": 40
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 528,
+    "bbox": [
+     92.8,
+     117.0,
+     159.0,
+     117.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    5
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 165,
+   "name": "orange ring?",
+   "hp": 7,
+   "hp_max": 7,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 7,
+    "rocket launcher": 4,
+    "heavy rocket launcher": 3,
+    "Uzi": 4,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 12,
+    "flame-thrower": 8
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 128,
+    "bbox": [
+     102.6,
+     117.0,
+     201.8,
+     196.0
+    ],
+    "max_speed": 3.438,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    5
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 15,
+   "hp_max": 15,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 15,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 5,
+    "Uzi": 8,
+    "flame-thrower": 5,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 16
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 271,
+    "bbox": [
+     15.2,
+     0.0,
+     173.8,
+     140.0
+    ],
+    "max_speed": 5.101,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    6
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 92,
+    "bbox": [
+     103.5,
+     144.0,
+     172.5,
+     144.0
+    ],
+    "max_speed": 2.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    6
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 108,
+    "bbox": [
+     59.8,
+     144.0,
+     154.2,
+     144.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    6
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 76,
+    "bbox": [
+     51.3,
+     144.0,
+     98.8,
+     144.0
+    ],
+    "max_speed": 2.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    6
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 191,
+   "name": "dragon?",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 314,
+    "bbox": [
+     16.0,
+     41.0,
+     174.0,
+     41.0
+    ],
+    "max_speed": 1.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    6
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 45,
+   "name": "falling stone",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 129,
+    "bbox": [
+     154.5,
+     61.0,
+     187.0,
+     145.4
+    ],
+    "max_speed": 3.165,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    6
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 45,
+   "name": "falling stone",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "vanish",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 129,
+    "bbox": [
+     25.0,
+     61.0,
+     57.5,
+     145.4
+    ],
+    "max_speed": 3.165,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 163,
+   "name": "green bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 62,
+    "bbox": [
+     30.0,
+     82.0,
+     30.0,
+     144.0
+    ],
+    "max_speed": 3.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 78,
+    "bbox": [
+     44.0,
+     46.5,
+     44.0,
+     144.0
+    ],
+    "max_speed": 4.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 163,
+   "name": "green bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 86,
+    "bbox": [
+     58.0,
+     25.8,
+     58.0,
+     144.0
+    ],
+    "max_speed": 5.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 71,
+    "bbox": [
+     71.0,
+     63.0,
+     71.0,
+     144.0
+    ],
+    "max_speed": 4.438,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 163,
+   "name": "green bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 81,
+    "bbox": [
+     84.0,
+     38.9,
+     84.0,
+     144.0
+    ],
+    "max_speed": 5.062,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 83,
+    "bbox": [
+     98.0,
+     33.8,
+     98.0,
+     144.0
+    ],
+    "max_speed": 5.188,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    6
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 73,
+    "bbox": [
+     114.0,
+     174.0,
+     216.7,
+     174.0
+    ],
+    "max_speed": 3.312,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    6
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 157,
+   "name": "zombie (other way)?",
+   "hp": 15,
+   "hp_max": 15,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 15,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 5,
+    "Uzi": 8,
+    "flame-thrower": 5,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 16
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 301,
+    "bbox": [
+     9.0,
+     158.0,
+     84.2,
+     158.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    6
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 179,
+   "name": "small arrow?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 442,
+    "bbox": [
+     14.5,
+     90.0,
+     180.2,
+     155.6
+    ],
+    "max_speed": 2.525,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    6
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 179,
+   "name": "small arrow?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 100,
+    "bbox": [
+     163.0,
+     79.0,
+     163.0,
+     79.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    6,
+    6
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 156,
+   "name": "zombie?",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 1514,
+    "bbox": [
+     6.0,
+     118.0,
+     183.3,
+     118.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    6
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 157,
+   "name": "zombie (other way)?",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 1268,
+    "bbox": [
+     58.8,
+     118.0,
+     186.8,
+     118.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    6
+   ],
+   "object": 8,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 157,
+   "name": "zombie (other way)?",
+   "hp": 10,
+   "hp_max": 10,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 10,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 4,
+    "Uzi": 5,
+    "flame-thrower": 4,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 12
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 1266,
+    "bbox": [
+     49.0,
+     100.0,
+     177.0,
+     100.0
+    ],
+    "max_speed": 0.25,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    6
+   ],
+   "object": 9,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 179,
+   "name": "small arrow?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 530,
+    "bbox": [
+     3.4,
+     52.0,
+     193.1,
+     107.5
+    ],
+    "max_speed": 2.169,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    6
+   ],
+   "object": 1,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 474,
+    "bbox": [
+     16.0,
+     0.0,
+     210.1,
+     122.0
+    ],
+    "max_speed": 4.032,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    6
+   ],
+   "object": 2,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 106,
+    "bbox": [
+     160.0,
+     12.0,
+     160.0,
+     119.0
+    ],
+    "max_speed": 4.312,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    6
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 99,
+    "bbox": [
+     144.0,
+     18.0,
+     144.0,
+     119.0
+    ],
+    "max_speed": 4.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    6
+   ],
+   "object": 0,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 176,
+   "name": "bouncing bomb?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 489,
+    "bbox": [
+     0.0,
+     122.0,
+     185.9,
+     122.0
+    ],
+    "max_speed": 0.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    6
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 164,
+   "name": "black spider?",
+   "hp": 48,
+   "hp_max": 48,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 48,
+    "rocket launcher": 24,
+    "heavy rocket launcher": 16,
+    "Uzi": 24,
+    "flame-thrower": 16,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 92,
+    "flame-thrower": 60
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 101,
+    "bbox": [
+     34.0,
+     21.0,
+     34.0,
+     123.5
+    ],
+    "max_speed": 4.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    6
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 164,
+   "name": "black spider?",
+   "hp": 32,
+   "hp_max": 32,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 32,
+    "rocket launcher": 16,
+    "heavy rocket launcher": 11,
+    "Uzi": 16,
+    "flame-thrower": 11,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 60,
+    "flame-thrower": 40
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 140,
+    "bbox": [
+     58.0,
+     21.0,
+     58.0,
+     123.5
+    ],
+    "max_speed": 4.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    7
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 111,
+    "bbox": [
+     10.0,
+     193.0,
+     148.0,
+     193.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    7
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 149,
+    "bbox": [
+     10.0,
+     193.0,
+     148.0,
+     193.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    7
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 191,
+   "name": "dragon?",
+   "hp": 32,
+   "hp_max": 32,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 32,
+    "rocket launcher": 16,
+    "heavy rocket launcher": 11,
+    "Uzi": 16,
+    "flame-thrower": 11,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 60,
+    "flame-thrower": 40
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 470,
+    "bbox": [
+     11.5,
+     29.0,
+     170.8,
+     163.1
+    ],
+    "max_speed": 1.835,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    7
+   ],
+   "object": 1,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 320,
+    "bbox": [
+     13.9,
+     36.9,
+     190.5,
+     187.7
+    ],
+    "max_speed": 3.607,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    7
+   ],
+   "object": 2,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 172,
+   "name": "yellow spiked mine",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 365,
+    "bbox": [
+     13.9,
+     36.9,
+     190.5,
+     187.7
+    ],
+    "max_speed": 3.607,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    7
+   ],
+   "object": 3,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 407,
+    "bbox": [
+     13.9,
+     36.9,
+     190.5,
+     187.7
+    ],
+    "max_speed": 3.607,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    7
+   ],
+   "object": 4,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 170,
+   "name": "magenta spiked mine",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 451,
+    "bbox": [
+     13.9,
+     36.9,
+     190.5,
+     187.7
+    ],
+    "max_speed": 3.607,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    7
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 140,
+   "name": "green acid drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 90,
+    "bbox": [
+     128.0,
+     53.0,
+     128.0,
+     100.0
+    ],
+    "max_speed": 2.812,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    7
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 140,
+   "name": "green acid drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 121,
+    "bbox": [
+     64.0,
+     9.0,
+     64.0,
+     195.0
+    ],
+    "max_speed": 5.719,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    7
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 127,
+    "bbox": [
+     48.0,
+     9.0,
+     48.0,
+     195.0
+    ],
+    "max_speed": 5.719,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    7
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 102,
+    "bbox": [
+     144.0,
+     133.0,
+     144.0,
+     195.0
+    ],
+    "max_speed": 3.281,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    7
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 177,
+   "name": "thrown bone",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 417,
+    "bbox": [
+     49.0,
+     39.5,
+     158.0,
+     103.0
+    ],
+    "max_speed": 2.071,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    8
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 149,
+    "bbox": [
+     15.0,
+     98.0,
+     203.0,
+     98.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    8
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 187,
+    "bbox": [
+     15.0,
+     98.0,
+     203.0,
+     98.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    0,
+    8
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 60,
+   "name": "turret fireball",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 225,
+    "bbox": [
+     15.0,
+     98.0,
+     203.0,
+     98.0
+    ],
+    "max_speed": 2.0,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    8
+   ],
+   "object": 3,
+   "kind": "hazard (absorbs bullets)",
+   "class": "harmful",
+   "sprite_group": 191,
+   "name": "dragon?",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "chain-next",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 41,
+    "bbox": [
+     133.0,
+     139.0,
+     133.0,
+     139.0
+    ],
+    "max_speed": 0.0,
+    "moves": false
+   }
+  },
+  {
+   "room": [
+    2,
+    8
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 191,
+   "name": "dragon?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "disable-forever",
+   "flags": [
+    "active",
+    "chain-next",
+    "keep-after-use",
+    "conditional"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 371,
+    "bbox": [
+     0.3,
+     127.4,
+     133.0,
+     178.8
+    ],
+    "max_speed": 1.946,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    8
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 161,
+    "bbox": [
+     75.0,
+     114.9,
+     137.7,
+     201.6
+    ],
+    "max_speed": 3.317,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    8
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 162,
+   "name": "orange bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 144,
+    "bbox": [
+     19.0,
+     101.8,
+     75.2,
+     201.6
+    ],
+    "max_speed": 4.416,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    8
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 161,
+   "name": "pink bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 183,
+    "bbox": [
+     89.0,
+     69.5,
+     140.9,
+     144.0
+    ],
+    "max_speed": 2.74,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    8
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 163,
+   "name": "green bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 122,
+    "bbox": [
+     137.0,
+     30.7,
+     186.0,
+     87.0
+    ],
+    "max_speed": 2.741,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    8
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 15,
+   "name": "blue beetle?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 62,
+    "bbox": [
+     162.0,
+     139.0,
+     162.0,
+     201.0
+    ],
+    "max_speed": 3.875,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    8
+   ],
+   "object": 3,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 140,
+   "name": "green acid drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 118,
+    "bbox": [
+     16.0,
+     68.0,
+     16.0,
+     195.0
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    8
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 117,
+    "bbox": [
+     32.0,
+     72.0,
+     32.0,
+     196.3
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    8
+   ],
+   "object": 5,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 126,
+    "bbox": [
+     48.0,
+     68.0,
+     48.0,
+     195.0
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    8
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 142,
+   "name": "magenta drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 111,
+    "bbox": [
+     80.0,
+     68.0,
+     80.0,
+     195.0
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    8
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 141,
+    "bbox": [
+     112.0,
+     69.0,
+     112.0,
+     195.0
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    8
+   ],
+   "object": 8,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 124,
+    "bbox": [
+     128.0,
+     72.0,
+     128.0,
+     196.3
+    ],
+    "max_speed": 4.781,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    8
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 170,
+   "name": "magenta spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 469,
+    "bbox": [
+     22.6,
+     38.8,
+     188.9,
+     183.4
+    ],
+    "max_speed": 4.535,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    8
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 485,
+    "bbox": [
+     22.6,
+     38.8,
+     188.9,
+     183.4
+    ],
+    "max_speed": 4.535,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    8
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 497,
+    "bbox": [
+     22.6,
+     38.8,
+     188.9,
+     183.4
+    ],
+    "max_speed": 4.535,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    8
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 172,
+   "name": "yellow spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 508,
+    "bbox": [
+     22.6,
+     38.8,
+     188.9,
+     183.4
+    ],
+    "max_speed": 4.535,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    8
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 170,
+   "name": "magenta spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 518,
+    "bbox": [
+     22.6,
+     38.8,
+     188.9,
+     183.4
+    ],
+    "max_speed": 4.535,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    8
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 533,
+    "bbox": [
+     22.6,
+     38.8,
+     188.9,
+     183.4
+    ],
+    "max_speed": 4.535,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    8
+   ],
+   "object": 0,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 136,
+   "name": "skeleton?",
+   "hp": 9,
+   "hp_max": 9,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 9,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 3,
+    "Uzi": 5,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 8
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 483,
+    "bbox": [
+     44.8,
+     57.0,
+     196.6,
+     57.0
+    ],
+    "max_speed": 0.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    8
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 178,
+   "name": "thrown bone (other way)",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 765,
+    "bbox": [
+     10.0,
+     23.0,
+     209.0,
+     200.0
+    ],
+    "max_speed": 3.29,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    8
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 178,
+   "name": "thrown bone (other way)",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 1023,
+    "bbox": [
+     10.0,
+     23.0,
+     209.0,
+     200.0
+    ],
+    "max_speed": 3.29,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    8
+   ],
+   "object": 7,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 136,
+   "name": "skeleton?",
+   "hp": 9,
+   "hp_max": 9,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 9,
+    "rocket launcher": 5,
+    "heavy rocket launcher": 3,
+    "Uzi": 5,
+    "flame-thrower": 3,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 16,
+    "flame-thrower": 8
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 306,
+    "bbox": [
+     75.8,
+     171.0,
+     172.0,
+     171.0
+    ],
+    "max_speed": 0.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    8,
+    8
+   ],
+   "object": 4,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 120,
+    "bbox": [
+     192.0,
+     19.0,
+     192.0,
+     196.3
+    ],
+    "max_speed": 5.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    8
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 159,
+   "name": "orange crawler (other way)?",
+   "hp": 0,
+   "hp_max": 0,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "stop",
+   "flags": [
+    "active"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 71,
+    "bbox": [
+     22.3,
+     114.0,
+     194.5,
+     158.1
+    ],
+    "max_speed": 5.66,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    8
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 101,
+    "bbox": [
+     48.0,
+     111.0,
+     48.0,
+     195.7
+    ],
+    "max_speed": 3.844,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    8
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 11,
+   "name": "water drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 137,
+    "bbox": [
+     48.0,
+     15.0,
+     48.0,
+     81.0
+    ],
+    "max_speed": 3.375,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    9,
+    8
+   ],
+   "object": 9,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 137,
+   "name": "skeleton (other way)?",
+   "hp": 6,
+   "hp_max": 6,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 6,
+    "rocket launcher": 3,
+    "heavy rocket launcher": 2,
+    "Uzi": 3,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 8,
+    "flame-thrower": 4
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 336,
+    "bbox": [
+     0.0,
+     171.0,
+     105.6,
+     171.0
+    ],
+    "max_speed": 0.625,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    1,
+    9
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 192,
+   "name": "dragon (other way)?",
+   "hp": 16,
+   "hp_max": 16,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 16,
+    "rocket launcher": 8,
+    "heavy rocket launcher": 6,
+    "Uzi": 8,
+    "flame-thrower": 6,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 28,
+    "flame-thrower": 20
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 391,
+    "bbox": [
+     13.0,
+     87.2,
+     172.0,
+     110.2
+    ],
+    "max_speed": 1.105,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    9
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 140,
+   "name": "green acid drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 118,
+    "bbox": [
+     160.0,
+     72.0,
+     160.0,
+     138.0
+    ],
+    "max_speed": 3.469,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    2,
+    9
+   ],
+   "object": 8,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 122,
+    "bbox": [
+     176.0,
+     69.0,
+     176.0,
+     138.0
+    ],
+    "max_speed": 3.469,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    9
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 857,
+    "bbox": [
+     0.0,
+     49.0,
+     199.5,
+     144.0
+    ],
+    "max_speed": 2.672,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    9
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 162,
+   "name": "orange bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 248,
+    "bbox": [
+     5.0,
+     82.0,
+     131.0,
+     144.0
+    ],
+    "max_speed": 4.002,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    9
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 162,
+   "name": "orange bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 184,
+    "bbox": [
+     23.0,
+     75.0,
+     117.0,
+     144.0
+    ],
+    "max_speed": 5.836,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    9
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 160,
+   "name": "red bug",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 312,
+    "bbox": [
+     4.0,
+     95.2,
+     162.0,
+     144.0
+    ],
+    "max_speed": 2.635,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    3,
+    9
+   ],
+   "object": 6,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 85,
+    "bbox": [
+     144.0,
+     163.0,
+     144.0,
+     195.0
+    ],
+    "max_speed": 2.344,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    9
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 414,
+    "bbox": [
+     11.0,
+     18.0,
+     210.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    9
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 498,
+    "bbox": [
+     11.0,
+     18.0,
+     210.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    9
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 582,
+    "bbox": [
+     11.0,
+     18.0,
+     210.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    9
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 666,
+    "bbox": [
+     11.0,
+     18.0,
+     210.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    9
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 30,
+   "name": "white energy ball?",
+   "hp": 3,
+   "hp_max": 3,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 3,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 1,
+    "Uzi": 2,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 750,
+    "bbox": [
+     11.0,
+     18.0,
+     210.0,
+     201.0
+    ],
+    "max_speed": 3.76,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    9
+   ],
+   "object": 7,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 85,
+    "bbox": [
+     32.0,
+     162.0,
+     32.0,
+     195.0
+    ],
+    "max_speed": 2.344,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    4,
+    9
+   ],
+   "object": 8,
+   "kind": "hazard (bullets pass)",
+   "class": "harmful",
+   "sprite_group": 144,
+   "name": "red drip",
+   "hp": null,
+   "hp_max": null,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "path": {
+    "ticks": 86,
+    "bbox": [
+     96.0,
+     159.0,
+     96.0,
+     195.0
+    ],
+    "max_speed": 2.438,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    9
+   ],
+   "object": 1,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 578,
+    "bbox": [
+     9.7,
+     22.5,
+     179.2,
+     183.8
+    ],
+    "max_speed": 2.171,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    9
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 595,
+    "bbox": [
+     9.7,
+     22.5,
+     179.2,
+     183.8
+    ],
+    "max_speed": 2.171,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    9
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 170,
+   "name": "magenta spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 611,
+    "bbox": [
+     9.7,
+     22.5,
+     179.2,
+     183.8
+    ],
+    "max_speed": 2.171,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    9
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 172,
+   "name": "yellow spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 626,
+    "bbox": [
+     9.7,
+     22.5,
+     179.2,
+     183.8
+    ],
+    "max_speed": 2.171,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    9
+   ],
+   "object": 5,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 169,
+   "name": "red spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 373,
+    "bbox": [
+     44.5,
+     11.8,
+     174.4,
+     117.0
+    ],
+    "max_speed": 3.19,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    5,
+    9
+   ],
+   "object": 6,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 171,
+   "name": "green spiked mine",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 498,
+    "bbox": [
+     44.5,
+     11.8,
+     174.4,
+     117.0
+    ],
+    "max_speed": 3.19,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    9
+   ],
+   "object": 2,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 177,
+   "name": "thrown bone",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 380,
+    "bbox": [
+     18.0,
+     78.0,
+     210.0,
+     200.4
+    ],
+    "max_speed": 2.764,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    9
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 177,
+   "name": "thrown bone",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 508,
+    "bbox": [
+     18.0,
+     78.0,
+     210.0,
+     200.4
+    ],
+    "max_speed": 2.764,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    6,
+    9
+   ],
+   "object": 4,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 177,
+   "name": "thrown bone",
+   "hp": 1,
+   "hp_max": 1,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002"
+   ],
+   "hits_to_kill": {
+    "starting gun": 1,
+    "rocket launcher": 1,
+    "heavy rocket launcher": 1,
+    "Uzi": 1,
+    "flame-thrower": 1,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 0,
+    "flame-thrower": 0
+   },
+   "death_anim": 24,
+   "death_sound": 6,
+   "path": {
+    "ticks": 636,
+    "bbox": [
+     18.0,
+     78.0,
+     210.0,
+     200.4
+    ],
+    "max_speed": 2.764,
+    "moves": true
+   }
+  },
+  {
+   "room": [
+    7,
+    9
+   ],
+   "object": 3,
+   "kind": "enemy",
+   "class": "harmful",
+   "sprite_group": 158,
+   "name": "orange crawler?",
+   "hp": 4,
+   "hp_max": 4,
+   "visible": true,
+   "active_at_start": true,
+   "end_mode": "loop-from",
+   "flags": [
+    "active",
+    "editor-0x0002",
+    "keep-after-use"
+   ],
+   "hits_to_kill": {
+    "starting gun": 4,
+    "rocket launcher": 2,
+    "heavy rocket launcher": 2,
+    "Uzi": 2,
+    "flame-thrower": 2,
+    "plasma gun": 1
+   },
+   "ticks_to_kill_auto": {
+    "Uzi": 4,
+    "flame-thrower": 4
+   },
+   "death_anim": 9,
+   "death_sound": 5,
+   "path": {
+    "ticks": 330,
+    "bbox": [
+     7.1,
+     92.1,
+     171.9,
+     174.7
+    ],
+    "max_speed": 2.072,
+    "moves": true
+   }
+  }
+ ]
+}
