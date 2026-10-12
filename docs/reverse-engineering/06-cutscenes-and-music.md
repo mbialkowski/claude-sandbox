@@ -203,4 +203,5 @@ libopenmpt 0.7.3 at 44.1 kHz (one pass, not the original mixer), `music.json` (m
 * The FLC animations are pre-rendered 3D at 320×200/240; upscaling them works best per-frame from
   `assets/animations/` (they have no alpha; Mode X parts are 320×240).
 * Keep the skip behaviour: Space/Esc skips the whole intro; credits loop until a key.
-* There is no in-game music in the original; adding some is a design decision for the remake.
+* There is no in-game music in the original; adding some is a design decision for the remake. The Godot
+  remake plays the two modules in turn while playing (on by default; Options → *Music while playing*).

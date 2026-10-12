@@ -950,7 +950,7 @@ func _title_input(a: String) -> void:
 
 
 func _new_game(resume := false) -> void:
-	audio.stop_music()
+	_game_music()
 	mode = "play"
 	sim = Sim.new(D)
 	sim.audio = audio
@@ -977,6 +977,14 @@ func _new_game(resume := false) -> void:
 	touch.refresh()
 
 
+func _game_music() -> void:
+	"""The original stops the music when a game starts; the remake plays its two modules unless turned off."""
+	if D.settings["game_music"]:
+		audio.play_playlist(["intro", "title"])
+	else:
+		audio.stop_music()
+
+
 func _save_game() -> void:
 	last_saved_room = Vector2i(sim.hero.col, sim.hero.row)
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -988,6 +996,7 @@ func _finish_game() -> void:
 	var how: String = sim.end_state
 	sim.end_state = "handled"
 	audio.stop_all()
+	audio.stop_music()
 	match how:
 		"win":
 			_win_ending()
@@ -1125,18 +1134,20 @@ func _close_pause() -> void:
 
 
 func _option_list() -> Array:
+	"""[label, value, key] per row of the options screen."""
 	var s: Dictionary = D.settings
 	return [
-		[Strings.t("opt_language"), Strings.t("lang_name")],
-		[Strings.t("opt_neighbours"), Strings.t("on") if s["show_neighbours"] else Strings.t("off")],
-		[Strings.t("opt_dim"), Strings.t("on") if s["dim_neighbours"] else Strings.t("off")],
-		[Strings.t("opt_smooth"), Strings.t("smooth") if s["smooth_scaling"] else Strings.t("sharp")],
-		[Strings.t("opt_edges"), Strings.t("edges_" + str(s["room_edges"]))],
-		[Strings.t("opt_touch"), Strings.t("touch_" + str(s["touch_controls"]))],
-		[Strings.t("opt_music"), "%d%%" % roundi(float(s["music_volume"]) * 100)],
-		[Strings.t("opt_sfx"), "%d%%" % roundi(float(s["sfx_volume"]) * 100)],
-		[Strings.t("opt_fullscreen"), Strings.t("on") if is_fullscreen() else Strings.t("off")],
-		[Strings.t("back"), ""],
+		[Strings.t("opt_language"), Strings.t("lang_name"), "language"],
+		[Strings.t("opt_neighbours"), Strings.t("on") if s["show_neighbours"] else Strings.t("off"), "show_neighbours"],
+		[Strings.t("opt_dim"), Strings.t("on") if s["dim_neighbours"] else Strings.t("off"), "dim_neighbours"],
+		[Strings.t("opt_smooth"), Strings.t("smooth") if s["smooth_scaling"] else Strings.t("sharp"), "smooth_scaling"],
+		[Strings.t("opt_edges"), Strings.t("edges_" + str(s["room_edges"])), "room_edges"],
+		[Strings.t("opt_touch"), Strings.t("touch_" + str(s["touch_controls"])), "touch_controls"],
+		[Strings.t("opt_music"), "%d%%" % roundi(float(s["music_volume"]) * 100), "music_volume"],
+		[Strings.t("opt_game_music"), Strings.t("on") if s["game_music"] else Strings.t("off"), "game_music"],
+		[Strings.t("opt_sfx"), "%d%%" % roundi(float(s["sfx_volume"]) * 100), "sfx_volume"],
+		[Strings.t("opt_fullscreen"), Strings.t("on") if is_fullscreen() else Strings.t("off"), "fullscreen"],
+		[Strings.t("back"), "", "back"],
 	]
 
 
@@ -1151,7 +1162,8 @@ func _open_options() -> void:
 
 func _options_input(a: String) -> void:
 	var s: Dictionary = D.settings
-	var n := _option_list().size()
+	var opts := _option_list()
+	var n := opts.size()
 	var dirn := 1
 	match a:
 		"up":
@@ -1163,34 +1175,35 @@ func _options_input(a: String) -> void:
 			return
 		"left", "right", "use", "jetpack", "fire":
 			dirn = -1 if a == "left" else 1
-			match ui_sel:
-				0:
+			match str(opts[ui_sel][2]):
+				"language":
 					s["language"] = "en" if s["language"] == "pl" else "pl"
-				1:
-					s["show_neighbours"] = not s["show_neighbours"]
-				2:
-					s["dim_neighbours"] = not s["dim_neighbours"]
-				3:
-					s["smooth_scaling"] = not s["smooth_scaling"]
-				4:
+				"show_neighbours", "dim_neighbours", "smooth_scaling":
+					var k: String = opts[ui_sel][2]
+					s[k] = not s[k]
+				"room_edges":
 					s["room_edges"] = "seamless" if s["room_edges"] == "classic" else "classic"
 					if sim:
 						sim.hero.classic = s["room_edges"] == "classic"
-				5:
+				"touch_controls":
 					var modes := ["auto", "on", "off"]
 					s["touch_controls"] = modes[(modes.find(s["touch_controls"]) + dirn + 3) % 3]
 					touch.refresh()
-				6:
+				"music_volume":
 					s["music_volume"] = clampf(snappedf(float(s["music_volume"]) + 0.1 * dirn, 0.1), 0.0, 1.0)
 					audio.apply_volumes()
-				7:
+				"game_music":
+					s["game_music"] = not s["game_music"]
+					if sim:
+						_game_music()
+				"sfx_volume":
 					s["sfx_volume"] = clampf(snappedf(float(s["sfx_volume"]) + 0.1 * dirn, 0.1), 0.0, 1.0)
 					audio.apply_volumes()
 					audio.pause_all(false)
 					audio.play(33)
-				8:
+				"fullscreen":
 					toggle_fullscreen()
-				9:
+				"back":
 					_leave_options()
 					return
 			D.save_settings()
