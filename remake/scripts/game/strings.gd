@@ -13,7 +13,7 @@ const T := {
 		"opt_music": "Muzyka", "opt_sfx": "Efekty", "opt_fullscreen": "Pełny ekran",
 		"on": "tak", "off": "nie", "back": "Powrót", "paused": "Pauza", "continue": "Graj dalej",
 		"quit_title": "Wyjdź do menu", "thanks": "Dzięki za grę w Lazarusa!",
-		"fire": "OGIEŃ", "jump": "SKOK", "use": "UŻYJ", "jet": "PLECAK", "full": "[ ]",
+		"fire": "OGIEŃ", "jump": "SKOK", "use": "UŻYJ", "jet": "PLECAK", "full": "[ ]", "inv": "RZECZ", "wpn": "BROŃ",
 		"press_key": "Naciśnij klawisz lub dotknij ekranu", "skip": "Spacja / Esc / dotknij - pomiń",
 	},
 	"en": {
@@ -26,7 +26,7 @@ const T := {
 		"opt_music": "Music", "opt_sfx": "Sound effects", "opt_fullscreen": "Full screen",
 		"on": "on", "off": "off", "back": "Back", "paused": "Paused", "continue": "Continue",
 		"quit_title": "Quit to title", "thanks": "Thanks for playing Lazarus!",
-		"fire": "FIRE", "jump": "JUMP", "use": "USE", "jet": "JET", "full": "[ ]",
+		"fire": "FIRE", "jump": "JUMP", "use": "USE", "jet": "JET", "full": "[ ]", "inv": "ITEM", "wpn": "GUN",
 		"press_key": "Press a key or tap the screen", "skip": "Space / Esc / tap - skip",
 		# subtitles for the text painted into the intro's pictures (docs 06, 6.2)
 		"intro_1": "...it all started quite normally, and I would never have guessed it would end so badly...",

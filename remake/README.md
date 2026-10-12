@@ -34,22 +34,23 @@ HD, with keyboard, gamepad and on-screen touch controls.
 
 Details that differ from the original on purpose: shots touching harmful tiles do not hurt the hero (an
 original bug); the bullets of the hero's room are drawn clipped to it; there is a pause menu (the
-original's unused "Pauza" text exists) and an options screen; English text (`data/text_en.json`).
+original's unused "Pauza" text exists) and an options screen. The game starts in Polish with the original
+texts; English (`data/text_en.json`) can be chosen in the options.
 
 ## Controls
 
 | action | keyboard | gamepad | touch |
 |---|---|---|---|
 | walk | ← → (or A D) | d-pad / left stick | pad |
-| jump / jetpack thrust, menu up | ↑ (or W) | A, d-pad up | JUMP, pad up |
+| jump / jetpack thrust, menu up | ↑ (or W) | A, d-pad up | SKOK (JUMP), pad up |
 | crouch (pick up), menu down | ↓ (or S) | d-pad down | pad down |
-| fire | Ctrl (or J, X) | X, right trigger | FIRE |
-| use / talk / confirm | Enter (or E, K) | B | USE, tap |
-| jetpack on/off | Space (or L) | Y | JET |
-| previous / next item | , . (or Q, Tab) | LB / RB | INV, tap the HUD item |
-| weapon | 1–6, R = next | Back | WPN, tap the HUD weapon |
+| fire | Ctrl (or J, X) | X, right trigger | OGIEŃ (FIRE) |
+| use / talk / confirm | Enter (or E, K) | B | UŻYJ (USE), tap |
+| jetpack on/off | Space (or L) | Y | PLECAK (JET) |
+| previous / next item | , . (or Q, Tab) | LB / RB | RZECZ (ITEM), tap the HUD item |
+| weapon | 1–6, R = next | Back | BROŃ (GUN), tap the HUD weapon |
 | pause / options | Esc (or P) | Start | II |
-| full screen | F11, Alt+Enter | | options |
+| full screen | F11, Alt+Enter | | [ ], options |
 
 Dialogues continue with Fire, Enter, Space or a tap. The original's cheats work (`IDMORT`, `IDSIAR`,
 `IDLUFA`, `IDBULL`). The game is saved each time the hero enters a room; **Continue** on the title screen

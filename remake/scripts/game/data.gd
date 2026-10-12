@@ -174,17 +174,22 @@ func is_sound_looping(id: int) -> bool:
 	return id >= 0 and id < game["sounds"].size() and game["sounds"][id]["loop"]
 
 
+const SETTINGS_VERSION := 2
+
+
 func _load_settings() -> void:
+	"""Polish (the original texts) unless the player chose English in the options."""
 	var cfg := ConfigFile.new()
 	if cfg.load(SETTINGS_PATH) == OK:
 		for k in settings:
 			settings[k] = cfg.get_value("settings", k, settings[k])
-	elif OS.get_locale_language() != "pl":
-		settings["language"] = "en"
+		if int(cfg.get_value("settings", "version", 1)) < SETTINGS_VERSION:
+			settings["language"] = "pl"                # version 1 picked English from the system locale
 
 
 func save_settings() -> void:
 	var cfg := ConfigFile.new()
 	for k in settings:
 		cfg.set_value("settings", k, settings[k])
+	cfg.set_value("settings", "version", SETTINGS_VERSION)
 	cfg.save(SETTINGS_PATH)

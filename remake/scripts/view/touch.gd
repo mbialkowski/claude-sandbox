@@ -68,8 +68,8 @@ func relayout() -> void:
 	var top := cy - d - r * 2.3
 	if main.portrait:
 		top = main.display_rect.end.y + s * 1.5
-	buttons.append({"action": "item_next", "label": "INV", "center": Vector2(cx_btn - d, top), "radius": s})
-	buttons.append({"action": "weapon_next", "label": "WPN", "center": Vector2(cx_btn + d, top), "radius": s})
+	buttons.append({"action": "item_next", "label": "inv", "center": Vector2(cx_btn - d, top), "radius": s})
+	buttons.append({"action": "weapon_next", "label": "wpn", "center": Vector2(cx_btn + d, top), "radius": s})
 	queue_redraw()
 
 
