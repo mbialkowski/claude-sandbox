@@ -14,6 +14,7 @@ DOSBox.
 | [05-remake-guide.md](05-remake-guide.md) | recommendations, fidelity checklist, open questions, legal note |
 | [06-cutscenes-and-music.md](06-cutscenes-and-music.md) | boot logo, intro shot list with timing and transcribed/translated text, title menu, credits, all endings, credits scroller, music analysis |
 | [07-world-and-catalogues.md](07-world-and-catalogues.md) | regions and room connectivity, teleport graph, gates, secret passages, collision/path debug renders, enemy catalogue, sound usage, unused/cut content, quest dependency graph |
+| [08-history.md](08-history.md) | the C64 (1994) and Amiga (1995) games this port descends from, credits, the studio, sources |
 
 ## Quick facts
 
@@ -26,7 +27,9 @@ DOSBox.
   "path" format; ~110 hard-coded script handlers for quests and dialogue; 293 Polish text strings.
 * 6 weapons, jetpack with fuel, inventory of up to 40 items (38 item kinds), money, shops, 6 teleport
   destinations unlocked by passwords, 3 endings.
-* Data authored on the Amiga (big-endian) and converted; the game itself is Watcom C++ for DOS/4GW.
+* Data authored on the Amiga (big-endian) and converted; the game itself is Watcom C++ for DOS/4GW — a port
+  of the 1995 Amiga *Lazarus*, itself based on Krzysztof Augustyn's 1994 C64 game (chapter 8). The DOS
+  release year is given as 1996 here; databases say 1997.
 
 | title | gameplay | dialogue |
 |---|---|---|
