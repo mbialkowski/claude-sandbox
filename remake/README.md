@@ -75,6 +75,10 @@ The web export is single-threaded (no special HTTP headers needed), so `remake/b
 by any static web server or GitHub Pages; it installs as a full-screen landscape app (PWA) on phones.
 Export templates: Godot 4.7.2 (`Editor → Manage Export Templates`).
 
+Sound in the browser starts with the first key, click or tap. A small script in the page head (the Web
+preset's `html/head_include`) resumes it after every input (browsers suspend audio after calls or app
+switches) and makes it play while an iPhone is in silent mode, which otherwise mutes web audio.
+
 ## Tests
 
 ```bash
