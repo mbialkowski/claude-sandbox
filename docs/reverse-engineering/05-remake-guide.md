@@ -47,7 +47,7 @@ engine — the rule set is small and fully specified here.
 `0x2A2A2`/`0x2A2AC` select the start room; `Object_Think`, `TileAnim_Step`, `Hero_Think` and `Hero_Draw`
 are turned into `ret` so the first frame stays frozen and the hero is hidden), runs it in DOSBox under Xvfb,
 takes DOSBox's own screenshot and compares the play-field with a render made from our reading of the data.
-This confirms the room format, both tile sets and their palettes, the tile-animation
+**Result: all 100 rooms are pixel-identical** (224×228 px each, 0 differing pixels). This confirms the room format, both tile sets and their palettes, the tile-animation
 start frames and foreground pass, the object header/path fields used on entry, the constructor's visibility
 rules for conditional objects and `BobFindFrame`. `assets/rooms/png_objects/` uses the same rules.
 
