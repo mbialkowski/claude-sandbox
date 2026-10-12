@@ -1,5 +1,5 @@
 {
- "note": "Room-to-room connectivity computed from tile collision (DATA32 types + DATA38 boxes, animated tiles never block). An edge is open when a gap at least as large as the hero box (11x29 px) exists across the shared border; openings_x/_y are pixel ranges along the border. gated_by lists solid objects (doors, lifts, force fields) overlapping an opening. Vertical edges may be one-way without the jetpack. Regions are connected components of open edges; warps are the scripted teleports between them. fake_walls are animated tiles that look solid but are not (secret passages; foreground ones hide the hero).",
+ "note": "Room-to-room connectivity computed from tile collision (DATA32 types + DATA38 boxes, animated tiles never block). An edge is open when a gap at least as large as the hero box (11x29 px) exists across the shared border; openings_x/_y are pixel ranges along the border. gated_by lists solid objects (doors, lifts, force fields) overlapping an opening. Vertical edges may be one-way without the jetpack. Regions are connected components of open edges; warps are the scripted teleports between them. fake_walls are animated tiles that look solid but are not (secret passages; foreground ones hide the hero). mechanisms: every lift, door, gate, invisible wall and no-fly zone with what opens it (object chains followed back to the thing the player uses / shoots, or the game flag that opens it on room entry, with the objects that set that flag).",
  "hero_box": [
   6,
   2,
@@ -4859,6 +4859,655 @@
    "sequence": 23,
    "tile": 266,
    "map_tile_below": 0
+  }
+ ],
+ "mechanisms": [
+  {
+   "room": [
+    0,
+    0
+   ],
+   "object": 12,
+   "kind": "force field",
+   "pos": [
+    208,
+    114
+   ],
+   "opened_by": [
+    {
+     "action": "fifth magic key in the hub slots",
+     "script": 161
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 8,
+   "kind": "lizard man (enemy)",
+   "pos": [
+    95,
+    117
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "shoot",
+     "name": "lizard man (enemy)"
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    0
+   ],
+   "object": 9,
+   "kind": "lizard man (enemy)",
+   "pos": [
+    39,
+    62
+   ],
+   "opened_by": [
+    {
+     "object": 3,
+     "action": "shoot",
+     "name": "lizard man (enemy)"
+    }
+   ]
+  },
+  {
+   "room": [
+    9,
+    0
+   ],
+   "object": 3,
+   "kind": "lift platform",
+   "pos": [
+    96,
+    148
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 6
+    }
+   ]
+  },
+  {
+   "room": [
+    3,
+    1
+   ],
+   "object": 1,
+   "kind": "lift platform",
+   "pos": [
+    112,
+    177
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "panel / trigger zone",
+     "touch": true
+    }
+   ]
+  },
+  {
+   "room": [
+    6,
+    1
+   ],
+   "object": 3,
+   "kind": "lift platform (small)",
+   "pos": [
+    144,
+    209
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 3
+    }
+   ]
+  },
+  {
+   "room": [
+    5,
+    2
+   ],
+   "object": 3,
+   "kind": "lift platform",
+   "pos": [
+    64,
+    101
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 2
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 0,
+   "kind": "lift platform",
+   "pos": [
+    128,
+    44
+   ],
+   "opened_by": [],
+   "appears_with_flag": 197,
+   "flag_set_by": [
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 1,
+     "script": 196,
+     "name": "riddle man"
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    3
+   ],
+   "object": 1,
+   "kind": "lift platform",
+   "pos": [
+    160,
+    44
+   ],
+   "opened_by": [],
+   "appears_with_flag": 197,
+   "flag_set_by": [
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 1,
+     "script": 196,
+     "name": "riddle man"
+    }
+   ]
+  },
+  {
+   "room": [
+    5,
+    3
+   ],
+   "object": 4,
+   "kind": "panel / trigger zone",
+   "pos": [
+    85,
+    42
+   ],
+   "opened_by": [
+    {
+     "object": 3,
+     "action": "shoot",
+     "name": "orange beast (other way)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    6,
+    3
+   ],
+   "object": 0,
+   "kind": "lift platform",
+   "pos": [
+    96,
+    196
+   ],
+   "opened_by": [
+    {
+     "action": "opens on room entry",
+     "flag": 40,
+     "flag_set_by": [
+      {
+       "room": [
+        8,
+        2
+       ],
+       "object": 0,
+       "script": 40,
+       "name": "switch (active)?"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "object": 2,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "switch (active)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    4,
+    4
+   ],
+   "object": 4,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "switch (active)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    9,
+    4
+   ],
+   "object": 5,
+   "kind": "lift platform",
+   "pos": [
+    163,
+    139
+   ],
+   "opened_by": [
+    {
+     "object": 4,
+     "action": "use",
+     "name": "keyhole lock",
+     "item": 8
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    5
+   ],
+   "object": 3,
+   "kind": "door / wall",
+   "pos": [
+    0,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "use",
+     "name": "keyhole lock",
+     "item": 23
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    5
+   ],
+   "object": 5,
+   "kind": "door / wall",
+   "pos": [
+    0,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "use",
+     "name": "keyhole lock",
+     "item": 23
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    5
+   ],
+   "object": 4,
+   "kind": "panel / trigger zone",
+   "pos": [
+    165,
+    32
+   ],
+   "opened_by": [
+    {
+     "object": 3,
+     "action": "shoot",
+     "name": "orange beast (other way)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    7
+   ],
+   "object": 3,
+   "kind": "door / wall",
+   "pos": [
+    16,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 16
+    }
+   ]
+  },
+  {
+   "room": [
+    1,
+    7
+   ],
+   "object": 5,
+   "kind": "door / wall",
+   "pos": [
+    16,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "card reader - locked",
+     "item": 16
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    7
+   ],
+   "object": 4,
+   "kind": "no-fly zone",
+   "pos": [
+    96,
+    113
+   ],
+   "opened_by": [
+    {
+     "action": "take the ferry",
+     "script": 107,
+     "item": 17
+    }
+   ]
+  },
+  {
+   "room": [
+    3,
+    7
+   ],
+   "object": 1,
+   "kind": "lift platform",
+   "pos": [
+    124,
+    196
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "panel / trigger zone"
+    }
+   ]
+  },
+  {
+   "room": [
+    6,
+    7
+   ],
+   "object": 4,
+   "kind": "lift platform (alt)",
+   "pos": [
+    12,
+    197
+   ],
+   "opened_by": [
+    {
+     "object": 1,
+     "action": "use",
+     "name": null,
+     "item": 13
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 2,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    23
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 4,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    38
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 8,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    99
+   ],
+   "opened_by": [
+    {
+     "object": 6,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 10,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    114
+   ],
+   "opened_by": [
+    {
+     "object": 6,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 14,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    175
+   ],
+   "opened_by": [
+    {
+     "object": 12,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    8,
+    7
+   ],
+   "object": 16,
+   "kind": "door / wall",
+   "pos": [
+    208,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 12,
+     "action": "use",
+     "name": "secret-door lock",
+     "item": 12
+    }
+   ]
+  },
+  {
+   "room": [
+    7,
+    8
+   ],
+   "object": 5,
+   "kind": "lift platform (alt)",
+   "pos": [
+    93,
+    88
+   ],
+   "opened_by": [
+    {
+     "object": 4,
+     "action": "use",
+     "name": "panel / interaction marker (graves, tap)?"
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    9
+   ],
+   "object": 0,
+   "kind": "door / wall",
+   "pos": [
+    80,
+    175
+   ],
+   "opened_by": [
+    {
+     "action": "opens on room entry",
+     "flag": 96,
+     "flag_set_by": [
+      {
+       "room": [
+        0,
+        9
+       ],
+       "object": 0,
+       "script": 96,
+       "name": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "room": [
+    2,
+    9
+   ],
+   "object": 2,
+   "kind": "door / wall",
+   "pos": [
+    80,
+    190
+   ],
+   "opened_by": [
+    {
+     "object": 0,
+     "action": "opens on room entry",
+     "flag": 96,
+     "flag_set_by": [
+      {
+       "room": [
+        0,
+        9
+       ],
+       "object": 0,
+       "script": 96,
+       "name": null
+      }
+     ]
+    }
+   ]
   }
  ],
  "teleport_menu": [

@@ -65,8 +65,10 @@ rules for conditional objects and `BobFindFrame`. `assets/rooms/png_objects/` us
 
 * Enemy AI: the only code that reads the hero position is bullet spawning and the moving-platform carry,
   so enemies are purely path-scripted (they never chase or aim at the player) — worth a quick check in play.
-* The order of the quest chain was reconstructed from data; play through once in DOSBox with
-  `/G /U` (all weapons, infinite ammo) or `IDMORT` to confirm reachability of each room.
+* The quest chain is now checked by `tools/completability.py` (7.9): the game can be finished in its
+  model for every random setup tested. The model lets the hero fly anywhere (jetpack, no fuel or jump
+  limits), so a play-through in DOSBox following `assets/gamedata/walkthrough.json` (cheats `IDMORT`,
+  `IDSIAR` help) is still the final proof — in particular that the bomb can be skipped (7.9).
 * Sound Blaster / GUS mixing details (volume curves, panning) — irrelevant if a modern MOD player is used.
 
 ## 5.6 Legal

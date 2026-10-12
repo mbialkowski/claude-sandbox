@@ -85,6 +85,36 @@ four of them actually cut rooms off; the rest are shortcuts or obstacles.
 | (0,5)→(1,5) | door pair | golden key (item 23) at (1,5), consumed (script 255) | nothing — (0,5) is also reachable from (0,4) |
 | (3,3)→(4,3), (8,4)↓(8,5), (8,9)→(9,9) | invisible blocker, trigger zone, moving lifts | — | nothing |
 
+### All lifts, doors and gates and what opens them
+
+Every static solid object (a door, a parked lift, an invisible wall) and the no-fly zone, with the object
+chain followed back to what the player does (`world_graph.json → mechanisms`). Doors are two objects (upper
+and lower half) opened by the same chain; "opens on room entry" objects check their flag when the room is
+built, so the effect is seen after leaving and re-entering.
+
+| room | mechanism | objects | opened by |
+|---|---|---|---|
+| (0,0) | force field before the Time Guardian | #12 | the fifth magic key in the hub slots (script 161) |
+| (2,0) | two invisible walls | #8, #9 | shooting the two lizard men (#1, #3) |
+| (9,0) | lift | #3 | lift card (item 6) in the card reader |
+| (3,1) | lift | #1 | touching the panel #0 |
+| (6,1) | lift | #3 | purple card (item 3) in the card reader |
+| (5,2) | lift | #3 | red card (item 2) in the card reader |
+| (1,3) | two platforms | #0, #1 | appear once flag 197 is set — answering the riddle man at (0,3) correctly |
+| (5,3) | invisible wall | #4 | shooting the orange beast #3 |
+| (6,3) | lift | #0 | flag 40 — the switch at (8,2); moves on room entry |
+| (4,4) | door | #2, #4 | the switch #0 in the same room |
+| (9,4) | cage door | #5 | cage key (item 8) in the keyhole |
+| (1,5) | door | #3, #5 | golden key (item 23) in the keyhole |
+| (8,5) | invisible wall | #4 | shooting the orange beast #3 |
+| (1,7) | door | #3, #5 | the second purple card (item 16) in the card reader |
+| (2,7) | no-fly zone over the river (fuel := 0) | #4 | — cross with the ferry (ticket, item 17) |
+| (3,7) | lift | #1 | the panel #0 |
+| (6,7) | lift | #4 | grey card (item 13) in the reader #1 |
+| (8,7) | three secret doors | #2/#4, #8/#10, #14/#16 | the shaped key piece (item 12) in lock #0, #6 or #12 — there is only one piece |
+| (7,8) | lift | #5 | the panel #4 |
+| (2,9) | door | #0, #2 | flag 96 — the trigger at (0,9); opens on room entry |
+
 ## 7.3 Secret passages (animated tiles never block)
 
 `TileCollide` reads only the static NEWROOM tile map. Animated tiles are separate objects whose
@@ -246,3 +276,4 @@ bucket (7,8) → tap (8,9) → burning-hat man (9,8) → magic whistle (+ passwo
 gum-chewer (3,5); riddle man (0,3) → answer → platforms at (1,3); teddy bear (5,4) → girl (4,3) → $100 →
 ferry ticket $95 → ferryman (2,7). The exact order the designers intended was reconstructed from data
 (5.5); the region graph above shows which steps are reachable from the start.
+

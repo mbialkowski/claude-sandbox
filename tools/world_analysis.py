@@ -281,6 +281,111 @@ def analyse(game_dir, rooms=None, frames=None, groups=None, seqs=None):
             "region_of": region_of, "warps": warps, "fake_walls": fake_walls(rooms, types, seqs)}
 
 
+def _static(o):
+    return bool(o.steps) and all(s.vx == 0 and s.vy == 0 and s.ax == 0 and s.ay == 0 and s.pos == o.steps[0].pos
+                                 for s in o.steps)
+
+
+def mechanisms(rooms):
+    """Every lift, door, gate, invisible wall and no-fly zone (static solid objects, objects firing script
+    108) with what opens it: the object chain is followed back (target / chain-next links inside the room)
+    to the thing the player uses or shoots, or to the game flag that makes it open on room entry."""
+    def kind_of(o):
+        if not o.flags & 0x8000:
+            return None
+        if o.interact & 2:
+            return "item"
+        if o.flags & 0x0004:
+            return "flag"
+        return "exists_if_flag" if o.item > 2 else "waits"
+
+    import lazarus_scripts as S
+
+    def set_flag_ops(ops):
+        res = set()
+        for op in ops:
+            if op[0] == "set_flag":
+                res.add(op[1])
+            elif op[0] == "if":
+                res |= set_flag_ops(op[2]) | set_flag_ops(op[3])
+            elif op[0] == "switch":
+                for body in op[2].values():
+                    res |= set_flag_ops(body)
+        return res
+
+    flag_scripts = {}                                   # flag -> scripts that set it (own id or set_flag)
+    for sid, h in S.SCRIPTS.items():
+        for f in {sid} | set_flag_ops(h["ops"]):
+            flag_scripts.setdefault(f, set()).add(sid)
+    for sid in range(20, 256):
+        flag_scripts.setdefault(sid, set()).add(sid)
+
+    def flag_sources(flag):
+        return [{"room": [c, r], "object": o.index, "script": o.target,
+                 "name": N.SPRITE_GROUPS.get(o.steps[0].anim) if o.steps else None}
+                for (c, r), room in sorted(rooms.items(), key=lambda kv: (kv[0][1], kv[0][0]))
+                for o in room.objects if o.flags & 0x4000 and o.target in flag_scripts.get(flag, ())]
+
+    out = []
+    for (c, r), room in sorted(rooms.items(), key=lambda kv: (kv[0][1], kv[0][0])):
+        objs = {o.index: o for o in room.objects}
+        parents = {}
+        for o in room.objects:
+            if o.flags & 0x0010:
+                parents.setdefault(o.index + 1, []).append(o.index)
+            if o.flags & 0x4000 and o.target < 20:
+                parents.setdefault(o.target, []).append(o.index)
+
+        def openers(i, seen=()):
+            res = []
+            for p in parents.get(i, []):
+                if p in seen:
+                    continue
+                po = objs[p]
+                usable = po.collision_class == 0x20
+                shootable = bool(po.collision_class & 0x18) and po.hp not in (0xFE, 0xFF)
+                if usable or shootable:
+                    e = {"object": p, "action": "use" if usable else "shoot",
+                         "name": N.SPRITE_GROUPS.get(po.steps[0].anim) if po.steps else None}
+                    if kind_of(po) == "item":
+                        e["item"] = po.item
+                    if po.interact & 4:
+                        e["action"] = "crouch"
+                    if po.flags & 0x0020:
+                        e["touch"] = True
+                    res.append(e)
+                elif kind_of(po) in ("item", "flag") and po.flags & 0x4010:
+                    res.append({"object": p, "action": "opens on room entry", "flag": po.item})
+                else:
+                    res += openers(p, seen + (i,))
+            return res
+
+        for o in room.objects:
+            nofly = bool(o.flags & 0x4000 and o.target == 108)
+            if not nofly and not (o.collision_class & 0x40 and _static(o)):
+                continue
+            e = {"room": [c, r], "object": o.index,
+                 "kind": "no-fly zone" if nofly else (N.SPRITE_GROUPS.get(o.steps[0].anim) or "door / wall"),
+                 "pos": list(o.steps[0].pos) if o.steps else None,
+                 "opened_by": openers(o.index)}
+            k = kind_of(o)
+            if k == "flag":
+                e["opened_by"].append({"action": "opens on room entry", "flag": o.item})
+            if k == "exists_if_flag":
+                e["appears_with_flag"] = o.item
+            if nofly:
+                e["opened_by"] = [{"action": "take the ferry", "script": 107, "item": 17}]
+            for ob in e["opened_by"]:
+                if "flag" in ob:
+                    ob["flag_set_by"] = flag_sources(ob["flag"])
+            if "appears_with_flag" in e:
+                e["flag_set_by"] = flag_sources(e["appears_with_flag"])
+            if o.index == 12 and (c, r) == (0, 0):
+                e["opened_by"] = [{"action": "fifth magic key in the hub slots", "script": 161}]
+            out.append(e)
+    return out
+
+
 def world_graph_json(an):
     return {
         "note": "Room-to-room connectivity computed from tile collision (DATA32 types + DATA38 boxes, animated "
@@ -289,12 +394,16 @@ def world_graph_json(an):
                 "the border. gated_by lists solid objects (doors, lifts, force fields) overlapping an opening. "
                 "Vertical edges may be one-way without the jetpack. Regions are connected components of open "
                 "edges; warps are the scripted teleports between them. fake_walls are animated tiles that look "
-                "solid but are not (secret passages; foreground ones hide the hero).",
+                "solid but are not (secret passages; foreground ones hide the hero). mechanisms: every lift, door, gate, "
+                "invisible wall and no-fly zone with what opens it (object chains followed back to the thing the "
+                "player uses / shoots, or the game flag that opens it on room entry, with the objects that set that "
+                "flag).",
         "hero_box": list(HERO_BOX),
         "regions": an["regions"],
         "edges": an["edges"],
         "warps": an["warps"],
         "fake_walls": an["fake_walls"],
+        "mechanisms": mechanisms(an["rooms"]),
         "teleport_menu": [{"name_pl": t[0], "name_en": t[1], "room": t[2], "pos": t[3], "known_at_start": t[4]}
                           for t in TELEPORT_MENU],
     }

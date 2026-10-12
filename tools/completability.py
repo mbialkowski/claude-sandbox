@@ -326,6 +326,7 @@ class Game:
         self.targets.update({k: (self.boxes[k], False) for k in self.coins if self.boxes[k]})
         self.cosmetic_items = frozenset(i for i in N.ITEMS if i not in self.consumers)
         self.forbid = set()                             # items / variables made unobtainable (necessity test)
+        self.relaxed = False                            # over-approximation: nothing is consumed, money unlimited
         self.spawners = [k for k, o in self.obj.items()
                          if self.conditional_kind(o) in ("item", "flag") and o.collision_class != 0x20
                          and o.flags & 0x4010]
@@ -496,7 +497,7 @@ class Game:
         def val(v):
             return s.vars.get(v["var"], 0) if isinstance(v, dict) else v
         if n == "money_lt":
-            return self.money(s, ctx["img"]) < a[0]
+            return False if self.relaxed else self.money(s, ctx["img"]) < a[0]
         if n == "money_eq":
             return self.money(s, ctx["img"]) == a[0]
         if n == "has_item":
@@ -559,9 +560,10 @@ class Game:
             s.items.add(a[0])
             s.log.append(f"+ item {a[0]} ({N.ITEMS[a[0]][1]})")
         elif n == "take":
-            s.items.discard(a[0])
+            if not self.relaxed:
+                s.items.discard(a[0])
         elif n == "take_selected":
-            if ctx["item"] is not None:
+            if ctx["item"] is not None and not self.relaxed:
                 s.items.discard(ctx["item"])
         elif n == "set":
             v = a[1]
@@ -752,6 +754,45 @@ def seeds_to_check():
 DEFAULT_SEED = {"bomb_wire": 0, "secret_door": 0, "sock_chest": 0, "riddle": 0, "shop_map": 1079}
 
 
+def relaxed_winnable(game, seed):
+    """Monotone over-approximation: every outcome of every action is collected, items are never consumed
+    and money never runs out. False means the ending is certainly unreachable."""
+    game.relaxed = True
+    try:
+        st = mutable(initial_state(game, seed))
+        st = freeze(st)
+        while True:
+            start = st.key()
+            img = game.reach_img(st)
+            for k in game.auto_activations(st) + game.available(st, img):
+                o_ = game.obj[k]
+                if k in st.fired and not o_.flags & 0x0100:
+                    continue
+                outs = game.activate(st, k, img)
+                if not outs:
+                    continue
+                m = mutable(st)                           # one action after another (counters add up)
+                for o in outs:
+                    if o.won:
+                        return True
+                    m.items |= o.items
+                    m.flags |= o.flags
+                    m.fired |= o.fired
+                    m.enabled |= o.enabled
+                    m.anchors |= o.anchors
+                    for name, v in o.vars:                # values only grow, up to a small cap
+                        if name in COSMETIC_VARS or name == "bomb_active" or not isinstance(v, int):
+                            continue
+                        if v > m.vars.get(name, 0) and m.vars.get(name, 0) < 8:
+                            m.vars[name] = min(v, 8)
+                m.log = []
+                st = freeze(m)
+            if st.key() == start:
+                return False
+    finally:
+        game.relaxed = False
+
+
 def necessity(game):
     """Which items and teleport passwords the game cannot be won without (default seed)."""
     obtainable = set()
@@ -769,11 +810,10 @@ def necessity(game):
     out = {"required": [], "optional": []}
     for what in sorted(obtainable) + ["pw_netherworld", "pw_abyss", "pw_valley", "pw_terror"]:
         game.forbid = {what}
-        game.geo.cache = {}
-        r = solve(game, DEFAULT_SEED)
+        won = relaxed_winnable(game, DEFAULT_SEED) and solve(game, DEFAULT_SEED, limit=20000)["won"]
         name = N.ITEMS[what][1] if isinstance(what, int) else "password " + what[3:]
-        out["required" if not r["won"] else "optional"].append(name)
-        print("without", name, "->", "still winnable" if r["won"] else "NOT winnable", flush=True)
+        out["required" if not won else "optional"].append(name)
+        print("without", name, "->", "still winnable" if won else "NOT winnable", flush=True)
     game.forbid = set()
     return out
 
