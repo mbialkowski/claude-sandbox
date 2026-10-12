@@ -12,9 +12,9 @@ Output layout (see assets/README.md for details):
     rooms/       json/ (full room data), png/ (tiles only), png_objects/, tiled/ (*.tmj +
                  lazarus.world), world maps
     sounds/      54 WAV files at native rates + sounds.json (loops, names)
-    music/       the two ProTracker modules
+    music/       the two ProTracker modules (+ Ogg previews with --render-music), music.json
     pictures/    PCX stills as PNG
-    animations/  FLC/FLI frames as PNG + animations.json
+    animations/  FLC/FLI frames as PNG, storyboards/ contact sheets, animations.json
     font/        glyph sheet, gapless atlas, BMFont .fnt, font.json
     text/        messages.json (UTF-8, control codes as tags) + messages.csv for translation
     gamedata/    weapons, items, scripts, tile animations, misc tables (JSON)
@@ -481,12 +481,55 @@ def export_sounds(g, out, exe):
            "sounds": table}, d, "sounds.json")
 
 
-def export_music(g, out):
+MUSIC = {
+    "DATA23.RES": ("multifruit_juice", "title menu (loops); stops when a game starts - there is no in-game music"),
+    "DATA39.RES": ("recollection", "intro sequence and the end-credits scroller"),
+}
+
+
+def mod_info(data):
+    """ProTracker header summary (title, order list, pattern count)."""
+    song_len = data[950]
+    orders = list(data[952:952 + song_len])
+    return {"title": data[:20].rstrip(b"\0").decode("latin1"), "format": data[1080:1084].decode("latin1"),
+            "channels": 4, "orders": song_len, "patterns": max(list(data[952:1080])) + 1,
+            "order_list": orders, "composer": "Wojciech Panufnik (Snoopy)"}
+
+
+def export_music(g, out, render=False):
     d = mkdir(out, "music")
-    shutil.copyfile(os.path.join(g, "DATA23.RES"), os.path.join(d, "multifruit_juice.mod"))
-    shutil.copyfile(os.path.join(g, "DATA39.RES"), os.path.join(d, "recollection.mod"))
-    jdump({"multifruit_juice.mod": "DATA23 - title menu and in-game music",
-           "recollection.mod": "DATA39 - intro and end-credits music"}, d, "music.json")
+    meta = {}
+    for src, (name, use) in MUSIC.items():
+        data = open(os.path.join(g, src), "rb").read()
+        shutil.copyfile(os.path.join(g, src), os.path.join(d, name + ".mod"))
+        info = mod_info(data)
+        info.update({"file": name + ".mod", "source": src, "use": use})
+        if render:
+            info.update(render_mod(os.path.join(d, name + ".mod"), os.path.join(d, name + ".ogg")))
+        elif os.path.exists(os.path.join(d, name + ".ogg")):
+            info["preview"] = name + ".ogg"
+        meta[name] = info
+    jdump({"note": "4-channel ProTracker modules played by the game's own mixer. *.ogg files are previews "
+                   "rendered with libopenmpt (tools/extract_assets.py --render-music), not the original mixer.",
+           "modules": meta}, d, "music.json")
+
+
+def render_mod(mod, ogg):
+    """Render one pass of a module to Ogg Vorbis with openmpt123 + oggenc (optional tools)."""
+    import subprocess
+    import tempfile
+    if not (shutil.which("openmpt123") and shutil.which("oggenc")):
+        print("  (openmpt123/oggenc not installed - skipping music preview)")
+        return {}
+    with tempfile.TemporaryDirectory() as tmp:
+        wav = os.path.join(tmp, "out.wav")
+        subprocess.run(["openmpt123", "--batch", "--quiet", "--samplerate", "44100",
+                        "--subsong", "0", "--output", wav, mod], check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(["oggenc", "-Q", "-q", "5", "-o", ogg, wav], check=True)
+        info = subprocess.run(["openmpt123", "--info", mod], capture_output=True, text=True).stdout
+    m = re.search(r"Duration\.*: (\S+)", info)
+    return {"preview": os.path.basename(ogg), "duration": m.group(1) if m else None}
 
 
 def export_pictures(g, out):
@@ -498,6 +541,22 @@ def export_pictures(g, out):
         meta[f + ".png"] = {"size": list(im.size), "colors": 16 if im.size[0] == 640 else 256,
                             "use": N.PICTURES.get(f)}
     jdump(meta, d, "pictures.json")
+
+
+def storyboard(frame_dir, count, dst, cols=8, width=160):
+    """Contact sheet of every frame (scaled to `width`) with frame numbers."""
+    frames = [Image.open(os.path.join(frame_dir, f"{i:03d}.png")).convert("RGB") for i in range(count)]
+    w0, h0 = frames[0].size
+    th = width * h0 // w0
+    cols = min(cols, count)
+    rows = (count + cols - 1) // cols
+    sheet_im = Image.new("RGB", (cols * (width + 2), rows * (th + 2)), (32, 0, 32))
+    dr = ImageDraw.Draw(sheet_im)
+    for i, f in enumerate(frames):
+        y, x = divmod(i, cols)
+        sheet_im.paste(f.resize((width, th), Image.LANCZOS), (x * (width + 2), y * (th + 2)))
+        dr.text((x * (width + 2) + 3, y * (th + 2) + 2), str(i), fill=(255, 255, 0))
+    sheet_im.save(dst)
 
 
 def export_animations(g, out):
@@ -512,6 +571,7 @@ def export_animations(g, out):
         for i, (px, pal, (w, h), speed) in enumerate(flc.frames(data)):
             img_p(px, w, h, pal).save(os.path.join(ad, f"{i:03d}.png"))
             count += 1
+        storyboard(ad, count, os.path.join(mkdir(d, "storyboards"), name + ".png"))
         ms = speed if magic == 0xAF12 else round(speed * 1000 / 70)
         meta[name] = {"use": N.ANIMATIONS.get(name), "frames": count, "size": [w, h],
                       "frame_ms": ms, "format": "FLC" if magic == 0xAF12 else "FLI"}
@@ -642,6 +702,8 @@ def main():
     ap.add_argument("game_dir")
     ap.add_argument("out_dir")
     ap.add_argument("--skip-animations", action="store_true", help="FLC decoding is the slow part")
+    ap.add_argument("--render-music", action="store_true",
+                    help="also render the MODs to Ogg previews (needs openmpt123 and oggenc)")
     a = ap.parse_args()
     g, out = a.game_dir, a.out_dir
     exe = LazarusExe(os.path.join(g, "LAZARUS.EXE"))
@@ -651,7 +713,7 @@ def main():
     frames, groups = export_sprites(g, out, pal, rooms)
     export_rooms(g, out, pal, pl, bg, frames, groups, exe.tile_anim_sequences(), rooms)
     export_sounds(g, out, exe)
-    export_music(g, out)
+    export_music(g, out, render=a.render_music)
     export_pictures(g, out)
     export_font(g, out)
     export_text(out, exe)

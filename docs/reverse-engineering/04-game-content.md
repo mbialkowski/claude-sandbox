@@ -7,6 +7,8 @@ before treating ordering details as final.
 
 ## 4.1 Story
 
+(Full intro/ending transcriptions with translations: [06-cutscenes-and-music.md](06-cutscenes-and-music.md).)
+
 The narrator (the player, an Amiga owner) buys a new game, *"LAZARUS czy jakoś tak"*, drives home at night,
 the game will not start, he reads the manual — *"…pułkownik Colonel został zamknięty w labiryncie… ble ble
 ble…"* — and the screen goes crazy. He wakes up inside the game: *"…a potem to już było tylko bummm… trach…

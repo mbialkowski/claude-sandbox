@@ -35,18 +35,21 @@ Entry point `0x33F18` (Watcom `_cstart_`), stack top `3:0xC9CE0`.
 `tools/le_loader.py` loads the LE exactly like DOS/4GW would (applies fixups) so every address in these
 documents is the real run-time address.
 
-## 1.3 The 16-bit stub and anti-tamper
+## 1.3 The 16-bit stub: boot logo and anti-tamper
 
 The MZ part is a full Watcom 16-bit program, not the usual "this program requires DOS/4GW" stub. It
 
 1. prints the `/?` help text (`lazarus.exe [/i] [/t] [/m] [/rsample_rate] [/n] [/d] [/sn] [/?]`),
-2. opens `DATA22.RES` and validates its header (`Error: blad odczytu naglowka!` on failure),
+2. switches to 640×480×16 and shows the **Infinite Dreams logo** from `DATA22.RES` on a white screen while
+   DOS/4GW loads (~2 s; verified in DOSBox), aborting with `Error: blad odczytu naglowka!` if the PCX header
+   cannot be read,
 3. on mismatch prints a Caesar-shifted (+1) message — `Qsphsbn!kftu!vt{lpe{poz"…` = *"Program jest
    uszkodzony! Zainstaluj go ponownie"* (the program is damaged, reinstall),
 4. spawns `DOS4GW.EXE LAZARUS.EXE ~ <args>`.
 
 The protected-mode `main()` refuses to run unless the extra `~` argument is present (it prints
-*"Uruchom program poleceniem: LAZARUS.EXE <Enter>"* and exits). None of this matters for a remake.
+*"Uruchom program poleceniem: LAZARUS.EXE <Enter>"* and exits). Only the logo matters for a remake (see
+[06-cutscenes-and-music.md](06-cutscenes-and-music.md)).
 
 ## 1.4 Command line (protected-mode `main`, `0x29AD4`)
 

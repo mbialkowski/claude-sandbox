@@ -12,6 +12,7 @@ DOSBox.
 | [03-engine.md](03-engine.md) | game loop, collision, hero state machine and physics constants, object/path system, weapons, HUD, dialogue, sound, randomisation |
 | [04-game-content.md](04-game-content.md) | story, world and teleports, all items, NPCs and shops, quest chain, script reference, endings |
 | [05-remake-guide.md](05-remake-guide.md) | recommendations, fidelity checklist, open questions, legal note |
+| [06-cutscenes-and-music.md](06-cutscenes-and-music.md) | boot logo, intro shot list with timing and transcribed/translated text, title menu, credits, all endings, credits scroller, music analysis |
 
 ## Quick facts
 
@@ -53,6 +54,6 @@ Requirements: Python 3.9+, `pip install -r tools/requirements.txt` (Pillow, caps
 
 ## Running the original for comparison
 
-DOSBox 0.74: mount the game directory and run `LAZARUS.EXE` (add `/N` if sound causes trouble, `/I` to
-skip the intro). Cheats `IDMORT` (invulnerable), `IDLUFA` (all weapons), `IDSIAR` (infinite ammo/fuel) help
+`cd original && dosbox -conf dosbox.conf` (DOSBox 0.74+; add `/N` if sound causes trouble, `/I` to skip the
+intro). Cheats `IDMORT` (invulnerable), `IDLUFA` (all weapons), `IDSIAR` (infinite ammo/fuel) help
 when checking rooms.

@@ -18,22 +18,23 @@ action-adventure platformer with a jetpack, guns, inventory puzzles and Polish h
   dialogue font, all texts (UTF-8 + translation CSV) and game tables (weapons, items, scripts, physics).
 * [`reference/`](reference/README.md) — annotated Ghidra decompilation of `LAZARUS.EXE` for porting exact
   behaviour.
+* [`original/`](original/README.md) — the unmodified original game files, with checksums and a DOSBox
+  config to run it for comparison.
 * [`tools/`](tools/) — the Python tools that produced all of the above from the original files.
 
 ![World map](assets/rooms/world_map_labeled.png)
 
 ## Regenerating
 
-The original `LAZARUS.EXE` / `DATAxx.RES` files are not in git. Put your copy in `original/` (ignored) and:
-
 ```bash
 pip install -r tools/requirements.txt
-python3 tools/extract_assets.py original/ assets/
+python3 tools/extract_assets.py original/ assets/ --render-music   # --render-music needs openmpt123 + oggenc
 python3 tools/dump_rooms.py original/ --quests
+cd original && dosbox -conf dosbox.conf                              # play the original
 ```
 
 ## License
 
-The code and documentation in this repository are MIT licensed (see `LICENSE`). Lazarus and its assets
-(`assets/`, `reference/`) are the property of their respective rights holders and are included at the
-repository owner's request.
+The code and documentation in this repository are MIT licensed (see `LICENSE`). Lazarus, its files and
+everything derived from them (`original/`, `assets/`, `reference/`) are the property of their respective
+rights holders and are included at the repository owner's request.

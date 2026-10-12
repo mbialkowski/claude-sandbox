@@ -53,12 +53,10 @@ engine — the rule set is small and fully specified here.
   so enemies are purely path-scripted (they never chase or aim at the player) — worth a quick check in play.
 * The order of the quest chain was reconstructed from data; play through once in DOSBox with
   `/G /U` (all weapons, infinite ammo) or `IDMORT` to confirm reachability of each room.
-* Title-menu internals (`TitleMenu`, `0x29714`) and the credits scroller speed were not analysed in detail.
 * Sound Blaster / GUS mixing details (volume curves, panning) — irrelevant if a modern MOD player is used.
 
 ## 5.6 Legal
 
-The original game is copyrighted by its authors (Infinite Dreams, 1996). The converted assets (`assets/`) and
-the decompilation reference (`reference/`) are included at the repository owner's request; the original
-`LAZARUS.EXE`/`DATAxx.RES` files themselves are still not committed. Clarify the rights situation before
-shipping any original assets in the remake.
+The original game is copyrighted by its authors (Infinite Dreams, 1996). The original files (`original/`),
+the converted assets (`assets/`) and the decompilation reference (`reference/`) are included at the
+repository owner's request. Clarify the rights situation before shipping any original assets in the remake.

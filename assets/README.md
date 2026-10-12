@@ -5,7 +5,7 @@ All files here are **generated** by [`tools/extract_assets.py`](../tools/extract
 `LAZARUS.EXE` + `DATAxx.RES`; do not edit them by hand — fix the tool and regenerate:
 
 ```bash
-python3 tools/extract_assets.py /path/to/original-game assets/
+python3 tools/extract_assets.py original/ assets/ --render-music
 ```
 
 The assets are included at the repository owner's request; the rights belong to their respective holders.
@@ -38,9 +38,9 @@ Format details and engine rules are in [`docs/reverse-engineering/`](../docs/rev
 | `rooms/tiled/` | one Tiled map per room + `lazarus.world` laying them out — open the world in Tiled | `.tmj`, `.world` |
 | `rooms/world_map*.png` | whole world (2240×2280), with objects, and a half-size labelled overview | `.png` |
 | `sounds/` | 54 sound effects at their original sample rates; `sounds.json` has loop flags/points and names | `.wav` (8-bit mono) |
-| `music/` | "multifruit juice" (menu/game) and "recollection" (intro/credits) | ProTracker `.mod` |
+| `music/` | "multifruit juice" (title menu) and "recollection" (intro/credits) by Wojciech Panufnik; Ogg previews rendered with libopenmpt; `music.json` | ProTracker `.mod`, `.ogg` |
 | `pictures/` | GAME OVER, joke ending, intro text pages, end-credits scroller | `.png` |
-| `animations/` | 13 intro/credits/ending animations as frames; `animations.json` has timing and purpose | `DATAxx/NNN.png` |
+| `animations/` | 13 intro/credits/ending animations as frames, contact sheets in `storyboards/`; `animations.json` has timing and purpose (exact playback timing: docs `06-cutscenes-and-music.md`) | `DATAxx/NNN.png` |
 | `font/` | dialogue font: RGBA atlas + BMFont descriptor (Unicode, Polish letters mapped), preview, metrics | `.png`, `.fnt`, `.json` |
 | `text/` | all 293 strings (dialogues, items, menus) in UTF-8; CSV with an empty `text_en` column for translation | `.json`, `.csv` |
 | `gamedata/` | weapons, items (names PL/EN, HUD icon, description), script ids with notes, tile-animation sequences, teleports, hero/physics constants, new-game state | `.json` |

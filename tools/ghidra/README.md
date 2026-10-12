@@ -40,7 +40,7 @@ without help the output is full of `unaff_EDX` / `in_EAX`. Add this as the **def
 ## Run
 
 ```bash
-python3 tools/make_flat_image.py /path/to/LAZARUS.EXE out/
+python3 tools/make_flat_image.py original/LAZARUS.EXE out/
 $GHIDRA/support/analyzeHeadless out/proj laz -import out/flat.bin \
     -processor x86:LE:32:default -cspec windows \
     -loader BinaryLoader -loader-baseAddr 0x10000 \
@@ -52,5 +52,5 @@ About two minutes; ~1000 functions. Add names to `tools/symbols.txt` and re-run 
 Then annotate dialogue calls with their text and mark script/item handlers:
 
 ```bash
-python3 tools/ghidra/annotate.py /path/to/LAZARUS.EXE out/lazarus.c > reference/lazarus.c
+python3 tools/ghidra/annotate.py original/LAZARUS.EXE out/lazarus.c > reference/lazarus.c
 ```

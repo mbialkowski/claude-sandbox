@@ -24,8 +24,8 @@ Every format below has a reader in [`tools/lazarus_data.py`](../../tools/lazarus
 | DATA19 | 768 | – | palette | loaded, unused |
 | DATA20 | 105 845 | – | PCX 640×480×16 | "GAME OVER" |
 | DATA21 | 96 722 | – | PCX 640×480×16 | joke ending (witch's herbs) |
-| DATA22 | 5 217 | – | PCX 264×90×16 | integrity check by the DOS stub |
-| DATA23 | 43 952 | – | ProTracker MOD "multifruit juice" | title / in-game music |
+| DATA22 | 5 217 | – | PCX 264×90×16 | Infinite Dreams logo shown by the DOS stub at start-up |
+| DATA23 | 43 952 | – | ProTracker MOD "multifruit juice" | title-menu music (there is no in-game music) |
 | DATA24 | 170 240 | KLOCKI.DAT | Mode X tiles 16×19 ×560 | platform layer |
 | DATA25 | 768 | – | palette | **main game palette** |
 | DATA26 | 27 552 | – | bitmap font | all dialogue text |
@@ -223,8 +223,9 @@ weapons, 38 magazine reload, 39 interaction, 41 teleport, 43 pickup, 46 footstep
 
 ## 2.10 Music (DATA23, DATA39)
 
-Standard 4-channel ProTracker modules (`M.K.`): DATA23 "multifruit juice" (title + game), DATA39
-"recollection" (intro + end credits). Played by the built-in "Przenosny MOD-ule loader" mixer.
+Standard 4-channel ProTracker modules (`M.K.`), both by Wojciech Panufnik: DATA23 "multifruit juice"
+(title menu only — the game itself has no music), DATA39 "recollection" (intro + end credits). Played by
+the built-in "Przenosny MOD-ule loader" mixer. Details in [06-cutscenes-and-music.md](06-cutscenes-and-music.md).
 
 ## 2.11 Animations (FLC/FLI) and pictures (PCX)
 
@@ -233,7 +234,8 @@ DELTA_FLI (12). Several FLC headers have `depth = 0` (which is why `file` does n
 `tools/flc.py` decodes them. PCX files are standard (Pillow reads them).
 
 Intro order: `DATA33` (text page, scrolled) → FLC `05, 06, 07, 08, 09` → PCX `34, 35` → `36` (scrolled)
-→ FLC `11` → FLI `12` → *(switch to Mode X)* → FLC `15, 13, 14, 10` → wait for key.
+→ FLC `11` → FLI `12` → *(switch to Mode X)* → FLC `15, 13, 14, 10` → wait for key. Shot-by-shot timing and
+the transcribed on-screen text are in [06-cutscenes-and-music.md](06-cutscenes-and-music.md).
 
 ## 2.12 Text
 

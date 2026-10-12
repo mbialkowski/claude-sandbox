@@ -137,7 +137,7 @@ ANIMATIONS = {
 }
 
 PICTURES = {
-    "DATA20": "GAME OVER", "DATA21": "joke ending (witch's herbs)", "DATA22": "integrity-check image",
+    "DATA20": "GAME OVER", "DATA21": "joke ending (witch's herbs)", "DATA22": "Infinite Dreams logo (shown by the DOS stub while DOS/4GW loads)",
     "DATA33": "intro text page 1 (scrolled)", "DATA34": "intro still", "DATA35": "intro still",
     "DATA36": "intro text page 2 (scrolled)", "DATA40": "end credits scroller",
 }
