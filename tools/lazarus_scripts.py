@@ -17,7 +17,9 @@ Ops are lists `[name, args...]`:
               ["wait"], ["clear"]
               ["menu", [opt...]]  choose one option; result in "choice".  An option is a message id
                                   or {"msg": m, "if": cond}; hidden options keep their index, so
-                                  "choice" is the index in the full list.
+                                  "choice" is the index in the full list; {"msg": m,
+                                  "per_riddle_offset": k} shows message m + k * state["riddle"].
+                                  The text stays on screen (the handlers follow with "clear").
   control     ["if", cond, [then ops], [else ops]]
               ["switch", var, {"value": [ops], ..., "default": [ops]}]
               ["call", script_id]
@@ -185,7 +187,7 @@ SCRIPTS = {
     32: {"fn": "1b660", "dialog": True, "name": "merchant 1 (8,1)",
          "note": "buying the wire cutters does not set flag 36, so the second merchant only appears after "
                  "the other choices",
-         "ops": [["print", 37], ["menu", [38, 39, 40, 41]],
+         "ops": [["print", 37], ["menu", [38, 39, 40, 41]], ["clear"],
                  ["if", ["eq", "choice", 3], [["set_flag", 36], ["say", 44]],
                   [["if", ["money_lt", 10], [["say", 43], ["set_flag", 36]],
                     [["switch", "choice", {"0": [["set_flag", 36], ["set", "pw_abyss", 1], ["say", 53]],
@@ -197,7 +199,7 @@ SCRIPTS = {
     35: {"fn": "1b864", "dialog": True, "name": "hanging man rescued",
          "ops": [["print", 10], ["say_indexed", 11, "bomb_wire"], ["say", 22]]},
     37: {"fn": "1b8e4", "dialog": True, "name": "merchant 2 (9,3)",
-         "ops": [["print", 45], ["menu", [46, 47, 48, 49]],
+         "ops": [["print", 45], ["menu", [46, 47, 48, 49]], ["clear"],
                  ["if", ["eq", "choice", 3], [["say", 51]],
                   [["if", ["money_lt", 14], [["say", 43]],
                     [["say", 50], ["money", -14],
@@ -206,7 +208,7 @@ SCRIPTS = {
          "ops": says(14, 17) + [["bomb_sound", "start"], ["fade", "game", "alarm", 7]] + says(18, 21)
          + [["set", "bomb_active", 1]]},
     39: {"fn": "1ba4c", "dialog": True, "name": "bomb: cut a wire",
-         "ops": [["print", 25], ["menu", [26, 27, 28]],
+         "ops": [["print", 25], ["menu", [26, 27, 28]], ["clear"],
                  ["if", ["eq", "choice", {"var": "bomb_wire"}],
                   [["bomb_sound", "stop"], ["fade", "alarm", "game", 7], ["set", "bomb_active", 0],
                    ["take", 7], ["say", 35]],
@@ -218,7 +220,7 @@ SCRIPTS = {
     44: {"fn": "1bbb8", "ops": [["give", 32]], "name": "magic flower 3"},
     45: {"fn": "1bbd8", "ops": [["teleport", 4, 5, 14, 83]], "name": "booth (8,6) -> (4,5)"},
     64: {"fn": "1bc08", "dialog": True, "name": "the witch",
-         "ops": says(88, 91) + [["take", 33], ["print", 92], ["menu", [93, 94, 95]],
+         "ops": says(88, 91) + [["take", 33], ["print", 92], ["menu", [93, 94, 95]], ["clear"],
                                 ["if", ["eq", "choice", 1], says(96, 97) + [["give", 34]],
                                  brewing(103) + [
                                      ["switch", "choice", {
@@ -246,7 +248,7 @@ SCRIPTS = {
     73: {"fn": "1c04c", "dialog": True, "ops": says(81), "name": "grave: Gereon Świniopas"},
     74: {"fn": "1c07c", "dialog": True, "ops": says(82), "name": "grave: Jaksra Tokwili"},
     75: {"fn": "1c0ac", "dialog": True, "name": "undertaker (7,6)",
-         "ops": [["say", 54], ["print", 55], ["menu", [56, 57, 58, 59]],
+         "ops": [["say", 54], ["print", 55], ["menu", [56, 57, 58, 59]], ["clear"],
                  ["if", ["eq", "choice", 3], [["say", 63]],
                   buy(10, [["switch", "choice", {"0": [["set", "pw_abyss", 1], ["say", 60]],
                                                  "1": [["say", 61]],
@@ -292,6 +294,7 @@ SCRIPTS = {
           "ops": [["set", "stock_energy", ["not", ["energy_full"]]], ["print", 232],
                   ["menu", [{"msg": 233 + i, "if": ["ne", v, 0]} for i, v in enumerate(
                       ["stock_energy", "stock_clip", "stock_uzi", "stock_ticket", "stock_map", "stock_leave"])]],
+                  ["clear"],
                   ["switch", "choice", {
                       "0": buy(5, [["energy", "+third"], ["say", 240]], poor=239),
                       "1": buy(2, [["if", ["has_item", 36], [], [["give", 36]]], ["add", "magazines", 1],
@@ -313,7 +316,7 @@ SCRIPTS = {
     192: {"fn": "1cc70", "ops": [["give", 18]], "name": "magic key 1"},
     193: {"fn": "1cc90", "ops": [["give", 12]], "name": "shaped key piece"},
     194: {"fn": "1ccb0", "dialog": True, "name": "gum-chewer trade",
-          "ops": says(161) + says(164, 166) + [["print", 167], ["menu", [168, 169, 170, 171]],
+          "ops": says(161) + says(164, 166) + [["print", 167], ["menu", [168, 169, 170, 171]], ["clear"],
                                                ["if", ["eq", "choice", 3], [["say", 172]],
                                                 [["take", 26], ["switch", "choice", {
                                                     "2": [["say", 174], ["fade", "current", "black", 7],
@@ -328,6 +331,7 @@ SCRIPTS = {
           "ops": [["print", 184],
                   ["menu", [{"msg": 185, "per_riddle_offset": 3}, {"msg": 186, "per_riddle_offset": 3},
                             {"msg": 187, "per_riddle_offset": 3}]],
+                  ["clear"],
                   ["if", ["or", ["and", ["eq", "choice", 1], ["lt", "riddle", 2]],
                           ["and", ["eq", "choice", 2], ["eq", "riddle", 2]]],
                    [["say", 194], ["set_flag", 197]], [["say", 195]]],

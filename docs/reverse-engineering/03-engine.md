@@ -224,6 +224,12 @@ Shot sounds cycle through per-weapon lists (e.g. weapon 0: 20,20,21,20,22,21,22)
 | weapon picture | (255, 8) | frame `1064 + weapon*2` (group 209) |
 | selected inventory item | (276, 204) | frame `1034 + item.hud_icon` (group 208) |
 
+The panel itself (`DrawHudPanel`) is drawn at screen (244, 0); the elements above go through the sprite
+blitter, which writes in **play-field coordinates** (back-buffer offset `0x1E0` = 6 rows), so on screen
+they appear at y + 6: weapon at (255, 14), tubes from y = 117, item at (276, 210). Dialogue text,
+`ShowPicture` and the title-menu highlights use the same coordinates (checked against DOSBox screenshots:
+the HUD then matches pixel for pixel).
+
 ## 3.8 Dialogue / UI system
 
 * `Dlg_Begin` pauses sound effects and draws into a separate text buffer over the frozen play-field;

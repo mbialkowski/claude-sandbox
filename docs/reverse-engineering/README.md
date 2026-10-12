@@ -11,7 +11,7 @@ DOSBox.
 | [02-file-formats.md](02-file-formats.md) | every `DATAxx.RES` format: tiles, sprites (BOBs), rooms, room objects, font, sounds, palettes, FLC/PCX/MOD |
 | [03-engine.md](03-engine.md) | game loop, collision, hero state machine and physics constants, object/path system, weapons, HUD, dialogue, sound, randomisation |
 | [04-game-content.md](04-game-content.md) | story, world and teleports, all items, NPCs and shops, quest chain, script reference, endings |
-| [05-remake-guide.md](05-remake-guide.md) | recommendations, fidelity checklist, open questions, legal note |
+| [05-remake-guide.md](05-remake-guide.md) | recommendations, fidelity checklist, the Godot remake built on these notes (5.7), open questions, legal note |
 | [06-cutscenes-and-music.md](06-cutscenes-and-music.md) | boot logo, intro shot list with timing and transcribed/translated text, title menu, credits, all endings, credits scroller, music analysis |
 | [07-world-and-catalogues.md](07-world-and-catalogues.md) | regions and room connectivity, teleport graph, gates, all lifts/doors and what opens them, secret passages, collision/path debug renders, enemy catalogue, sound usage, unused/cut content, quest dependency graph, completability check and walkthrough |
 | [08-history.md](08-history.md) | the C64 (1994) and Amiga (1995) games this port descends from, credits, the studio, sources |
@@ -55,6 +55,7 @@ is in [`reference/`](../../reference/README.md).
 | `pixel_check.py` | patches a scratch copy of the EXE to start frozen in any room and compares DOSBox screenshots with our renders |
 | `world_analysis.py` | room-edge connectivity, regions, teleports, fake walls, collision/path debug renders (`world_graph.json`) |
 | `catalogues.py` | enemies, hero spec, sound usage, unused content (`assets/gamedata/*.json`) |
+| `build_remake_data.py` | the Godot remake's data bundle (`remake/data/`): index-image atlases, rooms, texts, handlers, sounds |
 | `le_loader.py` | LE (DOS/4GW) loader with fixups |
 | `disasm.py` | annotated linear disassembly (capstone) using `symbols.txt` |
 | `make_flat_image.py` + `ghidra/` | inputs, post-script and annotator for the Ghidra decompilation in `reference/` |

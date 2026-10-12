@@ -1,7 +1,18 @@
 # Lazarus remake
 
-Groundwork for a modern remake of **Lazarus** (Infinite Dreams, 1996, MS-DOS, Polish), a room-based
-action-adventure platformer with a jetpack, guns, inventory puzzles and Polish humour.
+A modern remake of **Lazarus** (Infinite Dreams, 1996, MS-DOS, Polish), a room-based action-adventure
+platformer with a jetpack, guns, inventory puzzles and Polish humour — and the reverse-engineering
+groundwork it is built on.
+
+**[`remake/`](remake/README.md)** — the game in Godot 4.7: plays in a web browser, widescreen / HD with
+crisp pixels, keyboard, gamepad and on-screen touch controls, Polish or English, the original's rules
+ported tick for tick.
+
+| widescreen | phone (touch) |
+|---|---|
+| ![](docs/images/remake/start_room_16x9.png) | ![](docs/images/remake/phone_touch.png) |
+
+The original:
 
 | title | gameplay | dialogue |
 |---|---|---|
@@ -22,6 +33,7 @@ action-adventure platformer with a jetpack, guns, inventory puzzles and Polish h
 * [`original/`](original/README.md) — the unmodified original game files, with checksums and a DOSBox
   config to run it for comparison.
 * [`tools/`](tools/) — the Python tools that produced all of the above from the original files.
+* [`remake/`](remake/README.md) — the Godot 4 remake (web export, tests).
 
 ![World map](assets/rooms/world_map_labeled.png)
 
@@ -32,6 +44,8 @@ pip install -r tools/requirements.txt
 python3 tools/extract_assets.py original/ assets/ --render-music   # --render-music needs openmpt123 + oggenc
 python3 tools/dump_rooms.py original/ --quests
 cd original && dosbox -conf dosbox.conf                              # play the original
+python3 tools/build_remake_data.py original/ remake/data/           # the remake's data bundle
+godot --path remake                                                  # play the remake (Godot 4.7)
 ```
 
 ## License

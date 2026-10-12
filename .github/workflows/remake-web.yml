@@ -1,0 +1,72 @@
+# Tests the Godot remake, exports the web build and (from main) publishes it on GitHub Pages.
+# One-time setup: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+name: Remake web build
+
+on:
+  push:
+    paths: ["remake/**", "tools/build_remake_data.py", ".github/workflows/remake-web.yml"]
+  pull_request:
+    paths: ["remake/**", "tools/build_remake_data.py", ".github/workflows/remake-web.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: remake-web-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: "4.7.2"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Godot and the web export templates
+        run: |
+          base=https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable
+          curl -sSLo godot.zip "$base/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q godot.zip
+          sudo mv "Godot_v${GODOT_VERSION}-stable_linux.x86_64" /usr/local/bin/godot
+          curl -sSLo templates.tpz "$base/Godot_v${GODOT_VERSION}-stable_export_templates.tpz"
+          dest="$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable"
+          mkdir -p "$dest"
+          unzip -q -j templates.tpz templates/version.txt templates/web_nothreads_release.zip \
+            templates/web_nothreads_debug.zip -d "$dest"
+          rm godot.zip templates.tpz
+
+      - name: Import the project
+        run: godot --headless --path remake --import || true
+
+      - name: Tests (scripts, golden traces, scenarios, walkthrough)
+        run: |
+          godot --headless --path remake --script res://tests/check.gd
+          godot --headless --path remake --script res://tests/golden.gd
+          godot --headless --path remake --script res://tests/scenarios.gd
+          godot --headless --path remake --script res://tests/walkthrough.gd
+
+      - name: Export the web build
+        run: |
+          mkdir -p remake/build/web
+          godot --headless --path remake --export-release Web "$GITHUB_WORKSPACE/remake/build/web/index.html"
+          test -s remake/build/web/index.wasm
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: remake/build/web
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
