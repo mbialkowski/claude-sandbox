@@ -60,6 +60,9 @@ var cheat_buf := ""
 var credits_y := 0.0
 var notice := ""
 var notice_ticks := 0
+var last_saved_room := Vector2i(-1, -1)
+
+const SAVE_PATH := "user://save.json"
 
 
 func _ready() -> void:
@@ -557,6 +560,8 @@ func _physics_process(_delta: float) -> void:
 		sim.teleported = false
 	if not sim.script_queue.is_empty():
 		vm.run_queue()
+	elif Vector2i(sim.hero.col, sim.hero.row) != last_saved_room and sim.hero.state < 14 and not sim.dead:
+		_save_game()
 
 
 func _process(delta: float) -> void:
@@ -694,7 +699,7 @@ func _title() -> void:
 	picture_frame = -1
 	anim_frame = ""
 	hud_visible = false
-	ui_sel = 0
+	ui_sel = maxi(0, _title_items().find("continue"))
 	text.clear()
 	audio.stop_all()
 	audio.pause_all(false)
@@ -705,32 +710,50 @@ func _title() -> void:
 	touch.refresh()
 
 
+func _title_items() -> Array:
+	var items := ["new", "credits", "quit"]
+	if FileAccess.file_exists(SAVE_PATH):
+		items.append("continue")
+	items.append("options")
+	return items
+
+
 func _title_rects() -> Array:
 	var ox := (logical_w - 320) / 2
-	return [Rect2(ox + 110, 84, 100, 30), Rect2(ox + 105, 117, 110, 30), Rect2(ox + 105, 155, 110, 30),
-			Rect2(ox + 100, 196, 120, 16)]
+	var rects := [Rect2(ox + 110, 84, 100, 30), Rect2(ox + 105, 117, 110, 30), Rect2(ox + 105, 155, 110, 30)]
+	for i in range(3, _title_items().size()):
+		rects.append(Rect2(ox + 90, _title_font_y(i) - 3, 140, 15))
+	return rects
+
+
+func _title_font_y(i: int) -> int:
+	return 186 + (i - 3) * 14 if _title_items().size() == 5 else 196
 
 
 func _title_input(a: String) -> void:
+	var items := _title_items()
+	var n := items.size()
 	match a:
 		"up":
-			ui_sel = (ui_sel + 3) % 4
+			ui_sel = (ui_sel + n - 1) % n
 			audio.play(33)
 		"down":
-			ui_sel = (ui_sel + 1) % 4
+			ui_sel = (ui_sel + 1) % n
 			audio.play(33)
 		"use", "jetpack", "fire":
-			match ui_sel:
-				0:
+			match items[ui_sel]:
+				"new":
 					_new_game()
-				1:
+				"credits":
 					_credits_anim()
-				2:
+				"quit":
 					if OS.has_feature("web"):
 						_notice(Strings.t("thanks"))
 					else:
 						get_tree().quit()
-				3:
+				"continue":
+					_new_game(true)
+				"options":
 					options_from = "title"
 					_open_options()
 		"pause":
@@ -738,21 +761,38 @@ func _title_input(a: String) -> void:
 	screen.overlay_layer.queue_redraw()
 
 
-func _new_game() -> void:
+func _new_game(resume := false) -> void:
 	audio.stop_music()
 	mode = "play"
 	sim = Sim.new(D)
 	sim.audio = audio
 	vm.sim = sim
-	sim.new_game()
+	var saved = null
+	if resume:
+		saved = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
+	if saved is Dictionary:
+		sim.load_data(saved)
+	else:
+		sim.new_game()
+	last_saved_room = Vector2i(-1, -1)
 	hud_visible = true
 	hero_visible = true
 	text.clear()
 	screen.follow(sim.hero.col, sim.hero.row, true)
 	screen.refresh_all()
 	palette.set_now("black")
-	palette.fade("black", "game", 0.5)
+	var bomb: bool = sim.state.vars.get("bomb_active", 0) != 0
+	palette.fade("black", "alarm" if bomb else "game", 0.5)
+	if bomb:
+		audio.play(16)
 	touch.refresh()
+
+
+func _save_game() -> void:
+	last_saved_room = Vector2i(sim.hero.col, sim.hero.row)
+	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if f:
+		f.store_string(JSON.stringify(sim.save_data()))
 
 
 func _finish_game() -> void:
@@ -1011,10 +1051,12 @@ func draw_overlay(ci: CanvasItem) -> void:
 			var hl := [[1178, 139, 89], [1179, 113, 122], [1180, 116, 160]]
 			if ui_sel < 3:
 				screen.draw_frame(ci, hl[ui_sel][0], Vector2(ox + hl[ui_sel][1], hl[ui_sel][2]))
-			var label := Strings.t("options").to_upper()
-			var lw: int = screen.string_width(label)
-			var bright := _brightest("menu")
-			screen.draw_string_at(ci, label, Vector2(ox + 160 - lw / 2, 200), bright if ui_sel == 3 else _dimmest_text("menu"), 0)
+			var items := _title_items()
+			for i in range(3, items.size()):
+				var label := Strings.t(items[i]).to_upper()
+				var lw: int = screen.string_width(label)
+				screen.draw_string_at(ci, label, Vector2(ox + 160 - lw / 2, _title_font_y(i)),
+						_brightest("menu") if ui_sel == i else _dimmest_text("menu"), 0)
 		"options":
 			if options_from == "title":
 				screen.fill(ci, Rect2(0, 0, W, H), 0)

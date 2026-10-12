@@ -117,6 +117,15 @@ func _run() -> void:
 	_check("merchant sells the lift card", sim.state.find_item(6) >= 0 and sim.state.money == 0,
 			"money %d pockets %s" % [sim.state.money, sim.state.pockets.slice(0, 4)])
 
+	# a saved game restores money, pockets, flags, records and the hero
+	var saved = JSON.parse_string(JSON.stringify(sim.save_data()))
+	var sim2 = Sim.new(D, 99)
+	sim2.load_data(saved)
+	_check("save and load", sim2.state.money == sim.state.money and sim2.state.pockets == sim.state.pockets
+			and sim2.state.flags == sim.state.flags and sim2.hero.col == 8 and sim2.hero.row == 1
+			and int(sim2.state.rooms[17]["objects"][0]["flags"]) == int(sim.state.rooms[17]["objects"][0]["flags"])
+			and sim2.state.vars == sim.state.vars)
+
 	# shooting the green guard at (8,0) (HP 5, weapon 0 does 1 per shot)
 	sim = _new_sim(8, 0, 40, 160)
 	var guard = sim.live_room.objects[8]

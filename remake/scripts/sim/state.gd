@@ -62,6 +62,50 @@ func _init(p_D, seed := -1) -> void:
 	flags[76 + int(vars["secret_door"])] = 1         # NewGameState marks the secret door
 
 
+func to_dict() -> Dictionary:
+	"""What a saved game needs (the object records only where they differ from the original data)."""
+	var set_flags := []
+	for i in 256:
+		if flags[i]:
+			set_flags.append(i)
+	var recs := []
+	var orig: Array = D.game["rooms"]
+	for ri in rooms.size():
+		var objs: Array = rooms[ri]["objects"]
+		for oi in objs.size():
+			var a: Dictionary = objs[oi]
+			var b: Dictionary = orig[ri]["objects"][oi]
+			if a["flags"] != b["flags"] or a["hp"] != b["hp"]:
+				recs.append([ri, oi, a["flags"], a["hp"]])
+	return {"energy": energy, "fuel": fuel, "ammo": ammo, "weapon": weapon, "owned": owned, "money": money,
+			"pockets": pockets, "inv_sel": inv_sel, "flags": set_flags, "vars": vars, "bomb_timer": bomb_timer,
+			"infinite": infinite, "records": recs}
+
+
+func from_dict(d: Dictionary) -> void:
+	energy = int(d["energy"])
+	fuel = int(d["fuel"])
+	for i in 6:
+		ammo[i] = int(d["ammo"][i])
+		owned[i] = bool(d["owned"][i])
+	weapon = int(d["weapon"])
+	money = int(d["money"])
+	for i in 40:
+		pockets[i] = int(d["pockets"][i])
+	inv_sel = int(d["inv_sel"])
+	flags.fill(0)
+	for i in d["flags"]:
+		flags[int(i)] = 1
+	for k in d["vars"]:
+		vars[k] = int(d["vars"][k])
+	bomb_timer = int(d["bomb_timer"])
+	infinite = bool(d["infinite"])
+	for r in d["records"]:
+		var rec: Dictionary = rooms[int(r[0])]["objects"][int(r[1])]
+		rec["flags"] = int(r[2])
+		rec["hp"] = int(r[3])
+
+
 func flag(i: int) -> bool:
 	return i >= 0 and i < 256 and flags[i] != 0
 

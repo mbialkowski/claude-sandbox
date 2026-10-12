@@ -47,6 +47,19 @@ func new_game() -> void:
 	enter_room(START[0], START[1])
 
 
+func save_data() -> Dictionary:
+	return {"version": 1, "state": state.to_dict(),
+			"hero": [hero.col, hero.row, hero.x, hero.y, hero.dir]}
+
+
+func load_data(d: Dictionary) -> void:
+	state.from_dict(d["state"])
+	var h: Array = d["hero"]
+	hero.place(int(h[0]), int(h[1]), int(h[2]), int(h[3]), int(h[4]))
+	hero.dir = int(h[4])
+	enter_room(hero.col, hero.row)
+
+
 func world_tile(wtx: int, wty: int) -> int:
 	if not test_room.is_empty():
 		var k := Vector2i(floori(wtx / 14.0), floori(wty / 12.0))
@@ -134,6 +147,9 @@ func queue_missing_item(item: int) -> void:
 func tick() -> void:
 	ticks += 1
 	if live_room:
+		for o in live_room.objects:
+			if o:
+				o.flash = false                        # a hit shows the white silhouette for one tick
 		live_room.think()
 	hero.think()
 	_damage_tick()
