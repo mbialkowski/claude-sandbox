@@ -370,7 +370,7 @@
    "flags": 2563,
    "flag_names": [
     "active",
-    "bit1"
+    "editor-0x0002"
    ],
    "collision_class": 16,
    "class_name": "harmful",
@@ -465,7 +465,7 @@
    "activate_sound": 6,
    "target": 133,
    "target_kind": "script",
-   "script_note": "fuel +1/3",
+   "script_note": "flag only",
    "item": 2,
    "steps": [
     {
@@ -609,7 +609,7 @@
    "flags": 1163,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "invisible",
     "keep-after-use"
    ],
@@ -695,7 +695,7 @@
    "flags": 2179,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use"
    ],
    "collision_class": 16,

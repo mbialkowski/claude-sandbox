@@ -361,7 +361,7 @@
    "flags": 53379,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "fires-trigger",
     "conditional"

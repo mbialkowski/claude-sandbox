@@ -347,7 +347,7 @@
    "flags": 53399,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "needs-flag",
     "chain-next",
     "keep-after-use",
@@ -488,7 +488,7 @@
    "flags": 8339,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "chain-next",
     "keep-after-use"
    ],
@@ -599,7 +599,7 @@
    "flags": 20643,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "touch-activates",
     "keep-after-use",
     "fires-trigger"
@@ -641,7 +641,7 @@
    "flags": 2179,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use"
    ],
    "collision_class": 16,

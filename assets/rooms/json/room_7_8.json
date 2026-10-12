@@ -270,7 +270,7 @@
    "flags": 20739,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "rearm",
     "fires-trigger"
    ],
@@ -311,7 +311,7 @@
    "flags": 53395,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "chain-next",
     "keep-after-use",
     "fires-trigger",
@@ -394,7 +394,7 @@
    "flags": 20611,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "fires-trigger"
    ],
@@ -490,7 +490,7 @@
    "flags": 8723,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "chain-next"
    ],
    "collision_class": 64,

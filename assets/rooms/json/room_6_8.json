@@ -394,7 +394,7 @@
    "flags": 2563,
    "flag_names": [
     "active",
-    "bit1"
+    "editor-0x0002"
    ],
    "collision_class": 16,
    "class_name": "harmful",
@@ -598,7 +598,7 @@
    "flags": 2563,
    "flag_names": [
     "active",
-    "bit1"
+    "editor-0x0002"
    ],
    "collision_class": 16,
    "class_name": "harmful",

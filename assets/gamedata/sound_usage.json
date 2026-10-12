@@ -1,0 +1,9085 @@
+{
+ "note": "Where each sound effect (DATA41 id) is played: engine code, weapons, hero hurt cycle, object activation (header byte 5) and path steps (play/stop of looping emitters). The 54 ids use only 23 distinct samples: same_sample_as / pitch_variants list ids that play the same PCM data at another sample rate.",
+ "sounds": [
+  {
+   "id": 0,
+   "offset": 0,
+   "length": 5472,
+   "rate": 19705,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 3,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 6,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 9,
+     "cmd": "stop",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [
+    24,
+    25,
+    26
+   ],
+   "used": true
+  },
+  {
+   "id": 1,
+   "offset": 5472,
+   "length": 2104,
+   "rate": 8326,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      7,
+      0
+     ],
+     "object": 3,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      7,
+      0
+     ],
+     "object": 4,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 44,
+     "name": "harmful debris"
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 43,
+     "name": "harmful debris"
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 1,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 2,
+     "sprite_group": 24,
+     "name": "small explosion"
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 5,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 6,
+     "sprite_group": 24,
+     "name": "small explosion"
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 1,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 2,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 3,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 7,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 6,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 7,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 5,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 6,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 7,
+     "sprite_group": 60,
+     "name": "turret fireball"
+    }
+   ],
+   "path_steps": [
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 5,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      1
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      1
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 6,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 1,
+     "step": 4,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      9
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 2,
+   "offset": 7576,
+   "length": 1160,
+   "rate": 8326,
+   "loop": false,
+   "loop_start": 0,
+   "name": "turret shot",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 6,
+     "sprite_group": 25,
+     "name": "spark"
+    }
+   ],
+   "path_steps": [
+    {
+     "room": [
+      7,
+      0
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      0
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 0,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      4
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      7
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 3,
+   "offset": 8736,
+   "length": 3158,
+   "rate": 8051,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 0,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 0,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 5,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 5,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 9,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 0,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 1,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 3,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 3,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 3,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 5,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 1,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 5,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 1,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 3,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 5,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 5,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [
+    9,
+    37,
+    44,
+    45
+   ],
+   "used": true
+  },
+  {
+   "id": 4,
+   "offset": 11894,
+   "length": 4988,
+   "rate": 7982,
+   "loop": true,
+   "loop_start": 4048,
+   "name": "loop (machinery)",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      2
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      2
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      4
+     ],
+     "object": 6,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      6
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      1,
+      7
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      7
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      7
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 6,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 6,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [
+    30,
+    36
+   ],
+   "used": true
+  },
+  {
+   "id": 5,
+   "offset": 16882,
+   "length": 8368,
+   "rate": 8326,
+   "loop": false,
+   "loop_start": 0,
+   "name": "explosion",
+   "engine": [
+    {
+     "code": "Hero_Explode",
+     "what": "bomb explosion"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 1,
+     "sprite_group": 193,
+     "name": "lizard man (enemy)"
+    },
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 3,
+     "sprite_group": 193,
+     "name": "lizard man (enemy)"
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 0,
+     "sprite_group": 13,
+     "name": "green parrot?"
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 1,
+     "sprite_group": 197,
+     "name": "kneeling hag?"
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 2,
+     "sprite_group": 13,
+     "name": "green parrot?"
+    },
+    {
+     "room": [
+      8,
+      0
+     ],
+     "object": 8,
+     "sprite_group": 149,
+     "name": "helmeted skeleton warrior?"
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 3,
+     "sprite_group": 27,
+     "name": "green slime blob (bouncing)?"
+    },
+    {
+     "room": [
+      5,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 197,
+     "name": "kneeling hag?"
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 1,
+     "sprite_group": 149,
+     "name": "helmeted skeleton warrior?"
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 2,
+     "sprite_group": 167,
+     "name": "blue capsule (destructible)?"
+    },
+    {
+     "room": [
+      8,
+      1
+     ],
+     "object": 2,
+     "sprite_group": 150,
+     "name": "grey ghoul?"
+    },
+    {
+     "room": [
+      9,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 150,
+     "name": "grey ghoul?"
+    },
+    {
+     "room": [
+      0,
+      2
+     ],
+     "object": 3,
+     "sprite_group": 147,
+     "name": "hooded hunchback (other way)?"
+    },
+    {
+     "room": [
+      2,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 147,
+     "name": "hooded hunchback (other way)?"
+    },
+    {
+     "room": [
+      3,
+      2
+     ],
+     "object": 3,
+     "sprite_group": 3,
+     "name": "caveman with a club?"
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 2,
+     "sprite_group": 197,
+     "name": "kneeling hag?"
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 3,
+     "sprite_group": 14,
+     "name": "green parrot (other way)?"
+    },
+    {
+     "room": [
+      5,
+      2
+     ],
+     "object": 6,
+     "sprite_group": 3,
+     "name": "caveman with a club?"
+    },
+    {
+     "room": [
+      8,
+      2
+     ],
+     "object": 3,
+     "sprite_group": 151,
+     "name": "grey ghoul (other way)?"
+    },
+    {
+     "room": [
+      9,
+      2
+     ],
+     "object": 2,
+     "sprite_group": 150,
+     "name": "grey ghoul?"
+    },
+    {
+     "room": [
+      4,
+      3
+     ],
+     "object": 6,
+     "sprite_group": 173,
+     "name": "green stone pillar (192 HP)"
+    },
+    {
+     "room": [
+      4,
+      3
+     ],
+     "object": 8,
+     "sprite_group": 194,
+     "name": null
+    },
+    {
+     "room": [
+      4,
+      3
+     ],
+     "object": 9,
+     "sprite_group": 155,
+     "name": "winged gargoyle (other way)?"
+    },
+    {
+     "room": [
+      5,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 168,
+     "name": "orange beast (other way)?"
+    },
+    {
+     "room": [
+      7,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 2,
+     "name": "orange beast?"
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 151,
+     "name": "grey ghoul (other way)?"
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 5,
+     "sprite_group": 2,
+     "name": "orange beast?"
+    },
+    {
+     "room": [
+      1,
+      4
+     ],
+     "object": 2,
+     "sprite_group": 147,
+     "name": "hooded hunchback (other way)?"
+    },
+    {
+     "room": [
+      1,
+      4
+     ],
+     "object": 3,
+     "sprite_group": 146,
+     "name": "hooded hunchback?"
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 155,
+     "name": "winged gargoyle (other way)?"
+    },
+    {
+     "room": [
+      5,
+      4
+     ],
+     "object": 1,
+     "sprite_group": 154,
+     "name": "winged gargoyle?"
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 167,
+     "name": "blue capsule (destructible)?"
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 1,
+     "sprite_group": 155,
+     "name": "winged gargoyle (other way)?"
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 2,
+     "sprite_group": 147,
+     "name": "hooded hunchback (other way)?"
+    },
+    {
+     "room": [
+      4,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 185,
+     "name": "green slime (flying)?"
+    },
+    {
+     "room": [
+      4,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 155,
+     "name": "winged gargoyle (other way)?"
+    },
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 168,
+     "name": "orange beast (other way)?"
+    },
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 5,
+     "sprite_group": 150,
+     "name": "grey ghoul?"
+    },
+    {
+     "room": [
+      2,
+      6
+     ],
+     "object": 1,
+     "sprite_group": 191,
+     "name": "dragon?"
+    },
+    {
+     "room": [
+      5,
+      6
+     ],
+     "object": 1,
+     "sprite_group": 157,
+     "name": "zombie (other way)?"
+    },
+    {
+     "room": [
+      6,
+      6
+     ],
+     "object": 2,
+     "sprite_group": 156,
+     "name": "zombie?"
+    },
+    {
+     "room": [
+      6,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 157,
+     "name": "zombie (other way)?"
+    },
+    {
+     "room": [
+      7,
+      6
+     ],
+     "object": 8,
+     "sprite_group": 157,
+     "name": "zombie (other way)?"
+    },
+    {
+     "room": [
+      3,
+      7
+     ],
+     "object": 3,
+     "sprite_group": 191,
+     "name": "dragon?"
+    },
+    {
+     "room": [
+      2,
+      8
+     ],
+     "object": 4,
+     "sprite_group": 191,
+     "name": "dragon?"
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 0,
+     "sprite_group": 136,
+     "name": "skeleton?"
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 7,
+     "sprite_group": 136,
+     "name": "skeleton?"
+    },
+    {
+     "room": [
+      9,
+      8
+     ],
+     "object": 5,
+     "sprite_group": 159,
+     "name": "orange crawler (other way)?"
+    },
+    {
+     "room": [
+      9,
+      8
+     ],
+     "object": 9,
+     "sprite_group": 137,
+     "name": "skeleton (other way)?"
+    },
+    {
+     "room": [
+      1,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 192,
+     "name": "dragon (other way)?"
+    },
+    {
+     "room": [
+      7,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 158,
+     "name": "orange crawler?"
+    }
+   ],
+   "path_steps": [
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      5
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      7
+     ],
+     "object": 5,
+     "step": 5,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 6,
+   "offset": 25250,
+   "length": 5566,
+   "rate": 7905,
+   "loop": false,
+   "loop_start": 0,
+   "name": "small explosion",
+   "engine": [
+    {
+     "code": "Hero_Explode",
+     "what": "explosion echo (twice)"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 5,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 6,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 0,
+     "sprite_group": 15,
+     "name": "blue beetle?"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 2,
+     "sprite_group": 16,
+     "name": "green slime blob?"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 5,
+     "sprite_group": 15,
+     "name": "blue beetle?"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 10,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 11,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 3,
+     "sprite_group": 45,
+     "name": "falling stone"
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 6,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      5,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      5,
+      1
+     ],
+     "object": 1,
+     "sprite_group": 16,
+     "name": "green slime blob?"
+    },
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 56,
+     "name": "blue wall turret"
+    },
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 7,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 3,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      9,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 165,
+     "name": "orange ring?"
+    },
+    {
+     "room": [
+      2,
+      2
+     ],
+     "object": 1,
+     "sprite_group": 185,
+     "name": "green slime (flying)?"
+    },
+    {
+     "room": [
+      3,
+      2
+     ],
+     "object": 4,
+     "sprite_group": 31,
+     "name": "metal ball?"
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 4,
+     "sprite_group": 45,
+     "name": "falling stone"
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 1,
+     "sprite_group": 16,
+     "name": "green slime blob?"
+    },
+    {
+     "room": [
+      9,
+      2
+     ],
+     "object": 1,
+     "sprite_group": 164,
+     "name": "black spider?"
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 2,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 4,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 5,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 5,
+     "sprite_group": 171,
+     "name": "green spiked mine"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 6,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 7,
+     "sprite_group": 171,
+     "name": "green spiked mine"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 8,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 0,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 1,
+     "sprite_group": 162,
+     "name": "orange bug"
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 2,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 5,
+     "sprite_group": 164,
+     "name": "black spider?"
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 6,
+     "sprite_group": 164,
+     "name": "black spider?"
+    },
+    {
+     "room": [
+      7,
+      3
+     ],
+     "object": 4,
+     "sprite_group": 165,
+     "name": "orange ring?"
+    },
+    {
+     "room": [
+      9,
+      3
+     ],
+     "object": 4,
+     "sprite_group": 164,
+     "name": "black spider?"
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 3,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 5,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 6,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 7,
+     "sprite_group": 165,
+     "name": "orange ring?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 1,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 2,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 3,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 5,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 6,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 7,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 6,
+     "sprite_group": 185,
+     "name": "green slime (flying)?"
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 7,
+     "sprite_group": 176,
+     "name": "bouncing bomb?"
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 1,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 2,
+     "sprite_group": 152,
+     "name": "small dart?"
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 5,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 0,
+     "sprite_group": 185,
+     "name": "green slime (flying)?"
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 163,
+     "name": "green bug"
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 5,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 6,
+     "sprite_group": 163,
+     "name": "green bug"
+    },
+    {
+     "room": [
+      9,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 165,
+     "name": "orange ring?"
+    },
+    {
+     "room": [
+      9,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      1,
+      6
+     ],
+     "object": 2,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      1,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      1,
+      6
+     ],
+     "object": 4,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      2,
+      6
+     ],
+     "object": 2,
+     "sprite_group": 45,
+     "name": "falling stone"
+    },
+    {
+     "room": [
+      2,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 45,
+     "name": "falling stone"
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 1,
+     "sprite_group": 163,
+     "name": "green bug"
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 2,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 163,
+     "name": "green bug"
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 4,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 5,
+     "sprite_group": 163,
+     "name": "green bug"
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 6,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      5,
+      6
+     ],
+     "object": 2,
+     "sprite_group": 179,
+     "name": "small arrow?"
+    },
+    {
+     "room": [
+      5,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 179,
+     "name": "small arrow?"
+    },
+    {
+     "room": [
+      7,
+      6
+     ],
+     "object": 9,
+     "sprite_group": 179,
+     "name": "small arrow?"
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 2,
+     "sprite_group": 164,
+     "name": "black spider?"
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 164,
+     "name": "black spider?"
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 1,
+     "sprite_group": 177,
+     "name": "thrown bone"
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 1,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 2,
+     "sprite_group": 162,
+     "name": "orange bug"
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 3,
+     "sprite_group": 161,
+     "name": "pink bug"
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 4,
+     "sprite_group": 163,
+     "name": "green bug"
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 5,
+     "sprite_group": 15,
+     "name": "blue beetle?"
+    },
+    {
+     "room": [
+      5,
+      8
+     ],
+     "object": 1,
+     "sprite_group": 170,
+     "name": "magenta spiked mine"
+    },
+    {
+     "room": [
+      5,
+      8
+     ],
+     "object": 2,
+     "sprite_group": 171,
+     "name": "green spiked mine"
+    },
+    {
+     "room": [
+      5,
+      8
+     ],
+     "object": 3,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      5,
+      8
+     ],
+     "object": 4,
+     "sprite_group": 172,
+     "name": "yellow spiked mine"
+    },
+    {
+     "room": [
+      5,
+      8
+     ],
+     "object": 5,
+     "sprite_group": 170,
+     "name": "magenta spiked mine"
+    },
+    {
+     "room": [
+      5,
+      8
+     ],
+     "object": 6,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "sprite_group": 178,
+     "name": "thrown bone (other way)"
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "sprite_group": 178,
+     "name": "thrown bone (other way)"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 162,
+     "name": "orange bug"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 4,
+     "sprite_group": 162,
+     "name": "orange bug"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 5,
+     "sprite_group": 160,
+     "name": "red bug"
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 4,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 5,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 6,
+     "sprite_group": 30,
+     "name": "white energy ball?"
+    },
+    {
+     "room": [
+      5,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 171,
+     "name": "green spiked mine"
+    },
+    {
+     "room": [
+      5,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      5,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 170,
+     "name": "magenta spiked mine"
+    },
+    {
+     "room": [
+      5,
+      9
+     ],
+     "object": 4,
+     "sprite_group": 172,
+     "name": "yellow spiked mine"
+    },
+    {
+     "room": [
+      5,
+      9
+     ],
+     "object": 5,
+     "sprite_group": 169,
+     "name": "red spiked mine"
+    },
+    {
+     "room": [
+      5,
+      9
+     ],
+     "object": 6,
+     "sprite_group": 171,
+     "name": "green spiked mine"
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 177,
+     "name": "thrown bone"
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 177,
+     "name": "thrown bone"
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 4,
+     "sprite_group": 177,
+     "name": "thrown bone"
+    }
+   ],
+   "path_steps": [
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      2,
+      1
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      9,
+      4
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 6,
+     "step": 5,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [
+    10,
+    47,
+    48,
+    49
+   ],
+   "used": true
+  },
+  {
+   "id": 7,
+   "offset": 30816,
+   "length": 6226,
+   "rate": 8326,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      1
+     ],
+     "object": 0,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 7,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      2
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 8,
+   "offset": 37042,
+   "length": 1286,
+   "rate": 23964,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      9,
+      0
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      0
+     ],
+     "object": 7,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      1
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 8,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      1,
+      2
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      2
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      2
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      2
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      2
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      2
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      2
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      2
+     ],
+     "object": 8,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 0,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      2
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      4
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      4
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 0,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      7
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      7
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      7
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      7
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 8,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      8
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      8
+     ],
+     "object": 7,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      9
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      9
+     ],
+     "object": 8,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 8,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 9,
+   "offset": 8736,
+   "length": 3158,
+   "rate": 12942,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      3
+     ],
+     "object": 5,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 4,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 4,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 8,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 8,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 8,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 3,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 3,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 3,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      4
+     ],
+     "object": 3,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 2,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 2,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      5
+     ],
+     "object": 2,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 1,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      5
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 1,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 1,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 1,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 1,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 1,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 1,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 9,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 15,
+     "step": 2,
+     "cmd": "stop",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 8,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 9,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 10,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 1,
+     "step": 11,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 9,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 10,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 11,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 2,
+     "step": 12,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 3,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 3,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 3,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 4,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 4,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      9
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 3,
+   "pitch_variants": [
+    3,
+    37,
+    44,
+    45
+   ],
+   "used": true
+  },
+  {
+   "id": 10,
+   "offset": 25250,
+   "length": 5566,
+   "rate": 13855,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 6,
+   "pitch_variants": [
+    6,
+    47,
+    48,
+    49
+   ],
+   "used": true
+  },
+  {
+   "id": 11,
+   "offset": 45028,
+   "length": 3530,
+   "rate": 8000,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 1,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 6,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 7,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [
+    12,
+    13,
+    14,
+    16
+   ],
+   "used": true
+  },
+  {
+   "id": 12,
+   "offset": 45028,
+   "length": 3530,
+   "rate": 10000,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 5,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 1,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 1,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 6,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 6,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 7,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": 11,
+   "pitch_variants": [
+    11,
+    13,
+    14,
+    16
+   ],
+   "used": true
+  },
+  {
+   "id": 13,
+   "offset": 45028,
+   "length": 3530,
+   "rate": 12000,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 5,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 6,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 5,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": 11,
+   "pitch_variants": [
+    11,
+    12,
+    14,
+    16
+   ],
+   "used": true
+  },
+  {
+   "id": 14,
+   "offset": 45028,
+   "length": 3530,
+   "rate": 14000,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 5,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 1,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 1,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 6,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 6,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 6,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 7,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 4,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": 11,
+   "pitch_variants": [
+    11,
+    12,
+    13,
+    16
+   ],
+   "used": true
+  },
+  {
+   "id": 15,
+   "offset": 44138,
+   "length": 890,
+   "rate": 12231,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 3 shot a",
+   "engine": [],
+   "weapons": [
+    "Uzi"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [
+    17,
+    18,
+    19
+   ],
+   "used": true
+  },
+  {
+   "id": 16,
+   "offset": 45028,
+   "length": 3530,
+   "rate": 8000,
+   "loop": true,
+   "loop_start": 0,
+   "name": "bomb ticking (loop)",
+   "engine": [
+    {
+     "code": "Bomb_StartSound / Bomb_StopSound",
+     "what": "bomb ticking loop (60 s countdown)"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 11,
+   "pitch_variants": [
+    11,
+    12,
+    13,
+    14
+   ],
+   "used": true
+  },
+  {
+   "id": 17,
+   "offset": 44138,
+   "length": 890,
+   "rate": 12023,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 3 shot b",
+   "engine": [],
+   "weapons": [
+    "Uzi"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 15,
+   "pitch_variants": [
+    15,
+    18,
+    19
+   ],
+   "used": true
+  },
+  {
+   "id": 18,
+   "offset": 44138,
+   "length": 890,
+   "rate": 11823,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 3 shot c",
+   "engine": [],
+   "weapons": [
+    "Uzi"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 15,
+   "pitch_variants": [
+    15,
+    17,
+    19
+   ],
+   "used": true
+  },
+  {
+   "id": 19,
+   "offset": 44138,
+   "length": 890,
+   "rate": 11629,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 3 shot d",
+   "engine": [],
+   "weapons": [
+    "Uzi"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 15,
+   "pitch_variants": [
+    15,
+    17,
+    18
+   ],
+   "used": true
+  },
+  {
+   "id": 20,
+   "offset": 41242,
+   "length": 2896,
+   "rate": 8268,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 0 shot a",
+   "engine": [],
+   "weapons": [
+    "starting gun"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [
+    21,
+    22
+   ],
+   "used": true
+  },
+  {
+   "id": 21,
+   "offset": 41242,
+   "length": 2896,
+   "rate": 7882,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 0 shot b",
+   "engine": [],
+   "weapons": [
+    "starting gun"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 20,
+   "pitch_variants": [
+    20,
+    22
+   ],
+   "used": true
+  },
+  {
+   "id": 22,
+   "offset": 41242,
+   "length": 2896,
+   "rate": 8651,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 0 shot c",
+   "engine": [],
+   "weapons": [
+    "starting gun"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 20,
+   "pitch_variants": [
+    20,
+    21
+   ],
+   "used": true
+  },
+  {
+   "id": 23,
+   "offset": 38328,
+   "length": 2914,
+   "rate": 7905,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      2
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 1,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      4
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      7
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      7
+     ],
+     "object": 5,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 6,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 0,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [
+    31
+   ],
+   "used": true
+  },
+  {
+   "id": 24,
+   "offset": 0,
+   "length": 5472,
+   "rate": 8867,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 1/2 shot a",
+   "engine": [],
+   "weapons": [
+    "rocket launcher",
+    "heavy rocket launcher"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 0,
+   "pitch_variants": [
+    0,
+    25,
+    26
+   ],
+   "used": true
+  },
+  {
+   "id": 25,
+   "offset": 0,
+   "length": 5472,
+   "rate": 8693,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 1/2 shot b",
+   "engine": [],
+   "weapons": [
+    "rocket launcher",
+    "heavy rocket launcher"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 0,
+   "pitch_variants": [
+    0,
+    24,
+    26
+   ],
+   "used": true
+  },
+  {
+   "id": 26,
+   "offset": 0,
+   "length": 5472,
+   "rate": 8526,
+   "loop": false,
+   "loop_start": 0,
+   "name": "weapon 1/2 shot c",
+   "engine": [],
+   "weapons": [
+    "rocket launcher",
+    "heavy rocket launcher"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 0,
+   "pitch_variants": [
+    0,
+    24,
+    25
+   ],
+   "used": true
+  },
+  {
+   "id": 27,
+   "offset": 48558,
+   "length": 1818,
+   "rate": 7905,
+   "loop": true,
+   "loop_start": 0,
+   "name": "jetpack idle (loop)",
+   "engine": [
+    {
+     "code": "HeroState08/09",
+     "what": "jetpack idle loop (started/stopped)"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [
+    28
+   ],
+   "used": true
+  },
+  {
+   "id": 28,
+   "offset": 48558,
+   "length": 1818,
+   "rate": 10173,
+   "loop": true,
+   "loop_start": 0,
+   "name": "jetpack thrust (loop)",
+   "engine": [
+    {
+     "code": "HeroState08/09",
+     "what": "jetpack thrust loop (started/stopped)"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 27,
+   "pitch_variants": [
+    27
+   ],
+   "used": true
+  },
+  {
+   "id": 29,
+   "offset": 50376,
+   "length": 2076,
+   "rate": 10432,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 30,
+   "offset": 11894,
+   "length": 4988,
+   "rate": 7905,
+   "loop": true,
+   "loop_start": 4048,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      7
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 9,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 15,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      9
+     ],
+     "object": 1,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 4,
+   "pitch_variants": [
+    4,
+    36
+   ],
+   "used": true
+  },
+  {
+   "id": 31,
+   "offset": 38328,
+   "length": 2914,
+   "rate": 7905,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      7
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 9,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 15,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      2,
+      9
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 23,
+   "pitch_variants": [
+    23
+   ],
+   "used": true
+  },
+  {
+   "id": 32,
+   "offset": 30816,
+   "length": 2922,
+   "rate": 12000,
+   "loop": true,
+   "loop_start": 2458,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      2,
+      1
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 8,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      2
+     ],
+     "object": 8,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      8,
+      2
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      5
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      7,
+      5
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      0,
+      6
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 5,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 6,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 33,
+   "offset": 52452,
+   "length": 2770,
+   "rate": 17734,
+   "loop": false,
+   "loop_start": 0,
+   "name": "coin",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      2,
+      0
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 4,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      0
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 8,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 9,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      0
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      0
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      0
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      0
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      0
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      0
+     ],
+     "object": 4,
+     "sprite_group": 4,
+     "name": "lift platform"
+    },
+    {
+     "room": [
+      9,
+      0
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      1
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      1
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      5,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      1
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      1
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      1
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      2
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      2
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      3,
+      2
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      2
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 8,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 9,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      2
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      2
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      2
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      2
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      2
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 4,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      3
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      3
+     ],
+     "object": 4,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      6,
+      3
+     ],
+     "object": 4,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      3
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      3
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      3
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      3
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      4
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 8,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      5
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      5
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      5
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      5
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      5
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      5
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      5
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      6
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      6
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      6
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 4,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 4,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      7
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      7
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      7
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      5,
+      7
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      5,
+      7
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      5,
+      7
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 4,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 5,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 6,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 8,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      8
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      8
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      8
+     ],
+     "object": 7,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      8
+     ],
+     "object": 8,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      8
+     ],
+     "object": 9,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      2,
+      8
+     ],
+     "object": 10,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      8
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      8,
+      8
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      8
+     ],
+     "object": 8,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      0,
+      9
+     ],
+     "object": 3,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      1,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      6,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      9
+     ],
+     "object": 0,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      7,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      9
+     ],
+     "object": 1,
+     "sprite_group": 67,
+     "name": "coin"
+    },
+    {
+     "room": [
+      9,
+      9
+     ],
+     "object": 2,
+     "sprite_group": 67,
+     "name": "coin"
+    }
+   ],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 34,
+   "offset": 55222,
+   "length": 2868,
+   "rate": 15287,
+   "loop": false,
+   "loop_start": 0,
+   "name": "flame-thrower",
+   "engine": [],
+   "weapons": [
+    "flame-thrower"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [
+    35
+   ],
+   "used": true
+  },
+  {
+   "id": 35,
+   "offset": 55222,
+   "length": 2868,
+   "rate": 7956,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      0,
+      2
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      2,
+      2
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      0,
+      4
+     ],
+     "object": 7,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 9,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 9,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      4,
+      5
+     ],
+     "object": 7,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      1,
+      7
+     ],
+     "object": 8,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      6,
+      8
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    },
+    {
+     "room": [
+      7,
+      9
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": true
+    }
+   ],
+   "same_sample_as": 34,
+   "pitch_variants": [
+    34
+   ],
+   "used": true
+  },
+  {
+   "id": 36,
+   "offset": 11894,
+   "length": 4988,
+   "rate": 7982,
+   "loop": true,
+   "loop_start": 4048,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      9,
+      0
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      7,
+      7
+     ],
+     "object": 0,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      8,
+      9
+     ],
+     "object": 1,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      9
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 4,
+   "pitch_variants": [
+    4,
+    30
+   ],
+   "used": true
+  },
+  {
+   "id": 37,
+   "offset": 8736,
+   "length": 3158,
+   "rate": 14188,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 7,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 7,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 7,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      6,
+      5
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 3,
+   "pitch_variants": [
+    3,
+    9,
+    44,
+    45
+   ],
+   "used": true
+  },
+  {
+   "id": 38,
+   "offset": 58090,
+   "length": 3080,
+   "rate": 9852,
+   "loop": false,
+   "loop_start": 0,
+   "name": "magazine reload",
+   "engine": [
+    {
+     "code": "item 36 use (FUN_0001b1e8)",
+     "what": "magazine reload"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      7,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 135,
+     "name": "weapon pick-up"
+    },
+    {
+     "room": [
+      4,
+      3
+     ],
+     "object": 10,
+     "sprite_group": 135,
+     "name": "weapon pick-up"
+    },
+    {
+     "room": [
+      2,
+      4
+     ],
+     "object": 6,
+     "sprite_group": 135,
+     "name": "weapon pick-up"
+    },
+    {
+     "room": [
+      4,
+      6
+     ],
+     "object": 4,
+     "sprite_group": 135,
+     "name": "weapon pick-up"
+    },
+    {
+     "room": [
+      4,
+      6
+     ],
+     "object": 5,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    },
+    {
+     "room": [
+      4,
+      6
+     ],
+     "object": 6,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    },
+    {
+     "room": [
+      4,
+      6
+     ],
+     "object": 7,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 8,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    },
+    {
+     "room": [
+      8,
+      6
+     ],
+     "object": 9,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 9,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    },
+    {
+     "room": [
+      9,
+      9
+     ],
+     "object": 0,
+     "sprite_group": 135,
+     "name": "weapon pick-up"
+    },
+    {
+     "room": [
+      9,
+      9
+     ],
+     "object": 4,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    }
+   ],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [
+    39
+   ],
+   "used": true
+  },
+  {
+   "id": 39,
+   "offset": 58090,
+   "length": 3080,
+   "rate": 19705,
+   "loop": false,
+   "loop_start": 0,
+   "name": "insert key / use",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      0,
+      0
+     ],
+     "object": 2,
+     "sprite_group": 102,
+     "name": "magic key slot 1"
+    },
+    {
+     "room": [
+      0,
+      0
+     ],
+     "object": 4,
+     "sprite_group": 105,
+     "name": "magic key slot 2"
+    },
+    {
+     "room": [
+      0,
+      0
+     ],
+     "object": 6,
+     "sprite_group": 108,
+     "name": "magic key slot 3"
+    },
+    {
+     "room": [
+      0,
+      0
+     ],
+     "object": 8,
+     "sprite_group": 111,
+     "name": "magic key slot 4"
+    },
+    {
+     "room": [
+      0,
+      0
+     ],
+     "object": 10,
+     "sprite_group": 114,
+     "name": "magic key slot 5"
+    },
+    {
+     "room": [
+      9,
+      0
+     ],
+     "object": 0,
+     "sprite_group": 6,
+     "name": "card reader - locked"
+    },
+    {
+     "room": [
+      6,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 6,
+     "name": "card reader - locked"
+    },
+    {
+     "room": [
+      5,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 6,
+     "name": "card reader - locked"
+    },
+    {
+     "room": [
+      8,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 81,
+     "name": "switch (active)?"
+    },
+    {
+     "room": [
+      4,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 81,
+     "name": "switch (active)?"
+    },
+    {
+     "room": [
+      9,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 85,
+     "name": "keyhole lock"
+    },
+    {
+     "room": [
+      1,
+      5
+     ],
+     "object": 1,
+     "sprite_group": 85,
+     "name": "keyhole lock"
+    },
+    {
+     "room": [
+      1,
+      7
+     ],
+     "object": 0,
+     "sprite_group": 6,
+     "name": "card reader - locked"
+    },
+    {
+     "room": [
+      6,
+      7
+     ],
+     "object": 1,
+     "sprite_group": 87,
+     "name": null
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 0,
+     "sprite_group": 89,
+     "name": "secret-door lock"
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 6,
+     "sprite_group": 89,
+     "name": "secret-door lock"
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 12,
+     "sprite_group": 89,
+     "name": "secret-door lock"
+    },
+    {
+     "room": [
+      0,
+      9
+     ],
+     "object": 0,
+     "sprite_group": 100,
+     "name": null
+    }
+   ],
+   "path_steps": [],
+   "same_sample_as": 38,
+   "pitch_variants": [
+    38
+   ],
+   "used": true
+  },
+  {
+   "id": 40,
+   "offset": 59530,
+   "length": 1640,
+   "rate": 19000,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [
+    {
+     "code": "GameLoop",
+     "what": "fire pressed with an empty weapon"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 41,
+   "offset": 61170,
+   "length": 3480,
+   "rate": 7970,
+   "loop": false,
+   "loop_start": 0,
+   "name": "teleport",
+   "engine": [
+    {
+     "code": "HeroState14/15",
+     "what": "teleport"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [
+    42,
+    43
+   ],
+   "used": true
+  },
+  {
+   "id": 42,
+   "offset": 61170,
+   "length": 3480,
+   "rate": 7947,
+   "loop": false,
+   "loop_start": 0,
+   "name": "plasma gun",
+   "engine": [],
+   "weapons": [
+    "plasma gun"
+   ],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 41,
+   "pitch_variants": [
+    41,
+    43
+   ],
+   "used": true
+  },
+  {
+   "id": 43,
+   "offset": 61170,
+   "length": 3480,
+   "rate": 15694,
+   "loop": false,
+   "loop_start": 0,
+   "name": "item pick-up",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [
+    {
+     "room": [
+      3,
+      0
+     ],
+     "object": 3,
+     "sprite_group": 131,
+     "name": "magic flower 1"
+    },
+    {
+     "room": [
+      5,
+      0
+     ],
+     "object": 1,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      6,
+      0
+     ],
+     "object": 0,
+     "sprite_group": 47,
+     "name": "first-aid kit"
+    },
+    {
+     "room": [
+      0,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 104,
+     "name": "magic key 1 (pickup)"
+    },
+    {
+     "room": [
+      2,
+      1
+     ],
+     "object": 3,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      2,
+      1
+     ],
+     "object": 4,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      2,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      3,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      4,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 96,
+     "name": "purple card"
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 0,
+     "sprite_group": 129,
+     "name": "magic flower 3"
+    },
+    {
+     "room": [
+      7,
+      1
+     ],
+     "object": 5,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      0,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 130,
+     "name": "magic flower 2"
+    },
+    {
+     "room": [
+      1,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 82,
+     "name": "shaped key piece"
+    },
+    {
+     "room": [
+      5,
+      2
+     ],
+     "object": 5,
+     "sprite_group": 50,
+     "name": "fuse"
+    },
+    {
+     "room": [
+      5,
+      2
+     ],
+     "object": 7,
+     "sprite_group": 113,
+     "name": "magic key 4 (pickup)"
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 0,
+     "sprite_group": 51,
+     "name": "fuel can"
+    },
+    {
+     "room": [
+      6,
+      2
+     ],
+     "object": 7,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      3
+     ],
+     "object": 2,
+     "sprite_group": 83,
+     "name": "cage key"
+    },
+    {
+     "room": [
+      8,
+      3
+     ],
+     "object": 6,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      9,
+      3
+     ],
+     "object": 0,
+     "sprite_group": 48,
+     "name": "red card"
+    },
+    {
+     "room": [
+      1,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      3,
+      4
+     ],
+     "object": 8,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      4
+     ],
+     "object": 0,
+     "sprite_group": 119,
+     "name": "teddy bear"
+    },
+    {
+     "room": [
+      5,
+      4
+     ],
+     "object": 4,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      4
+     ],
+     "object": 5,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 1,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 2,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 5,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      5,
+      5
+     ],
+     "object": 6,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      6,
+      5
+     ],
+     "object": 0,
+     "sprite_group": 107,
+     "name": "magic key 2 (pickup)"
+    },
+    {
+     "room": [
+      6,
+      5
+     ],
+     "object": 3,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      6,
+      5
+     ],
+     "object": 4,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 4,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 5,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      1,
+      7
+     ],
+     "object": 7,
+     "sprite_group": 51,
+     "name": "fuel can"
+    },
+    {
+     "room": [
+      5,
+      7
+     ],
+     "object": 0,
+     "sprite_group": 96,
+     "name": "purple card"
+    },
+    {
+     "room": [
+      5,
+      7
+     ],
+     "object": 6,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      8,
+      7
+     ],
+     "object": 18,
+     "sprite_group": 49,
+     "name": "grey card"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 0,
+     "sprite_group": 116,
+     "name": "magic key 5 (pickup)"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 1,
+     "sprite_group": 116,
+     "name": "magic key 5 (pickup)"
+    },
+    {
+     "room": [
+      9,
+      7
+     ],
+     "object": 2,
+     "sprite_group": 116,
+     "name": "magic key 5 (pickup)"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 0,
+     "sprite_group": 110,
+     "name": "magic key 3 (pickup)"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 4,
+     "sprite_group": 51,
+     "name": "fuel can"
+    },
+    {
+     "room": [
+      0,
+      8
+     ],
+     "object": 8,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      7,
+      8
+     ],
+     "object": 3,
+     "sprite_group": 84,
+     "name": "bucket"
+    },
+    {
+     "room": [
+      0,
+      9
+     ],
+     "object": 4,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      1,
+      9
+     ],
+     "object": 4,
+     "sprite_group": 55,
+     "name": "fuel pick-up (+1/3)"
+    },
+    {
+     "room": [
+      2,
+      9
+     ],
+     "object": 9,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 7,
+     "sprite_group": 54,
+     "name": "ammo magazine"
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 8,
+     "sprite_group": 53,
+     "name": "energy potion (+1/3)"
+    }
+   ],
+   "path_steps": [],
+   "same_sample_as": 41,
+   "pitch_variants": [
+    41,
+    42
+   ],
+   "used": true
+  },
+  {
+   "id": 44,
+   "offset": 8736,
+   "length": 3158,
+   "rate": 7947,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 2,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 2,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 4,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 4,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 4,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 4,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 4,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 4,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      5
+     ],
+     "object": 6,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 2,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 5,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 3,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 3,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 3,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 3,
+     "step": 10,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 5,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 5,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 5,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 5,
+     "step": 10,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 3,
+   "pitch_variants": [
+    3,
+    9,
+    37,
+    45
+   ],
+   "used": true
+  },
+  {
+   "id": 45,
+   "offset": 8736,
+   "length": 3158,
+   "rate": 9692,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [
+    {
+     "room": [
+      9,
+      2
+     ],
+     "object": 1,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      2
+     ],
+     "object": 1,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      2
+     ],
+     "object": 1,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 3,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 3,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 3,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 3,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 5,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 5,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      1,
+      3
+     ],
+     "object": 5,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      3
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      3
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 5,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 5,
+     "step": 6,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      0,
+      5
+     ],
+     "object": 5,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 2,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      6
+     ],
+     "object": 6,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      9,
+      6
+     ],
+     "object": 3,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 3,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      8
+     ],
+     "object": 3,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 4,
+     "step": 0,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 4,
+     "step": 1,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 4,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      3,
+      9
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 2,
+     "step": 2,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 2,
+     "step": 4,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 2,
+     "step": 7,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 2,
+     "step": 9,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 4,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 4,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 4,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 4,
+     "step": 10,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 6,
+     "step": 3,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 6,
+     "step": 5,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 6,
+     "step": 8,
+     "cmd": "play",
+     "invisible_emitter": false
+    },
+    {
+     "room": [
+      4,
+      9
+     ],
+     "object": 6,
+     "step": 10,
+     "cmd": "play",
+     "invisible_emitter": false
+    }
+   ],
+   "same_sample_as": 3,
+   "pitch_variants": [
+    3,
+    9,
+    37,
+    44
+   ],
+   "used": true
+  },
+  {
+   "id": 46,
+   "offset": 64650,
+   "length": 664,
+   "rate": 7926,
+   "loop": false,
+   "loop_start": 0,
+   "name": "footstep",
+   "engine": [
+    {
+     "code": "HeroState00-03",
+     "what": "footstep / landing"
+    }
+   ],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [],
+   "used": true
+  },
+  {
+   "id": 47,
+   "offset": 25250,
+   "length": 5566,
+   "rate": 4434,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 6,
+   "pitch_variants": [
+    6,
+    10,
+    48,
+    49
+   ],
+   "used": false
+  },
+  {
+   "id": 48,
+   "offset": 25250,
+   "length": 5566,
+   "rate": 5067,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 6,
+   "pitch_variants": [
+    6,
+    10,
+    47,
+    49
+   ],
+   "used": false
+  },
+  {
+   "id": 49,
+   "offset": 25250,
+   "length": 5566,
+   "rate": 5911,
+   "loop": false,
+   "loop_start": 0,
+   "name": null,
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": false,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 6,
+   "pitch_variants": [
+    6,
+    10,
+    47,
+    48
+   ],
+   "used": false
+  },
+  {
+   "id": 50,
+   "offset": 65314,
+   "length": 5702,
+   "rate": 20095,
+   "loop": false,
+   "loop_start": 0,
+   "name": "hero hurt a",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": true,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": null,
+   "pitch_variants": [
+    51,
+    52,
+    53
+   ],
+   "used": true
+  },
+  {
+   "id": 51,
+   "offset": 65314,
+   "length": 5702,
+   "rate": 20067,
+   "loop": false,
+   "loop_start": 0,
+   "name": "hero hurt b",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": true,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 50,
+   "pitch_variants": [
+    50,
+    52,
+    53
+   ],
+   "used": true
+  },
+  {
+   "id": 52,
+   "offset": 65314,
+   "length": 5702,
+   "rate": 19051,
+   "loop": false,
+   "loop_start": 0,
+   "name": "hero hurt c",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": true,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 50,
+   "pitch_variants": [
+    50,
+    51,
+    53
+   ],
+   "used": true
+  },
+  {
+   "id": 53,
+   "offset": 65314,
+   "length": 5702,
+   "rate": 19051,
+   "loop": false,
+   "loop_start": 0,
+   "name": "hero hurt d",
+   "engine": [],
+   "weapons": [],
+   "hero_hurt": true,
+   "object_activation": [],
+   "path_steps": [],
+   "same_sample_as": 50,
+   "pitch_variants": [
+    50,
+    51,
+    52
+   ],
+   "used": true
+  }
+ ]
+}

@@ -419,13 +419,19 @@
    "id": 133,
    "on_trigger_fn": "1b2b0",
    "on_missing_item_fn": "1b2b0",
-   "note": "fuel +1/3"
+   "note": "flag only"
   },
   {
    "id": 134,
    "on_trigger_fn": "1c654",
    "on_missing_item_fn": "1b2b0",
-   "note": "energy +1/3"
+   "note": "fuel +1/3"
+  },
+  {
+   "id": 135,
+   "on_trigger_fn": "1b2b0",
+   "on_missing_item_fn": "1b2b0",
+   "note": "flag only"
   },
   {
    "id": 136,

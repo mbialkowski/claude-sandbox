@@ -409,7 +409,7 @@
    "flags": 2179,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use"
    ],
    "collision_class": 16,
@@ -479,7 +479,7 @@
    "flags": 2179,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use"
    ],
    "collision_class": 16,
@@ -534,7 +534,7 @@
    "flags": 2563,
    "flag_names": [
     "active",
-    "bit1"
+    "editor-0x0002"
    ],
    "collision_class": 16,
    "class_name": "harmful",
@@ -633,7 +633,7 @@
    "flags": 51715,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "fires-trigger",
     "conditional"
    ],
@@ -645,7 +645,7 @@
    "activate_sound": 6,
    "target": 135,
    "target_kind": "script",
-   "script_note": null,
+   "script_note": "flag only",
    "item": 2,
    "steps": [
     {
@@ -719,7 +719,7 @@
    "flags": 20643,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "touch-activates",
     "keep-after-use",
     "fires-trigger"
@@ -761,7 +761,7 @@
    "flags": 20643,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "touch-activates",
     "keep-after-use",
     "fires-trigger"

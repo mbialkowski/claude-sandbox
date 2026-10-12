@@ -372,7 +372,7 @@
    "flags": 53399,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "needs-flag",
     "chain-next",
     "keep-after-use",
@@ -456,7 +456,7 @@
    "flags": 53399,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "needs-flag",
     "chain-next",
     "keep-after-use",
@@ -540,7 +540,7 @@
    "flags": 53399,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "needs-flag",
     "chain-next",
     "keep-after-use",
@@ -624,7 +624,7 @@
    "flags": 53399,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "needs-flag",
     "chain-next",
     "keep-after-use",
@@ -708,7 +708,7 @@
    "flags": 53399,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "needs-flag",
     "chain-next",
     "keep-after-use",
@@ -792,7 +792,7 @@
    "flags": 8323,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use"
    ],
    "collision_class": 64,

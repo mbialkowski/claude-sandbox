@@ -291,7 +291,7 @@
    "flags": 41099,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "invisible",
     "keep-after-use",
     "conditional"
@@ -333,7 +333,7 @@
    "flags": 41099,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "invisible",
     "keep-after-use",
     "conditional"
@@ -375,7 +375,7 @@
    "flags": 2307,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "rearm"
    ],
    "collision_class": 16,
@@ -490,7 +490,7 @@
    "flags": 2307,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "rearm"
    ],
    "collision_class": 16,
@@ -620,7 +620,7 @@
    "flags": 2307,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "rearm"
    ],
    "collision_class": 16,
@@ -750,7 +750,7 @@
    "flags": 2307,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "rearm"
    ],
    "collision_class": 16,

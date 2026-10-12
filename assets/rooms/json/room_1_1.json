@@ -595,7 +595,7 @@
    "flags": 34947,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "conditional"
    ],
@@ -636,7 +636,7 @@
    "flags": 34947,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "conditional"
    ],

@@ -456,7 +456,7 @@
    "flags": 20611,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "fires-trigger"
    ],
@@ -468,7 +468,7 @@
    "activate_sound": 43,
    "target": 134,
    "target_kind": "script",
-   "script_note": "energy +1/3",
+   "script_note": "fuel +1/3",
    "item": 0,
    "steps": [
     {
@@ -512,7 +512,7 @@
    "flags": 20611,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "fires-trigger"
    ],
@@ -524,7 +524,7 @@
    "activate_sound": 43,
    "target": 134,
    "target_kind": "script",
-   "script_note": "energy +1/3",
+   "script_note": "fuel +1/3",
    "item": 0,
    "steps": [
     {
@@ -568,7 +568,7 @@
    "flags": 20611,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "fires-trigger"
    ],
@@ -580,7 +580,7 @@
    "activate_sound": 43,
    "target": 134,
    "target_kind": "script",
-   "script_note": "energy +1/3",
+   "script_note": "fuel +1/3",
    "item": 0,
    "steps": [
     {

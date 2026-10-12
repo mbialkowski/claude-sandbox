@@ -416,7 +416,7 @@
    "flags": 20611,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "fires-trigger"
    ],
@@ -472,7 +472,7 @@
    "flags": 18579,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "chain-next",
     "keep-after-use",
     "fires-trigger"

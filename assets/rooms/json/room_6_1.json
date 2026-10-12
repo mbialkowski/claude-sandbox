@@ -319,7 +319,7 @@
    "flags": 53399,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "needs-flag",
     "chain-next",
     "keep-after-use",
@@ -639,7 +639,7 @@
    "flags": 34947,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "conditional"
    ],
@@ -695,7 +695,7 @@
    "flags": 2307,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "rearm"
    ],
    "collision_class": 16,

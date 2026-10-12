@@ -312,7 +312,7 @@
    "flags": 20747,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "invisible",
     "rearm",
     "fires-trigger"
@@ -450,7 +450,7 @@
    "flags": 53403,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "invisible",
     "chain-next",
     "keep-after-use",
@@ -593,7 +593,7 @@
    "flags": 33923,
    "flag_names": [
     "active",
-    "bit1",
+    "editor-0x0002",
     "keep-after-use",
     "conditional"
    ],
