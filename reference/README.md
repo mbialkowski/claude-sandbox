@@ -1,6 +1,6 @@
 # Decompilation reference
 
-`lazarus.c` is the full Ghidra 11.1.2 decompilation of `LAZARUS.EXE` (~1000 functions, pseudo-C), produced by
+[`lazarus.c`](lazarus.c) is the full Ghidra 11.1.2 decompilation of `LAZARUS.EXE` (~1000 functions, pseudo-C), produced by
 [`tools/ghidra/`](../tools/ghidra/README.md) with the Watcom register calling convention, the names from
 [`tools/symbols.txt`](../tools/symbols.txt), and post-processed by `tools/ghidra/annotate.py`:
 
