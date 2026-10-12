@@ -18,7 +18,7 @@ three endings. Everything runs at a fixed 50 Hz.
 | rooms | load `assets/rooms/json/room_C_R.json` or the Tiled maps `assets/rooms/tiled/*.tmj` (tiles, background, tile animations, objects) |
 | objects | one generic `RoomObject` driven by header + path steps (section 2.7 / 3.5) — do not hand-code enemies |
 | scripts | port the ~110 script handlers (4.7) into data (e.g. a small dialogue/event DSL or Ink/Yarn), keyed by script id; keep ids so OBJECTS.BIN can be used unchanged |
-| text | `assets/text/messages.json` (UTF-8, control codes as tags); translate via `assets/text/messages.csv` (`text_en` column) |
+| text | `assets/text/messages.json` (UTF-8, control codes as tags) and `messages_en.json` (English draft, same tags); add languages as `tools/translations/<lang>.json` |
 | audio | MODs via libopenmpt / any tracker player; effects from `assets/sounds/*.wav` at their native rates; implement looping effects and per-object stop |
 
 Engines that fit well: Godot 4 (TileMap + one generic scene for objects), or a small custom C/Rust/TS
@@ -43,7 +43,8 @@ engine — the rule set is small and fully specified here.
 
 * Save/continue (the original has none and a single death is game over).
 * Remappable controls, gamepad support (the original uses Ctrl/Space/Enter/,/.).
-* An English (and other) translation — all text is in one table already.
+* Other translations — an English draft exists (`tools/translations/en.json`, notes in its README) and
+  still needs a native speaker's review; the sign graphic "TARAPATY" (sprite group 117) would need redrawing.
 * Quality-of-life: pause (text exists but unused), map screen built from `assets/rooms/world_map.png`, hint for the
   whistle/"TARAPATY" puzzle.
 * Fix the riddle-scroll picture bug (4.8).

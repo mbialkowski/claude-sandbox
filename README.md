@@ -15,7 +15,7 @@ action-adventure platformer with a jetpack, guns, inventory puzzles and Polish h
 * [`assets/`](assets/README.md) — every asset of the original converted to modern formats: tilesets,
   sprites with animation/collision metadata, all 100 rooms as JSON and **Tiled** maps (+ world file),
   world maps, region/collision debug maps, WAV sound effects, MOD music, intro/ending animation frames, pictures, a BMFont of the
-  dialogue font, all texts (UTF-8 + translation CSV), game tables (weapons, items, scripts, physics) and
+  dialogue font, all texts (Polish + English draft), game tables (weapons, items, scripts, physics) and
   catalogues (world graph, enemies, hero spec, sound usage, unused content).
 * [`reference/`](reference/README.md) — annotated Ghidra decompilation of `LAZARUS.EXE` for porting exact
   behaviour.

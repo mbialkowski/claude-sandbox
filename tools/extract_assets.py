@@ -17,7 +17,8 @@ Output layout (see assets/README.md for details):
     pictures/    PCX stills as PNG
     animations/  FLC/FLI frames as PNG, storyboards/ contact sheets, animations.json
     font/        glyph sheet, gapless atlas, BMFont .fnt, font.json
-    text/        messages.json (UTF-8, control codes as tags) + messages.csv for translation
+    text/        messages.json (UTF-8, control codes as tags), messages_en.json (English, from
+                 tools/translations/en.json) + messages.csv (both languages side by side)
     gamedata/    weapons, items, scripts, tile animations, misc tables, world graph (room
                  connectivity, regions, teleports, secret passages), enemies, hero spec, sound usage,
                  unused content (JSON)
@@ -643,6 +644,7 @@ def export_font(g, out):
            "control_codes": {"0xE0 ddd": "set x", "0xE1 ddd": "set y", "0xE2 ddd": "set colour"},
            "glyphs": [{"char": ch, "unicode": uni, "x": x, "y": y, "width": wdt, "advance": adv}
                       for uni, x, y, wdt, adv, ch in chars]}, d, "font.json")
+    return {ch: adv for uni, x, y, wdt, adv, ch in chars}, space_adv
 
 
 # ---------------------------------------------------------------------------
@@ -651,17 +653,54 @@ def export_font(g, out):
 TAG = re.compile(r"\{([xyc]):(\d{3})\}")
 
 
-def export_text(out, exe):
+TRANSLATIONS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "translations")
+
+
+def translate(msgs, lang):
+    """Messages in another language from tools/translations/<lang>.json, with the original's control
+    tags and leading/trailing whitespace (menu spacing) re-attached. Returns (texts, overflows)."""
+    tr = json.load(open(os.path.join(TRANSLATIONS, lang + ".json"), encoding="utf-8"))
+    out = []
+    for i, m in enumerate(msgs):
+        tags = "".join(t.group(0) for t in TAG.finditer(m))
+        plain = TAG.sub("", m)
+        lead = plain[:len(plain) - len(plain.lstrip())]
+        trail = plain[len(plain.rstrip()):]
+        out.append(tags + lead + tr[str(i)].strip() + trail)
+    return out
+
+
+def text_overflows(msgs, glyph_advance, space_advance, limit=264):
+    """Lines whose right edge (x tag + width in the dialogue font) passes `limit` px and the original's."""
+    res = []
+    for i, m in enumerate(msgs):
+        x = int(dict(TAG.findall(m)).get("x", 0))
+        for ln in TAG.sub("", m).split("\n"):
+            right = x + sum(space_advance if c == " " else glyph_advance.get(c, 12) for c in ln)
+            if right > limit:
+                res.append((i, right, ln))
+    return res
+
+
+def export_text(out, exe, glyph_advance=None, space_advance=4):
     d = mkdir(out, "text")
     msgs = exe.messages()
     jdump(msgs, d, "messages.json")
+    en = translate(msgs, "en")
+    jdump(en, d, "messages_en.json")
+    if glyph_advance:
+        too_long = {i for i, _, _ in text_overflows(msgs, glyph_advance, space_advance)}
+        for i, right, ln in text_overflows(en, glyph_advance, space_advance):
+            if i not in too_long:
+                print(f"warning: English message {i} is {right} px wide: {ln!r}")
     with open(os.path.join(d, "messages.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(["id", "x", "y", "color", "text_pl", "text_en", "raw"])
         for i, m in enumerate(msgs):
             tags = {k: int(v) for k, v in TAG.findall(m)}
             plain = TAG.sub("", m)
-            w.writerow([i, tags.get("x", ""), tags.get("y", ""), tags.get("c", ""), plain, "", m])
+            w.writerow([i, tags.get("x", ""), tags.get("y", ""), tags.get("c", ""), plain,
+                        TAG.sub("", en[i]), m])
 
 
 def export_gamedata(out, exe):
@@ -727,8 +766,8 @@ def main():
     export_sounds(g, out, exe)
     export_music(g, out, render=a.render_music)
     export_pictures(g, out)
-    export_font(g, out)
-    export_text(out, exe)
+    advance, space_adv = export_font(g, out)
+    export_text(out, exe, advance, space_adv)
     export_gamedata(out, exe)
     if not a.skip_animations:
         export_animations(g, out)
