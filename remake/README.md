@@ -32,12 +32,17 @@ HD, with keyboard, gamepad and on-screen touch controls.
   *recollection*) plays at start-up with the original timings — with English subtitles for the painted-in
   Polish text when the language is English; Space/Esc/a tap skips it. The credits animation, the game-over
   picture, the joke ending and the winning ending with the credits scroller are there too. In the browser a
-  "press a key" screen comes first (browsers only start audio after an input).
+  "press a key" screen comes first (browsers only start audio after an input); it also picks the language
+  (Polski / English: arrow keys, a click or a tap).
+* **Music while playing.** The original is silent during the game (its two modules play only in the intro,
+  the title menu and the end credits). The remake plays *recollection* and *multifruit juice* in turn while
+  you play; Options → *Music while playing* turns it off for the original's silence.
 
 Details that differ from the original on purpose: shots touching harmful tiles do not hurt the hero (an
 original bug); the bullets of the hero's room are drawn clipped to it; there is a pause menu (the
-original's unused "Pauza" text exists) and an options screen. The game starts in Polish with the original
-texts; English (`data/text_en.json`) can be chosen in the options.
+original's unused "Pauza" text exists) and an options screen; music while playing (above). The game starts
+in Polish with the original texts; English (`data/text_en.json`) can be chosen on the first screen or in
+the options.
 
 ## Controls
 

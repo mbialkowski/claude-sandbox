@@ -88,7 +88,7 @@ repository owner's request. Clarify the rights situation before shipping any ori
 | graphics | drawn in palette indices into a 240-px-high off-screen image, coloured by a shader with the VGA palette, so `FadePalette`, the alarm palette and `Hero_Explode` work exactly; sharp scaling to any HD size | rooms on entry match `assets/rooms/png_objects/` |
 | screen | widescreen: the hero's room centred, neighbouring rooms shown dimmed (built as they look on entry, live only when entered), the original HUD panel on the right; 4:3 looks like the original | |
 | controls | keyboard as the original plus WASD, gamepad, multi-touch on-screen pad and buttons; dialogues/menus by tap | `tests/web_smoke.mjs` (headless Chromium, desktop and phone) |
-| extras | Polish/English, options, pause, saving on room entry + Continue | |
+| extras | Polish/English (chosen on the first screen or in the options), music while playing (optional; the original has none), options, pause, saving on room entry + Continue | |
 
 Deliberate differences: shots touching harmful tiles do not hurt the hero (in the original `TileCollide`
 sets `g_heroHit` for them); room edges can optionally be seamless.
