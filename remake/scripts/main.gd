@@ -144,8 +144,86 @@ func _autotest(dir: String) -> void:
 	action_tap("use")
 	await wait_ticks(10)
 	await _shot(dir, "05_use")
+	action_tap("use")
+	await wait_ticks(10)
+	# the merchant in (8,1): shop menu
+	_warp(8, 1, 36, 80)
+	await wait_ticks(5)
+	action_tap("use")
+	await wait_ticks(30)
+	await _shot(dir, "06_shop")
+	action_tap("down")
+	await wait_ticks(5)
+	await _shot(dir, "07_shop_down")
+	action_tap("use")
+	await wait_ticks(10)
+	await _shot(dir, "08_shop_bought")
+	action_tap("use")
+	await wait_ticks(10)
+	# jetpack flight with fuel
+	sim.state.fuel = sim.state.FULL
+	action_tap("jetpack")
+	action_press("up")
+	await wait_ticks(25)
+	action_release("up")
+	await _shot(dir, "09_jetpack")
+	await wait_ticks(60)
+	# pause and options
+	action_tap("pause")
+	await wait_ticks(5)
+	await _shot(dir, "10_pause")
+	action_tap("down")
+	action_tap("use")
+	await wait_ticks(5)
+	await _shot(dir, "11_options")
+	action_tap("pause")
+	await wait_ticks(3)
+	action_tap("pause")
+	await wait_ticks(3)
+	# a picture (the shop map)
+	sim.state.give(37)
+	sim.state.key_enter = true
+	await wait_ticks(120)
+	await _shot(dir, "12_picture")
+	action_tap("use")
+	await wait_ticks(120)
+	# shoot
+	_warp(8, 0, 40, 160)
+	await wait_ticks(5)
+	for i in 4:
+		action_tap("fire")
+		await wait_ticks(3)
+	await _shot(dir, "13_shoot")
+	# death -> game over
+	sim.state.energy = 0
+	sim.hero.hit = true
+	await wait_ticks(120)
+	await _shot(dir, "14_game_over")
+	action_tap("use")
+	await wait_ticks(30)
+	ui_sel = 1
+	_title_input("use")
+	await wait_ticks(40)
+	await _shot(dir, "15_credits_anim")
+	action_tap("use")
+	await wait_ticks(20)
+	_new_game()
+	await wait_ticks(40)
+	sim.end_state = "win"
+	await wait_ticks(100 + 90 * 4)
+	await _shot(dir, "16_ending_text")
+	await wait_ticks(90 * 5 + 120)
+	await _shot(dir, "17_ending_fist")
+	await wait_ticks(300)
+	await _shot(dir, "18_credits_scroll")
 	print("autotest done")
 	get_tree().quit()
+
+
+func _warp(c: int, r: int, x: int, y: int) -> void:
+	sim.hero.place(c, r, x, y, 1)
+	sim.on_hero_room_changed(true)
+	screen.follow(c, r, true)
 
 
 # ---------------------------------------------------------------------------
@@ -428,6 +506,24 @@ func _game_input() -> void:
 	released_now.clear()
 
 
+func _drop_presses() -> void:
+	"""While a dialogue or a fade holds the game, presses belong to it; releases still unlatch keys."""
+	var st = sim.state
+	for a in released_now.keys() + carry_release.keys():
+		match a:
+			"up":
+				st.key_up = false
+				sim.hero.input_y = 0
+			"fire":
+				st.key_fire = false
+				st.fire_armed = not st.key_down and not st.plasma_out
+			"use":
+				st.key_enter = false
+	pressed_now.clear()
+	released_now.clear()
+	carry_release.clear()
+
+
 func _select_weapon(w: int) -> void:
 	var st = sim.state
 	st.weapon = w
@@ -448,6 +544,7 @@ func _physics_process(_delta: float) -> void:
 		released_now.clear()
 		return
 	if vm.busy or palette.busy():
+		_drop_presses()
 		return
 	if sim.end_state != "":
 		_finish_game()
@@ -943,6 +1040,8 @@ func draw_overlay(ci: CanvasItem) -> void:
 				var s: String = items[i]
 				screen.draw_string_at(ci, s, Vector2(cx - screen.string_width(s) / 2, 96 + i * 16),
 						0x10 if i == ui_sel else 1)
+		"credits", "gameover":
+			screen.fill(ci, Rect2(0, 0, W, H), 0)
 		"anim", "ending":
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
 			if anim_tex and anim_frame != "":

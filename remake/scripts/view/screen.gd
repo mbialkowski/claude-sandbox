@@ -34,8 +34,8 @@ func setup(p_D, p_game) -> void:
 	static_layer = _layer(_draw_static)
 	dynamic_layer = _layer(_draw_dynamic)
 	hud_layer = _layer(_draw_hud)
-	text_layer = _layer(_draw_text)
 	overlay_layer = _layer(_draw_overlay)
+	text_layer = _layer(_draw_text)
 
 
 func _layer(f: Callable) -> Node2D:
