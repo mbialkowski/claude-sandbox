@@ -245,7 +245,7 @@ covered (by handler address) and that every message, item and variable id is val
 the quests from data instead of re-coding them. Example — the second merchant (script 37):
 
 ```json
-["print", 45], ["menu", [46, 47, 48, 49]],
+["print", 45], ["menu", [46, 47, 48, 49]], ["clear"],
 ["if", ["eq", "choice", 3], [["say", 51]],
  [["if", ["money_lt", 14], [["say", 43]],
    [["say", 50], ["money", -14],
@@ -254,7 +254,7 @@ the quests from data instead of re-coding them. Example — the second merchant 
 
 | group | ops |
 |---|---|
-| dialogue | `say` (show, wait, clear), `say_keep` (show, wait), `print` (show only), `say_indexed m var` (message m + variable), `print_number`, `wait`, `clear`, `menu [options]` → `choice` (options may be conditional, `choice` is the index in the full list) |
+| dialogue | `say` (show, wait, clear), `say_keep` (show, wait), `print` (show only), `say_indexed m var` (message m + variable), `print_number`, `wait`, `clear`, `menu [options]` → `choice` (options may be conditional, `choice` is the index in the full list; `{"msg": m, "per_riddle_offset": 3}` shows message m + 3 × riddle). The menu leaves its text on screen; the handlers clear it right after (`Text_Clear` follows every `Dlg_Menu` in the EXE) |
 | control | `if cond then else`, `switch var {value: ops}`, `call script` |
 | inventory | `give item` (adds and selects it), `take item`, `take_selected` |
 | state | `set`, `add`, `set_flag`, `money ±n`, `energy`/`fuel`/`ammo` (`full`, `+third`, `0`), `weapon n`, `activate_object i`, `random var n` |

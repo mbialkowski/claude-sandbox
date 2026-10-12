@@ -262,7 +262,10 @@ func _menu(options: Array, ctx: Dictionary) -> void:
 		if o is Dictionary:
 			if o.has("if") and not cond(o["if"], ctx):
 				continue
-			shown.append([i, int(o["msg"])])
+			var m := int(o["msg"])
+			if o.has("per_riddle_offset"):
+				m += int(o["per_riddle_offset"]) * _var("riddle")
+			shown.append([i, m])
 		else:
 			shown.append([i, int(o)])
 	main.text.write("\n")
