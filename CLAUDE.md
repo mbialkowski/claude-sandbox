@@ -36,6 +36,7 @@ claude-sandbox/
     ├── world_analysis.py       # room connectivity, regions, teleports, debug renders
     ├── catalogues.py           # enemies, hero spec, sound usage, unused content
     ├── reference_sim.py        # movement rules re-implemented; writes golden_traces.json
+    ├── pixel_check.py          # renders vs. the patched original in DOSBox (needs dosbox, Xvfb, xdotool)
     ├── translations/           # hand-written translations of the 293 messages (en.json) + notes
     ├── le_loader.py, disasm.py, make_flat_image.py, ghidra/   # executable analysis (+ annotate.py)
     ├── flc.py, mazovia.py      # FLC decoder, Polish DOS code page
@@ -49,7 +50,9 @@ claude-sandbox/
 - `assets/` and `reference/lazarus.c` are generated: never hand-edit them — change the tool and regenerate
   (`python3 tools/extract_assets.py original/ assets/ --render-music`; Ghidra steps in `tools/ghidra/README.md`).
   Keep `assets/README.md` and `reference/README.md` in sync with the tools.
-- Tools must run with Python 3.9+ and only `Pillow` + `capstone` (`tools/requirements.txt`).
+- Tools must run with Python 3.9+ and only `Pillow` + `capstone` (`tools/requirements.txt`); external
+  programs are optional extras (`openmpt123`/`oggenc` for `--render-music`, `dosbox`/`Xvfb`/`xdotool` for
+  `pixel_check.py`).
 - When you learn something new about the game, update the relevant `docs/reverse-engineering/*.md` and,
   for code addresses, `tools/symbols.txt`.
 - Addresses in docs are run-time addresses (code object at `0x10000`, data at `0x50000`).

@@ -35,7 +35,7 @@ Format details and engine rules are in [`docs/reverse-engineering/`](../docs/rev
 | `sprites/sprites.json` | every frame and group, group names, which rooms/scripts use each group | `.json` |
 | `sprites/tiled/` | image-collection tileset (first frame of each group) used by the room maps | `.tsj` |
 | `rooms/json/` | full data of all 100 rooms: background + platform tile grids, animated tiles, every object with header fields and path steps | `.json` |
-| `rooms/png/`, `rooms/png_objects/` | each room rendered without / with objects (first animation frames) | `.png` 224×228 |
+| `rooms/png/`, `rooms/png_objects/` | each room without objects / exactly as first seen in a new game (objects by the constructor's rules at their first frame; verified pixel-identical against the original with `tools/pixel_check.py`) | `.png` 224×228 |
 | `rooms/tiled/` | one Tiled map per room + `lazarus.world` laying them out — open the world in Tiled | `.tmj`, `.world` |
 | `rooms/world_map*.png` | whole world (2240×2280), with objects, and a half-size labelled overview | `.png` |
 | `rooms/world_regions.png`, `rooms/world_collision.png` | regions + open edges + teleports (half size); whole-world collision and object paths | `.png` |

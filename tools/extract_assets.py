@@ -289,7 +289,10 @@ def export_sprites(g, out, pal, rooms):
 # ---------------------------------------------------------------------------
 # rooms
 # ---------------------------------------------------------------------------
-def render_room(room, pl, bg, frames, groups, seqs, with_objects=True):
+def render_room(room, pl, bg, frames, groups, seqs, with_objects=True, desc=None):
+    """The room as first seen in a new game: layers, animated tiles at their start frame (foreground ones
+    over the sprites), objects drawn by the constructor's rules at their first path position and frame.
+    Verified pixel-identical against the original by tools/pixel_check.py."""
     W, H = L.ROOM_PX_W, L.ROOM_PX_H
     buf = bytearray(W * H)
 
@@ -313,22 +316,25 @@ def render_room(room, pl, bg, frames, groups, seqs, with_objects=True):
             t = room.tiles[ty][tx]
             if 0 < t < len(pl):
                 blit(pl[t], L.PL_TW, L.PL_TH, tx * L.PL_TW, ty * L.PL_TH)
-    for (c, r, _fg, seq, start) in room.tile_anims:
-        s = seqs[seq] if seq < len(seqs) else []
-        if s:
-            t = s[min(start, len(s) - 1)]
-            if 0 < t < len(pl):
-                blit(pl[t], L.PL_TW, L.PL_TH, c * L.PL_TW, r * L.PL_TH)
+    def anims(foreground):
+        for (c, r, fg, seq, start) in room.tile_anims:
+            s = seqs[seq] if seq < len(seqs) else []
+            if s and (fg == foreground or not with_objects):
+                t = s[min(start, len(s) - 1)]
+                if 0 < t < len(pl):
+                    blit(pl[t], L.PL_TW, L.PL_TH, c * L.PL_TW, r * L.PL_TH)
+
+    anims(False)
     if with_objects:
         for o in room.objects:
-            if not o.steps or o.flags & 0x0008 or not o.flags & 0x0001 or o.steps[0].hidden:
+            if not reference_sim.object_present(o):
                 continue
             st = o.steps[0]
-            if st.anim >= len(groups) or not groups[st.anim]:
-                continue
-            f = frames[groups[st.anim][0]]
-            x, y = st.pos
-            blit(f.pixels, f.width, f.height, x, y)
+            f = frames[reference_sim.find_frame(desc, st.anim, st.anim_start)]
+            if f is not None:
+                x, y = st.pos
+                blit(f.pixels, f.width, f.height, x, y)
+        anims(True)
     return bytes(buf)
 
 
@@ -442,9 +448,10 @@ def export_rooms(g, out, pal, pl, bg, frames, groups, seqs, rooms):
     sprite_first = 1 + len(pl) + len(bg)
     sprite_gid = {gi: sprite_first + gi for gi, idxs in enumerate(groups) if idxs}
     world_maps = []
+    desc = reference_sim.load_desc(g)
     for (col, row), room in sorted(rooms.items()):
         im = img_p(render_room(room, pl, bg, frames, groups, seqs, False), W, H, pal)
-        imo = img_p(render_room(room, pl, bg, frames, groups, seqs, True), W, H, pal)
+        imo = img_p(render_room(room, pl, bg, frames, groups, seqs, True, desc), W, H, pal)
         im.save(os.path.join(pd, f"room_{col}_{row}.png"))
         imo.save(os.path.join(po, f"room_{col}_{row}.png"))
         world.paste(im, (col * W, row * H))

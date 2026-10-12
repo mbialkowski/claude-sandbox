@@ -181,6 +181,13 @@ class LEFile:
                 return o
         return None
 
+    def file_offset(self, addr):
+        """Offset in the .EXE file of the byte loaded at run-time address `addr` (for patching)."""
+        o = self.obj_at(addr)
+        off = addr - o.base
+        num, _ = self.pages[o.page_idx + off // self.page_size - 1]
+        return self.data_pages + (num - 1) * self.page_size + off % self.page_size
+
     def read(self, addr, n):
         o = self.obj_at(addr)
         if o is None:

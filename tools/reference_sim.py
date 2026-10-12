@@ -22,6 +22,42 @@ import lazarus_data as L  # noqa: E402
 FIX = 1 << 16
 
 
+def load_desc(game_dir):
+    """DATA03 descriptors as (duration, offset, x0, y0, x1, y1); separators have duration -1."""
+    d = open(os.path.join(game_dir, "DATA03.RES"), "rb").read()
+    _, count, _ = struct.unpack_from("<3I", d, 0)
+    return [struct.unpack_from("<bI4B", d, 12 + i * 9) for i in range(count)]
+
+
+def find_frame(desc, group, start):
+    """BobFindFrame: the group's first descriptor advanced by `start` ticks (the remainder inside the frame
+    is dropped by the callers; it does not wrap at the group's end)."""
+    i, g = 0, 0
+    while g < group and i < len(desc):
+        if desc[i][0] == -1:
+            g += 1
+        i += 1
+    while start > 0:
+        d = desc[i][0]
+        if start < d:
+            start = 0
+        else:
+            start -= d
+            i += 1
+    return i
+
+
+def object_present(o):
+    """RoomObject_ctor at a new game (all game flags clear): is the object drawn on room entry?
+    Inactive, invisible and disabled objects are not; conditional objects without an item/flag lock wait
+    for a game flag (hdr[13] > 2) or for another object (<= 2) and are not shown either."""
+    if not o.steps or not o.flags & 0x0001 or o.flags & 0x0048:
+        return False
+    if o.flags & 0x8000 and not (o.interact & 2) and not (o.flags & 0x0004):
+        return False
+    return not o.steps[0].hidden
+
+
 def cdiv(a, b):
     """C integer division (truncates toward zero)."""
     q = abs(a) // abs(b)
@@ -40,14 +76,8 @@ class World:
         raw = raw + bytes(660 - len(raw))                      # the game reads 660 bytes into a zeroed buffer
         self.types = [4 if b == 0 else b for b in raw]
         self.boxes = [tuple(v & 0xFF for v in b) for b in L.load_tile_boxes(game_dir)]
-        self.desc = self._load_desc(game_dir)
+        self.desc = load_desc(game_dir)
         self.override = {}                                    # (col,row) -> 12x14 tile grid for test rooms
-
-    @staticmethod
-    def _load_desc(game_dir):
-        d = open(os.path.join(game_dir, "DATA03.RES"), "rb").read()
-        _, count, _ = struct.unpack_from("<3I", d, 0)
-        return [struct.unpack_from("<bI4B", d, 12 + i * 9) for i in range(count)]   # dur, off, x0,y0,x1,y1
 
     def tile(self, col, row, tx, ty):
         if (col, row) in self.override:
@@ -319,21 +349,7 @@ class PathObject:
             self.events.append(("activate", st.trigger_object))
 
     def find_frame(self, group, start):
-        """BobFindFrame: group's first descriptor + `start` ticks (the remainder inside the frame is
-        dropped by the caller; it does not wrap at the group's end)."""
-        i, g = 0, 0
-        while g < group and i < len(self.w.desc):
-            if self.w.desc[i][0] == -1:
-                g += 1
-            i += 1
-        while start > 0:
-            d = self.w.desc[i][0]
-            if start < d:
-                start = 0
-            else:
-                start -= d
-                i += 1
-        return i
+        return find_frame(self.w.desc, group, start)
 
     def sound(self, st):
         if st.sound_cmd == 1:

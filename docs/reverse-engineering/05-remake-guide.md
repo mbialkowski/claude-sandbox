@@ -41,6 +41,16 @@ engine — the rule set is small and fully specified here.
 * Bomb 3000 ticks; menus wrap; dialogues wait for Ctrl/Enter/Space.
 * Randomised per new game: bomb wire, secret door, sock chest, riddle, shop map.
 
+### Verified against the original
+
+`tools/pixel_check.py` patches a scratch copy of `LAZARUS.EXE` (two immediates of the new-game code at
+`0x2A2A2`/`0x2A2AC` select the start room; `Object_Think`, `TileAnim_Step`, `Hero_Think` and `Hero_Draw`
+are turned into `ret` so the first frame stays frozen and the hero is hidden), runs it in DOSBox under Xvfb,
+takes DOSBox's own screenshot and compares the play-field with a render made from our reading of the data.
+This confirms the room format, both tile sets and their palettes, the tile-animation
+start frames and foreground pass, the object header/path fields used on entry, the constructor's visibility
+rules for conditional objects and `BobFindFrame`. `assets/rooms/png_objects/` uses the same rules.
+
 ## 5.4 Things worth improving (optional)
 
 * Save/continue (the original has none and a single death is game over).

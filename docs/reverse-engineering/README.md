@@ -51,6 +51,7 @@ is in [`reference/`](../../reference/README.md).
 | `lazarus_names.py` | human names for items, sounds, sprite groups, scripts, pictures |
 | `lazarus_scripts.py` | all script/item handlers of the EXE as data, validated against the EXE tables (`script_logic.json`) |
 | `reference_sim.py` | the movement code (tile collision, hero states, object paths, animation) re-implemented; golden traces |
+| `pixel_check.py` | patches a scratch copy of the EXE to start frozen in any room and compares DOSBox screenshots with our renders |
 | `world_analysis.py` | room-edge connectivity, regions, teleports, fake walls, collision/path debug renders (`world_graph.json`) |
 | `catalogues.py` | enemies, hero spec, sound usage, unused content (`assets/gamedata/*.json`) |
 | `le_loader.py` | LE (DOS/4GW) loader with fixups |
