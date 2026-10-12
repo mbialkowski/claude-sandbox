@@ -37,6 +37,7 @@ claude-sandbox/
     ├── catalogues.py           # enemies, hero spec, sound usage, unused content
     ├── reference_sim.py        # movement rules re-implemented; writes golden_traces.json
     ├── pixel_check.py          # renders vs. the patched original in DOSBox (needs dosbox, Xvfb, xdotool)
+    ├── completability.py       # can the game be finished? search over items/flags/doors; walkthrough
     ├── translations/           # hand-written translations of the 293 messages (en.json) + notes
     ├── le_loader.py, disasm.py, make_flat_image.py, ghidra/   # executable analysis (+ annotate.py)
     ├── flc.py, mazovia.py      # FLC decoder, Polish DOS code page

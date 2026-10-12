@@ -19,7 +19,7 @@ Output layout (see assets/README.md for details):
     font/        glyph sheet, gapless atlas, BMFont .fnt, font.json
     text/        messages.json (UTF-8, control codes as tags), messages_en.json (English, from
                  tools/translations/en.json) + messages.csv (both languages side by side)
-    gamedata/    weapons, items, scripts, tile animations, misc tables, world graph (room
+    gamedata/    weapons, items, scripts, tile animations, misc tables, walkthrough, world graph (room
                  connectivity, regions, teleports, secret passages), enemies, hero spec, sound usage,
                  unused content (JSON)
 
@@ -39,6 +39,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import catalogues  # noqa: E402
+import completability  # noqa: E402
 import flc  # noqa: E402
 import lazarus_data as L  # noqa: E402
 import lazarus_names as N  # noqa: E402
@@ -777,6 +778,9 @@ def main():
     catalogues.export_catalogues(g, out, exe, rooms, frames, groups, seqs, len(pl), len(bg))
     with open(os.path.join(mkdir(out, "gamedata"), "golden_traces.json"), "w", encoding="utf-8") as f:
         json.dump(reference_sim.golden(g), f, separators=(",", ":"))
+    game = completability.Game(g)
+    jdump(completability.walkthrough_json(game, completability.solve(game, completability.DEFAULT_SEED),
+                                          completability.DEFAULT_SEED), out, "gamedata", "walkthrough.json")
     export_sounds(g, out, exe)
     export_music(g, out, render=a.render_music)
     export_pictures(g, out)

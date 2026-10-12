@@ -50,6 +50,7 @@ Format details and engine rules are in [`docs/reverse-engineering/`](../docs/rev
 | `gamedata/script_logic.json` | every hard-coded quest/dialogue/item handler of the EXE as data (ops: say, menu, give, take, teleport…), with the variables they use and their new-game values; op set in docs 4.9 | `.json` |
 | `gamedata/world_graph.json` | room-edge connectivity with pixel openings and gating doors/lifts, the 7 regions, all teleports, 40 fake walls | `.json` |
 | `gamedata/enemies.json`, `hero.json` | every harmful/shootable object with HP and hits to kill per weapon; hero states, animations, physics | `.json` |
+| `gamedata/walkthrough.json` | a complete route from the start to the winning ending found by `tools/completability.py` (default random seed), with the items that have several possible uses (docs 7.9) | `.json` |
 | `gamedata/golden_traces.json` | tick-by-tick hero and object movement from `tools/reference_sim.py` for 13 input scripts and 50 objects — test vectors for a remake's physics (docs 3.4) | `.json` |
 | `gamedata/sound_usage.json`, `unused_content.json` | who plays each sound (and which ids share a sample); unused sprites, sounds, texts, tiles, files, known bugs | `.json` |
 
