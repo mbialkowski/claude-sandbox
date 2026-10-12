@@ -28,6 +28,8 @@ var screen: Node2D
 var display: TextureRect
 var shader_mat: ShaderMaterial
 var picture: TextureRect
+var subtitle: Label
+var intro_skip := false
 var touch: Control
 var audio
 var vm
@@ -99,7 +101,20 @@ func _ready() -> void:
 	picture.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
 	picture.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	picture.visible = false
+	var pm := ShaderMaterial.new()
+	pm.shader = load("res://scripts/view/sharp.gdshader")
+	picture.material = pm
 	add_child(picture)
+	subtitle = Label.new()
+	subtitle.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	subtitle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	subtitle.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+	subtitle.add_theme_color_override("font_color", Color(1, 0.95, 0.8))
+	subtitle.add_theme_color_override("font_outline_color", Color(0, 0, 0))
+	subtitle.add_theme_constant_override("outline_size", 6)
+	subtitle.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	subtitle.visible = false
+	add_child(subtitle)
 	touch = Touch.new()
 	touch.main = self
 	add_child(touch)
@@ -111,10 +126,20 @@ func _ready() -> void:
 	vm.setup(D, self)
 	get_viewport().size_changed.connect(_layout)
 	_layout()
-	_title()
+	var autotest := ""
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--shots="):
-			_autotest(arg.substr(8))
+			autotest = arg.substr(8)
+		elif arg.begins_with("--intro-shots="):
+			_intro_shots(arg.substr(14))
+			return
+	if autotest != "":
+		_title()
+		_autotest(autotest)
+	elif OS.has_feature("web"):
+		_press_key()                                   # browsers start audio only after an input
+	else:
+		_intro()
 
 
 # ---------------------------------------------------------------------------
@@ -220,6 +245,18 @@ func _autotest(dir: String) -> void:
 	await wait_ticks(300)
 	await _shot(dir, "18_credits_scroll")
 	print("autotest done")
+	get_tree().quit()
+
+
+func _intro_shots(dir: String) -> void:
+	DirAccess.make_dir_recursive_absolute(dir)
+	D.settings["language"] = "en"
+	_intro()
+	var elapsed := 0
+	for t in [3, 12, 24, 40, 62, 75, 100, 108]:
+		await wait_ticks(t * 50 - elapsed)
+		elapsed = t * 50
+		await _shot(dir, "intro_%03d" % t)
 	get_tree().quit()
 
 
@@ -363,6 +400,14 @@ func _on_press(a: String) -> void:
 			continue_pressed.emit()
 		return
 	match mode:
+		"press":
+			_intro()
+			return
+		"intro":
+			if a in CONTINUE_ACTIONS or a == "pause":
+				intro_skip = true
+				continue_pressed.emit()
+			return
 		"title":
 			_title_input(a)
 		"options":
@@ -390,6 +435,14 @@ func tap(pos: Vector2) -> void:
 			if r.grow(2).has_point(p - text_origin):
 				_choose(i)
 				return
+		return
+	if mode == "press":
+		_intro()
+		return
+	if mode == "intro":
+		intro_skip = true
+		waiting = false
+		continue_pressed.emit()
 		return
 	if waiting:
 		waiting = false
@@ -660,12 +713,61 @@ func show_picture(frame: int) -> void:
 	audio.pause_all(false)
 
 
+func show_tex(tex: Texture2D, region := Rect2()) -> void:
+	"""A colour picture on the 4:3 part of the screen (Mode 13h's 320x200 is shown 4:3 like on a CRT)."""
+	var win := get_viewport_rect().size
+	var area := win.y * (0.8 if subtitle.visible else 1.0)          # leave a band for the subtitles
+	var h := area
+	var w := h * 4.0 / 3.0
+	if w > win.x:
+		w = win.x
+		h = w * 3.0 / 4.0
+	var src := region.size if region.size != Vector2.ZERO else Vector2(tex.get_width(), tex.get_height())
+	if region.size != Vector2.ZERO:
+		var at := AtlasTexture.new()
+		at.atlas = tex
+		at.region = region
+		tex = at
+	picture.texture = tex
+	picture.stretch_mode = TextureRect.STRETCH_SCALE
+	picture.position = Vector2((win.x - w) / 2.0, (area - h) / 2.0)
+	picture.size = Vector2(w, h)
+	picture.material.set_shader_parameter("out_scale", Vector2(w / src.x, h / src.y))
+	picture.visible = true
+
+
+func _subtitle(key: String) -> void:
+	if key == "" or D.settings["language"] != "en":
+		subtitle.visible = false
+		return
+	var win := get_viewport_rect().size
+	var box := Vector2(win.x * 0.88, win.y * 0.2)
+	var fs := int(clampf(win.y * 0.032, 12, 36))
+	var font := ThemeDB.fallback_font
+	var lines := []                                       # wrap by hand: an autowrapping Label that was
+	var line := ""                                        # never shown measures itself too tall
+	for word in Strings.t(key).split(" "):
+		var t := word if line == "" else line + " " + word
+		if line != "" and font.get_string_size(t, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x > box.x:
+			lines.append(line)
+			line = word
+		else:
+			line = t
+	lines.append(line)
+	subtitle.autowrap_mode = TextServer.AUTOWRAP_OFF
+	subtitle.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	subtitle.add_theme_font_size_override("font_size", fs)
+	subtitle.text = "\n".join(lines)
+	subtitle.visible = true
+	subtitle.position = Vector2(win.x * 0.06, win.y * 0.8)
+	subtitle.size = box
+
+
 func show_pcx(file: String) -> void:
 	var name: String = {"DATA21.RES": "pic_joke_ending.png", "DATA20.RES": "pic_game_over.png"}.get(file, "")
 	if name == "":
 		return
-	picture.texture = load(Data.DATA_DIR + name)
-	picture.visible = true
+	show_tex(load(Data.DATA_DIR + name))
 	await wait_continue()
 
 
@@ -689,6 +791,90 @@ func explode() -> void:
 # ---------------------------------------------------------------------------
 # modes
 # ---------------------------------------------------------------------------
+func _press_key() -> void:
+	mode = "press"
+	palette.set_now("game")
+	screen.refresh_all()
+
+
+func _intro_wait(ticks: int) -> void:
+	for i in ticks:
+		if intro_skip:
+			return
+		await get_tree().physics_frame
+
+
+func _intro_frame(name: String, i: int) -> Texture2D:
+	return load("%sintro/%s_%03d.png" % [Data.DATA_DIR, name, i])
+
+
+func _intro_flc(name: String, ticks_per_frame: int, last: int, sub := "") -> void:
+	"""PlayFLC: frames 0..last, looping the file if it is shorter."""
+	if intro_skip:
+		return
+	_subtitle(sub)
+	var n: int = D.game["intro"][name]["frames"]
+	for f in last + 1:
+		if intro_skip:
+			return
+		show_tex(_intro_frame(name, f % n))
+		await _intro_wait(ticks_per_frame)
+
+
+func _intro_still(name: String, hold: int, scroll := 0, after := 0, subs := ["", ""]) -> void:
+	"""ShowPCX: the top 320x200, hold, scroll one line every 3 ticks, hold."""
+	if intro_skip:
+		return
+	var tex: Texture2D = load("%sintro/%s.png" % [Data.DATA_DIR, name])
+	_subtitle(subs[0])
+	show_tex(tex, Rect2(0, 0, 320, 200))
+	await _intro_wait(hold)
+	for y in scroll:
+		if intro_skip:
+			return
+		if y == scroll / 2:
+			_subtitle(subs[1])
+		show_tex(tex, Rect2(0, y + 1, 320, 200))
+		await _intro_wait(3)
+	await _intro_wait(after)
+
+
+func _intro() -> void:
+	"""PlayIntro (0x1E8D0), timings from docs 6.2; Space, Esc, Enter, fire or a tap skip it."""
+	mode = "intro"
+	intro_skip = false
+	hud_visible = false
+	text.clear()
+	palette.set_now("black")
+	screen.refresh_all()
+	audio.play_music("intro")
+	await _intro_wait(50)
+	await _intro_still("DATA33", 150, 200, 200, ["intro_1", "intro_2"])
+	await _intro_flc("DATA05", 4, 58)
+	await _intro_flc("DATA06", 4, 90)
+	await _intro_flc("DATA07", 4, 45)
+	await _intro_wait(25)
+	await _intro_flc("DATA08", 4, 59)
+	await _intro_flc("DATA09", 4, 85)
+	await _intro_still("DATA34", 250, 0, 0, ["intro_3", ""])
+	await _intro_still("DATA35", 250)
+	await _intro_still("DATA36", 300, 200, 300, ["intro_4", "intro_5"])
+	await _intro_flc("DATA11", 3, 70)
+	await _intro_flc("DATA12", 3, 50)
+	await _intro_flc("DATA15", 8, 60, "intro_6")
+	await _intro_flc("DATA13", 8, 30, "intro_7")
+	await _intro_flc("DATA14", 10, 4)
+	await _intro_flc("DATA10", 30, 6, "intro_8")
+	if not intro_skip:
+		waiting = true
+		await continue_pressed
+	waiting = false
+	audio.stop_music()
+	subtitle.visible = false
+	if mode == "intro":
+		_title()
+
+
 func _title() -> void:
 	mode = "title"
 	sim = null
@@ -696,6 +882,7 @@ func _title() -> void:
 	menu = null
 	waiting = false
 	picture.visible = false
+	subtitle.visible = false
 	picture_frame = -1
 	anim_frame = ""
 	hud_visible = false
@@ -815,8 +1002,7 @@ func _game_over() -> void:
 	mode = "gameover"
 	palette.fade("", "black", 0.5)
 	await palette.faded
-	picture.texture = load(Data.DATA_DIR + "pic_game_over.png")
-	picture.visible = true
+	show_tex(load(Data.DATA_DIR + "pic_game_over.png"))
 	hud_visible = false
 	touch.refresh()
 
@@ -896,6 +1082,7 @@ func _update_credits() -> void:
 	picture.stretch_mode = TextureRect.STRETCH_SCALE
 	picture.size = Vector2(640, tex.get_height()) * s
 	picture.position = Vector2((win.x - 640 * s) / 2.0, -y * s + (win.y - 480 * s) / 2.0)
+	picture.material.set_shader_parameter("out_scale", Vector2(s, s))
 
 
 func _open_pause() -> void:
@@ -1051,6 +1238,13 @@ func _ui_rows() -> Array:
 func draw_overlay(ci: CanvasItem) -> void:
 	var W := logical_w
 	match mode:
+		"press", "intro":
+			screen.fill(ci, Rect2(0, 0, W, H), 0)
+			if mode == "press":
+				var t := "LAZARUS"
+				screen.draw_string_at(ci, t, Vector2(W / 2 - screen.string_width(t) / 2, 100), 29)
+				var p := Strings.t("press_key")
+				screen.draw_string_at(ci, p, Vector2(W / 2 - screen.string_width(p) / 2, 124), 12)
 		"title":
 			var ox := (W - 320) / 2
 			screen.fill(ci, Rect2(0, 0, W, H), 0)

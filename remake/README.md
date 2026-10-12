@@ -26,6 +26,12 @@ HD, with keyboard, gamepad and on-screen touch controls.
   gives jumps a small boost the level design may rely on). Options → *Room edges: seamless* treats the
   world as one continuous map instead (the hero changes room when his middle crosses the edge).
 
+* **Intro and endings.** The original's 110-second intro (FLC animations and scrolling story pages, with
+  *recollection*) plays at start-up with the original timings — with English subtitles for the painted-in
+  Polish text when the language is English; Space/Esc/a tap skips it. The credits animation, the game-over
+  picture, the joke ending and the winning ending with the credits scroller are there too. In the browser a
+  "press a key" screen comes first (browsers only start audio after an input).
+
 Details that differ from the original on purpose: shots touching harmful tiles do not hurt the hero (an
 original bug); the bullets of the hero's room are drawn clipped to it; there is a pause menu (the
 original's unused "Pauza" text exists) and an options screen; English text (`data/text_en.json`).

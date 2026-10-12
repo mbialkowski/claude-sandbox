@@ -14,6 +14,7 @@ const T := {
 		"on": "tak", "off": "nie", "back": "Powrót", "paused": "Pauza", "continue": "Graj dalej",
 		"quit_title": "Wyjdź do menu", "thanks": "Dzięki za grę w Lazarusa!",
 		"fire": "OGIEŃ", "jump": "SKOK", "use": "UŻYJ", "jet": "PLECAK", "full": "[ ]",
+		"press_key": "Naciśnij klawisz lub dotknij ekranu", "skip": "Spacja / Esc / dotknij - pomiń",
 	},
 	"en": {
 		"options": "Options", "lang_name": "English", "opt_language": "Język / Language",
@@ -26,6 +27,16 @@ const T := {
 		"on": "on", "off": "off", "back": "Back", "paused": "Paused", "continue": "Continue",
 		"quit_title": "Quit to title", "thanks": "Thanks for playing Lazarus!",
 		"fire": "FIRE", "jump": "JUMP", "use": "USE", "jet": "JET", "full": "[ ]",
+		"press_key": "Press a key or tap the screen", "skip": "Space / Esc / tap - skip",
+		# subtitles for the text painted into the intro's pictures (docs 06, 6.2)
+		"intro_1": "...it all started quite normally, and I would never have guessed it would end so badly...",
+		"intro_2": "I went to the shop for the newest game - LAZARUS or something like that... I'd heard it was really good, so I got a bit excited. Everything went normally... well, except that this time the shop was a bit far. And the way back dragged on and on...",
+		"intro_3": "And finally I got to my cosy little cottage on the allotment. Now only seconds separated me from the moment I'd put the disk in and...",
+		"intro_4": "...what the [censored], what's going on!!! - I swore horribly, because things looked really grim - the game wouldn't start. I'd had enough of staring at the screen and nervously grabbed the manual for help...",
+		"intro_5": "\"...Colonel Colonel has been locked in a labyrinth... blah blah blah...\" - just some silly story and a note saying the game should simply start! BUT SUDDENLY THE SCREEN WENT CRAZY!!!...",
+		"intro_6": "...and then it was just boom... crash... flashes... smoke... and all that. And in the end I ended up here. Hmm... I guess that's all...",
+		"intro_7": "oh... one more little thing...",
+		"intro_8": "GET ME OUT OF HERE!",
 	},
 }
 

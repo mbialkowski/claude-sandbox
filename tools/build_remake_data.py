@@ -26,6 +26,8 @@ for transparent pixels.  Files (all generated - change this tool, never the outp
     pic_*.png            full-screen pictures (game over, joke ending, credits scroller) as RGB PNGs
     anim_DATAxx_NNN.png  the credits (DATA04) and winning-ending (DATA17) animation frames as index images,
                          their palettes in game.json "animations"
+    intro/               the intro: FLC frames DATA05-15 and the PCX stills DATA33-36 (colour PNGs; counts and
+                         sizes in game.json "intro")
 
 Needs Pillow and the assets/ folder produced by tools/extract_assets.py (for the music and pictures).
 """
@@ -214,6 +216,24 @@ def build_animations(assets, out):
     return anims
 
 
+def build_intro(assets, out):
+    """The intro's frames as they are in assets/ (indexed PNGs with their own palette)."""
+    d = os.path.join(out, "intro")
+    os.makedirs(d, exist_ok=True)
+    intro = {}
+    for name in ("DATA05", "DATA06", "DATA07", "DATA08", "DATA09", "DATA10", "DATA11", "DATA12", "DATA13",
+                 "DATA14", "DATA15"):
+        src = os.path.join(assets, "animations", name)
+        files = sorted(x for x in os.listdir(src) if x.endswith(".png"))
+        for i, f in enumerate(files):
+            shutil.copy(os.path.join(src, f), os.path.join(d, f"{name}_{i:03d}.png"))
+        intro[name] = {"frames": len(files), "size": list(Image.open(os.path.join(src, files[0])).size)}
+    for name in ("DATA33", "DATA34", "DATA35", "DATA36"):
+        shutil.copy(os.path.join(assets, "pictures", name + ".png"), os.path.join(d, name + ".png"))
+        intro[name] = {"frames": 1, "size": list(Image.open(os.path.join(d, name + ".png")).size)}
+    return intro
+
+
 def main():
     if len(sys.argv) != 3:
         sys.exit(__doc__)
@@ -281,6 +301,7 @@ def main():
         "palettes": pals,
         "font": font,
         "animations": build_animations(assets, out),
+        "intro": build_intro(assets, out),
     }
     with open(os.path.join(out, "game.json"), "w", encoding="utf-8") as f:
         json.dump(game, f, ensure_ascii=False, separators=(",", ":"))

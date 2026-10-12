@@ -47,8 +47,13 @@ async function run(name, ctxOpts, steps) {
 }
 
 await run("desktop", { viewport: { width: 1280, height: 720 } }, async (page) => {
+  await page.screenshot({ path: `${out}/desktop_press.png` });
+  await page.mouse.click(5, 5);                   // "press a key": starts the intro (and the audio)
+  await sleep(6000);
+  await page.screenshot({ path: `${out}/desktop_intro.png` });
+  await page.keyboard.press("Escape");            // skip the intro
+  await sleep(1500);
   await page.screenshot({ path: `${out}/desktop_title.png` });
-  await page.mouse.click(5, 5);                   // focus the canvas (outside the menu)
   await page.keyboard.press("Enter");
   await sleep(2500);
   await page.screenshot({ path: `${out}/desktop_game.png` });
@@ -61,6 +66,10 @@ await run("desktop", { viewport: { width: 1280, height: 720 } }, async (page) =>
 
 await run("phone", { viewport: { width: 915, height: 412 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
   async (page) => {
+    await page.touchscreen.tap(457, 200);          // press a key -> intro
+    await sleep(1000);
+    await page.touchscreen.tap(457, 200);          // skip the intro
+    await sleep(1500);
     await page.screenshot({ path: `${out}/phone_title.png` });
     await page.touchscreen.tap(457, 172);          // GRA
     await sleep(2500);
@@ -69,6 +78,10 @@ await run("phone", { viewport: { width: 915, height: 412 }, deviceScaleFactor: 2
 
 await run("portrait", { viewport: { width: 412, height: 915 }, deviceScaleFactor: 2, isMobile: true, hasTouch: true },
   async (page) => {
+    await page.touchscreen.tap(206, 300);          // press a key -> intro
+    await sleep(1000);
+    await page.touchscreen.tap(206, 300);          // skip the intro
+    await sleep(1500);
     await page.touchscreen.tap(206, 166);          // GRA
     await sleep(2500);
     await page.screenshot({ path: `${out}/portrait_game.png` });
