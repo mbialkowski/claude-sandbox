@@ -71,6 +71,12 @@ rules for conditional objects and `BobFindFrame`. `assets/rooms/png_objects/` us
   `IDSIAR` help) is still the final proof — in particular that the bomb can be skipped (7.9).
 * Sound Blaster / GUS mixing details (volume curves, panning) — irrelevant if a modern MOD player is used.
 
+## 5.6 Legal
+
+The original game is copyrighted by its authors (Infinite Dreams, 1996). The original files (`original/`),
+the converted assets (`assets/`) and the decompilation reference (`reference/`) are included at the
+repository owner's request. Clarify the rights situation before shipping any original assets in the remake.
+
 ## 5.7 The Godot remake (`remake/`)
 
 [`remake/`](../../remake/README.md) is a remake in Godot 4.7 built directly on these notes:
@@ -86,9 +92,3 @@ rules for conditional objects and `BobFindFrame`. `assets/rooms/png_objects/` us
 
 Deliberate differences: shots touching harmful tiles do not hurt the hero (in the original `TileCollide`
 sets `g_heroHit` for them); room edges can optionally be seamless.
-
-## 5.6 Legal
-
-The original game is copyrighted by its authors (Infinite Dreams, 1996). The original files (`original/`),
-the converted assets (`assets/`) and the decompilation reference (`reference/`) are included at the
-repository owner's request. Clarify the rights situation before shipping any original assets in the remake.
