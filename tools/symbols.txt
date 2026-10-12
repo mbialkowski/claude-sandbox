@@ -1,0 +1,217 @@
+# LAZARUS.EXE symbol map (run-time addresses: code @0x10000, data @0x50000)
+# Format: ADDR NAME  [# comment]   -- used by tools/disasm.py and the Ghidra scripts
+# ---- Watcom C runtime ------------------------------------------------------
+343c2 fread
+34a46 fopen
+34afa fclose
+346a7 malloc
+345bb free
+347c3 printf
+34860 memset
+350c2 exit
+351f0 operator_new
+351e4 operator_delete
+352a8 clock_ticks          # returns timer counter
+# ---- engine: init/loading --------------------------------------------------
+23d58 FatalError           # (msg, show_filename)
+2d7a0 FileLength
+2d7f4 LoadRoomMaps         # DATA29 = NEWROOM.BIN
+2d954 LoadBackgroundTiles  # DATA01
+2d9bc LoadHudPanel         # DATA31
+2da24 LoadPlatformTiles    # DATA24 = KLOCKI.DAT, DATA32 attrs, DATA38 PSIZES.BIN
+2dbc4 LoadPalettes         # DATA25/27/16/28/19
+2dd54 LoadFrames           # DATA03 = bob_make.bin, DATA02 = BOBY.BIN
+2de7c LoadRoomsDef         # DATA30 = OBJECTS.BIN
+2e210 RenderPCX
+291b0 InitTextTable
+29208 DrawRoomTiles
+29304 EnterRoom            # (col,row)
+296d0 FreeRoomObjects
+29714 TitleMenu
+2d544 SetPalette
+2c988 FadePalette          # (from,to,speed)
+10497 SetModeX320x240
+10484 SetMode640x480x16
+105ab DrawPlatformTile     # (col,row,tile) 16x19, transparent
+106fe DrawBackgroundTile   # (col,row,tile) 32x38, opaque
+107b0 DrawHudPanel
+108bb ClearVRAM
+21884 BobFindFrame         # (anim_step_ptr, out_remaining) -> frame index
+21958 RoomObject_ResetPath
+21d5c RoomObject_ctor      # (this, OBJECTS.BIN record, index)
+214f0 RoomTrigger_ctor     # 0x18 byte objects from NEWROOM.BIN entries
+158d8 PlayModule
+159f8 StopModule
+1f034 LoadFont
+1e1c4 PlayFLC
+1e8d0 PlayIntro
+# ---- main loop / input --------------------------------------------------------
+2ade0 GameLoop
+2a614 ProcessInput          # keyboard scancodes + cheat-code hash
+213a0 GetScancode
+2a4e0 CheatAccepted         # feedback when a cheat code matches
+22d18 Hero_InitStates
+230fc TileCollide           # (x0,y0,x1,y1,col,row) -> 0 free,1 harmful,2 solid
+232c4 Hero_MoveCollide      # (this,dx,dy) + room transitions
+24a24 Hero_Think            # runs current state handler
+24adc Hero_DamageTick       # energy -= 0x6000 every 4 frames while hit
+23904 Hero_EraseOld
+23a98 Hero_Draw
+23770 Hero_FlushRect
+24c08 HeroState00
+24f98 HeroState01
+25328 HeroState02
+25944 HeroState03
+26e84 HeroState04
+27238 HeroState05
+25f60 HeroState06
+26274 HeroState07
+275ec HeroState08
+27ef8 HeroState09
+26588 HeroState10
+26a00 HeroState11
+28804 HeroState12
+2881c HeroState13
+28834 HeroState14
+28afc HeroState15
+31628 Bullet_ctor
+# ---- globals -----------------------------------------------------------------
+7c338 g_roomCol
+7c33c g_roomRow
+7c340 g_quitLoop
+7c474 g_tileType            # DATA32: 0->4 solid, 1 harmful, 2 passable
+7c708 g_tileBox             # DATA38 PSIZES: per tile x0,y0,x1,y1
+7d16c g_bobDesc
+7d170 g_bobCount
+7d178 g_bobData
+7d17c g_roomsDef
+7d180 g_roomDefPtr          # [col][row] -> OBJECTS.BIN room record
+7d310 g_heroStateTable
+7d3d0 g_objList
+7d3d8 g_platformList
+7d3dc g_hero
+7d46a g_inputX
+7d46e g_inputY
+7d474 g_roomMaps            # NEWROOM.BIN 10x10 x 458 bytes
+88978 g_keyDown
+8897c g_keyEnter
+88980 g_jetpackOn
+88990 g_keyUp
+88994 g_keyFire
+889a4 g_heroHit
+889a8 g_heroHitTimer
+889ac g_keySpace
+889b0 g_cheatNoFrameWait     # IDFRME
+889bc g_cheatImmortal        # IDMORT
+889c0 g_cheatFpsMeter        # IDMTER
+892ec g_fuel
+892f0 g_energy
+892f4 g_ammo                # [6] per weapon, 16.16, max 0x2f0000
+8930c g_curWeapon
+89364 g_heroDead
+89390 g_cheatInfinite        # IDSIAR
+89394 g_invSel
+8939c g_weaponOwned          # [6]  (IDLUFA gives all)
+893c0 g_pockets
+89480 g_hudDirty
+89484 g_gameFlags            # byte flags, indexed by object header byte 0x0d
+cec84 g_inputLocked
+cec88 g_cheatHash
+ceaf0 g_bulletList
+51af6 g_backBuffer
+51afa g_roomBuffer
+# ---- dialogue / inventory primitives --------------------------------------------
+2cd88 Dlg_Begin             # pause sfx, swap to text buffer
+2ce18 Dlg_End
+2ceac Dlg_Say               # (table, idx): print, wait key, clear
+2cf58 Dlg_Say2              # same as Dlg_Say
+2ceec Dlg_SayKeep           # print + wait, keep text
+2cf24 Dlg_Print             # print, no wait (menus, numbers)
+2cfa4 Dlg_SayRange          # (table, first, last)
+2d11c Dlg_Menu              # (x,y,table,count) -> chosen option; option ids in g_menuOpt[]
+2d378 ShowPicture           # (bob frame) full-screen picture with DATA27 palette
+2c900 WaitKeyFireEnterSpace
+1f138 Text_Draw
+1f1c0 Text_DrawNumber
+1f224 Text_Clear
+1f244 Text_Flip
+2cfe4 Pocket_Add
+2d050 Pocket_Find           # (item) -> slot or -1
+2d0ac Pocket_Remove         # (slot)
+2d5c8 Money_Spend
+2d624 Pocket_Give
+2cc7c Hero_StartTeleport    # (col,row,x,y)
+2cb9c Hero_Explode          # death by explosion
+2cadc Bomb_StartSound
+2cb00 Bomb_StopSound
+2cd54 Sfx_Play
+2cb34 Delay
+2205c Object_FireTrigger    # activate target object or run script[hdr.target]
+22238 Object_Hide
+23e0c Object_Interact       # vtable +0x2c
+227b0 Object_Overlaps       # vtable +0x28 (classMask, x0,y0,x1,y1)
+23f4c Object_Think          # path interpreter (vtable +0x0c)
+21820 Bob_GroupFirstFrame
+291b0 InitTileAnimTable
+2157c TileAnim_Erase
+215a8 TileAnim_Draw
+216a0 TileAnim_Step
+2171c TileAnim_Overlaps
+# ---- more globals --------------------------------------------------------------------
+53438 g_itemUseTable        # [item] = {fn, iconIdx}
+53564 g_scriptTable         # [i] = {onTrigger, onMissingItem}
+53d64 g_messages            # 293 Mazovia strings
+89398 g_money
+893bc g_pocketSlots         # 40 x item id
+89318 g_menuOpt
+8934c g_bombActive
+89478 g_bombTimer
+889c4 g_tpDestCol
+889c8 g_tpDestRow
+889cc g_tpDestX
+889d0 g_tpDestY
+88998 g_heroDir             # 0 left, 1 right
+89584 g_curPalette
+89588 g_palGame             # DATA25
+89888 g_palBlack
+89b88 g_palWhite
+89e88 g_palAlarm            # DATA16
+8a188 g_palPicture          # DATA27
+8a488 g_palMenu             # DATA28
+8a788 g_palDATA19
+8aa88 g_palRed
+892dc g_sound               # sound driver object (vtable at +0x158)
+7c344 g_tileAnimSeq         # 76 sequences of tile ids (-1 terminated) from 0x50004
+# ---- misc (named after the docs were written) -----------------------------------
+29ad4 main
+2c300 NewGameState
+2c5a0 QuitDialog
+2c618 Hud_Redraw
+29910 ShowPCXAndWait
+299bc EndingCredits
+1ebc4 EndingSequence
+228c4 Platform_PushCarryHero
+22a6c Object_Hit
+2c958 Random
+2cd00 Weapon_Give
+2d600 Money_Add
+313d8 Bullet_Init
+31790 Bullet_Fly
+31c00 Bullet_Impact
+1d210 Ammo_AddThird
+1c690 Energy_AddThird
+1c654 Fuel_AddThird
+2f474 Sfx_LoadBank
+2f504 Sfx_Start
+1b660 Script32_Merchant1
+1b8e4 Script37_Merchant2
+1b9d8 Script38_BombArmed
+1ba4c Script39_BombDefuse
+1bc08 Script64_Witch
+1bd98 Script65_Cauldron
+1c0ac Script75_Undertaker
+1c7b0 Script160_VendingMachine
+1cab8 Script161_MagicKeySlot
+1cb70 Script163_TimeGuardian
+1cc2c Script165_Win
+1d2b8 Script240_TeleportMenu

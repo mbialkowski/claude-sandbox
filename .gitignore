@@ -1,0 +1,15 @@
+# Original game files and anything derived from them stay out of git.
+/original/
+/game/
+/extracted/
+*.RES
+*.res
+LAZARUS.EXE
+DOS4GW.EXE
+LHA.EXE
+# local reverse-engineering artefacts (regenerate with tools/)
+*.asm
+*.bin
+/decomp/
+__pycache__/
+*.pyc

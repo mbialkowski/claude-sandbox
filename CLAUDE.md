@@ -1,51 +1,45 @@
 # CLAUDE.md
 
-This file provides context and conventions for AI assistants (Claude Code and similar tools) working in this repository.
+Context and conventions for AI assistants working in this repository.
 
-## Repository Overview
+## Repository overview
 
-**claude-sandbox** is a minimal static web project owned by `mbialkowski`. It currently consists of a single HTML page serving as a "Hello World" starting point, built with Claude.
+**claude-sandbox** now hosts the groundwork for a **remake of Lazarus** (Infinite Dreams, 1996, MS-DOS,
+Polish). It contains reverse-engineering documentation and Python tools for the original game; the remake
+itself has not been started yet.
 
-- **License**: MIT (Copyright 2026 mbialkowski)
-- **Primary branch**: `main` (remote), `master` (local default)
-- **Language/stack**: Plain HTML — no build tools, no dependencies, no framework
+- **License**: MIT (Copyright 2026 mbialkowski) for code/docs; the original game is not ours.
+- **Primary branch**: `main`
 
-## Repository Structure
+## Structure
 
 ```
 claude-sandbox/
-├── index.html      # Single-page static HTML app ("My First App")
-├── README.md       # Minimal project description
-├── LICENSE         # MIT License
-└── CLAUDE.md       # This file
+├── README.md
+├── CLAUDE.md
+├── LICENSE
+├── docs/reverse-engineering/   # 01 executable, 02 file formats, 03 engine, 04 content, 05 remake guide
+└── tools/                      # Python RE tools (see docs/reverse-engineering/README.md)
+    ├── extract_assets.py       # export all assets to PNG/WAV/MOD/JSON
+    ├── dump_rooms.py           # human-readable room/object/quest listing
+    ├── lazarus_data.py         # readers for DATAxx.RES formats
+    ├── lazarus_exe.py          # tables embedded in LAZARUS.EXE
+    ├── le_loader.py, disasm.py, make_flat_image.py, ghidra/   # executable analysis
+    ├── flc.py, mazovia.py      # FLC decoder, Polish DOS code page
+    └── symbols.txt             # recovered names (addresses are LE run-time addresses)
 ```
 
-## Development Workflow
+## Rules
 
-### Branching
+- **Never commit original game files or derived assets** (`*.RES`, `LAZARUS.EXE`, extracted PNG/WAV,
+  decompiled C). Keep them in `original/`, `extracted/`, `decomp/` — all git-ignored.
+- Tools must run with Python 3.9+ and only `Pillow` + `capstone` (`tools/requirements.txt`).
+- When you learn something new about the game, update the relevant `docs/reverse-engineering/*.md` and,
+  for code addresses, `tools/symbols.txt`.
+- Addresses in docs are run-time addresses (code object at `0x10000`, data at `0x50000`).
 
-- Feature branches follow the pattern: `claude/<description>-<session-id>`
-- Never push directly to `main`/`master` without explicit permission
-- Always push with: `git push -u origin <branch-name>`
+## Workflow
 
-### Commits
-
-- Write clear, descriptive commit messages in imperative form (e.g. "Add navigation bar to index.html")
-- Keep commits focused on a single logical change
-
-### Making Changes
-
-Since there is no build system, changes are made directly to source files. There are no compilation, linting, or test steps currently configured.
-
-## Key Conventions
-
-- This is a static site — keep it simple and avoid introducing unnecessary complexity
-- Prefer editing existing files over creating new ones unless clearly needed
-- HTML should remain well-formed and standards-compliant
-- No external dependencies or package managers are in use
-
-## Current State (as of 2026-03-18)
-
-- `index.html`: Basic HTML5 page with a title ("My First App") and a "Hello World" heading
-- No CSS, JavaScript, or external assets yet
-- Two commits in history: initial commit + HTML scaffold
+- Feature branches: `claude/<description>-<session-id>`; do not push to `main` without permission.
+- Push with `git push -u origin <branch-name>`.
+- Commit messages: imperative mood, one logical change per commit.

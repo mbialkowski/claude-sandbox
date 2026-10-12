@@ -1,0 +1,63 @@
+# 5. Notes for the remake
+
+## 5.1 What the original is, in one paragraph
+
+A single-screen, room-based action-adventure platformer (think *Abuse*/*Flashback*-era Amiga games):
+10×10 rooms of 224×228 px, a hero who walks, jumps, crouches and flies a fuel-limited jetpack, six guns
+with separate ammo, 127 shootable enemies, ~280 collectable/usable objects, inventory-based puzzles,
+branching NPC dialogue in Polish, a teleport network unlocked by passwords, a 60-second bomb episode,
+three endings. Everything runs at a fixed 50 Hz.
+
+## 5.2 Recommended architecture
+
+| layer | suggestion |
+|---|---|
+| data import | keep the original files out of the repo; run `tools/extract_assets.py` to produce PNG/WAV/MOD/JSON, then convert to the engine's format in a build step |
+| simulation | fixed 50 Hz tick, integer/16.16 maths for the hero and the path interpreter so behaviour matches 1:1; interpolate only for rendering |
+| rendering | render the 224×228 field (+ HUD) to an off-screen 320×240 canvas, scale with integer factors; optionally offer a widescreen HUD layout |
+| rooms | load `rooms/room_C_R.json` (tiles, background, tile animations, objects) |
+| objects | one generic `RoomObject` driven by header + path steps (section 2.7 / 3.5) — do not hand-code enemies |
+| scripts | port the ~110 script handlers (4.7) into data (e.g. a small dialogue/event DSL or Ink/Yarn), keyed by script id; keep ids so OBJECTS.BIN can be used unchanged |
+| text | `text/messages.json` (UTF-8, control codes as tags); add an English translation table next to it |
+| audio | MODs via libopenmpt / any tracker player; effects from `sounds/*.wav` at their native rates; implement looping effects and per-object stop |
+
+Engines that fit well: Godot 4 (TileMap + one generic scene for objects), or a small custom C/Rust/TS
+engine — the rule set is small and fully specified here.
+
+## 5.3 Fidelity checklist (numbers to copy)
+
+* Tick 50 Hz; walk 1 px/tick; jump v₀ −4.883, g 0.22, hold-to-extend, max ≈ 64 px; fall cap 10.
+* Jetpack: v₀y −2, thrust 0.09375, gravity 0.0625, friction 0.0156, cap ±3, bounce = −v/2, fuel 1504 ticks,
+  teleporting empties fuel.
+* Energy/fuel/ammo scale 0x2F0000 (47 HUD px); damage 0x6000 per 4 ticks of contact; pickups +⅓.
+* Weapons table 3.6; bullets spawn at (−8,10)/(16,10).
+* Room edge transition offsets (3.2) — they make the seams feel right.
+* Tile collision boxes come from PSIZES, not from the full 16×19 cell.
+* Bomb 3000 ticks; menus wrap; dialogues wait for Ctrl/Enter/Space.
+* Randomised per new game: bomb wire, secret door, sock chest, riddle, shop map.
+
+## 5.4 Things worth improving (optional)
+
+* Save/continue (the original has none and a single death is game over).
+* Remappable controls, gamepad support (the original uses Ctrl/Space/Enter/,/.).
+* An English (and other) translation — all text is in one table already.
+* Quality-of-life: pause (text exists but unused), map screen built from `world_map.png`, hint for the
+  whistle/"TARAPATY" puzzle.
+* Fix the riddle-scroll picture bug (4.8).
+
+## 5.5 Open questions / not yet verified
+
+* Exact meaning of object flag `0x0002` and header byte 4's high byte (always `0x08` on animated objects) —
+  no behavioural difference found in the code paths read so far.
+* Enemy AI: the only code that reads the hero position is bullet spawning and the moving-platform carry,
+  so enemies are purely path-scripted (they never chase or aim at the player) — worth a quick check in play.
+* The order of the quest chain was reconstructed from data; play through once in DOSBox with
+  `/G /U` (all weapons, infinite ammo) or `IDMORT` to confirm reachability of each room.
+* Title-menu internals (`TitleMenu`, `0x29714`) and the credits scroller speed were not analysed in detail.
+* Sound Blaster / GUS mixing details (volume curves, panning) — irrelevant if a modern MOD player is used.
+
+## 5.6 Legal
+
+The original game is copyrighted by its authors (Infinite Dreams, 1996). This repository intentionally
+contains **only tools and documentation**; game files, extracted assets and decompiled code are excluded via
+`.gitignore`. Clarify the rights situation before shipping any original assets in the remake.
