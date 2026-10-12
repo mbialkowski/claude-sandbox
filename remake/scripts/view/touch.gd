@@ -63,6 +63,8 @@ func relayout() -> void:
 	buttons.append({"action": "jetpack", "label": "jet", "center": Vector2(cx_btn, cy - d), "radius": r})
 	var s := r * 0.55
 	buttons.append({"action": "pause", "label": "II", "center": Vector2(s * 1.6, s * 1.6), "radius": s})
+	if not main.is_fullscreen():
+		buttons.append({"action": "fullscreen", "label": "full", "center": Vector2(s * 4.2, s * 1.6), "radius": s})
 	var top := cy - d - r * 2.3
 	if main.portrait:
 		top = main.display_rect.end.y + s * 1.5

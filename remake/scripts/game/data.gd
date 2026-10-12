@@ -44,6 +44,7 @@ var settings := {
 	"sfx_volume": 0.8,
 	"music_volume": 0.7,
 	"show_neighbours": true,
+	"room_edges": "classic",            # classic: the original's room transitions; seamless: no jump
 }
 var loaded := false
 

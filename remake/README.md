@@ -21,9 +21,10 @@ HD, with keyboard, gamepad and on-screen touch controls.
   the right; the camera glides when the hero walks into the next room. Only the hero's room is live, as in
   the original — its neighbours are shown as they look on entry and come alive when he walks in.
   On 4:3 screens it looks like the original.
-* **Seamless room edges.** The world is one continuous map: the hero changes room when his middle crosses
-  the edge, without the original's 14–30 px jump at top/bottom edges (set `hero.classic = true` for the
-  original behaviour — the golden-trace test does).
+* **Room edges like the original.** By default the hero crosses room edges exactly as in the original
+  (Hero_MoveCollide: placed fully inside the new room, a 14–30 px jump at top/bottom edges, which also
+  gives jumps a small boost the level design may rely on). Options → *Room edges: seamless* treats the
+  world as one continuous map instead (the hero changes room when his middle crosses the edge).
 
 Details that differ from the original on purpose: shots touching harmful tiles do not hurt the hero (an
 original bug); the bullets of the hero's room are drawn clipped to it; there is a pause menu (the

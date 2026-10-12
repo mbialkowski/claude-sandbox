@@ -770,6 +770,7 @@ func _new_game(resume := false) -> void:
 	var saved = null
 	if resume:
 		saved = JSON.parse_string(FileAccess.get_file_as_string(SAVE_PATH))
+	sim.hero.classic = D.settings["room_edges"] == "classic"
 	if saved is Dictionary:
 		sim.load_data(saved)
 	else:
@@ -942,10 +943,11 @@ func _option_list() -> Array:
 		[Strings.t("opt_neighbours"), Strings.t("on") if s["show_neighbours"] else Strings.t("off")],
 		[Strings.t("opt_dim"), Strings.t("on") if s["dim_neighbours"] else Strings.t("off")],
 		[Strings.t("opt_smooth"), Strings.t("smooth") if s["smooth_scaling"] else Strings.t("sharp")],
+		[Strings.t("opt_edges"), Strings.t("edges_" + str(s["room_edges"]))],
 		[Strings.t("opt_touch"), Strings.t("touch_" + str(s["touch_controls"]))],
 		[Strings.t("opt_music"), "%d%%" % roundi(float(s["music_volume"]) * 100)],
 		[Strings.t("opt_sfx"), "%d%%" % roundi(float(s["sfx_volume"]) * 100)],
-		[Strings.t("opt_fullscreen"), Strings.t("on") if _is_fullscreen() else Strings.t("off")],
+		[Strings.t("opt_fullscreen"), Strings.t("on") if is_fullscreen() else Strings.t("off")],
 		[Strings.t("back"), ""],
 	]
 
@@ -983,20 +985,24 @@ func _options_input(a: String) -> void:
 				3:
 					s["smooth_scaling"] = not s["smooth_scaling"]
 				4:
+					s["room_edges"] = "seamless" if s["room_edges"] == "classic" else "classic"
+					if sim:
+						sim.hero.classic = s["room_edges"] == "classic"
+				5:
 					var modes := ["auto", "on", "off"]
 					s["touch_controls"] = modes[(modes.find(s["touch_controls"]) + dirn + 3) % 3]
 					touch.refresh()
-				5:
+				6:
 					s["music_volume"] = clampf(snappedf(float(s["music_volume"]) + 0.1 * dirn, 0.1), 0.0, 1.0)
 					audio.apply_volumes()
-				6:
+				7:
 					s["sfx_volume"] = clampf(snappedf(float(s["sfx_volume"]) + 0.1 * dirn, 0.1), 0.0, 1.0)
 					audio.apply_volumes()
 					audio.pause_all(false)
 					audio.play(33)
-				7:
-					toggle_fullscreen()
 				8:
+					toggle_fullscreen()
+				9:
 					_leave_options()
 					return
 			D.save_settings()
@@ -1016,17 +1022,18 @@ func _leave_options() -> void:
 	touch.refresh()
 
 
-func _is_fullscreen() -> bool:
+func is_fullscreen() -> bool:
 	return DisplayServer.window_get_mode() in [DisplayServer.WINDOW_MODE_FULLSCREEN,
 			DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN]
 
 
 func toggle_fullscreen() -> void:
-	if _is_fullscreen():
+	if is_fullscreen():
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	screen.overlay_layer.queue_redraw()
+	touch.relayout.call_deferred()
 
 
 # ---------------------------------------------------------------------------
@@ -1035,7 +1042,7 @@ func toggle_fullscreen() -> void:
 func _ui_rows() -> Array:
 	var rows := []
 	var n := _option_list().size() if mode == "options" else 3
-	var y0 := 52 if mode == "options" else 96
+	var y0 := 46 if mode == "options" else 96
 	for i in n:
 		rows.append(Rect2(0, y0 + i * 16 - 3, logical_w, 16))
 	return rows
@@ -1061,13 +1068,13 @@ func draw_overlay(ci: CanvasItem) -> void:
 			if options_from == "title":
 				screen.fill(ci, Rect2(0, 0, W, H), 0)
 			else:
-				screen.fill(ci, Rect2(screen.view_w / 2 - 150, 20, 300, 200), 0)
+				screen.fill(ci, Rect2(screen.view_w / 2 - 150, 14, 300, 212), 0)
 			var title := Strings.t("options").to_upper()
-			screen.draw_string_at(ci, title, Vector2(screen.view_w / 2 - screen.string_width(title) / 2, 28), 29)
+			screen.draw_string_at(ci, title, Vector2(screen.view_w / 2 - screen.string_width(title) / 2, 22), 29)
 			var opts := _option_list()
 			var cx: int = screen.view_w / 2
 			for i in opts.size():
-				var y := 52 + i * 16
+				var y := 46 + i * 16
 				var c := 0x10 if i == ui_sel else 1
 				screen.draw_string_at(ci, opts[i][0], Vector2(cx - 130, y), c)
 				if opts[i][1] != "":
