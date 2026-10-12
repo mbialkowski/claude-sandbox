@@ -84,7 +84,8 @@ Storyboards (every frame): `assets/animations/storyboards/DATAxx.png`; individua
 
 * Palette DATA28, music *multifruit juice* (looping). Background = sprite frame 1181 (group 226); the
   highlighted option is drawn over it: frame 1178 "GRA" at (139,89), 1179 "AUTORZY" at (113,122),
-  1180 "WYJŚCIE" at (116,160) — the background already contains the dimmed labels.
+  1180 "WYJŚCIE" at (116,160) — the background already contains the dimmed labels. The highlights are
+  play-field coordinates (screen y + 6, see 3.7); the background is drawn at screen (0, 0).
 * ↑/↓ cycle (wrapping), Enter or Space select, Esc = WYJŚCIE.
 * **AUTORZY** (credits) plays DATA04 (19 frames, 4 ticks per frame) in a loop until Space or Esc. Final frame:
   *CODE* Marcin Pancewicz · *GFX* Tomasz Kostrzewski · *MUSIC* Wojciech Panufnik · *IDEA* Marek Augustyn,

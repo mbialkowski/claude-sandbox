@@ -9,6 +9,7 @@ const H := 240
 const HUD_W := 76
 const ROOM_W := 224
 const ROOM_H := 228
+const PF_Y := 6                # the play-field starts 6 rows below the screen top; sprites use its coordinates
 
 var D
 var game                       # main.gd
@@ -276,12 +277,13 @@ func _draw_hud(ci: CanvasItem) -> void:
 	if sim == null:
 		return
 	var st = sim.state
-	_tube(ci, Vector2(16, 111), st.energy, 1085)
-	_tube(ci, Vector2(32, 111), st.ammo[st.weapon], 1087)
-	_tube(ci, Vector2(48, 111), st.fuel, 1086)
-	draw_frame(ci, 1064 + st.weapon * 2, Vector2(11, 8))
+	# Hud_Redraw draws in play-field coordinates (6 rows below the screen top), the panel itself at y = 0
+	_tube(ci, Vector2(16, 111 + PF_Y), st.energy, 1085)
+	_tube(ci, Vector2(32, 111 + PF_Y), st.ammo[st.weapon], 1087)
+	_tube(ci, Vector2(48, 111 + PF_Y), st.fuel, 1086)
+	draw_frame(ci, 1064 + st.weapon * 2, Vector2(11, 8 + PF_Y))
 	var item: int = st.selected_item()
-	draw_frame(ci, int(D.game["items"][item]["icon_frame"]), Vector2(32, 204))
+	draw_frame(ci, int(D.game["items"][item]["icon_frame"]), Vector2(32, 204 + PF_Y))
 
 
 func _tube(ci: CanvasItem, pos: Vector2, value: int, fill_frame: int) -> void:

@@ -158,6 +158,7 @@ func _hold(a: String, ticks: int) -> void:
 
 func _autotest(dir: String) -> void:
 	DirAccess.make_dir_recursive_absolute(dir)
+	D.settings["smooth_scaling"] = false                 # exact pixels for comparisons with the original
 	await wait_ticks(40)
 	await _shot(dir, "01_title")
 	_new_game()
@@ -468,9 +469,9 @@ func tap(pos: Vector2) -> void:
 		"play":
 			if p.x >= screen.view_w:
 				var hp := p - Vector2(screen.view_w, 0)
-				if Rect2(24, 196, 32, 32).has_point(hp):
+				if Rect2(24, 202, 32, 32).has_point(hp):
 					action_tap("item_next")
-				elif Rect2(4, 4, 68, 26).has_point(hp):
+				elif Rect2(4, 10, 68, 26).has_point(hp):
 					action_tap("weapon_next")
 		"gameover", "credits", "anim":
 			_on_press("use")
@@ -907,7 +908,7 @@ func _title_items() -> Array:
 
 func _title_rects() -> Array:
 	var ox := (logical_w - 320) / 2
-	var rects := [Rect2(ox + 110, 84, 100, 30), Rect2(ox + 105, 117, 110, 30), Rect2(ox + 105, 155, 110, 30)]
+	var rects := [Rect2(ox + 110, 90, 100, 30), Rect2(ox + 105, 123, 110, 30), Rect2(ox + 105, 161, 110, 30)]
 	for i in range(3, _title_items().size()):
 		rects.append(Rect2(ox + 90, _title_font_y(i) - 3, 140, 15))
 	return rects
@@ -1249,7 +1250,7 @@ func draw_overlay(ci: CanvasItem) -> void:
 			var ox := (W - 320) / 2
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
 			screen.draw_frame(ci, 1181, Vector2(ox, 0))
-			var hl := [[1178, 139, 89], [1179, 113, 122], [1180, 116, 160]]
+			var hl := [[1178, 139, 95], [1179, 113, 128], [1180, 116, 166]]   # (x, y + 6): play-field coordinates
 			if ui_sel < 3:
 				screen.draw_frame(ci, hl[ui_sel][0], Vector2(ox + hl[ui_sel][1], hl[ui_sel][2]))
 			var items := _title_items()
@@ -1292,7 +1293,8 @@ func draw_overlay(ci: CanvasItem) -> void:
 	if picture_frame >= 0:
 		screen.fill(ci, Rect2(0, 0, W, H), 0)
 		var sz: Vector2 = screen.frame_size(picture_frame)
-		screen.draw_frame(ci, picture_frame, Vector2(floori((W - sz.x) / 2), floori((H - sz.y) / 2)))
+		# ShowPicture: (160 - w/2, 120 - h/2) in play-field coordinates
+		screen.draw_frame(ci, picture_frame, Vector2(floori((W - sz.x) / 2), 120 - floori(sz.y / 2) + 6))
 	if notice_ticks > 0 and notice != "":
 		screen.draw_string_at(ci, notice, Vector2(4, 2), 29)
 
