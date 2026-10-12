@@ -13,7 +13,7 @@ DOSBox.
 | [04-game-content.md](04-game-content.md) | story, world and teleports, all items, NPCs and shops, quest chain, script reference, endings |
 | [05-remake-guide.md](05-remake-guide.md) | recommendations, fidelity checklist, open questions, legal note |
 | [06-cutscenes-and-music.md](06-cutscenes-and-music.md) | boot logo, intro shot list with timing and transcribed/translated text, title menu, credits, all endings, credits scroller, music analysis |
-| [07-world-and-catalogues.md](07-world-and-catalogues.md) | regions and room connectivity, teleport graph, gates, secret passages, collision/path debug renders, enemy catalogue, sound usage, unused/cut content, quest dependency graph |
+| [07-world-and-catalogues.md](07-world-and-catalogues.md) | regions and room connectivity, teleport graph, gates, all lifts/doors and what opens them, secret passages, collision/path debug renders, enemy catalogue, sound usage, unused/cut content, quest dependency graph, completability check and walkthrough |
 | [08-history.md](08-history.md) | the C64 (1994) and Amiga (1995) games this port descends from, credits, the studio, sources |
 
 ## Quick facts

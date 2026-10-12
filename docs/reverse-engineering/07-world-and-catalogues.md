@@ -36,11 +36,17 @@ opening), white lines = teleport booths/scripted teleports, yellow = hub termina
 
 Scripted teleports besides the booths and the hub terminal (all `Hero_StartTeleport` calls in the EXE):
 
-* (8,6) Temple → (4,5) Land of Terror (script 45) — an unconditional booth, so the Land of Terror is
-  reachable from the start without its password;
-* (4,5) damaged teleport (script 203) → (9,6) Temple with p = ⅓, else (8,8) Netherworld — a way into the
-  Netherworld without the Zaświaty password;
+* (4,5) **damaged teleport** (script 203; the warning next to it says use may be dangerous):
+  * p = ⅓ → (9,6): a **sealed bonus corridor** along the bottom of (8,6)–(9,6) with all seven $10 coins of
+    the game and an ammo pick-up; its only exit is the booth (8,6) (script 45), which leads back to (4,5);
+  * p = ⅔ → (8,8): inside the **sealed pool of harmful liquid** in the middle shaft of that room — no
+    exit, certain death.
+  So it is neither a way into the Netherworld nor a way out of the Land of Terror.
 * (2,9) Abyss trigger (script 98) → (4,2) Hidden Valley, and it teaches that password.
+
+The room-level regions above treat each room as one space; the pixel-level model of 7.9 shows that these
+two arrival points are pockets of their rooms. Every region except the Temple therefore needs its password
+(Hidden Valley: the (2,9) trigger instead).
 
 ```mermaid
 flowchart LR
@@ -53,9 +59,11 @@ flowchart LR
   G["Time Guardian (1,0)"]
   S["6 Training Room"]
   T -- "booth (8,2)" --> H
-  T -- "booth (8,6)" --> L
-  L -- "damaged teleport (4,5) ⅓" --> T
-  L -- "damaged teleport (4,5) ⅔" --> N
+  P["bonus corridor (8,6)-(9,6)<br/>7 × $10, sealed"]
+  D["sealed pool (8,8)<br/>death"]
+  L -- "damaged teleport (4,5) ⅓" --> P
+  P -- "booth (8,6)" --> L
+  L -- "damaged teleport (4,5) ⅔" --> D
   A -- "trigger (2,9)" --> V
   L -- "booth (0,1)" --> H
   A -- "booth (4,7)" --> H
@@ -231,8 +239,7 @@ flowchart TD
   pwA --> abyss["Abyss"]
   abyss --> t29["trigger (2,9) [s98]"] --> valley["Hidden Valley + its password"]
   abyss --> devil["Devil's daughter (0,7) [s102]"] --> pwL["password Kraina Grozy"]
-  booth86["booth (8,6) [T] [s45]"] --> terror["Land of Terror"]
-  pwL --> terror
+  pwL --> terror["Land of Terror"]
 
   %% bomb and cage
   hang["shoot the hanging man's rope (8,0) [T]"] --> hint["wire colour hint [s35]"]
@@ -241,7 +248,6 @@ flowchart TD
   hint --> defuse
   defuse --> cagekey["cage key (5,3) [s41]"] --> freed["free the prisoner (9,4) [s42]"] --> pwN["password Zaświaty"]
   pwN --> nether["Netherworld"]
-  terror --> dmg["damaged teleport (4,5) ⅔"] --> nether
 
   %% magic keys
   terror --> k1["magic key 1 (0,1) [s192]"]
@@ -274,6 +280,72 @@ Optional chains not shown: fuse (5,2) → fuse box (2,0) repairs the Hidden Vall
 bucket (7,8) → tap (8,9) → burning-hat man (9,8) → magic whistle (+ password Otchłań) → *use* it in (1,5)
 "TARAPATY" → golden key → door (1,5); random chest in the Abyss → sock → sock man (0,6) → decoder →
 gum-chewer (3,5); riddle man (0,3) → answer → platforms at (1,3); teddy bear (5,4) → girl (4,3) → $100 →
-ferry ticket $95 → ferryman (2,7). The exact order the designers intended was reconstructed from data
-(5.5); the region graph above shows which steps are reachable from the start.
+ferry ticket $95 → ferryman (2,7). 7.9 checks this graph mechanically: which steps are required, which are
+optional, and a complete route.
 
+## 7.9 Can the game be finished? (`tools/completability.py`)
+
+A search over abstract game states answers it from the data alone:
+
+* **State:** items, game flags, the script variables of `script_logic.json` (passwords, counters, shop stock,
+  the random picks), money, which objects have fired or appeared, and the places reached by teleport.
+* **Movement:** free flight over the pixel collision map of the whole world — the hero's 11×29 box may be
+  anywhere free of solid tile pixels (as with the jetpack; fuel and gravity are ignored). Closed doors,
+  parked lifts and invisible walls (static solid objects that have not fired) and the no-fly zone over the
+  river (until the ferry is taken) are obstacles. Connectivity is labelled once with all obstacles closed
+  (union-find over horizontal runs of free positions); each door pair knows which components it joins.
+* **Objects:** usable ones need the hero's box to overlap theirs, shootable ones to be level with a
+  reachable position in the room. Conditions, "waiting" objects, chains and spawn-activation follow
+  `RoomObject_ctor`, `Object_Interact` and `Object_FireTrigger`.
+* **Scripts:** the transcribed handlers run abstractly; every menu option and random outcome is a branch,
+  death and the joke ending prune it, and while the bomb ticks only the defusing is allowed. Coins in
+  reachable places count as collected.
+* Actions with one outcome that only add (or consume an item nothing else needs) are applied at once; the
+  search branches on the rest (shops, trades, menus, the secret doors). Reusable actions whose outcomes can
+  all be had by repeating them (hub terminal, damaged teleport) are merged.
+
+### Results
+
+* **The game can be finished** — for the default random setup and for all 37 setups checked
+  (`--all-seeds`: every combination of bomb wire × secret door × riddle, and every sock chest). The search
+  needs about 195 decision states and 10 seconds per setup. A full route (109 actions, 46 of them obtaining
+  something) is in `assets/gamedata/walkthrough.json`.
+* **Required** (`--necessity`: each item / password made unobtainable in turn): first-aid kit and red card
+  (the lift to magic key 4), cage key (the prisoner's Netherworld password), the second purple card (the
+  door at (1,7) on the way to magic key 3 and the Devil's daughter), the shaped key piece, the five magic
+  keys, the magazine for the witch, the shears, the three flowers, the elixir, the Time Key, and the
+  passwords Zaświaty, Otchłań and Kraina Grozy.
+* **Optional:** the first purple card, fuse, lift card, wire cutters, bucket, whistle (and so the golden key
+  and its door), grey card, ferry ticket, sock and decoder, old map and map piece, riddle scroll (the
+  riddle's platforms at (1,3)), teddy bear, fuel cans, clips, the shop map and the Ukryta Dolina password
+  (the (2,9) trigger teleports there anyway).
+* **The bomb is optional.** The cage key lies in (5,3) from the start and the cage lock in (9,4) can be
+  reached from below without touching the deaf man's trigger zone, so the prisoner can be freed without
+  ever arming the bomb (to be confirmed in play: the model may fly where the hero cannot jump).
+* **Soft-lock: the secret doors.** There is one shaped key piece and each of the three locks at (8,7)
+  consumes it; only the door the rescued man named leads to magic key 5. A wrong door makes the game
+  unwinnable (the search's branches through the other doors never reach the ending). The remake should
+  keep the hint prominent or refund the piece.
+* **The damaged teleport** is a gamble with no use for the quest: ⅓ a sealed bonus corridor with all seven
+  $10 coins, ⅔ death in a sealed pool (7.1).
+* **Not modelled:** jump heights and jetpack fuel (free flight is assumed everywhere), enemies and damage,
+  solid objects that move on their own (lifts in motion are not obstacles), and the timing of the bomb
+  beyond "only the defusing is allowed while it ticks".
+
+### Key steps of the route found (default setup)
+
+1. **Temple (start):** shoot the rope of the hanging man (8,0) and talk to him (wire hint); pick up the lift
+   card (9,3) and the cage key (5,3); free the prisoner (9,4) → password **Zaświaty**; magic key 2 (6,5);
+   booth (8,2) → hub; insert key 2.
+2. **Netherworld** (hub terminal): bucket (7,8) → fill it at the tap (8,9) → put out the burning hat (9,8)
+   → whistle + password **Otchłań**; grey card (8,7).
+3. **Abyss:** sock from the chest → sock man (0,6) → decoder; purple card 2 (5,7) → door (1,7); the
+   Devil's daughter (0,7) → password **Kraina Grozy**; magic key 3 (0,8); the man and the monster (2,8) →
+   which secret door; trigger (0,9) opens the door at (2,9) → teleport to the Hidden Valley.
+4. **Hidden Valley / Land of Terror:** first-aid kit (6,0) → bleeding man (3,2) → red card → lift (5,2)
+   → fuse and magic key 4; magic key 1 (0,1); shaped key piece (1,2); purple card (4,1).
+5. **Secret door** (8,7) named by the rescued man → magic key 5 (9,7); all five keys in the hub → the force
+   field dissolves.
+6. **Time Guardian** (1,0): infinite ammo and fuel, the newest "Pani Domu" → the **witch** (7,8): choose
+   the *eliksir Wskrzeszenia* → shears → the flowers (3,0), (7,1), (0,2) → cauldron → elixir → Jouler's
+   grave (7,6) → **Time Key** → Time Guardian → the door of time: **the end**.

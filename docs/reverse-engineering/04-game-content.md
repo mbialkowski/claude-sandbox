@@ -44,8 +44,9 @@ everything is huge: *"Ale przecież miałem AMIGĘ a nie grzyba!!! … za duże 
 | Kraina Grozy (Land of Terror) | (1,1) | (94,26) | the Devil's daughter (0,7) |
 | Sala treningowa (Training Room) | (5,5) | (124,26) | known from the start |
 
-* A **damaged teleport** at (4,5) (warning text, script 204) sends you to (9,6) with probability ⅓,
-  otherwise to (8,8).
+* A **damaged teleport** at (4,5) (warning text, script 204) sends you to (9,6) with probability ⅓ — a
+  sealed corridor with all seven $10 coins whose booth (8,6) leads back to (4,5) — otherwise to (8,8),
+  into a sealed pool of harmful liquid: certain death (7.1).
 * **Teleporting empties the jetpack.** If there was fuel, the hero complains: *"Cholera jasna! Zmoczyłem
   sobie gacie paliwem z plecaka! Ach te teleporty…"*.
 * Full-resolution renders: [`assets/rooms/world_map.png`](../../assets/rooms/world_map.png) (2240×2280, tiles only) and
@@ -155,8 +156,9 @@ Guardian (1,0) opens.
 8. Back to the Time Guardian → *"Brawo chłopcze! Drzwi do twego świata stoją otworem!"* → walk through the
    door (script 165) → **winning ending**.
 
-Side branches give money (teddy bear, gum-chewer), passwords, shortcuts and the bomb/cage episode, which is
-required for the Zaświaty password.
+Side branches give money (teddy bear, gum-chewer), passwords and shortcuts. Freeing the prisoner (cage key)
+is required for the Zaświaty password; the bomb itself turns out to be avoidable (7.9). Which items are
+required and which optional was checked with `tools/completability.py` (7.9).
 
 ## 4.7 Script id reference
 
