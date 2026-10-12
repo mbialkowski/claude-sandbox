@@ -1,0 +1,728 @@
+id,x,y,color,text_pl,text_en,raw
+0,34,110,12,O! paliwo do plecaka!,,{x:034}{y:110}{c:012}O! paliwo do plecaka!
+1,50,130,12,"Wygląda na to, że przydałaby się
+fioletowa karta!",,"{x:050}{y:130}{c:012}Wygląda na to, że przydałaby się
+fioletowa karta!"
+2,20,160,1,"Chłopie, nie wiem skąd się tutaj
+wziąłeś, ale błagam cię, pomóż mi!
+Jeszcze trochę i wykrwawię się na śmierć... ",,"{x:020}{y:160}{c:001}Chłopie, nie wiem skąd się tutaj
+wziąłeś, ale błagam cię, pomóż mi!
+Jeszcze trochę i wykrwawię się na śmierć... "
+3,20,180,20,"Nie tego mi potrzeba, kmiotku!",,"{x:020}{y:180}{c:020}Nie tego mi potrzeba, kmiotku!"
+4,20,130,1,"Dziękuję ci z całego serca,
+prawdopodobnie uratowałeś mi życie!
+Jeżeli chcesz się wydostać z tej dziury,
+weź tą kartę, powinna ci się przydać.
+Powodzenia!",,"{x:020}{y:130}{c:001}Dziękuję ci z całego serca,
+prawdopodobnie uratowałeś mi życie!
+Jeżeli chcesz się wydostać z tej dziury,
+weź tą kartę, powinna ci się przydać.
+Powodzenia!"
+5,40,38,12,"Co jest?! Nie działa!!
+Chyba przepalił się bezpiecznik...",,"{x:040}{y:038}{c:012}Co jest?! Nie działa!!
+Chyba przepalił się bezpiecznik..."
+6,24,28,12,Naprawione!,,{x:024}{y:028}{c:012}Naprawione!
+7,40,70,12,"Hmm.. trochę daleko do drugiego brzegu...
+Chyba tego nie przeskoczę...",,"{x:040}{y:070}{c:012}Hmm.. trochę daleko do drugiego brzegu...
+Chyba tego nie przeskoczę..."
+8,50,130,12,"Potrzebuję czerwonej karty
+żeby to uruchomić.",,"{x:050}{y:130}{c:012}Potrzebuję czerwonej karty
+żeby to uruchomić."
+9,40,70,26,"Pomóż mi, proszę, póki jeszczę żyję!
+Ściągnij mnie, a zdradzę ci pewną tajemnicę.",,"{x:040}{y:070}{c:026}Pomóż mi, proszę, póki jeszczę żyję!
+Ściągnij mnie, a zdradzę ci pewną tajemnicę."
+10,5,160,26,"Dziękuję przyjacielu!
+Zapamiętaj: ",,"{x:005}{y:160}{c:026}Dziękuję przyjacielu!
+Zapamiętaj: "
+11,,,20,czerwone krasnale chodzą paaa..rami..,,{c:020}czerwone krasnale chodzą paaa..rami..
+12,,,13,zielone żabki wesoło ree..chhohcz....,,{c:013}zielone żabki wesoło ree..chhohcz....
+13,,,12,niebieskie kwiatki rosną u cioci Hali...,,{c:012}niebieskie kwiatki rosną u cioci Hali...
+14,10,130,13,No... Wreszcie ktoś tu zawitał...,,{x:010}{y:130}{c:013}No... Wreszcie ktoś tu zawitał...
+15,80,120,12,MÓW GŁOŚNIEJ!! NIC NIE SŁYSZĘ!!,,{x:080}{y:120}{c:012}MÓW GŁOŚNIEJ!! NIC NIE SŁYSZĘ!!
+16,10,130,13,Nie wrzeszcz tak!,,{x:010}{y:130}{c:013}Nie wrzeszcz tak!
+17,80,120,12,COOO?! MÓWŻE GŁOŚNIEJ ANEMIKU!,,{x:080}{y:120}{c:012}COOO?! MÓWŻE GŁOŚNIEJ ANEMIKU!
+18,10,100,16,"No to masz babo placek!
+PROSIŁEM, ŻEBYŚ TAK NIE RYCZAŁ!!!
+WŁAŚNIE URUCHOMIŁEŚ BOMBĘ, FRAJERZE!",,"{x:010}{y:100}{c:016}No to masz babo placek!
+PROSIŁEM, ŻEBYŚ TAK NIE RYCZAŁ!!!
+WŁAŚNIE URUCHOMIŁEŚ BOMBĘ, FRAJERZE!"
+19,80,120,29,"Eeee.. Mogłeś mnie uprzedzić!!
+Mów co mam robić!",,"{x:080}{y:120}{c:029}Eeee.. Mogłeś mnie uprzedzić!!
+Mów co mam robić!"
+20,10,100,16,"Masz niewiele czasu na dotarcie do
+bomby i rozbrojenie jej. Mam nadzieję,
+że niesiesz ze sobą jakieś obcęgi...",,"{x:010}{y:100}{c:016}Masz niewiele czasu na dotarcie do
+bomby i rozbrojenie jej. Mam nadzieję,
+że niesiesz ze sobą jakieś obcęgi..."
+21,10,100,16,"A, jeszcze jedno! Byłbym wdzięczny
+gdybyś przy okazji rozejrzał się za kluczem
+do tej przeklętej klatki. No to biegusiem!!",,"{x:010}{y:100}{c:016}A, jeszcze jedno! Byłbym wdzięczny
+gdybyś przy okazji rozejrzał się za kluczem
+do tej przeklętej klatki. No to biegusiem!!"
+22,80,180,12,Oj! Chyba upadł na głowę...,,{x:080}{y:180}{c:012}Oj! Chyba upadł na głowę...
+23,80,180,16,"Rozbrojenie bomby to pestka...
+",,"{x:080}{y:180}{c:016}Rozbrojenie bomby to pestka...
+"
+24,,,,Jeśli ma się obcęgi...,,Jeśli ma się obcęgi...
+25,40,140,16,"Mamy 3 kabelki. Który by tu przeciąć?
+
+",,"{x:040}{y:140}{c:016}Mamy 3 kabelki. Który by tu przeciąć?
+
+"
+26,,,16,"czerwony
+",,"{c:016}czerwony
+"
+27,,,16,"zielony
+",,"{c:016}zielony
+"
+28,,,16,"niebieski
+",,"{c:016}niebieski
+"
+29,80,182,12,Wygląda na dziurkę od klucza,,{x:080}{y:182}{c:012}Wygląda na dziurkę od klucza
+30,10,130,13,"Nie śpieszyło się koleżce, co?
+Od tego wycia dostałem migreny!",,"{x:010}{y:130}{c:013}Nie śpieszyło się koleżce, co?
+Od tego wycia dostałem migreny!"
+31,80,182,12,"Niewdzięczniku! Gdyby nie ja,
+wisiałbyś tu do końca gry!",,"{x:080}{y:182}{c:012}Niewdzięczniku! Gdyby nie ja,
+wisiałbyś tu do końca gry!"
+32,10,130,13,"Dobra, dobra! Tylko nie rób scen!
+Oto hasło do teleportu: Zaświaty",,"{x:010}{y:130}{c:013}Dobra, dobra! Tylko nie rób scen!
+Oto hasło do teleportu: Zaświaty"
+33,80,182,12,Phiii... domyślałem się!,,{x:080}{y:182}{c:012}Phiii... domyślałem się!
+34,80,162,12,Przydałaby się czerwona karta.,,{x:080}{y:162}{c:012}Przydałaby się czerwona karta.
+35,40,180,12,Nie wyjebało!,,{x:040}{y:180}{c:012}Nie wyjebało!
+36,40,180,12,Ooops!!! Pomyłka!,,{x:040}{y:180}{c:012}Ooops!!! Pomyłka!
+37,30,38,29,"Drogi chłopcze! Jeśli masz kapuchę
+druga taka okazja może się nie powtórzyć!
+
+",,"{x:030}{y:038}{c:029}Drogi chłopcze! Jeśli masz kapuchę
+druga taka okazja może się nie powtórzyć!
+
+"
+38,,,1,"Hasło do teleportu - $10
+",,"{c:001}Hasło do teleportu - $10
+"
+39,,,,"Karta do windy - $10
+",,"Karta do windy - $10
+"
+40,,,,"Nowiuśkie nożyce do drutu - $10
+",,"Nowiuśkie nożyce do drutu - $10
+"
+41,,,,"Może innym razem...
+",,"Może innym razem...
+"
+42,40,70,29,"Przyjemnie robić z tobą interesy,
+ale muszę już lecieć!",,"{x:040}{y:070}{c:029}Przyjemnie robić z tobą interesy,
+ale muszę już lecieć!"
+43,40,70,29,Nie stać cię na to! Żegnaj!,,{x:040}{y:070}{c:029}Nie stać cię na to! Żegnaj!
+44,40,70,29,To spadaj frajerzyno!,,{x:040}{y:070}{c:029}To spadaj frajerzyno!
+45,40,138,29,"Witaj nieznajomy! Czyżbyś dał się zrobić w bambuko
+mojemu ziomkowi z góry? Popraw sobie humor!
+
+",,"{x:005}{y:138}{c:029}Witaj nieznajomy! Czyżbyś dał się zrobić w bambuko
+mojemu ziomkowi z góry? Popraw sobie humor!
+
+{x:040}"
+46,,,1,"Piękny sweterek z angory - $14
+",,"{c:001}Piękny sweterek z angory - $14
+"
+47,,,,"Nożyce do kabli - $14
+",,"Nożyce do kabli - $14
+"
+48,,,,"Akwalung - $14
+",,"Akwalung - $14
+"
+49,,,,"Nie, dziękuję.
+",,"Nie, dziękuję.
+"
+50,20,138,29,"Gratuluję trafnego wyboru, i znikam!",,"{x:020}{y:138}{c:029}Gratuluję trafnego wyboru, i znikam!"
+51,20,138,29,"Cóż, i tak mi się nie spodobałeś!",,"{x:020}{y:138}{c:029}Cóż, i tak mi się nie spodobałeś!"
+52,50,138,12,"Mam wrażenie że dałem dupy...
+Chyba pozbędę się tego szajsu.",,"{x:050}{y:138}{c:012}Mam wrażenie że dałem dupy...
+Chyba pozbędę się tego szajsu."
+53,40,70,29,Oto hasło: Otchłań.,,{x:040}{y:070}{c:029}Oto hasło: Otchłań.
+54,30,170,12,Prowadzisz tutaj zakład pogrzebowy?,,{x:030}{y:170}{c:012}Prowadzisz tutaj zakład pogrzebowy?
+55,30,100,29,"Prowadziłem, ale obsłużyłem już wszystkich
+klientów. Zwijam interes, ale mam coś co
+może cię zainteresować:
+
+",,"{x:030}{y:100}{c:029}Prowadziłem, ale obsłużyłem już wszystkich
+klientów. Zwijam interes, ale mam coś co
+może cię zainteresować:
+
+"
+56,,,1,"Świeże hasło do teleportu - $10
+",,"{c:001}Świeże hasło do teleportu - $10
+"
+57,,,,"Kupon rabatowy na trumnę - $10
+",,"Kupon rabatowy na trumnę - $10
+"
+58,,,,"Stara mapa - $10
+",,"Stara mapa - $10
+"
+59,,,12,"Nie mam kapuchy.
+",,"{c:012}Nie mam kapuchy.
+"
+60,120,130,29,Oto hasło: Otchłań.,,{x:120}{y:130}{c:029}Oto hasło: Otchłań.
+61,120,130,29,"Mądry wybór!
+Nie mam przy sobie blankietu,
+ale masz moje słowo!",,"{x:120}{y:130}{c:029}Mądry wybór!
+Nie mam przy sobie blankietu,
+ale masz moje słowo!"
+62,120,130,29,To do zobaczenia!,,{x:120}{y:130}{c:029}To do zobaczenia!
+63,120,130,29,Twoja strata!,,{x:120}{y:130}{c:029}Twoja strata!
+64,50,75,12,"Do diaska! Polałem sobie gacie!
+Do niczego to i sam Olo nie naleje.",,"{x:050}{y:075}{c:012}Do diaska! Polałem sobie gacie!
+Do niczego to i sam Olo nie naleje."
+65,60,75,12,"Do pełna proszę!
+",,"{x:060}{y:075}{c:012}Do pełna proszę!
+"
+66,,,,No i wiaderko jest pełne!,,No i wiaderko jest pełne!
+67,50,75,12,"Co ci się tak czacha kopci?
+Od myślenia?",,"{x:050}{y:075}{c:012}Co ci się tak czacha kopci?
+Od myślenia?"
+68,30,120,15,"Chlip, chlip.. Buuuu..
+Nie śmiej się ze mnie! Buuuu!",,"{x:030}{y:120}{c:015}Chlip, chlip.. Buuuu..
+Nie śmiej się ze mnie! Buuuu!"
+69,50,75,12,Czy chcesz o tym porozmawiać?,,{x:050}{y:075}{c:012}Czy chcesz o tym porozmawiać?
+70,30,120,15,"To przez tą śmierdzącą czarownicę!
+Nie dość, że zamknęła mnie w tych
+katakumbach, to jeszcze podjarała mi czapkę!",,"{x:030}{y:120}{c:015}To przez tą śmierdzącą czarownicę!
+Nie dość, że zamknęła mnie w tych
+katakumbach, to jeszcze podjarała mi czapkę!"
+71,50,75,12,"Łał! No niezła bajka!
+Postaram się o jakąś wodę.",,"{x:050}{y:075}{c:012}Łał! No niezła bajka!
+Postaram się o jakąś wodę."
+72,30,120,15,"Proszę! Pomóż mi, ugaś ten ogień",,"{x:030}{y:120}{c:015}Proszę! Pomóż mi, ugaś ten ogień"
+73,30,120,15,"Wielkie dzięki! W dowód mojej wdzięczności
+przyjmij ten gwizdek - oczywiście magiczny!",,"{x:030}{y:120}{c:015}Wielkie dzięki! W dowód mojej wdzięczności
+przyjmij ten gwizdek - oczywiście magiczny!"
+74,30,120,15,"Jeśli znajdziesz się w TARAPATACH
+zagwiżdż głośno.",,"{x:030}{y:120}{c:015}Jeśli znajdziesz się w TARAPATACH
+zagwiżdż głośno."
+75,40,60,12,"Wygląda chłamowato, ale dzięki grubasie!",,"{x:040}{y:060}{c:012}Wygląda chłamowato, ale dzięki grubasie!"
+76,40,120,12,Wygląda na jakiś dziwny zamek...,,{x:040}{y:120}{c:012}Wygląda na jakiś dziwny zamek...
+77,40,180,12,Potrzebuję szarej karty.,,{x:040}{y:180}{c:012}Potrzebuję szarej karty.
+78,40,60,12,"Tu leży Long John Silver.
+Zmarł na katar.",,"{x:040}{y:060}{c:012}Tu leży Long John Silver.
+Zmarł na katar."
+79,40,60,12,"O ręka wystaje! Sprawdzę puls,
+może jeszcze dycha.
+",,"{x:040}{y:060}{c:012}O ręka wystaje! Sprawdzę puls,
+może jeszcze dycha.
+"
+80,,,,Mój Boże! Za późno!,,Mój Boże! Za późno!
+81,40,60,12,"Ś.P. Gereon Świniopas
+pożarty przez wieprza.",,"{x:040}{y:060}{c:012}Ś.P. Gereon Świniopas
+pożarty przez wieprza."
+82,40,60,12,"R.I.P. Jaksra Tokwili.
+Udławił się spłuczką.",,"{x:040}{y:060}{c:012}R.I.P. Jaksra Tokwili.
+Udławił się spłuczką."
+83,30,120,15,"Magiczne słowo DZIĘKUJĘ zawsze mnie
+wzrusza, więc oto jeszcze jeden podarek:
+hasło do innego świata: Otchłań",,"{x:030}{y:120}{c:015}Magiczne słowo DZIĘKUJĘ zawsze mnie
+wzrusza, więc oto jeszcze jeden podarek:
+hasło do innego świata: Otchłań"
+84,40,60,12,Dziękuję! Dziękuję! Dziękuję!,,{x:040}{y:060}{c:012}Dziękuję! Dziękuję! Dziękuję!
+85,30,120,15,Co za dużo to niezdrowo!,,{x:030}{y:120}{c:015}Co za dużo to niezdrowo!
+86,30,120,12,Przepraszam bardzo...,,{x:030}{y:120}{c:012}Przepraszam bardzo...
+87,60,100,15,"Nie zawracaj mi głowy,
+jestem zajęta.",,"{x:060}{y:100}{c:015}Nie zawracaj mi głowy,
+jestem zajęta."
+88,60,100,15,"O jejku! Najnowszy numer!
+Dziękuję ci drogi chłopcze!
+Jak mogłabym się odwdzięczyć?
+Może przyrządzić ci jakąś miksturę?",,"{x:060}{y:100}{c:015}O jejku! Najnowszy numer!
+Dziękuję ci drogi chłopcze!
+Jak mogłabym się odwdzięczyć?
+Może przyrządzić ci jakąś miksturę?"
+89,30,120,12,A może zdjęłabyś majtki przez głowę?,,{x:030}{y:120}{c:012}A może zdjęłabyś majtki przez głowę?
+90,120,100,15,Nie noszę majtek!,,{x:120}{y:100}{c:015}Nie noszę majtek!
+91,30,120,12,"Trudno, niech będzie mikstura.",,"{x:030}{y:120}{c:012}Trudno, niech będzie mikstura."
+92,60,100,15,"Czego byś się napił?
+
+",,"{x:060}{y:100}{c:015}Czego byś się napił?
+
+"
+93,,,1,"syrop Wiecznego Życia
+",,"{c:001}syrop Wiecznego Życia
+"
+94,,,1,"eliksir Wskrzeszenia
+",,"{c:001}eliksir Wskrzeszenia
+"
+95,,,1,"ziółka Szczęśliwego Zakończenia
+",,"{c:001}ziółka Szczęśliwego Zakończenia
+"
+96,60,100,15,"Do przyrządzenia tej mikstury
+będę potrzebowała trzech magicznych
+kwiatów. Ten czarodziejski sekator
+pozwoli ci je uciąć.",,"{x:060}{y:100}{c:015}Do przyrządzenia tej mikstury
+będę potrzebowała trzech magicznych
+kwiatów. Ten czarodziejski sekator
+pozwoli ci je uciąć."
+97,60,100,15,"Gdy je odnajdziesz, wróć tu
+i wrzuć je do kotła.",,"{x:060}{y:100}{c:015}Gdy je odnajdziesz, wróć tu
+i wrzuć je do kotła."
+98,60,100,15,Potrzebuję TRZECH kwiatów!,,{x:060}{y:100}{c:015}Potrzebuję TRZECH kwiatów!
+99,60,100,15,Świetnie! Zabieram się do roboty!,,{x:060}{y:100}{c:015}Świetnie! Zabieram się do roboty!
+100,100,100,15,"Chwileczkę!
+",,"{x:100}{y:100}{c:015}Chwileczkę!
+"
+101,,,,"Momencik!
+",,"Momencik!
+"
+102,,,,"I oto jest!
+",,"I oto jest!
+"
+103,60,100,15,"To chluśniem, bo uśniem!",,"{x:060}{y:100}{c:015}To chluśniem, bo uśniem!"
+104,40,100,15,"Mam nadzieję, że wiesz co z tym zrobić.",,"{x:040}{y:100}{c:015}Mam nadzieję, że wiesz co z tym zrobić."
+105,40,100,12,"Tu leży Jouler de Generat,
+pirat i oprawca.",,"{x:040}{y:100}{c:012}Tu leży Jouler de Generat,
+pirat i oprawca."
+106,40,100,12,Czy to.. ty jesteś.. Jouler de Generat?,,{x:040}{y:100}{c:012}Czy to.. ty jesteś.. Jouler de Generat?
+107,40,80,1,"Tak mnie nazywali wiele lat temu...
+Czemu mnie wskrzesiłeś? Chcę
+do swojej cieplutkiej trumienki!",,"{x:040}{y:080}{c:001}Tak mnie nazywali wiele lat temu...
+Czemu mnie wskrzesiłeś? Chcę
+do swojej cieplutkiej trumienki!"
+108,40,100,12,"Wstrzymaj się na moment!
+Mam do ciebie jedno pytanie.",,"{x:040}{y:100}{c:012}Wstrzymaj się na moment!
+Mam do ciebie jedno pytanie."
+109,40,80,1,Tylko szybko! Zimno tu...,,{x:040}{y:080}{c:001}Tylko szybko! Zimno tu...
+110,40,100,12,Czy wiesz gdzie jest Klucz Czasu?,,{x:040}{y:100}{c:012}Czy wiesz gdzie jest Klucz Czasu?
+111,40,80,1,Klucz Czasu?,,{x:040}{y:080}{c:001}Klucz Czasu?
+112,40,100,12,Tak! Masz go?,,{x:040}{y:100}{c:012}Tak! Masz go?
+113,40,80,1,Eeee... Klucz Czasu??,,{x:040}{y:080}{c:001}Eeee... Klucz Czasu??
+114,40,100,12,"Błagam! Tylko dzięki niemu
+będę mógł się stąd wydostać!",,"{x:040}{y:100}{c:012}Błagam! Tylko dzięki niemu
+będę mógł się stąd wydostać!"
+115,40,80,1,Aaaa! Chodzi ci o Klucz Czasu?,,{x:040}{y:080}{c:001}Aaaa! Chodzi ci o Klucz Czasu?
+116,40,100,12,Przecież mówię wyraźnie!,,{x:040}{y:100}{c:012}Przecież mówię wyraźnie!
+117,40,80,1,"Przywiązałem się do niego, ale jeśli
+aż tak ci na nim zależy...",,"{x:040}{y:080}{c:001}Przywiązałem się do niego, ale jeśli
+aż tak ci na nim zależy..."
+118,40,100,12,Zrobię wszystko!,,{x:040}{y:100}{c:012}Zrobię wszystko!
+119,40,80,1,"Dobra... Masz tu Klucz, ale przynajmniej
+dobrze mnie zakop! Wracam do trumny.",,"{x:040}{y:080}{c:001}Dobra... Masz tu Klucz, ale przynajmniej
+dobrze mnie zakop! Wracam do trumny."
+120,40,100,12,Dziękuję sir! Zakopię na pewno!,,{x:040}{y:100}{c:012}Dziękuję sir! Zakopię na pewno!
+121,40,100,12,"Zakopany, aż miło!",,"{x:040}{y:100}{c:012}Zakopany, aż miło!"
+122,60,100,15,"Oops!! Musiałam coś popieprzyć!
+PRZEPRASZAM!!!",,"{x:060}{y:100}{c:015}Oops!! Musiałam coś popieprzyć!
+PRZEPRASZAM!!!"
+123,10,130,26,"Pomocy! To monstrum chce mnie pożreć!
+Zrób coś! Długo już nie wytrzymam!",,"{x:010}{y:130}{c:026}Pomocy! To monstrum chce mnie pożreć!
+Zrób coś! Długo już nie wytrzymam!"
+124,10,160,26,"Dziękuję przyjacielu!
+Myślałem, że to bydlę mnie zeżre!",,"{x:010}{y:160}{c:026}Dziękuję przyjacielu!
+Myślałem, że to bydlę mnie zeżre!"
+125,80,170,12,Nie ma sprawy! Za to mi płacą!,,{x:080}{y:170}{c:012}Nie ma sprawy! Za to mi płacą!
+126,10,150,26,"Jednak pozwól, że zdradzę ci pewną tajemnicę:
+Wiedz, że jeden z sekretnych kluczy znajduje
+się za ",,"{x:010}{y:150}{c:026}Jednak pozwól, że zdradzę ci pewną tajemnicę:
+Wiedz, że jeden z sekretnych kluczy znajduje
+się za "
+127,,,,górnymi drzwiami w Zaświatach.,,górnymi drzwiami w Zaświatach.
+128,,,,środkowymi drzwiami w Zaświatach.,,środkowymi drzwiami w Zaświatach.
+129,,,,dolnymi drzwiami w Zaświatach.,,dolnymi drzwiami w Zaświatach.
+130,150,170,12,Dzięki!,,{x:150}{y:170}{c:012}Dzięki!
+131,70,140,12,W środku nic nie ma.,,{x:070}{y:140}{c:012}W środku nic nie ma.
+132,40,140,12,Znalazłem jakąś śmierdzącą skarpetę!,,{x:040}{y:140}{c:012}Znalazłem jakąś śmierdzącą skarpetę!
+133,70,60,12,Co tu tak sterczysz nieboraku?,,{x:070}{y:060}{c:012}Co tu tak sterczysz nieboraku?
+134,10,130,26,Eee! Lepiej nie mówić!,,{x:010}{y:130}{c:026}Eee! Lepiej nie mówić!
+135,70,60,12,Nie to nie! Łaski bez! Cześć!,,{x:070}{y:060}{c:012}Nie to nie! Łaski bez! Cześć!
+136,10,130,26,"Stój! Czekaj! Może będziesz mi mógł pomóc.
+Jakiś dowcipniś ukradł i schował mi jedną z moich
+skarpet i teraz marznie mi noga.",,"{x:010}{y:130}{c:026}Stój! Czekaj! Może będziesz mi mógł pomóc.
+Jakiś dowcipniś ukradł i schował mi jedną z moich
+skarpet i teraz marznie mi noga."
+137,50,60,12,Czemu jej nie poszukasz w takim razie?,,{x:050}{y:060}{c:012}Czemu jej nie poszukasz w takim razie?
+138,10,130,26,"A podróżowałbyś po labiryncie
+bez jednej skarpety?",,"{x:010}{y:130}{c:026}A podróżowałbyś po labiryncie
+bez jednej skarpety?"
+139,40,60,12,"Hmmm.. Nie wiem po co ktoś miałby kraść
+jakąś śmierdzącą skarpetę, ale rozejrzę
+się po okolicy.",,"{x:040}{y:060}{c:012}Hmmm.. Nie wiem po co ktoś miałby kraść
+jakąś śmierdzącą skarpetę, ale rozejrzę
+się po okolicy."
+140,10,70,26,To mi nie zastąpi mojej skarpety!,,{x:010}{y:070}{c:026}To mi nie zastąpi mojej skarpety!
+141,10,70,26,"Myślałem, że już jej nigdy nie zobaczę!
+Wielkie dzięki!",,"{x:010}{y:070}{c:026}Myślałem, że już jej nigdy nie zobaczę!
+Wielkie dzięki!"
+142,40,60,12,"Hola! Hola mospanie! Nic za darmo
+Dawaj kapuchę albo zaraz rozerwę
+ją na strzępy!",,"{x:040}{y:060}{c:012}Hola! Hola mospanie! Nic za darmo
+Dawaj kapuchę albo zaraz rozerwę
+ją na strzępy!"
+143,10,130,26,"Tylko nie to! Spokojnie! Nie mam pieniędzy
+ale może wziąłbyś w zamian mój dekoder bełkotu?",,"{x:010}{y:130}{c:026}Tylko nie to! Spokojnie! Nie mam pieniędzy
+ale może wziąłbyś w zamian mój dekoder bełkotu?"
+144,70,60,12,Dobra! Dawaj!,,{x:070}{y:060}{c:012}Dobra! Dawaj!
+145,10,90,16,"Wiedziałam, że przybędziesz!",,"{x:010}{y:090}{c:016}Wiedziałam, że przybędziesz!"
+146,70,100,12,To my się znamy?,,{x:070}{y:100}{c:012}To my się znamy?
+147,10,90,16,"Prorocy głosili twoje nadejście już
+od wielu pokoleń!",,"{x:010}{y:090}{c:016}Prorocy głosili twoje nadejście już
+od wielu pokoleń!"
+148,70,100,12,"Co, popiliśmy sobie?",,"{x:070}{y:100}{c:012}Co, popiliśmy sobie?"
+149,10,90,16,"Nie trwóż się Synu Czarnego Pana!
+Jestem twoją pokorną służebnicą!
+Rozkazuj mistrzu!",,"{x:010}{y:090}{c:016}Nie trwóż się Synu Czarnego Pana!
+Jestem twoją pokorną służebnicą!
+Rozkazuj mistrzu!"
+150,50,100,12,"Może kilka lat wcześniej coś by
+z tego wyszło, ale teraz się brzydzę.",,"{x:050}{y:100}{c:012}Może kilka lat wcześniej coś by
+z tego wyszło, ale teraz się brzydzę."
+151,10,90,16,"Znam dobrego chirurga plastycznego!
+Nie odtrącaj mnie, Książe Ciemności!!! BŁAGAM!!!",,"{x:010}{y:090}{c:016}Znam dobrego chirurga plastycznego!
+Nie odtrącaj mnie, Książe Ciemności!!! BŁAGAM!!!"
+152,50,90,12,"Hmmm... Nie jesteś piękna, może chociaż
+mądra. Powiedz mi córo diabła jak mogę
+wrócić do mojej rzeczywistości.",,"{x:050}{y:090}{c:012}Hmmm... Nie jesteś piękna, może chociaż
+mądra. Powiedz mi córo diabła jak mogę
+wrócić do mojej rzeczywistości."
+153,10,90,16,"To wie tylko Strażnik Czasu, który żyje
+za magiczną bramą, o panie! Ja znam tylko
+hasło do zaginionego świata: Kraina Grozy",,"{x:010}{y:090}{c:016}To wie tylko Strażnik Czasu, który żyje
+za magiczną bramą, o panie! Ja znam tylko
+hasło do zaginionego świata: Kraina Grozy"
+154,30,90,12,"Może się przyda. Dziekuję.
+I pamiętaj: alkoholizm, uuuu, to jest choroba
+wymięka żołądek i tak dalej.",,"{x:030}{y:090}{c:012}Może się przyda. Dziekuję.
+I pamiętaj: alkoholizm, uuuu, to jest choroba
+wymięka żołądek i tak dalej."
+155,20,110,16,Żegnaj mesjaszu! Mój czas nadszedł!,,{x:020}{y:110}{c:016}Żegnaj mesjaszu! Mój czas nadszedł!
+156,20,110,16,"Przewiozę cię, po okazaniu biletu.
+I nie próbowałbym przefrunąć!",,"{x:020}{y:110}{c:016}Przewiozę cię, po okazaniu biletu.
+I nie próbowałbym przefrunąć!"
+157,20,110,16,W porządku! Płyniemy!,,{x:020}{y:110}{c:016}W porządku! Płyniemy!
+158,20,110,12,Skąd mam wytrzasnąć taki klucz?,,{x:020}{y:110}{c:012}Skąd mam wytrzasnąć taki klucz?
+159,10,130,12,Ten gwizdek nie działa! Zabiję grubasa!,,{x:010}{y:130}{c:012}Ten gwizdek nie działa! Zabiję grubasa!
+160,10,130,12,"O rany! Ten chłamowaty gwizdek zamienił
+się w jakiś klucz!",,"{x:010}{y:130}{c:012}O rany! Ten chłamowaty gwizdek zamienił
+się w jakiś klucz!"
+161,10,120,13,"Dqwq wqeącew er hnduyqe erfdbg
+judoioiu, ewiue uh x iuytwqu ju yterewr!",,"{x:010}{y:120}{c:013}Dqwq wqeącew er hnduyqe erfdbg
+judoioiu, ewiue uh x iuytwqu ju yterewr!"
+162,100,100,12,Czy mógłbyś powtórzyć?,,{x:100}{y:100}{c:012}Czy mógłbyś powtórzyć?
+163,100,100,12,Chyba se nie pogadamy!,,{x:100}{y:100}{c:012}Chyba se nie pogadamy!
+164,100,100,12,"Ten drań mnie oszukał!
+Dekoder nie działa!",,"{x:100}{y:100}{c:012}Ten drań mnie oszukał!
+Dekoder nie działa!"
+165,10,130,13,"Joid wedxs sdd .. przepraszam chłopie,
+ale nie chciałem wypluwać takiej smacznej gumy!
+Widzę, że masz fajowego walkmana!",,"{x:010}{y:130}{c:013}Joid wedxs sdd .. przepraszam chłopie,
+ale nie chciałem wypluwać takiej smacznej gumy!
+Widzę, że masz fajowego walkmana!"
+166,70,100,12,"To jest walkman?!! No, no! Człowiek
+uczy się przez całe życie",,"{x:070}{y:100}{c:012}To jest walkman?!! No, no! Człowiek
+uczy się przez całe życie"
+167,40,120,13,"Mam przy sobie kilka drobiazgów.
+Może chcesz za niego:
+
+",,"{x:040}{y:120}{c:013}Mam przy sobie kilka drobiazgów.
+Może chcesz za niego:
+
+"
+168,,,1,"Trzydzieści złotników
+",,"{c:001}Trzydzieści złotników
+"
+169,,,1,"Kawałek starej mapy
+",,"{c:001}Kawałek starej mapy
+"
+170,,,1,"Chwila przyjemności
+",,"{c:001}Chwila przyjemności
+"
+171,,,12,"Nie chcę!
+",,"{c:012}Nie chcę!
+"
+172,30,110,13,Twoja strata palancie!,,{x:030}{y:110}{c:013}Twoja strata palancie!
+173,30,120,13,Świetnie! Miło było cię poznać!,,{x:030}{y:120}{c:013}Świetnie! Miło było cię poznać!
+174,80,100,12,Przepraszamy na chwilkę...,,{x:080}{y:100}{c:012}Przepraszamy na chwilkę...
+175,60,100,12,"Ufff! Było warto!
+To jest lepsze niż jazda na rowerze!",,"{x:060}{y:100}{c:012}Ufff! Było warto!
+To jest lepsze niż jazda na rowerze!"
+176,30,150,12,"Wyglądasz jakbyś potrzebował pomocy..
+Co mam zrobić: ściągnąć kotka z drzewa,
+zrobić zakupy, albo inną bzdurę?
+Po to tu chyba jestem do ciężkiej cholery!",,"{x:030}{y:150}{c:012}Wyglądasz jakbyś potrzebował pomocy..
+Co mam zrobić: ściągnąć kotka z drzewa,
+zrobić zakupy, albo inną bzdurę?
+Po to tu chyba jestem do ciężkiej cholery!"
+177,60,60,13,"Nie unoś się nieznajomy!
+To raczej ty będziesz
+potrzebował mojej pomocy.",,"{x:060}{y:060}{c:013}Nie unoś się nieznajomy!
+To raczej ty będziesz
+potrzebował mojej pomocy."
+178,40,150,12,"No, no! Coś nowego!",,"{x:040}{y:150}{c:012}No, no! Coś nowego!"
+179,60,50,13,"Każdy kto tędy przechodzi musi
+rozwiązać jedną zagadkę. Jeśli ci
+się uda, pozwolę ci przejść dalej.",,"{x:060}{y:050}{c:013}Każdy kto tędy przechodzi musi
+rozwiązać jedną zagadkę. Jeśli ci
+się uda, pozwolę ci przejść dalej."
+180,100,150,12,"No to wal! Tylko szybko
+bo nie mam czasu!",,"{x:100}{y:150}{c:012}No to wal! Tylko szybko
+bo nie mam czasu!"
+181,140,50,13,Oto ona.,,{x:140}{y:050}{c:013}Oto ona.
+182,60,50,13,"Przyjdź do mnie jeśli znajdziesz
+rozwiązanie. Zastanów się dobrze!",,"{x:060}{y:050}{c:013}Przyjdź do mnie jeśli znajdziesz
+rozwiązanie. Zastanów się dobrze!"
+183,90,130,12,Chyba wiem o co chodzi!,,{x:090}{y:130}{c:012}Chyba wiem o co chodzi!
+184,50,80,13,"Doskonale!
+Wskaż właściwą liczbę:
+
+",,"{x:050}{y:080}{c:013}Doskonale!
+Wskaż właściwą liczbę:
+
+"
+185,,,1,"|3
+",,"{c:001}|3
+"
+186,,,1,"|14
+",,"{c:001}|14
+"
+187,,,1,"|16
+",,"{c:001}|16
+"
+188,,,1,"|7
+",,"{c:001}|7
+"
+189,,,1,"|19
+",,"{c:001}|19
+"
+190,,,1,"|22
+",,"{c:001}|22
+"
+191,,,1,"|2
+",,"{c:001}|2
+"
+192,,,1,"|81
+",,"{c:001}|81
+"
+193,,,1,"|97
+",,"{c:001}|97
+"
+194,30,70,13,"Brawo! Bystrzak z ciebie!
+Możesz iść dalej. Powodzenia!",,"{x:030}{y:070}{c:013}Brawo! Bystrzak z ciebie!
+Możesz iść dalej. Powodzenia!"
+195,30,70,13,"Niestety! Pudło!
+Z takim IQ daleko nie zajdziesz!
+Żegnaj!",,"{x:030}{y:070}{c:013}Niestety! Pudło!
+Z takim IQ daleko nie zajdziesz!
+Żegnaj!"
+196,80,80,13,"Hej! Wyglądasz na twardziela!
+Mam dla ciebie robotę.",,"{x:080}{y:080}{c:013}Hej! Wyglądasz na twardziela!
+Mam dla ciebie robotę."
+197,10,30,12,Ile można zarobić?,,{x:010}{y:030}{c:012}Ile można zarobić?
+198,80,80,13,Sto złotników starczy?,,{x:080}{y:080}{c:013}Sto złotników starczy?
+199,10,30,12,Wpierw powiedz o co chodzi!,,{x:010}{y:030}{c:012}Wpierw powiedz o co chodzi!
+200,40,80,13,"Musisz odnaleźć mojego misiaczka.
+Zły potwór porwał go i ukrył gdzieś na dole.",,"{x:040}{y:080}{c:013}Musisz odnaleźć mojego misiaczka.
+Zły potwór porwał go i ukrył gdzieś na dole."
+201,10,30,12,"Hmm.. Wprawdzie nie specjalizuję się
+w odnajdywaniu zabawek z dzieciństwa,
+ale z drugiej strony sto złotników
+piechotą nie chodzi...",,"{x:010}{y:030}{c:012}Hmm.. Wprawdzie nie specjalizuję się
+w odnajdywaniu zabawek z dzieciństwa,
+ale z drugiej strony sto złotników
+piechotą nie chodzi..."
+202,80,80,13,"Gdzie mój misio?!!
+Nie zasnę bez niego!",,"{x:080}{y:080}{c:013}Gdzie mój misio?!!
+Nie zasnę bez niego!"
+203,50,60,13,NIE WRACAJ BEZ MISIACZKA!!!,,{x:050}{y:060}{c:013}NIE WRACAJ BEZ MISIACZKA!!!
+204,80,80,13,"Dziękuję, mój zbawco!
+Oto pieniądze!",,"{x:080}{y:080}{c:013}Dziękuję, mój zbawco!
+Oto pieniądze!"
+205,10,30,12,Cała przyjemność po mojej stronie!,,{x:010}{y:030}{c:012}Cała przyjemność po mojej stronie!
+206,20,30,29,"UWAGA!
+Teleport uszkodzony.
+Użycie może być niebezpieczne.",,"{x:020}{y:030}{c:020}UWAGA!
+{c:029}Teleport uszkodzony.
+Użycie może być niebezpieczne."
+207,30,40,13,"Zaufaj mocy, Lucek!",,"{x:030}{y:040}{c:013}Zaufaj mocy, Lucek!"
+208,10,120,12,"Przepraszam, którędy do Strażnika Czasu?",,"{x:010}{y:120}{c:012}Przepraszam, którędy do Strażnika Czasu?"
+209,30,70,1,Właśnie do niego trafiłeś!,,{x:030}{y:070}{c:001}Właśnie do niego trafiłeś!
+210,50,120,12,Bombeczka!,,{x:050}{y:120}{c:012}Bombeczka!
+211,30,70,1,"O co chodzi, młodzieńcze?",,"{x:030}{y:070}{c:001}O co chodzi, młodzieńcze?"
+212,10,120,12,Ja chcę do mamyyy! Buuuu!,,{x:010}{y:120}{c:012}Ja chcę do mamyyy! Buuuu!
+213,30,70,1,"Weź się w garść! Jesteś prawie
+u celu swojej wędrówki!",,"{x:030}{y:070}{c:001}Weź się w garść! Jesteś prawie
+u celu swojej wędrówki!"
+214,10,120,12,"Chlip, chlip... Czy mama jest
+za tymi drzwiami?",,"{x:010}{y:120}{c:012}Chlip, chlip... Czy mama jest
+za tymi drzwiami?"
+215,30,70,1,"Tak, tak! Oto brama do twojego świata.",,"{x:030}{y:070}{c:001}Tak, tak! Oto brama do twojego świata."
+216,30,120,12,"No to otwieraj, dziadku!",,"{x:030}{y:120}{c:012}No to otwieraj, dziadku!"
+217,30,70,1,"Chętnie bym to zrobił, ale nie mam klucza...",,"{x:030}{y:070}{c:001}Chętnie bym to zrobił, ale nie mam klucza..."
+218,10,120,12,"Gdzie on jest, w takim razie?!",,"{x:010}{y:120}{c:012}Gdzie on jest, w takim razie?!"
+219,30,70,1,"Legenda głosi, że ostatnim właścicielem
+Klucza był Jaś Wędrowniczek.
+Niestety w drodze do Wrót Czasu jego łódź
+zatonęła, a on sam został pożarty przez
+białego rekina.",,"{x:030}{y:070}{c:001}Legenda głosi, że ostatnim właścicielem
+Klucza był Jaś Wędrowniczek.
+Niestety w drodze do Wrót Czasu jego łódź
+zatonęła, a on sam został pożarty przez
+białego rekina."
+220,30,70,1,"Minęło wiele lat. O Kluczu słuch zaginął.
+Dopiero pirat imieniem Jouler de Generat
+podjął próbę odnalezienia Klucza.",,"{x:030}{y:070}{c:001}Minęło wiele lat. O Kluczu słuch zaginął.
+Dopiero pirat imieniem Jouler de Generat
+podjął próbę odnalezienia Klucza."
+221,30,70,1,"Chodziły słuchy, że de Generat upolował
+białego rekina, w którego brzuchu znalazł
+Klucz Czasu. Nie wiem po co był mu ten klucz
+skoro nigdy go nie wykorzystał.",,"{x:030}{y:070}{c:001}Chodziły słuchy, że de Generat upolował
+białego rekina, w którego brzuchu znalazł
+Klucz Czasu. Nie wiem po co był mu ten klucz
+skoro nigdy go nie wykorzystał."
+222,10,120,12,"No niezła bajka!
+Pozostaje mi tylko dobrze się schlać...",,"{x:010}{y:120}{c:012}No niezła bajka!
+Pozostaje mi tylko dobrze się schlać..."
+223,30,70,1,"Myślę, że nie jest tak tragicznie.
+Spróbuj odnaleźć Joulera de Generata,
+choć najprawdopodobniej gryzie już ziemię.",,"{x:030}{y:070}{c:001}Myślę, że nie jest tak tragicznie.
+Spróbuj odnaleźć Joulera de Generata,
+choć najprawdopodobniej gryzie już ziemię."
+224,10,120,12,"Spróbuję go odnaleźć, bywaj zdrów!",,"{x:010}{y:120}{c:012}Spróbuję go odnaleźć, bywaj zdrów!"
+225,30,70,17,"Aaaa! Mam do ciebię małą prośbę.
+Czy byłbyś łaskaw zanieść najnowszy
+ numer ""Pani Domu"" mojej żonie?
+Ja nie mogę opuścić mojego stanowiska.",,"{x:030}{y:070}{c:017}Aaaa! Mam do ciebię małą prośbę.
+Czy byłbyś łaskaw zanieść najnowszy
+ numer ""Pani Domu"" mojej żonie?
+Ja nie mogę opuścić mojego stanowiska."
+226,10,120,12,Nie ma sprawy! Jak ją poznam?,,{x:010}{y:120}{c:012}Nie ma sprawy! Jak ją poznam?
+227,30,70,1,"Jest czarownicą w Zaświatach.
+Na pewno pomoże ci w dalszej wędrówce.
+Mam nadzieję, że wrócisz tu z kluczem.",,"{x:030}{y:070}{c:001}Jest czarownicą w Zaświatach.
+Na pewno pomoże ci w dalszej wędrówce.
+Mam nadzieję, że wrócisz tu z kluczem."
+228,40,120,12,Ja również!,,{x:040}{y:120}{c:012}Ja również!
+229,30,70,1,To raczej nie jest Klucz Czasu...,,{x:030}{y:070}{c:001}To raczej nie jest Klucz Czasu...
+230,64,90,12,To tutaj nie pasuje...,,{x:064}{y:090}{c:012}To tutaj nie pasuje...
+231,30,70,1,"Brawo chłopcze!
+Drzwi do twego świata stoją otworem!
+Wpadnij tu kiedyś pogadać. Trzymaj się!",,"{x:030}{y:070}{c:001}Brawo chłopcze!
+Drzwi do twego świata stoją otworem!
+Wpadnij tu kiedyś pogadać. Trzymaj się!"
+232,82,26,29,"Witamy w naszym sklepiku!
+Czym możemy służyć?
+
+",,"{x:082}{y:026}{c:029}Witamy w naszym sklepiku!
+Czym możemy służyć?
+
+"
+233,,,1,"Flaszka energii na miejscu - $5
+",,"{c:001}Flaszka energii na miejscu - $5
+"
+234,,,1,"Magazynek - $2
+",,"{c:001}Magazynek - $2
+"
+235,,,1,"Uzi - $20
+",,"{c:001}Uzi - $20
+"
+236,,,1,"Bilet na prom - $95
+",,"{c:001}Bilet na prom - $95
+"
+237,,,1,"Mapa - $30
+",,"{c:001}Mapa - $30
+"
+238,,,12,Może innym razem.,,{c:012}Może innym razem.
+239,82,50,29,"Niestety, nie stać cię na to!",,"{x:082}{y:050}{c:029}Niestety, nie stać cię na to!"
+240,82,50,29,Życzymy miłego dnia!,,{x:082}{y:050}{c:029}Życzymy miłego dnia!
+241,30,70,1,"W zamian dam ci niekończące się
+amunicję i paliwo. Powinny ci się przydać.",,"{x:030}{y:070}{c:001}W zamian dam ci niekończące się
+amunicję i paliwo. Powinny ci się przydać."
+242,40,120,12,Dziękuję!,,{x:040}{y:120}{c:012}Dziękuję!
+243,,,1,"Zapomniana Świątynia
+",,"{c:001}Zapomniana Świątynia
+"
+244,,,27,"Zaświaty
+",,"{c:027}Zaświaty
+"
+245,,,12,"Otchłań
+",,"{c:012}Otchłań
+"
+246,,,13,"Ukryta Dolina
+",,"{c:013}Ukryta Dolina
+"
+247,,,20,"Kraina Grozy
+",,"{c:020}Kraina Grozy
+"
+248,,,29,"Sala treningowa
+",,"{c:029}Sala treningowa
+"
+249,50,100,29,"Gdzie chcesz się teleportować?
+
+",,"{x:050}{y:100}{c:029}Gdzie chcesz się teleportować?
+
+"
+250,50,100,20,"Nie znasz żadnego hasła, nędzniku!
+POZOSTANIESZ TU NA WIEKI!!!",,"{x:050}{y:100}{c:029}Nie znasz żadnego hasła, nędzniku!
+{c:020}POZOSTANIESZ TU NA WIEKI!!!"
+251,50,100,12,"Cholera jasna! Zmoczyłem sobie
+gacie paliwem z plecaka!
+Ach te teleporty...",,"{x:050}{y:100}{c:012}Cholera jasna! Zmoczyłem sobie
+gacie paliwem z plecaka!
+Ach te teleporty..."
+252,20,43,12,Mam w portfelu $,,{x:020}{y:043}{c:012}Mam w portfelu $
+253,20,43,12,Jestem kompletnie spłukany!,,{x:020}{y:043}{c:012}Jestem kompletnie spłukany!
+254,40,143,12,Po co mi jakiś kwiatek?!,,{x:040}{y:143}{c:012}Po co mi jakiś kwiatek?!
+255,50,143,12,Muszę użyć sekatora!,,{x:050}{y:143}{c:012}Muszę użyć sekatora!
+256,20,43,12,Zestaw pierszej pomocy.,,{x:020}{y:043}{c:012}Zestaw pierszej pomocy.
+257,20,43,12,Czerwona karta magnetyczna.,,{x:020}{y:043}{c:012}Czerwona karta magnetyczna.
+258,20,43,12,Fioletowa karta magnetyczna.,,{x:020}{y:043}{c:012}Fioletowa karta magnetyczna.
+259,20,43,12,Bezpiecznik.,,{x:020}{y:043}{c:012}Bezpiecznik.
+260,20,43,12,To chyba klucz do klatki.,,{x:020}{y:043}{c:012}To chyba klucz do klatki.
+261,20,43,12,Puste wiaderko.,,{x:020}{y:043}{c:012}Puste wiaderko.
+262,20,43,12,Wiaderko pełne wody.,,{x:020}{y:043}{c:012}Wiaderko pełne wody.
+263,20,43,12,Gdzieś widziałem dziurę o takim kształcie...,,{x:020}{y:043}{c:012}Gdzieś widziałem dziurę o takim kształcie...
+264,20,43,12,Szara karta magnetyczna.,,{x:020}{y:043}{c:012}Szara karta magnetyczna.
+265,20,43,12,Muszę znaleźć jakiś grób!,,{x:020}{y:043}{c:012}Muszę znaleźć jakiś grób!
+266,20,43,12,Bilet na prom.,,{x:020}{y:043}{c:012}Bilet na prom.
+267,20,43,12,Jeden z magicznych kluczy.,,{x:020}{y:043}{c:012}Jeden z magicznych kluczy.
+268,20,43,12,Złoty klucz.,,{x:020}{y:043}{c:012}Złoty klucz.
+269,20,43,12,"Stara, cuchnąca skarpeta.",,"{x:020}{y:043}{c:012}Stara, cuchnąca skarpeta."
+270,20,43,12,Dekoder bełkotu.,,{x:020}{y:043}{c:012}Dekoder bełkotu.
+271,20,43,12,Pluszowy misiaczek.,,{x:020}{y:043}{c:012}Pluszowy misiaczek.
+272,20,43,12,Jeden z czarodziejskich kwiatów.,,{x:020}{y:043}{c:012}Jeden z czarodziejskich kwiatów.
+273,20,43,12,"Nowy numer ""Pani Domu"".",,"{x:020}{y:043}{c:012}Nowy numer ""Pani Domu""."
+274,20,43,12,Sekator od czarownicy.,,{x:020}{y:043}{c:012}Sekator od czarownicy.
+275,20,43,12,Klucz Czasu! Nareszcie!,,{x:020}{y:043}{c:012}Klucz Czasu! Nareszcie!
+276,20,43,12,Nożyce do drutu.,,{x:020}{y:043}{c:012}Nożyce do drutu.
+277,20,43,12,Magazynków w zapasie: ,,{x:020}{y:043}{c:012}Magazynków w zapasie: 
+278,20,43,12,Magazynek jest pełny!,,{x:020}{y:043}{c:012}Magazynek jest pełny!
+279,77,2,29,Pauza. Naciśnij fire.,,{x:077}{y:002}{c:029}Pauza. Naciśnij fire.
+280,77,100,29,"Czy naprawdę chcesz
+wyjść z gry?
+",,"{x:077}{y:100}{c:029}Czy naprawdę chcesz
+wyjść z gry?
+"
+281,,,29,"Tak
+",,"{c:029}Tak
+"
+282,,,29,"Nie
+",,"{c:029}Nie
+"
+283,,,29,Nie wiem...,,{c:029}Nie wiem...
+284,10,110,38,HURRAA !!! Udało sieeee....eee.ee...,,{x:010}{y:110}{c:038}HURRAA !!! Udało sieeee....eee.ee...
+285,,,," co jest !?!
+",," co jest !?!
+"
+286,,,,Gdzie ja jestem !?!,,Gdzie ja jestem !?!
+287,,,," Co tutaj robi ten przerośnięty
+komputer !?!",," Co tutaj robi ten przerośnięty
+komputer !?!"
+288,,,," Czyżby to było moje biurko ??...
+",," Czyżby to było moje biurko ??...
+"
+289,,,,"Ale przecież miałem AMIGĘ a nie grzyba!!!
+",,"Ale przecież miałem AMIGĘ a nie grzyba!!!
+"
+290,,,,"Oj ! Coś mam przeczucie, że teraz dopiero zaczną się
+niezłe szopki - za duże buty, za duża łyżka do zupy...
+",,"Oj ! Coś mam przeczucie, że teraz dopiero zaczną się
+niezłe szopki - za duże buty, za duża łyżka do zupy...
+"
+291,,,,... jejku to straszne !!!,,... jejku to straszne !!!
+292,,,,   MAMOOO !!!!!,,   MAMOOO !!!!!

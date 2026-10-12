@@ -1,0 +1,21 @@
+{
+ "group": 25,
+ "name": null,
+ "image": "group_025.png",
+ "frames": [
+  {
+   "frame": 167,
+   "x": 0,
+   "y": 0,
+   "w": 8,
+   "h": 1,
+   "duration": 1,
+   "box": [
+    3,
+    0,
+    7,
+    0
+   ]
+  }
+ ]
+}

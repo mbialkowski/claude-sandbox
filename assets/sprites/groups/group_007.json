@@ -1,0 +1,21 @@
+{
+ "group": 7,
+ "name": "card reader - open",
+ "image": "group_007.png",
+ "frames": [
+  {
+   "frame": 46,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 21,
+   "duration": 1,
+   "box": [
+    1,
+    1,
+    10,
+    20
+   ]
+  }
+ ]
+}

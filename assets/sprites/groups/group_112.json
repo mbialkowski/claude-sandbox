@@ -1,0 +1,21 @@
+{
+ "group": 112,
+ "name": "magic key 4 inserted",
+ "image": "group_112.png",
+ "frames": [
+  {
+   "frame": 483,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 15,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    14,
+    14
+   ]
+  }
+ ]
+}

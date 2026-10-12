@@ -1,0 +1,21 @@
+{
+ "group": 117,
+ "name": "sign TARAPATY",
+ "image": "group_117.png",
+ "frames": [
+  {
+   "frame": 493,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 35,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    31,
+    34
+   ]
+  }
+ ]
+}

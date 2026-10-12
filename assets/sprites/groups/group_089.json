@@ -1,0 +1,21 @@
+{
+ "group": 89,
+ "name": "secret-door lock",
+ "image": "group_089.png",
+ "frames": [
+  {
+   "frame": 428,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 16,
+   "duration": 1,
+   "box": [
+    1,
+    0,
+    15,
+    15
+   ]
+  }
+ ]
+}

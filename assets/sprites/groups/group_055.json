@@ -1,0 +1,21 @@
+{
+ "group": 55,
+ "name": "energy potion",
+ "image": "group_055.png",
+ "frames": [
+  {
+   "frame": 291,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 15,
+   "duration": 1,
+   "box": [
+    2,
+    0,
+    13,
+    14
+   ]
+  }
+ ]
+}

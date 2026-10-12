@@ -1,0 +1,21 @@
+{
+ "group": 111,
+ "name": "magic key slot 4",
+ "image": "group_111.png",
+ "frames": [
+  {
+   "frame": 481,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 15,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    14,
+    14
+   ]
+  }
+ ]
+}

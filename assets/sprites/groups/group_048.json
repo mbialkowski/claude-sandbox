@@ -1,0 +1,21 @@
+{
+ "group": 48,
+ "name": "red card",
+ "image": "group_048.png",
+ "frames": [
+  {
+   "frame": 277,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 12,
+   "duration": 1,
+   "box": [
+    1,
+    4,
+    13,
+    11
+   ]
+  }
+ ]
+}

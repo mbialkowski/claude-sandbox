@@ -1,0 +1,21 @@
+{
+ "group": 20,
+ "name": "ferryman on boat",
+ "image": "group_020.png",
+ "frames": [
+  {
+   "frame": 146,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 39,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    31,
+    38
+   ]
+  }
+ ]
+}

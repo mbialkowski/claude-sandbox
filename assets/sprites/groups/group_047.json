@@ -1,0 +1,21 @@
+{
+ "group": 47,
+ "name": "first-aid kit",
+ "image": "group_047.png",
+ "frames": [
+  {
+   "frame": 275,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 14,
+   "duration": 1,
+   "box": [
+    1,
+    2,
+    14,
+    13
+   ]
+  }
+ ]
+}

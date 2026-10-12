@@ -63,6 +63,14 @@ for plane in 0..3:
 * **DATA01 background tiles**: 32×38 px, 1 216 bytes each, 120 tiles, opaque.
 * **DATA31 HUD**: one 76×240 image drawn at x=244.
 
+![Platform tileset](../../assets/tiles/platform_tileset.png)
+
+*DATA24 platform tiles (28 per row) — `assets/tiles/platform_tileset.png`.*
+
+![Background tileset](../../assets/tiles/background_tileset.png)
+
+*DATA01 background tiles — `assets/tiles/background_tileset.png`.*
+
 ## 2.4 Tile attributes (DATA32, DATA38)
 
 * **DATA32** – one byte per platform tile (620 entries; the game reads 660 into a zeroed buffer):
@@ -109,7 +117,7 @@ group number (room objects). There are 229 groups.
 **DATA02** frame: `u8 width/4, u8 height`, then Mode X planar pixels (`width*height` bytes). Colour 0 is
 transparent.
 
-Notable groups (see `extracted/sprites/groups/`): 0/1 hero walk L/R, 199–207 hero jump/jet/crouch/idle,
+Notable groups (see [`assets/sprites/overview/`](../../assets/sprites/overview/) and `assets/sprites/sprites.json`): 0/1 hero walk L/R, 199–207 hero jump/jet/crouch/idle,
 211 hero teleport, 9 & 212 explosion, 67 coin, 208 inventory icons, 209 weapon icons, 210 full-screen
 pictures (frames 1077–1083: 3 maps, a hint scroll, 3 riddles) + HUD tubes (1084 empty, 1085 energy,
 1086 fuel, 1087 ammo), 213–225 projectiles, 226 title-menu background + menu labels.
@@ -189,7 +197,10 @@ idle animations and ambient sound emitters.
 224 glyphs  each: u8 width/4 (=3), u8 height (=10), 120 bytes Mode X planar (12×10 cell)
 ```
 
-Glyph pixel `1` = body, `2` = dark outline, `0` = transparent. Strings may contain
+![Font atlas](../../assets/font/font_atlas.png)
+
+Glyph pixel `1` = body (in the `{c}` colour), `2` = dark outline (palette index 42), `0` = transparent.
+Advance = width − 1 (letter spacing −1 set by `main`), space advances 3. Strings may contain
 `0xE0 ddd` (set x), `0xE1 ddd` (set y), `0xE2 ddd` (set colour) — three ASCII digits each — and `\n`.
 
 ## 2.9 Sound effects (DATA41 + table in EXE)

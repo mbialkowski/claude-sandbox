@@ -1,0 +1,575 @@
+{
+ "col": 8,
+ "row": 1,
+ "background": [
+  [
+   0,
+   0,
+   0,
+   0,
+   10,
+   75,
+   9
+  ],
+  [
+   0,
+   0,
+   0,
+   0,
+   8,
+   76,
+   1
+  ],
+  [
+   8,
+   11,
+   9,
+   9,
+   12,
+   72,
+   13
+  ],
+  [
+   8,
+   13,
+   4,
+   5,
+   6,
+   72,
+   7
+  ],
+  [
+   10,
+   9,
+   13,
+   1,
+   8,
+   72,
+   0
+  ],
+  [
+   13,
+   4,
+   7,
+   0,
+   0,
+   0,
+   0
+  ]
+ ],
+ "tiles": [
+  [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   437,
+   103,
+   184,
+   185,
+   186,
+   182,
+   183,
+   122
+  ],
+  [
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   435,
+   98,
+   1,
+   1,
+   1,
+   1,
+   1,
+   98
+  ],
+  [
+   0,
+   1,
+   1,
+   1,
+   1,
+   437,
+   77,
+   96,
+   1,
+   1,
+   1,
+   1,
+   1,
+   96
+  ],
+  [
+   435,
+   436,
+   0,
+   1,
+   437,
+   435,
+   122,
+   97,
+   1,
+   1,
+   1,
+   0,
+   1,
+   97
+  ],
+  [
+   122,
+   182,
+   183,
+   184,
+   185,
+   189,
+   190,
+   186,
+   0,
+   1,
+   1,
+   0,
+   1,
+   122
+  ],
+  [
+   98,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   1,
+   0,
+   1,
+   1,
+   1
+  ],
+  [
+   97,
+   444,
+   0,
+   0,
+   0,
+   446,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   1
+  ],
+  [
+   330,
+   332,
+   331,
+   332,
+   333,
+   447,
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   1,
+   0
+  ],
+  [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   220,
+   0,
+   0,
+   0,
+   355,
+   357
+  ],
+  [
+   1,
+   1,
+   0,
+   0,
+   1,
+   1,
+   0,
+   419,
+   223,
+   54,
+   54,
+   54,
+   54,
+   225
+  ],
+  [
+   445,
+   445,
+   0,
+   0,
+   0,
+   0,
+   417,
+   418,
+   540,
+   541,
+   54,
+   54,
+   54,
+   227
+  ],
+  [
+   330,
+   332,
+   462,
+   463,
+   462,
+   463,
+   331,
+   333,
+   546,
+   547,
+   229,
+   228,
+   229,
+   226
+  ]
+ ],
+ "tile_anims": [
+  {
+   "col": 9,
+   "row": 8,
+   "foreground": false,
+   "sequence": 2,
+   "start": 0
+  },
+  {
+   "col": 10,
+   "row": 8,
+   "foreground": false,
+   "sequence": 2,
+   "start": 9
+  },
+  {
+   "col": 11,
+   "row": 8,
+   "foreground": false,
+   "sequence": 2,
+   "start": 18
+  },
+  {
+   "col": 5,
+   "row": 10,
+   "foreground": true,
+   "sequence": 64,
+   "start": 0
+  },
+  {
+   "col": 4,
+   "row": 10,
+   "foreground": true,
+   "sequence": 63,
+   "start": 0
+  },
+  {
+   "col": 3,
+   "row": 10,
+   "foreground": true,
+   "sequence": 63,
+   "start": 0
+  },
+  {
+   "col": 2,
+   "row": 10,
+   "foreground": true,
+   "sequence": 63,
+   "start": 0
+  },
+  {
+   "col": 6,
+   "row": 9,
+   "foreground": true,
+   "sequence": 64,
+   "start": 0
+  },
+  {
+   "col": 7,
+   "row": 8,
+   "foreground": true,
+   "sequence": 64,
+   "start": 0
+  },
+  {
+   "col": 4,
+   "row": 6,
+   "foreground": true,
+   "sequence": 64,
+   "start": 0
+  },
+  {
+   "col": 12,
+   "row": 7,
+   "foreground": true,
+   "sequence": 63,
+   "start": 0
+  },
+  {
+   "col": 13,
+   "row": 7,
+   "foreground": true,
+   "sequence": 63,
+   "start": 0
+  },
+  {
+   "col": 3,
+   "row": 6,
+   "foreground": true,
+   "sequence": 63,
+   "start": 0
+  },
+  {
+   "col": 2,
+   "row": 6,
+   "foreground": true,
+   "sequence": 63,
+   "start": 0
+  },
+  {
+   "col": 8,
+   "row": 7,
+   "foreground": true,
+   "sequence": 64,
+   "start": 0
+  },
+  {
+   "col": 10,
+   "row": 10,
+   "foreground": false,
+   "sequence": 65,
+   "start": 52
+  }
+ ],
+ "objects": [
+  {
+   "index": 0,
+   "header_hex": "0001000200005091000080002000",
+   "loop_start": 0,
+   "end_mode": "loop-from",
+   "interact": 0,
+   "flags": 20625,
+   "flag_names": [
+    "active",
+    "chain-next",
+    "keep-after-use",
+    "fires-trigger"
+   ],
+   "collision_class": 32,
+   "class_name": "usable",
+   "hp": 0,
+   "hp_max": 0,
+   "activate_anim": null,
+   "activate_sound": 0,
+   "target": 32,
+   "target_kind": "script",
+   "script_note": "merchant 1 shop (password Otchłań / lift card / wire cutters, $10 each)",
+   "item": 0,
+   "steps": [
+    {
+     "x": 32.0,
+     "y": 99.0,
+     "vx": 0.0,
+     "vy": 0.0,
+     "ax": 0.0,
+     "ay": 0.0,
+     "ticks": 299,
+     "anim": 68,
+     "anim_start": 0,
+     "hidden": false,
+     "sound": null,
+     "sound_cmd": null,
+     "trigger_object": null
+    }
+   ]
+  },
+  {
+   "index": 1,
+   "header_hex": "0002000300008481fefe80000000",
+   "loop_start": 0,
+   "end_mode": "disable-forever",
+   "interact": 0,
+   "flags": 33921,
+   "flag_names": [
+    "active",
+    "keep-after-use",
+    "conditional"
+   ],
+   "collision_class": 8,
+   "class_name": "inert",
+   "hp": 254,
+   "hp_max": 254,
+   "activate_anim": null,
+   "activate_sound": 0,
+   "target": 0,
+   "target_kind": null,
+   "script_note": null,
+   "item": 0,
+   "steps": [
+    {
+     "x": 47.0,
+     "y": 103.0,
+     "vx": 1.40625,
+     "vy": 0.53125,
+     "ax": 0.019012451171875,
+     "ay": -0.032562255859375,
+     "ticks": 68,
+     "anim": 76,
+     "anim_start": 0,
+     "hidden": false,
+     "sound": null,
+     "sound_cmd": null,
+     "trigger_object": null
+    },
+    {
+     "x": 189.9463348388672,
+     "y": 61.01841735839844,
+     "vx": 0.0,
+     "vy": 0.0,
+     "ax": 0.0,
+     "ay": 0.0,
+     "ticks": 0,
+     "anim": 76,
+     "anim_start": 0,
+     "hidden": true,
+     "sound": null,
+     "sound_cmd": null,
+     "trigger_object": null
+    }
+   ]
+  },
+  {
+   "index": 2,
+   "header_hex": "0002000208050883131300090000",
+   "loop_start": 0,
+   "end_mode": "loop-from",
+   "interact": 0,
+   "flags": 2179,
+   "flag_names": [
+    "active",
+    "bit1",
+    "keep-after-use"
+   ],
+   "collision_class": 16,
+   "class_name": "harmful",
+   "hp": 19,
+   "hp_max": 19,
+   "activate_anim": 9,
+   "activate_sound": 5,
+   "target": 0,
+   "target_kind": null,
+   "script_note": null,
+   "item": 0,
+   "steps": [
+    {
+     "x": 79.0,
+     "y": 174.0,
+     "vx": -0.25,
+     "vy": 0.0,
+     "ax": 0.0,
+     "ay": 0.0,
+     "ticks": 310,
+     "anim": 150,
+     "anim_start": 0,
+     "hidden": false,
+     "sound": null,
+     "sound_cmd": null,
+     "trigger_object": null
+    },
+    {
+     "x": 1.2500152587890625,
+     "y": 174.00001525878906,
+     "vx": 0.25,
+     "vy": 0.0,
+     "ax": 0.0,
+     "ay": 0.0,
+     "ticks": 310,
+     "anim": 151,
+     "anim_start": 0,
+     "hidden": false,
+     "sound": null,
+     "sound_cmd": null,
+     "trigger_object": null
+    }
+   ]
+  },
+  {
+   "index": 3,
+   "header_hex": "0002000200000881fefe80000000",
+   "loop_start": 0,
+   "end_mode": "loop-from",
+   "interact": 0,
+   "flags": 2177,
+   "flag_names": [
+    "active",
+    "keep-after-use"
+   ],
+   "collision_class": 16,
+   "class_name": "harmful",
+   "hp": 254,
+   "hp_max": 254,
+   "activate_anim": null,
+   "activate_sound": 0,
+   "target": 0,
+   "target_kind": null,
+   "script_note": null,
+   "item": 0,
+   "steps": [
+    {
+     "x": 160.0,
+     "y": 16.0,
+     "vx": 0.0,
+     "vy": 0.0,
+     "ax": 0.0,
+     "ay": 0.0,
+     "ticks": 41,
+     "anim": 11,
+     "anim_start": 0,
+     "hidden": false,
+     "sound": null,
+     "sound_cmd": null,
+     "trigger_object": null
+    },
+    {
+     "x": 160.00001525878906,
+     "y": 16.000015258789062,
+     "vx": 0.0,
+     "vy": 0.0,
+     "ax": 0.0,
+     "ay": 0.09375,
+     "ticks": 53,
+     "anim": 11,
+     "anim_start": 30,
+     "hidden": false,
+     "sound": null,
+     "sound_cmd": null,
+     "trigger_object": null
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "group": 129,
+ "name": "magic flower 3",
+ "image": "group_129.png",
+ "frames": [
+  {
+   "frame": 523,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 33,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    13,
+    32
+   ]
+  }
+ ]
+}

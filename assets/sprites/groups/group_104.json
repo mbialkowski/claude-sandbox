@@ -1,0 +1,21 @@
+{
+ "group": 104,
+ "name": "magic key 1 (pickup)",
+ "image": "group_104.png",
+ "frames": [
+  {
+   "frame": 467,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 13,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    12,
+    12
+   ]
+  }
+ ]
+}

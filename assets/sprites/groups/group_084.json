@@ -1,0 +1,21 @@
+{
+ "group": 84,
+ "name": "bucket",
+ "image": "group_084.png",
+ "frames": [
+  {
+   "frame": 409,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 9,
+   "duration": 1,
+   "box": [
+    3,
+    0,
+    13,
+    8
+   ]
+  }
+ ]
+}

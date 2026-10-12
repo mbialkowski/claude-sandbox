@@ -1,0 +1,21 @@
+{
+ "group": 52,
+ "name": "lift platform (small)",
+ "image": "group_052.png",
+ "frames": [
+  {
+   "frame": 285,
+   "x": 0,
+   "y": 0,
+   "w": 32,
+   "h": 11,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    31,
+    10
+   ]
+  }
+ ]
+}

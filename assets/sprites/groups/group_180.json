@@ -1,0 +1,21 @@
+{
+ "group": 180,
+ "name": null,
+ "image": "group_180.png",
+ "frames": [
+  {
+   "frame": 858,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 10,
+   "duration": 1,
+   "box": [
+    0,
+    3,
+    8,
+    9
+   ]
+  }
+ ]
+}

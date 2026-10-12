@@ -1,0 +1,21 @@
+{
+ "group": 125,
+ "name": "the Devil's daughter",
+ "image": "group_125.png",
+ "frames": [
+  {
+   "frame": 511,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 34,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    15,
+    33
+   ]
+  }
+ ]
+}

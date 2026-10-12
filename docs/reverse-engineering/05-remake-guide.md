@@ -12,14 +12,14 @@ three endings. Everything runs at a fixed 50 Hz.
 
 | layer | suggestion |
 |---|---|
-| data import | keep the original files out of the repo; run `tools/extract_assets.py` to produce PNG/WAV/MOD/JSON, then convert to the engine's format in a build step |
+| data import | start from [`assets/`](../../assets/README.md) (PNG/WAV/MOD/JSON, Tiled maps, BMFont); regenerate with `tools/extract_assets.py` if the converter changes |
 | simulation | fixed 50 Hz tick, integer/16.16 maths for the hero and the path interpreter so behaviour matches 1:1; interpolate only for rendering |
 | rendering | render the 224×228 field (+ HUD) to an off-screen 320×240 canvas, scale with integer factors; optionally offer a widescreen HUD layout |
-| rooms | load `rooms/room_C_R.json` (tiles, background, tile animations, objects) |
+| rooms | load `assets/rooms/json/room_C_R.json` or the Tiled maps `assets/rooms/tiled/*.tmj` (tiles, background, tile animations, objects) |
 | objects | one generic `RoomObject` driven by header + path steps (section 2.7 / 3.5) — do not hand-code enemies |
 | scripts | port the ~110 script handlers (4.7) into data (e.g. a small dialogue/event DSL or Ink/Yarn), keyed by script id; keep ids so OBJECTS.BIN can be used unchanged |
-| text | `text/messages.json` (UTF-8, control codes as tags); add an English translation table next to it |
-| audio | MODs via libopenmpt / any tracker player; effects from `sounds/*.wav` at their native rates; implement looping effects and per-object stop |
+| text | `assets/text/messages.json` (UTF-8, control codes as tags); translate via `assets/text/messages.csv` (`text_en` column) |
+| audio | MODs via libopenmpt / any tracker player; effects from `assets/sounds/*.wav` at their native rates; implement looping effects and per-object stop |
 
 Engines that fit well: Godot 4 (TileMap + one generic scene for objects), or a small custom C/Rust/TS
 engine — the rule set is small and fully specified here.
@@ -41,7 +41,7 @@ engine — the rule set is small and fully specified here.
 * Save/continue (the original has none and a single death is game over).
 * Remappable controls, gamepad support (the original uses Ctrl/Space/Enter/,/.).
 * An English (and other) translation — all text is in one table already.
-* Quality-of-life: pause (text exists but unused), map screen built from `world_map.png`, hint for the
+* Quality-of-life: pause (text exists but unused), map screen built from `assets/rooms/world_map.png`, hint for the
   whistle/"TARAPATY" puzzle.
 * Fix the riddle-scroll picture bug (4.8).
 
@@ -58,6 +58,7 @@ engine — the rule set is small and fully specified here.
 
 ## 5.6 Legal
 
-The original game is copyrighted by its authors (Infinite Dreams, 1996). This repository intentionally
-contains **only tools and documentation**; game files, extracted assets and decompiled code are excluded via
-`.gitignore`. Clarify the rights situation before shipping any original assets in the remake.
+The original game is copyrighted by its authors (Infinite Dreams, 1996). The converted assets (`assets/`) and
+the decompilation reference (`reference/`) are included at the repository owner's request; the original
+`LAZARUS.EXE`/`DATAxx.RES` files themselves are still not committed. Clarify the rights situation before
+shipping any original assets in the remake.

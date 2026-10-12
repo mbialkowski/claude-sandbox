@@ -1,0 +1,21 @@
+{
+ "group": 135,
+ "name": "weapon pick-up",
+ "image": "group_135.png",
+ "frames": [
+  {
+   "frame": 535,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 12,
+   "duration": 1,
+   "box": [
+    0,
+    1,
+    15,
+    11
+   ]
+  }
+ ]
+}

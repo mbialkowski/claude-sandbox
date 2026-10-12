@@ -1,0 +1,15 @@
+{
+ "type": "tileset",
+ "version": "1.10",
+ "tiledversion": "1.10.2",
+ "name": "background",
+ "image": "../background_tileset.png",
+ "imagewidth": 384,
+ "imageheight": 380,
+ "tilewidth": 32,
+ "tileheight": 38,
+ "columns": 12,
+ "tilecount": 120,
+ "margin": 0,
+ "spacing": 0
+}

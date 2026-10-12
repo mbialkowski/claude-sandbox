@@ -48,5 +48,9 @@ $GHIDRA/support/analyzeHeadless out/proj laz -import out/flat.bin \
     out/seeds.txt tools/symbols.txt out/lazarus.c
 ```
 
-About two minutes; ~1000 functions. Add names to `tools/symbols.txt` and re-run to improve the output. The
-decompiled C is not committed (it is derived from the copyrighted binary) — regenerate it locally.
+About two minutes; ~1000 functions. Add names to `tools/symbols.txt` and re-run to improve the output.
+Then annotate dialogue calls with their text and mark script/item handlers:
+
+```bash
+python3 tools/ghidra/annotate.py /path/to/LAZARUS.EXE out/lazarus.c > reference/lazarus.c
+```

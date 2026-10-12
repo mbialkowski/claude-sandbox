@@ -12,6 +12,11 @@ the game will not start, he reads the manual — *"…pułkownik Colonel został
 ble…"* — and the screen goes crazy. He wakes up inside the game: *"…a potem to już było tylko bummm… trach…
 błyski… dymy… i te sprawy… aha… jeszcze jedna mała sprawa…  WYDOSTAŃ MNIE STĄD!"* (get me out of here).
 
+| | | |
+|---|---|---|
+| ![](../images/screenshots/01_intro_text.png) | ![](../images/screenshots/03_intro_city.png) | ![](../images/screenshots/04_intro_desk.png) |
+| ![](../images/screenshots/05_intro_manual.png) | ![](../images/screenshots/06_intro_arrival.png) | ![](../images/screenshots/07_intro_get_me_out.png) |
+
 In the game world he is mistaken by the Devil's daughter for *"Syn Czarnego Pana / Książę Ciemności"*
 (Son of the Dark Lord). Only the **Time Guardian (Strażnik Czasu)** can open the gate back to his world, but
 the **Time Key (Klucz Czasu)** is lost: its last owner Jaś Wędrowniczek was eaten by a white shark; the pirate
@@ -41,7 +46,10 @@ everything is huge: *"Ale przecież miałem AMIGĘ a nie grzyba!!! … za duże 
   otherwise to (8,8).
 * **Teleporting empties the jetpack.** If there was fuel, the hero complains: *"Cholera jasna! Zmoczyłem
   sobie gacie paliwem z plecaka! Ach te teleporty…"*.
-* Rendered overview: run `tools/extract_assets.py` → `rooms/world_map.png` (2240×2280).
+* Full-resolution renders: [`assets/rooms/world_map.png`](../../assets/rooms/world_map.png) (2240×2280, tiles only) and
+  [`world_map_objects.png`](../../assets/rooms/world_map_objects.png); per room in `assets/rooms/png*/`.
+
+![World map with room coordinates](../../assets/rooms/world_map_labeled.png)
 
 ## 4.3 Items (pocket ids)
 

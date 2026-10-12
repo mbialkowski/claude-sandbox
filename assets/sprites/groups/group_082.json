@@ -1,0 +1,21 @@
+{
+ "group": 82,
+ "name": "shaped key piece",
+ "image": "group_082.png",
+ "frames": [
+  {
+   "frame": 405,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 12,
+   "duration": 1,
+   "box": [
+    2,
+    0,
+    13,
+    11
+   ]
+  }
+ ]
+}

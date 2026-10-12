@@ -1,0 +1,21 @@
+{
+ "group": 99,
+ "name": "chest (alt 2)",
+ "image": "group_099.png",
+ "frames": [
+  {
+   "frame": 457,
+   "x": 0,
+   "y": 0,
+   "w": 12,
+   "h": 18,
+   "duration": 1,
+   "box": [
+    2,
+    0,
+    10,
+    17
+   ]
+  }
+ ]
+}

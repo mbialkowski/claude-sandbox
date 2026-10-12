@@ -1,0 +1,21 @@
+{
+ "group": 54,
+ "name": "ammo magazine",
+ "image": "group_054.png",
+ "frames": [
+  {
+   "frame": 289,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 15,
+   "duration": 1,
+   "box": [
+    2,
+    0,
+    13,
+    14
+   ]
+  }
+ ]
+}

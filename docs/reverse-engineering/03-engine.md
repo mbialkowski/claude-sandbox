@@ -9,6 +9,12 @@ Everything here is taken from the decompiled code; constants are given in the or
   should read 50. There is no delta-time anywhere — one tick = one update.
 * Video: Mode X **320×240×256**. Play-field 224×228 at (0,6); HUD panel 76×240 at x=244; x=224–243
   is black. Text windows are drawn over the play-field.
+
+| start room (7,0) | dialogue | menu |
+|---|---|---|
+| ![](../images/screenshots/09_gameplay_start_room.png) | ![](../images/screenshots/11_dialogue_wallet.png) | ![](../images/screenshots/12_quit_menu.png) |
+
+*Screenshots of the original in DOSBox (`docs/images/screenshots/`).*
 * Intro/ending/pictures switch between Mode 13h (320×200 FLC/PCX), Mode X (320×240 FLC) and
   mode 12h (640×480×16 PCX: game over, endings, credits scroller).
 

@@ -17,24 +17,34 @@ DOSBox.
 
 * 10×10 single-screen rooms, play-field 224×228 px (14×12 tiles of 16×19 over 7×6 tiles of 32×38),
   Mode X 320×240, 256 colours, one palette for the whole world, 50 Hz fixed tick.
-* 1 184 sprite frames in 229 animation groups, 560 platform tiles, 120 background tiles.
+* 956 sprite frames (1 184 descriptors incl. separators) in 229 animation groups (227 non-empty), 560 platform tiles, 120 background tiles.
 * 699 data-driven room objects (enemies, items, NPCs, doors, lifts, triggers) using one keyframe/physics
   "path" format; ~110 hard-coded script handlers for quests and dialogue; 293 Polish text strings.
 * 6 weapons, jetpack with fuel, inventory of up to 40 items (38 item kinds), money, shops, 6 teleport
   destinations unlocked by passwords, 3 endings.
 * Data authored on the Amiga (big-endian) and converted; the game itself is Watcom C++ for DOS/4GW.
 
+| title | gameplay | dialogue |
+|---|---|---|
+| ![](../images/screenshots/08_title_menu.png) | ![](../images/screenshots/10_gameplay_jump_hit.png) | ![](../images/screenshots/11_dialogue_wallet.png) |
+
+The converted assets are in [`assets/`](../../assets/README.md); an annotated decompilation of the executable
+is in [`reference/`](../../reference/README.md).
+
+![World map](../../assets/rooms/world_map_labeled.png)
+
 ## Tools (in `tools/`)
 
 | tool | purpose |
 |---|---|
-| `extract_assets.py` | export everything to PNG/WAV/MOD/JSON (`python3 tools/extract_assets.py <game dir> extracted/`) |
+| `extract_assets.py` | export everything to PNG/WAV/MOD/JSON/Tiled/BMFont (`python3 tools/extract_assets.py <game dir> assets/`) |
 | `dump_rooms.py` | readable listing of room objects / quest objects / one room with its path steps |
 | `lazarus_data.py` | Python readers for all resource formats |
 | `lazarus_exe.py` | tables embedded in the EXE: messages, sounds, weapons, items, scripts, tile animations |
+| `lazarus_names.py` | human names for items, sounds, sprite groups, scripts, pictures |
 | `le_loader.py` | LE (DOS/4GW) loader with fixups |
 | `disasm.py` | annotated linear disassembly (capstone) using `symbols.txt` |
-| `make_flat_image.py` + `ghidra/` | inputs and post-script for a full Ghidra decompilation |
+| `make_flat_image.py` + `ghidra/` | inputs, post-script and annotator for the Ghidra decompilation in `reference/` |
 | `mazovia.py` | Mazovia (Polish DOS code page) codec |
 | `flc.py` | FLI/FLC decoder |
 | `symbols.txt` | ~180 recovered function and variable names |

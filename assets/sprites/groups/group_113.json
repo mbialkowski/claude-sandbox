@@ -1,0 +1,21 @@
+{
+ "group": 113,
+ "name": "magic key 4 (pickup)",
+ "image": "group_113.png",
+ "frames": [
+  {
+   "frame": 485,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 13,
+   "duration": 1,
+   "box": [
+    0,
+    0,
+    12,
+    12
+   ]
+  }
+ ]
+}

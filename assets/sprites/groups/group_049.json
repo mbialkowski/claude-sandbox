@@ -1,0 +1,21 @@
+{
+ "group": 49,
+ "name": "grey card",
+ "image": "group_049.png",
+ "frames": [
+  {
+   "frame": 279,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 12,
+   "duration": 1,
+   "box": [
+    1,
+    4,
+    13,
+    11
+   ]
+  }
+ ]
+}

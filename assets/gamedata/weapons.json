@@ -1,0 +1,333 @@
+{
+ "note": "12 entries = weapon*2 + facing. speed/accel in px per tick (50 Hz); ammo scale 0x2F0000 = full bar.",
+ "weapons": [
+  {
+   "weapon": 0,
+   "facing": "left",
+   "spawn_offset": [
+    -8,
+    10
+   ],
+   "speed_px": -16.0,
+   "accel_px": 0.0,
+   "bob_frame": 1148,
+   "impact_bob_frame": 1119,
+   "auto_fire": false,
+   "cooldown_ticks": 7,
+   "damage": 1,
+   "lifetime_ticks": 0,
+   "ammo_cost": 2048,
+   "ammo_cost_fraction": 0.0006648936170212766,
+   "sounds": [
+    20,
+    20,
+    21,
+    20,
+    22,
+    21,
+    22
+   ],
+   "name": "starting gun"
+  },
+  {
+   "weapon": 0,
+   "facing": "right",
+   "spawn_offset": [
+    16,
+    10
+   ],
+   "speed_px": 16.0,
+   "accel_px": 0.0,
+   "bob_frame": 1151,
+   "impact_bob_frame": 1119,
+   "auto_fire": false,
+   "cooldown_ticks": 7,
+   "damage": 1,
+   "lifetime_ticks": 0,
+   "ammo_cost": 2048,
+   "ammo_cost_fraction": 0.0006648936170212766,
+   "sounds": [
+    20,
+    20,
+    21,
+    20,
+    22,
+    21,
+    22
+   ],
+   "name": "starting gun"
+  },
+  {
+   "weapon": 1,
+   "facing": "left",
+   "spawn_offset": [
+    -8,
+    10
+   ],
+   "speed_px": -1.0,
+   "accel_px": -0.375,
+   "bob_frame": 1121,
+   "impact_bob_frame": 1129,
+   "auto_fire": false,
+   "cooldown_ticks": 0,
+   "damage": 2,
+   "lifetime_ticks": 0,
+   "ammo_cost": 4096,
+   "ammo_cost_fraction": 0.0013297872340425532,
+   "sounds": [
+    24,
+    24,
+    26,
+    24,
+    25,
+    25,
+    26,
+    26
+   ],
+   "name": "rocket launcher"
+  },
+  {
+   "weapon": 1,
+   "facing": "right",
+   "spawn_offset": [
+    16,
+    10
+   ],
+   "speed_px": 1.0,
+   "accel_px": 0.375,
+   "bob_frame": 1125,
+   "impact_bob_frame": 1129,
+   "auto_fire": false,
+   "cooldown_ticks": 0,
+   "damage": 2,
+   "lifetime_ticks": 0,
+   "ammo_cost": 4096,
+   "ammo_cost_fraction": 0.0013297872340425532,
+   "sounds": [
+    24,
+    24,
+    26,
+    24,
+    25,
+    25,
+    26,
+    26
+   ],
+   "name": "rocket launcher"
+  },
+  {
+   "weapon": 2,
+   "facing": "left",
+   "spawn_offset": [
+    -8,
+    10
+   ],
+   "speed_px": -1.0,
+   "accel_px": -0.375,
+   "bob_frame": 1154,
+   "impact_bob_frame": 1129,
+   "auto_fire": false,
+   "cooldown_ticks": 0,
+   "damage": 3,
+   "lifetime_ticks": 0,
+   "ammo_cost": 16384,
+   "ammo_cost_fraction": 0.005319148936170213,
+   "sounds": [
+    24,
+    24,
+    26,
+    24,
+    25,
+    25,
+    26,
+    26
+   ],
+   "name": "heavy rocket launcher"
+  },
+  {
+   "weapon": 2,
+   "facing": "right",
+   "spawn_offset": [
+    16,
+    10
+   ],
+   "speed_px": 1.0,
+   "accel_px": 0.375,
+   "bob_frame": 1158,
+   "impact_bob_frame": 1129,
+   "auto_fire": false,
+   "cooldown_ticks": 0,
+   "damage": 3,
+   "lifetime_ticks": 0,
+   "ammo_cost": 16384,
+   "ammo_cost_fraction": 0.005319148936170213,
+   "sounds": [
+    24,
+    24,
+    26,
+    24,
+    25,
+    25,
+    26,
+    26
+   ],
+   "name": "heavy rocket launcher"
+  },
+  {
+   "weapon": 3,
+   "facing": "left",
+   "spawn_offset": [
+    -8,
+    10
+   ],
+   "speed_px": -16.0,
+   "accel_px": 0.0,
+   "bob_frame": 1148,
+   "impact_bob_frame": 1119,
+   "auto_fire": true,
+   "cooldown_ticks": 3,
+   "damage": 2,
+   "lifetime_ticks": 0,
+   "ammo_cost": 16384,
+   "ammo_cost_fraction": 0.005319148936170213,
+   "sounds": [
+    15,
+    15,
+    17,
+    15,
+    18,
+    17,
+    17,
+    15,
+    19,
+    18,
+    19,
+    17,
+    17
+   ],
+   "name": "Uzi"
+  },
+  {
+   "weapon": 3,
+   "facing": "right",
+   "spawn_offset": [
+    16,
+    10
+   ],
+   "speed_px": 16.0,
+   "accel_px": 0.0,
+   "bob_frame": 1151,
+   "impact_bob_frame": 1119,
+   "auto_fire": true,
+   "cooldown_ticks": 3,
+   "damage": 2,
+   "lifetime_ticks": 0,
+   "ammo_cost": 16384,
+   "ammo_cost_fraction": 0.005319148936170213,
+   "sounds": [
+    15,
+    15,
+    17,
+    15,
+    18,
+    17,
+    17,
+    15,
+    19,
+    18,
+    19,
+    17,
+    17
+   ],
+   "name": "Uzi"
+  },
+  {
+   "weapon": 4,
+   "facing": "left",
+   "spawn_offset": [
+    -8,
+    10
+   ],
+   "speed_px": -4.0,
+   "accel_px": -0.125,
+   "bob_frame": 1138,
+   "impact_bob_frame": 1119,
+   "auto_fire": true,
+   "cooldown_ticks": 3,
+   "damage": 3,
+   "lifetime_ticks": 10,
+   "ammo_cost": 32768,
+   "ammo_cost_fraction": 0.010638297872340425,
+   "sounds": [
+    34
+   ],
+   "name": "flame-thrower"
+  },
+  {
+   "weapon": 4,
+   "facing": "right",
+   "spawn_offset": [
+    16,
+    10
+   ],
+   "speed_px": 4.0,
+   "accel_px": 0.125,
+   "bob_frame": 1143,
+   "impact_bob_frame": 1119,
+   "auto_fire": true,
+   "cooldown_ticks": 3,
+   "damage": 3,
+   "lifetime_ticks": 10,
+   "ammo_cost": 32768,
+   "ammo_cost_fraction": 0.010638297872340425,
+   "sounds": [
+    34
+   ],
+   "name": "flame-thrower"
+  },
+  {
+   "weapon": 5,
+   "facing": "left",
+   "spawn_offset": [
+    -8,
+    10
+   ],
+   "speed_px": -1.5,
+   "accel_px": 0.0,
+   "bob_frame": 1162,
+   "impact_bob_frame": 1134,
+   "auto_fire": false,
+   "cooldown_ticks": 100,
+   "damage": 100,
+   "lifetime_ticks": 0,
+   "ammo_cost": 327680,
+   "ammo_cost_fraction": 0.10638297872340426,
+   "sounds": [
+    42
+   ],
+   "name": "plasma gun"
+  },
+  {
+   "weapon": 5,
+   "facing": "right",
+   "spawn_offset": [
+    16,
+    10
+   ],
+   "speed_px": 1.5,
+   "accel_px": 0.0,
+   "bob_frame": 1170,
+   "impact_bob_frame": 1134,
+   "auto_fire": false,
+   "cooldown_ticks": 100,
+   "damage": 100,
+   "lifetime_ticks": 0,
+   "ammo_cost": 327680,
+   "ammo_cost_fraction": 0.10638297872340426,
+   "sounds": [
+    42
+   ],
+   "name": "plasma gun"
+  }
+ ]
+}

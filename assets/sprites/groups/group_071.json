@@ -1,0 +1,21 @@
+{
+ "group": 71,
+ "name": "rope",
+ "image": "group_071.png",
+ "frames": [
+  {
+   "frame": 363,
+   "x": 0,
+   "y": 0,
+   "w": 16,
+   "h": 18,
+   "duration": 1,
+   "box": [
+    9,
+    0,
+    12,
+    17
+   ]
+  }
+ ]
+}
