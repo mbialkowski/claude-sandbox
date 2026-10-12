@@ -135,7 +135,7 @@ SCRIPTS = {
     195: "riddle man gives a riddle", 196: "riddle answer", 197: "flag only (riddle solved)",
     198: "girl asks for her teddy", 199: "teddy returned: +$100", 200: "girl insists",
     201: "give teddy bear", 202: "give magic flower 2", 203: "damaged teleport", 204: "damaged teleport warning",
-    224: "+$1", 225: "give weapon 1", 226: "give weapon 2", 227: "give weapon 3", 228: "give weapon 4",
+    224: "+$1", 225: "give weapon 1", 226: "give weapon 3 (Uzi)", 227: "give weapon 4", 228: "give weapon 2",
     229: "give weapon 5", 230: "+$10", 231: "ammo +1/3", 232: "fuel can", 233: "full energy",
     240: "teleport destination menu", 241: "teleport to hub (0,0)", 255: "consume selected item",
 }

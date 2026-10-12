@@ -289,7 +289,7 @@
    "activate_sound": 38,
    "target": 226,
    "target_kind": "script",
-   "script_note": "give weapon 2",
+   "script_note": "give weapon 3 (Uzi)",
    "item": 0,
    "steps": [
     {

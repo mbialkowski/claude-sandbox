@@ -95,8 +95,8 @@ touching an object; most items just print their description.
 
 Pickups that are not pocket items: coins **$1** (script 224, 127 of them), big coins **$10** (230, 7 of them),
 ammo (231, +⅓ current weapon), fuel pick-ups (134, +⅓ — 6 of them in the Training Room), energy
-potions (136/137, +⅓), full energy (233), weapons (225–229 =
-weapon 1–5; weapon 3, the Uzi, is also sold for $20).
+potions (136/137, +⅓), full energy (233), weapons (scripts 225, 228,
+226, 227, 229 = weapon 1–5; weapon 3, the Uzi, is also sold for $20).
 
 ## 4.4 Shops and NPCs
 
@@ -208,7 +208,7 @@ required for the Zaświaty password.
 | 202 | | flower 31 |
 | 203/204 | | damaged teleport / its warning |
 | 224 / 230 | | +$1 / +$10 |
-| 225–229 | | give weapon 1–5 |
+| 225 / 228 / 226 / 227 / 229 | | give weapon 1 / 2 / 3 / 4 / 5 (note the order: 226 is the Uzi) |
 | 231 / 232 / 233 | | ammo +⅓ / fuel can / full energy |
 | 240 / 241 | | teleport menu / teleport to hub (0,0) |
 | 255 | `1D4E0` | consume the selected item (used by every lock/reader) |
@@ -228,3 +228,39 @@ witch is busy, 34 *"Po co mi jakiś kwiatek?!"* / *"Muszę użyć sekatora!"*, 3
 * `/R<rate>` falls through to `/N` in the switch, so setting a sample rate also disables sound.
 * Message 279 (pause) is never used; the game has no pause.
 * The texts are stored three times in the EXE; only the first copy is referenced.
+* Buying the wire cutters from the first merchant does not set flag 36, so his colleague at (9,3) only
+  appears if you bought something else, refused, or could not pay.
+* The vending machine's "energy" item restores only ⅓ of the bar, and is listed only when energy is not full.
+* The second merchant's sweater and aqualung take your $14 and give nothing ("Mam wrażenie że dałem dupy…").
+* The gum-chewer's "Chwila przyjemności" is a 5-second blackout (`delay(5000)` between two fades).
+
+## 4.9 The handlers as data (`script_logic.json`)
+
+All three handler tables of the EXE — 83 script handlers, 38 item-use handlers, 26 missing-item replies —
+are transcribed op by op in [`tools/lazarus_scripts.py`](../../tools/lazarus_scripts.py) and exported to
+`assets/gamedata/script_logic.json`. The extractor checks that every non-empty handler of the EXE tables is
+covered (by handler address) and that every message, item and variable id is valid, so a remake can run
+the quests from data instead of re-coding them. Example — the second merchant (script 37):
+
+```json
+["print", 45], ["menu", [46, 47, 48, 49]],
+["if", ["eq", "choice", 3], [["say", 51]],
+ [["if", ["money_lt", 14], [["say", 43]],
+   [["say", 50], ["money", -14],
+    ["if", ["eq", "choice", 1], [["give", 7]], [["wait"], ["clear"], ["say", 52]]]]]]]
+```
+
+| group | ops |
+|---|---|
+| dialogue | `say` (show, wait, clear), `say_keep` (show, wait), `print` (show only), `say_indexed m var` (message m + variable), `print_number`, `wait`, `clear`, `menu [options]` → `choice` (options may be conditional, `choice` is the index in the full list) |
+| control | `if cond then else`, `switch var {value: ops}`, `call script` |
+| inventory | `give item` (adds and selects it), `take item`, `take_selected` |
+| state | `set`, `add`, `set_flag`, `money ±n`, `energy`/`fuel`/`ammo` (`full`, `+third`, `0`), `weapon n`, `activate_object i`, `random var n` |
+| presentation | `teleport col row x y`, `picture frame`, `picture_var var`, `fade from to steps`, `show_pcx`, `sound`, `bomb_sound start/stop`, `delay ticks`, `delay_ms`, `explode`, `end_game death/joke_ending/win` |
+
+Conditions: `money_lt`, `money_eq`, `has_item`, `eq`/`ne`/`lt` on a variable, `in_room`, `energy_full`,
+`ammo_full`, `sock_here`, `and`/`or`/`not`. The variables (`state` in the JSON, with their EXE addresses and
+new-game values) are the teleport passwords `pw_*`, the vending-machine stock `stock_*`, the random picks
+(`bomb_wire`, `secret_door`, `sock_chest`, `riddle`, `shop_map`) and counters (`magazines`,
+`cauldron_flowers`, `key_slots`). Messages not used by any handler belong to the engine: 251 (teleporting with
+fuel), 280–283 (quit dialog), 284–292 (win sequence), and the unused 183 and 279.

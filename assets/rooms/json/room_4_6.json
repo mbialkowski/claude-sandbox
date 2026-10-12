@@ -441,7 +441,7 @@
    "activate_sound": 38,
    "target": 227,
    "target_kind": "script",
-   "script_note": "give weapon 3",
+   "script_note": "give weapon 4",
    "item": 0,
    "steps": [
     {

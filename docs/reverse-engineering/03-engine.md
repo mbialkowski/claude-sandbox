@@ -182,7 +182,7 @@ the play-field edge, an object hit, or after `lifetime` ticks; then play the imp
 | 5 | 6 | 1.5 | 0 | 100 | 100 | ∞ | `0x50000` | 9 | no | big plasma bomb |
 
 Shot sounds cycle through per-weapon lists (e.g. weapon 0: 20,20,21,20,22,21,22). Weapon pickups (group
-135) call scripts 225–229 which grant weapon 1–5, select it and add 3 × ⅓ of ammo. Magazines (item 36,
+135) call scripts 225, 228, 226, 227, 229, which grant weapons 1–5 in that order, select it and add 3 × ⅓ of ammo. Magazines (item 36,
 "Magazynek", shop $2) refill ⅓ of the current weapon's ammo when *used*.
 
 ## 3.7 HUD (`0x2C618`, redrawn when flagged dirty)

@@ -47,6 +47,7 @@ Format details and engine rules are in [`docs/reverse-engineering/`](../docs/rev
 | `font/` | dialogue font: RGBA atlas + BMFont descriptor (Unicode, Polish letters mapped), preview, metrics | `.png`, `.fnt`, `.json` |
 | `text/` | all 293 strings (dialogues, items, menus) in UTF-8; CSV with an empty `text_en` column for translation | `.json`, `.csv` |
 | `gamedata/` | weapons, items (names PL/EN, HUD icon, description), script ids with notes, tile-animation sequences, teleports, hero/physics constants, new-game state | `.json` |
+| `gamedata/script_logic.json` | every hard-coded quest/dialogue/item handler of the EXE as data (ops: say, menu, give, take, teleport…), with the variables they use and their new-game values; op set in docs 4.9 | `.json` |
 | `gamedata/world_graph.json` | room-edge connectivity with pixel openings and gating doors/lifts, the 7 regions, all teleports, 40 fake walls | `.json` |
 | `gamedata/enemies.json`, `hero.json` | every harmful/shootable object with HP and hits to kill per weapon; hero states, animations, physics | `.json` |
 | `gamedata/sound_usage.json`, `unused_content.json` | who plays each sound (and which ids share a sample); unused sprites, sounds, texts, tiles, files, known bugs | `.json` |

@@ -32,6 +32,7 @@ claude-sandbox/
     ├── lazarus_data.py         # readers for DATAxx.RES formats
     ├── lazarus_exe.py          # tables embedded in LAZARUS.EXE
     ├── lazarus_names.py        # human names for items, sounds, sprite groups, scripts
+    ├── lazarus_scripts.py      # the EXE's quest/dialogue handlers transcribed as data (hand-checked)
     ├── world_analysis.py       # room connectivity, regions, teleports, debug renders
     ├── catalogues.py           # enemies, hero spec, sound usage, unused content
     ├── le_loader.py, disasm.py, make_flat_image.py, ghidra/   # executable analysis (+ annotate.py)

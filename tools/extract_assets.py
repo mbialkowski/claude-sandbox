@@ -41,6 +41,7 @@ import catalogues  # noqa: E402
 import flc  # noqa: E402
 import lazarus_data as L  # noqa: E402
 import lazarus_names as N  # noqa: E402
+import lazarus_scripts  # noqa: E402
 import mazovia  # noqa: E402
 import world_analysis  # noqa: E402
 from lazarus_exe import LazarusExe  # noqa: E402
@@ -686,6 +687,7 @@ def export_gamedata(out, exe):
     jdump({"note": "on_trigger runs when an object with target=id finishes activating; "
                    "on_missing_item is indexed by ITEM id. 1b2b0 = no-op.", "scripts": scripts},
           d, "scripts.json")
+    jdump(lazarus_scripts.export(exe), d, "script_logic.json")
     jdump({"note": "76 tile-animation sequences; one entry per 50 Hz tick, looping.",
            "sequences": exe.tile_anim_sequences()}, d, "tile_anims.json", indent=None)
     jdump({"sock_spots_col_row": exe.sock_spots(), "hurt_sounds": exe.hurt_sounds(),

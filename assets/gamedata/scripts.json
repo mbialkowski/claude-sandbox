@@ -605,19 +605,19 @@
    "id": 226,
    "on_trigger_fn": "1d190",
    "on_missing_item_fn": "1b2b0",
-   "note": "give weapon 2"
+   "note": "give weapon 3 (Uzi)"
   },
   {
    "id": 227,
    "on_trigger_fn": "1d1b0",
    "on_missing_item_fn": "1b2b0",
-   "note": "give weapon 3"
+   "note": "give weapon 4"
   },
   {
    "id": 228,
    "on_trigger_fn": "1d170",
    "on_missing_item_fn": "1b2b0",
-   "note": "give weapon 4"
+   "note": "give weapon 2"
   },
   {
    "id": 229,
