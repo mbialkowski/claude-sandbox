@@ -3,6 +3,8 @@
 A remake of **Lazarus** (Infinite Dreams, 1996) in **Godot 4.7**, playable in a web browser, widescreen and
 HD, with keyboard, gamepad and on-screen touch controls.
 
+**Play: <https://mbialkowski.github.io/claude-sandbox/>** (built and published from `main` by CI).
+
 ![Start room, widescreen](../docs/images/remake/start_room_16x9.png)
 
 ## Design
@@ -84,7 +86,8 @@ decompiled movement code) through the remake's hero and objects and compares eve
 `walkthrough.gd` replays `assets/gamedata/walkthrough.json` (`tools/completability.py`) through the remake's
 room objects and script VM — every item, lock, chain, flag and handler on the way to the Door of Time —
 and must end with the winning ending. CI (`.github/workflows/remake-web.yml`) runs all of them, exports the
-web build and publishes it on GitHub Pages from `main`.
+web build and publishes it on GitHub Pages from `main` (<https://mbialkowski.github.io/claude-sandbox/>;
+the repository's Pages source must be "GitHub Actions").
 
 ## Layout
 
