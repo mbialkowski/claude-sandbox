@@ -2,6 +2,7 @@
  "group": 192,
  "name": "dragon (other way)?",
  "image": "group_192.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 929,

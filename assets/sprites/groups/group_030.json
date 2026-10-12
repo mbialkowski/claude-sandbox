@@ -2,6 +2,7 @@
  "group": 30,
  "name": "white energy ball?",
  "image": "group_030.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 188,

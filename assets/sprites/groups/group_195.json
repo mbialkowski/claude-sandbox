@@ -2,6 +2,7 @@
  "group": 195,
  "name": "force field",
  "image": "group_195.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 948,

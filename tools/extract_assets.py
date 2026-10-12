@@ -44,6 +44,7 @@ import lazarus_data as L  # noqa: E402
 import lazarus_names as N  # noqa: E402
 import lazarus_scripts  # noqa: E402
 import mazovia  # noqa: E402
+import reference_sim  # noqa: E402
 import world_analysis  # noqa: E402
 from lazarus_exe import LazarusExe  # noqa: E402
 
@@ -200,8 +201,11 @@ def export_sprites(g, out, pal, rooms):
     fd, gd, od = mkdir(d, "frames"), mkdir(d, "groups"), mkdir(d, "overview")
     frames, groups = L.load_bobs(g)
     usage = group_usage(rooms)
+    loops = L.load_bob_loops(g)
     meta = {"note": "frame 'box' = collision box x0,y0,x1,y1 relative to the frame's top-left; "
-                    "'duration' in 50 Hz ticks. Colour 0 is transparent.",
+                    "a frame with 'duration' d is shown for d+1 ticks (50 Hz). Colour 0 is transparent. "
+                    "loop_ticks: when a group loops it restarts that many ticks into its first frames "
+                    "(an intro that plays once).",
             "frames": [], "groups": []}
     for f in frames:
         if f is None:
@@ -212,6 +216,7 @@ def export_sprites(g, out, pal, rooms):
     for gi, idxs in enumerate(groups):
         u = usage.get(gi)
         entry = {"group": gi, "name": N.SPRITE_GROUPS.get(gi), "frames": idxs,
+                 "loop_ticks": loops.get(gi, (0, 0))[1],
                  "used_by_objects": u["objects"] if u else 0,
                  "rooms": sorted(u["rooms"]) if u else [],
                  "scripts": sorted(u["scripts"]) if u else []}
@@ -232,7 +237,7 @@ def export_sprites(g, out, pal, rooms):
         im.info["transparency"] = 0
         im.save(os.path.join(gd, f"group_{gi:03d}.png"))
         jdump({"group": gi, "name": N.SPRITE_GROUPS.get(gi), "image": f"group_{gi:03d}.png",
-               "frames": rects}, gd, f"group_{gi:03d}.json")
+               "loop_ticks": loops.get(gi, (0, 0))[1], "frames": rects}, gd, f"group_{gi:03d}.json")
     jdump(meta, d, "sprites.json", indent=None)
 
     # labelled overview sheets (for humans)
@@ -763,6 +768,8 @@ def main():
     export_rooms(g, out, pal, pl, bg, frames, groups, seqs, rooms)
     world_analysis.export_world(g, out, rooms, frames, groups, seqs)
     catalogues.export_catalogues(g, out, exe, rooms, frames, groups, seqs, len(pl), len(bg))
+    with open(os.path.join(mkdir(out, "gamedata"), "golden_traces.json"), "w", encoding="utf-8") as f:
+        json.dump(reference_sim.golden(g), f, separators=(",", ":"))
     export_sounds(g, out, exe)
     export_music(g, out, render=a.render_music)
     export_pictures(g, out)

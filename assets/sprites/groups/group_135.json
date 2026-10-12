@@ -2,6 +2,7 @@
  "group": 135,
  "name": "weapon pick-up",
  "image": "group_135.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 535,

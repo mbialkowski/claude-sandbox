@@ -2,6 +2,7 @@
  "group": 150,
  "name": "grey ghoul?",
  "image": "group_150.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 651,

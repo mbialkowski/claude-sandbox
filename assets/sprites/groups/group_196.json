@@ -2,6 +2,7 @@
  "group": 196,
  "name": "force field - dissolving",
  "image": "group_196.png",
+ "loop_ticks": 39,
  "frames": [
   {
    "frame": 964,

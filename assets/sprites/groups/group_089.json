@@ -2,6 +2,7 @@
  "group": 89,
  "name": "secret-door lock",
  "image": "group_089.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 428,

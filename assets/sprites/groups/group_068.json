@@ -2,6 +2,7 @@
  "group": 68,
  "name": "robed figure (merchants, undertaker)",
  "image": "group_068.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 346,

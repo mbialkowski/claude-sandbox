@@ -35,6 +35,7 @@ claude-sandbox/
     ├── lazarus_scripts.py      # the EXE's quest/dialogue handlers transcribed as data (hand-checked)
     ├── world_analysis.py       # room connectivity, regions, teleports, debug renders
     ├── catalogues.py           # enemies, hero spec, sound usage, unused content
+    ├── reference_sim.py        # movement rules re-implemented; writes golden_traces.json
     ├── translations/           # hand-written translations of the 293 messages (en.json) + notes
     ├── le_loader.py, disasm.py, make_flat_image.py, ghidra/   # executable analysis (+ annotate.py)
     ├── flc.py, mazovia.py      # FLC decoder, Polish DOS code page

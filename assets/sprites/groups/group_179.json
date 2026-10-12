@@ -2,6 +2,7 @@
  "group": 179,
  "name": "small arrow?",
  "image": "group_179.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 856,

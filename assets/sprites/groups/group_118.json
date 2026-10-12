@@ -2,6 +2,7 @@
  "group": 118,
  "name": "coin pick-up sparkle",
  "image": "group_118.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 495,

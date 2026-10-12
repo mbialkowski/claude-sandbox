@@ -2,6 +2,7 @@
  "group": 39,
  "name": null,
  "image": "group_039.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 219,

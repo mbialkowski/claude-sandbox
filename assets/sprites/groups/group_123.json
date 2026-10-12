@@ -2,6 +2,7 @@
  "group": 123,
  "name": "man attacked by the monster",
  "image": "group_123.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 507,

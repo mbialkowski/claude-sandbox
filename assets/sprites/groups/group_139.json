@@ -2,6 +2,7 @@
  "group": 139,
  "name": "steam puff?",
  "image": "group_139.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 564,

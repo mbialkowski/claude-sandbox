@@ -2,6 +2,7 @@
  "group": 175,
  "name": "orange bouncing bomb?",
  "image": "group_175.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 828,

@@ -2,6 +2,7 @@
  "group": 163,
  "name": "green bug",
  "image": "group_163.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 754,

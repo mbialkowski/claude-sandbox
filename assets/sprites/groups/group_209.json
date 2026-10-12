@@ -2,6 +2,7 @@
  "group": 209,
  "name": "HUD weapon pictures",
  "image": "group_209.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 1064,

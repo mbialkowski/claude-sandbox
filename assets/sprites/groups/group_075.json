@@ -2,6 +2,7 @@
  "group": 75,
  "name": "hanging man - lying",
  "image": "group_075.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 391,

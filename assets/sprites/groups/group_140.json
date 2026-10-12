@@ -2,6 +2,7 @@
  "group": 140,
  "name": "green acid drip",
  "image": "group_140.png",
+ "loop_ticks": 30,
  "frames": [
   {
    "frame": 573,

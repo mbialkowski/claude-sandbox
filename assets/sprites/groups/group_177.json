@@ -2,6 +2,7 @@
  "group": 177,
  "name": "thrown bone",
  "image": "group_177.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 838,

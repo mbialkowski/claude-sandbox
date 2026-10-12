@@ -2,6 +2,7 @@
  "group": 12,
  "name": "water splash",
  "image": "group_012.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 91,

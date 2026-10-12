@@ -2,6 +2,7 @@
  "group": 154,
  "name": "winged gargoyle?",
  "image": "group_154.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 679,

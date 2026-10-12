@@ -2,6 +2,7 @@
  "group": 161,
  "name": "pink bug",
  "image": "group_161.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 748,

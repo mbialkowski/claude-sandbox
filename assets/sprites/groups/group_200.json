@@ -2,6 +2,7 @@
  "group": 200,
  "name": "Hero - jump/jetpack right",
  "image": "group_200.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 1009,

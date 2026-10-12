@@ -2,6 +2,7 @@
  "group": 16,
  "name": "green slime blob?",
  "image": "group_016.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 132,

@@ -2,6 +2,7 @@
  "group": 205,
  "name": "Hero - stand right",
  "image": "group_205.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 1027,

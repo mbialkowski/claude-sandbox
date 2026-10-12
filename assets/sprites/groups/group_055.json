@@ -2,6 +2,7 @@
  "group": 55,
  "name": "fuel pick-up (+1/3)",
  "image": "group_055.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 291,

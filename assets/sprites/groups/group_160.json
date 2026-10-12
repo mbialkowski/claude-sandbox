@@ -2,6 +2,7 @@
  "group": 160,
  "name": "red bug",
  "image": "group_160.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 745,

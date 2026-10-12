@@ -2,6 +2,7 @@
  "group": 27,
  "name": "green slime blob (bouncing)?",
  "image": "group_027.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 171,

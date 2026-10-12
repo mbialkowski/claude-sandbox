@@ -2,6 +2,7 @@
  "group": 94,
  "name": "witch",
  "image": "group_094.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 442,

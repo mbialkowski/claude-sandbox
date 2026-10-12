@@ -2,6 +2,7 @@
  "group": 49,
  "name": "grey card",
  "image": "group_049.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 279,

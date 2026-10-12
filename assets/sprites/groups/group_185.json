@@ -2,6 +2,7 @@
  "group": 185,
  "name": "green slime (flying)?",
  "image": "group_185.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 883,

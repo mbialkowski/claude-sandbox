@@ -2,6 +2,7 @@
  "group": 3,
  "name": "caveman with a club?",
  "image": "group_003.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 27,

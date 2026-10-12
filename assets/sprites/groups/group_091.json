@@ -2,6 +2,7 @@
  "group": 91,
  "name": "man with burning hat",
  "image": "group_091.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 432,

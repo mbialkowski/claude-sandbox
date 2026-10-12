@@ -2,6 +2,7 @@
  "group": 126,
  "name": "gum-chewing man",
  "image": "group_126.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 513,

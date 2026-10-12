@@ -2,6 +2,7 @@
  "group": 54,
  "name": "ammo magazine",
  "image": "group_054.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 289,

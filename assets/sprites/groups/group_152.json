@@ -2,6 +2,7 @@
  "group": 152,
  "name": "small dart?",
  "image": "group_152.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 673,

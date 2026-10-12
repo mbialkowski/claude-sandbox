@@ -2,6 +2,7 @@
  "group": 95,
  "name": "cauldron",
  "image": "group_095.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 444,

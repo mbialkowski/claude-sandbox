@@ -2,6 +2,7 @@
  "group": 157,
  "name": "zombie (other way)?",
  "image": "group_157.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 708,

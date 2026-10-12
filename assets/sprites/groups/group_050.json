@@ -2,6 +2,7 @@
  "group": 50,
  "name": "fuse",
  "image": "group_050.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 281,

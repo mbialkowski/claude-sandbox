@@ -2,6 +2,7 @@
  "group": 72,
  "name": "hanging man - falling",
  "image": "group_072.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 365,

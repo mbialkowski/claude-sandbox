@@ -2,6 +2,7 @@
  "group": 142,
  "name": "magenta drip",
  "image": "group_142.png",
+ "loop_ticks": 30,
  "frames": [
   {
    "frame": 587,

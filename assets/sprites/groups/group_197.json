@@ -2,6 +2,7 @@
  "group": 197,
  "name": "kneeling hag?",
  "image": "group_197.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 979,

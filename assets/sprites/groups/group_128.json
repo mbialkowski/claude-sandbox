@@ -2,6 +2,7 @@
  "group": 128,
  "name": "Door of Time frame",
  "image": "group_128.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 521,

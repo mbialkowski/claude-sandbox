@@ -2,6 +2,7 @@
  "group": 144,
  "name": "red drip",
  "image": "group_144.png",
+ "loop_ticks": 30,
  "frames": [
   {
    "frame": 601,

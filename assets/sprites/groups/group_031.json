@@ -2,6 +2,7 @@
  "group": 31,
  "name": "metal ball?",
  "image": "group_031.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 192,

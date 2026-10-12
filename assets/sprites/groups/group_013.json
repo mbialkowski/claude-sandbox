@@ -2,6 +2,7 @@
  "group": 13,
  "name": "green parrot?",
  "image": "group_013.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 97,

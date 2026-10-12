@@ -2,6 +2,7 @@
  "group": 45,
  "name": "falling stone",
  "image": "group_045.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 266,

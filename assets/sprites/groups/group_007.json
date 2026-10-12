@@ -2,6 +2,7 @@
  "group": 7,
  "name": "card reader - open",
  "image": "group_007.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 46,

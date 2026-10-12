@@ -2,6 +2,7 @@
  "group": 165,
  "name": "orange ring?",
  "image": "group_165.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 761,

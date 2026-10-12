@@ -2,6 +2,7 @@
  "group": 125,
  "name": "the Devil's daughter",
  "image": "group_125.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 511,

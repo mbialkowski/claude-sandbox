@@ -2,6 +2,7 @@
  "group": 51,
  "name": "fuel can",
  "image": "group_051.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 283,

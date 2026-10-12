@@ -2,6 +2,7 @@
  "group": 193,
  "name": "lizard man (enemy)",
  "image": "group_193.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 944,

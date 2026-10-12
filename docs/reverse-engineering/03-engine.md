@@ -135,6 +135,35 @@ activates if: it has the *touch* flag, **or** *use* (Enter) was pressed, **or** 
 Pressing *use* when not touching anything calls the **item-use handler** of the selected pocket
 (usually prints the item description; some items do something — see the content document).
 
+### Exact movement rules (`tools/reference_sim.py`, golden traces)
+
+[`tools/reference_sim.py`](../../tools/reference_sim.py) re-implements the movement code (tile collision,
+hero states 0–9, object paths and animation) from the decompilation and writes
+`assets/gamedata/golden_traces.json`: tick-by-tick hero positions/states/velocities for 13 input scripts
+(walking, jumps, falls, ceiling hits, jetpack flights, running out of fuel, a walk through the start room)
+and 300 ticks of 50 objects from six rooms. A remake that replays the same inputs should reproduce the
+rows exactly. Details that matter for that, all visible in the traces:
+
+* **All-or-nothing moves.** `Hero_MoveCollide` moves X by `dx`, then Y by `dy`, each only if the whole
+  moved box is free (3×3 tiles around the target); otherwise that axis does not move at all — there is no
+  snapping to the obstacle. A fast fall therefore stops up to 10 px above the floor; the stand state's
+  1-px gravity probe then settles the hero 1 px per tick (`jump_hold_to_apex`: 156, 157, 158, 159).
+* **Jump:** the tick Up is pressed only switches state; `vy = −4.883` is set on the next tick and gravity is
+  added before moving (`dy = vy >> 16`, floor). The jump continues while Up is held and `vy ≤ 0`; releasing
+  Up or the apex switches to falling with `vy = 0`. Full height 64 px, apex after 23 ticks.
+* **Fall:** `dy = (vy >> 16) + 1` with `vy ≤ 10.0`; landing = the hero did not move vertically this tick.
+* **Turning:** pressing away from the facing side first turns (stand, other facing) — one tick — then
+  walks. Turning in mid-jump keeps `vy` but loads the *standing* frame (1027/1025), a harmless original bug.
+* **Jetpack:** position kept in 16.16 (`fx, fy`), the integer delta is moved; on a blocked axis the
+  velocity is halved and reversed and the fixed-point position resynced; when **both** axes are blocked in
+  the same tick (a corner) nothing bounces. Friction is ±`0x400` per tick and can oscillate around 0.
+* **Animation timing:** a frame with duration *d* is shown for **d + 1** ticks. When a group runs past its
+  last frame, its separator gives the restart point: the first frame plus `loop_ticks` ticks (32 groups,
+  e.g. the water drip, play an intro once). `loop_ticks` is in `assets/sprites/groups/*.json`.
+* **Path timing:** a step of duration *d* takes **d + 1** ticks: *d* ticks of `v += a; pos += v`, then one
+  tick in which the next step is loaded (position jumps to its start; no motion). The step's animation
+  start offset only selects the frame (`BobFindFrame`; it does not wrap at the group's end).
+
 ## 3.5 Room objects (`RoomObject`)
 
 Behaviour is entirely data-driven by OBJECTS.BIN (format in 2.7). Per tick (`Object_Think`, `0x23F4C`):

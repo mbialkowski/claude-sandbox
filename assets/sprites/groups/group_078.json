@@ -2,6 +2,7 @@
  "group": 78,
  "name": "cage with prisoner",
  "image": "group_078.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 397,

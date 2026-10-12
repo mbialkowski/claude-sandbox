@@ -2,6 +2,7 @@
  "group": 133,
  "name": "Time Guardian",
  "image": "group_133.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 531,

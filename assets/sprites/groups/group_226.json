@@ -2,6 +2,7 @@
  "group": 226,
  "name": "title menu (background + labels)",
  "image": "group_226.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 1178,

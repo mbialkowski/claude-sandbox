@@ -2,6 +2,7 @@
  "group": 176,
  "name": "bouncing bomb?",
  "image": "group_176.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 833,

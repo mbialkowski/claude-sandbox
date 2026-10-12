@@ -2,6 +2,7 @@
  "group": 210,
  "name": "full-screen pictures (maps, riddles) + HUD tubes",
  "image": "group_210.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 1077,

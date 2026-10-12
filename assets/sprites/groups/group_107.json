@@ -2,6 +2,7 @@
  "group": 107,
  "name": "magic key 2 (pickup)",
  "image": "group_107.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 473,

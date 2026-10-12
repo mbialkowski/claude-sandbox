@@ -2,6 +2,7 @@
  "group": 52,
  "name": "lift platform (small)",
  "image": "group_052.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 285,

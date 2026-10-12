@@ -2,6 +2,7 @@
  "group": 117,
  "name": "sign TARAPATY",
  "image": "group_117.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 493,

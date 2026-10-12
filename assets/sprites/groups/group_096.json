@@ -2,6 +2,7 @@
  "group": 96,
  "name": "purple card",
  "image": "group_096.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 451,

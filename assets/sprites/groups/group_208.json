@@ -2,6 +2,7 @@
  "group": 208,
  "name": "HUD inventory icons",
  "image": "group_208.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 1034,

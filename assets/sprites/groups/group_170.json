@@ -2,6 +2,7 @@
  "group": 170,
  "name": "magenta spiked mine",
  "image": "group_170.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 788,

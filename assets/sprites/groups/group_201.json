@@ -2,6 +2,7 @@
  "group": 201,
  "name": "Hero - crouch left",
  "image": "group_201.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 1013,

@@ -2,6 +2,7 @@
  "group": 137,
  "name": "skeleton (other way)?",
  "image": "group_137.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 546,

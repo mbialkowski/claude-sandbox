@@ -2,6 +2,7 @@
  "group": 48,
  "name": "red card",
  "image": "group_048.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 277,

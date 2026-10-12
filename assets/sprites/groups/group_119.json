@@ -2,6 +2,7 @@
  "group": 119,
  "name": "teddy bear",
  "image": "group_119.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 499,

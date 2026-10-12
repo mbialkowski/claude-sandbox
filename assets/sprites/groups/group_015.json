@@ -2,6 +2,7 @@
  "group": 15,
  "name": "blue beetle?",
  "image": "group_015.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 127,

@@ -2,6 +2,7 @@
  "group": 24,
  "name": "small explosion",
  "image": "group_024.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 157,

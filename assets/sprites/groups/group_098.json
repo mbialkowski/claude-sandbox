@@ -2,6 +2,7 @@
  "group": 98,
  "name": "chest (alt)",
  "image": "group_098.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 455,

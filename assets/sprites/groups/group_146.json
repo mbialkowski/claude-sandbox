@@ -2,6 +2,7 @@
  "group": 146,
  "name": "hooded hunchback?",
  "image": "group_146.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 615,

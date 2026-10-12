@@ -2,6 +2,7 @@
  "group": 66,
  "name": "blue spark",
  "image": "group_066.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 335,

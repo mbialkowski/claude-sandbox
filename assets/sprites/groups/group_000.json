@@ -2,6 +2,7 @@
  "group": 0,
  "name": "Hero - walk left",
  "image": "group_000.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 0,

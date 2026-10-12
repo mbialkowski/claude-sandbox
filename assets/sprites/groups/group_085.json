@@ -2,6 +2,7 @@
  "group": 85,
  "name": "keyhole lock",
  "image": "group_085.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 411,

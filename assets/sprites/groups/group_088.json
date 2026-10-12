@@ -2,6 +2,7 @@
  "group": 88,
  "name": "panel / interaction marker (graves, tap)?",
  "image": "group_088.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 417,

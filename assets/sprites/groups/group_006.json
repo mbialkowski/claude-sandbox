@@ -2,6 +2,7 @@
  "group": 6,
  "name": "card reader - locked",
  "image": "group_006.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 44,

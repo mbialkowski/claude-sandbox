@@ -2,6 +2,7 @@
  "group": 162,
  "name": "orange bug",
  "image": "group_162.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 751,

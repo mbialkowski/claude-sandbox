@@ -2,6 +2,7 @@
  "group": 169,
  "name": "red spiked mine",
  "image": "group_169.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 776,

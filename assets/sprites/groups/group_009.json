@@ -2,6 +2,7 @@
  "group": 9,
  "name": "explosion (enemy death)",
  "image": "group_009.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 59,

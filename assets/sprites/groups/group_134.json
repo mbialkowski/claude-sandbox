@@ -2,6 +2,7 @@
  "group": 134,
  "name": "crying girl",
  "image": "group_134.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 533,

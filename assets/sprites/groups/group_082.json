@@ -2,6 +2,7 @@
  "group": 82,
  "name": "shaped key piece",
  "image": "group_082.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 405,

@@ -2,6 +2,7 @@
  "group": 20,
  "name": "ferryman on boat",
  "image": "group_020.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 146,

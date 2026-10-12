@@ -2,6 +2,7 @@
  "group": 114,
  "name": "magic key slot 5",
  "image": "group_114.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 487,

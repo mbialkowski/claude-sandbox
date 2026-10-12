@@ -2,6 +2,7 @@
  "group": 97,
  "name": "chest",
  "image": "group_097.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 453,

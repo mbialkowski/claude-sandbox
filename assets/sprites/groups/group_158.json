@@ -2,6 +2,7 @@
  "group": 158,
  "name": "orange crawler?",
  "image": "group_158.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 719,

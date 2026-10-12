@@ -2,6 +2,7 @@
  "group": 8,
  "name": "panel / trigger zone",
  "image": "group_008.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 48,

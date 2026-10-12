@@ -2,6 +2,7 @@
  "group": 132,
  "name": "man missing a sock",
  "image": "group_132.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 529,

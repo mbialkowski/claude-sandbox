@@ -2,6 +2,7 @@
  "group": 25,
  "name": "spark",
  "image": "group_025.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 167,

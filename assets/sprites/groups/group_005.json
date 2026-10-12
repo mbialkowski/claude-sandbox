@@ -2,6 +2,7 @@
  "group": 5,
  "name": "lift platform (alt)",
  "image": "group_005.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 42,

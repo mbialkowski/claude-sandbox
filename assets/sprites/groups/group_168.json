@@ -2,6 +2,7 @@
  "group": 168,
  "name": "orange beast (other way)?",
  "image": "group_168.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 769,

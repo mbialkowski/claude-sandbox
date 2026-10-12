@@ -2,6 +2,7 @@
  "group": 80,
  "name": "switch?",
  "image": "group_080.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 401,

@@ -2,6 +2,7 @@
  "group": 149,
  "name": "helmeted skeleton warrior?",
  "image": "group_149.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 642,

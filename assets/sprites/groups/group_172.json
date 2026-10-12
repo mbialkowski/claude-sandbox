@@ -2,6 +2,7 @@
  "group": 172,
  "name": "yellow spiked mine",
  "image": "group_172.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 812,

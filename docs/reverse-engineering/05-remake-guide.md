@@ -34,6 +34,8 @@ engine — the rule set is small and fully specified here.
 * Room edge transition offsets (3.2) — they make the seams feel right.
 * Tile collision boxes come from PSIZES, not from the full 16×19 cell.
 * Animated tiles have no collision (only harm) — the secret passages depend on it (7.3).
+* Replay the inputs of `assets/gamedata/golden_traces.json` and compare tick by tick (rules in 3.4,
+  "Exact movement rules"); frames and path steps last duration + 1 ticks.
 * Hero collision box (6,2)-(16,30) inside the sprite; regions/edges in `world_graph.json` are a regression
   test for a remake's collision code: the same edges must be open.
 * Bomb 3000 ticks; menus wrap; dialogues wait for Ctrl/Enter/Space.

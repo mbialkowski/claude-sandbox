@@ -2,6 +2,7 @@
  "group": 56,
  "name": "blue wall turret",
  "image": "group_056.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 293,

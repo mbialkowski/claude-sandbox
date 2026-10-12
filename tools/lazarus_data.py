@@ -157,6 +157,22 @@ def load_bobs(game_dir):
     return frames, groups
 
 
+def load_bob_loops(game_dir):
+    """Loop point of every animation group, from the separator descriptor that ends it: the separator's
+    offset field holds `loop_frame | loop_ticks << 16` - when the animation runs past its last frame it
+    restarts at `loop_frame` (always the group's first frame) and skips `loop_ticks` ticks, so 32 groups
+    play an intro once and then loop only the rest.  Returns {group: (loop_frame, loop_ticks)}."""
+    desc = _read(game_dir, "DATA03.RES")
+    _, count, _ = struct.unpack_from("<3I", desc, 0)
+    loops, g = {}, 0
+    for i in range(count):
+        dur, off = struct.unpack_from("<bI", desc, 12 + i * 9)
+        if dur == -1:
+            loops[g] = (off & 0xFFFF, off >> 16)
+            g += 1
+    return loops
+
+
 # ---------------------------------------------------------------------------
 # Rooms (NEWROOM.BIN)
 # ---------------------------------------------------------------------------

@@ -2,6 +2,7 @@
  "group": 44,
  "name": "harmful debris",
  "image": "group_044.png",
+ "loop_ticks": 1,
  "frames": [
   {
    "frame": 263,

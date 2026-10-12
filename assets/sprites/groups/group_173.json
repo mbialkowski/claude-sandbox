@@ -2,6 +2,7 @@
  "group": 173,
  "name": "green stone pillar (192 HP)",
  "image": "group_173.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 824,

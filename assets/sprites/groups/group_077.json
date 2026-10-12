@@ -2,6 +2,7 @@
  "group": 77,
  "name": "time bomb",
  "image": "group_077.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 395,

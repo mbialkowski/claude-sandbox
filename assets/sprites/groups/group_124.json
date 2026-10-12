@@ -2,6 +2,7 @@
  "group": 124,
  "name": "riddle man",
  "image": "group_124.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 509,

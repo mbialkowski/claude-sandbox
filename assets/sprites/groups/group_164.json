@@ -2,6 +2,7 @@
  "group": 164,
  "name": "black spider?",
  "image": "group_164.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 757,

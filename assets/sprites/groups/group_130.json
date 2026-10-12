@@ -2,6 +2,7 @@
  "group": 130,
  "name": "magic flower 2",
  "image": "group_130.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 525,

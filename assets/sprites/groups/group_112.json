@@ -2,6 +2,7 @@
  "group": 112,
  "name": "magic key 4 inserted",
  "image": "group_112.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 483,

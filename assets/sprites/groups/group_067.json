@@ -2,6 +2,7 @@
  "group": 67,
  "name": "coin",
  "image": "group_067.png",
+ "loop_ticks": 0,
  "frames": [
   {
    "frame": 338,
