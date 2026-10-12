@@ -45,7 +45,8 @@ original's unused "Pauza" text exists) and an options screen; English text (`dat
 | full screen | F11, Alt+Enter | | options |
 
 Dialogues continue with Fire, Enter, Space or a tap. The original's cheats work (`IDMORT`, `IDSIAR`,
-`IDLUFA`, `IDBULL`).
+`IDLUFA`, `IDBULL`). The game is saved each time the hero enters a room; **Continue** on the title screen
+resumes from there (the original had no saving: one death was game over).
 
 ## Running
 
@@ -64,13 +65,18 @@ Export templates: Godot 4.7.2 (`Editor → Manage Export Templates`).
 ```bash
 godot --headless --path remake --script res://tests/check.gd       # every script parses
 godot --headless --path remake --script res://tests/golden.gd      # 63/63 golden traces (hero + objects)
-godot --headless --path remake --script res://tests/scenarios.gd   # coins, shop, shooting, teleport, death
+godot --headless --path remake --script res://tests/scenarios.gd   # coins, shop, save/load, shooting, teleport, death
+godot --headless --path remake --script res://tests/walkthrough.gd # the solver's winning route, 109 steps
 godot --path remake -- --shots=/tmp/shots                          # screenshots of title, start, walk
 node remake/tests/web_smoke.mjs remake/build/web /tmp/web-shots    # web build in headless Chromium
 ```
 
 `golden.gd` replays `assets/gamedata/golden_traces.json` (made by `tools/reference_sim.py` from the
 decompiled movement code) through the remake's hero and objects and compares every tick.
+`walkthrough.gd` replays `assets/gamedata/walkthrough.json` (`tools/completability.py`) through the remake's
+room objects and script VM — every item, lock, chain, flag and handler on the way to the Door of Time —
+and must end with the winning ending. CI (`.github/workflows/remake-web.yml`) runs all of them, exports the
+web build and publishes it on GitHub Pages from `main`.
 
 ## Layout
 

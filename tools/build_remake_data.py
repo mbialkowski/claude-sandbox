@@ -14,6 +14,7 @@ for transparent pixels.  Files (all generated - change this tool, never the outp
     text_en.json         the English translation (tools/translations/en.json)
     scripts.json         assets/gamedata/script_logic.json (quest/dialogue handlers as data)
     golden_traces.json   assets/gamedata/golden_traces.json (physics test vectors)
+    walkthrough.json     assets/gamedata/walkthrough.json (the solver's winning route, replayed by a test)
     sprites.png          every sprite frame (index image), rectangles in game.json "frames"
     sprites_mask.png     the same atlas as a white silhouette (hit flashes)
     tiles_platform.png   560 platform tiles 16x19, 20 per row (index image, colour 0 transparent)
@@ -288,6 +289,7 @@ def main():
     shutil.copy(os.path.join(assets, "text", "messages_en.json"), os.path.join(out, "text_en.json"))
     shutil.copy(os.path.join(assets, "gamedata", "script_logic.json"), os.path.join(out, "scripts.json"))
     shutil.copy(os.path.join(assets, "gamedata", "golden_traces.json"), os.path.join(out, "golden_traces.json"))
+    shutil.copy(os.path.join(assets, "gamedata", "walkthrough.json"), os.path.join(out, "walkthrough.json"))
     for src, dst in (("multifruit_juice.ogg", "music_title.ogg"), ("recollection.ogg", "music_intro.ogg")):
         shutil.copy(os.path.join(assets, "music", src), os.path.join(out, dst))
     for src, dst in (("DATA20.png", "pic_game_over.png"), ("DATA21.png", "pic_joke_ending.png"),

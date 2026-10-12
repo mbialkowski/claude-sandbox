@@ -43,11 +43,12 @@ jobs:
       - name: Import the project
         run: godot --headless --path remake --import || true
 
-      - name: Tests (scripts, golden traces, scenarios)
+      - name: Tests (scripts, golden traces, scenarios, walkthrough)
         run: |
           godot --headless --path remake --script res://tests/check.gd
           godot --headless --path remake --script res://tests/golden.gd
           godot --headless --path remake --script res://tests/scenarios.gd
+          godot --headless --path remake --script res://tests/walkthrough.gd
 
       - name: Export the web build
         run: |
