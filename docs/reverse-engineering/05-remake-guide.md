@@ -71,6 +71,22 @@ rules for conditional objects and `BobFindFrame`. `assets/rooms/png_objects/` us
   `IDSIAR` help) is still the final proof — in particular that the bomb can be skipped (7.9).
 * Sound Blaster / GUS mixing details (volume curves, panning) — irrelevant if a modern MOD player is used.
 
+## 5.7 The Godot remake (`remake/`)
+
+[`remake/`](../../remake/README.md) is a remake in Godot 4.7 built directly on these notes:
+
+| part | how | checked by |
+|---|---|---|
+| hero, tiles, objects, shots | `HeroState00–15`, `Hero_MoveCollide`, `TileCollide`, `Object_Think/Interact/Hit/FireTrigger`, `Platform_PushCarryHero`, `Bullet_*`, `Hero_DamageTick`, the GameLoop order — ported from `reference/lazarus.c` with 32-bit/16.16 arithmetic at 50 Hz | `tests/golden.gd`: all 63 golden traces of 5.3 / 3.4 match tick for tick |
+| quests, dialogue, shops | `script_logic.json` run by a small VM (`script_vm.gd`); dialogues freeze the game like `Dlg_Begin` | `tests/walkthrough.gd`: the 109 steps of `walkthrough.json` reach the Door of Time; `tests/scenarios.gd` |
+| graphics | drawn in palette indices into a 240-px-high off-screen image, coloured by a shader with the VGA palette, so `FadePalette`, the alarm palette and `Hero_Explode` work exactly; sharp scaling to any HD size | rooms on entry match `assets/rooms/png_objects/` |
+| screen | widescreen: the hero's room centred, neighbouring rooms shown dimmed (built as they look on entry, live only when entered), the original HUD panel on the right; 4:3 looks like the original | |
+| controls | keyboard as the original plus WASD, gamepad, multi-touch on-screen pad and buttons; dialogues/menus by tap | `tests/web_smoke.mjs` (headless Chromium, desktop and phone) |
+| extras | Polish/English, options, pause, saving on room entry + Continue | |
+
+Deliberate differences: shots touching harmful tiles do not hurt the hero (in the original `TileCollide`
+sets `g_heroHit` for them); room edges can optionally be seamless.
+
 ## 5.6 Legal
 
 The original game is copyrighted by its authors (Infinite Dreams, 1996). The original files (`original/`),
