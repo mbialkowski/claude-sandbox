@@ -31,7 +31,7 @@ everything is huge: *"Ale przecież miałem AMIGĘ a nie grzyba!!! … za duże 
 
 ## 4.2 World
 
-* 100 rooms, all used; 699 room objects, 505 animated tiles, 127 killable enemies.
+* 100 rooms, all used; 699 room objects, 505 animated tiles, 155 shootable enemies (7.5).
 * Teleport network: booths in several rooms (script **241**) send the hero to the **hub (0,0)**; the
   hub terminal (script **240**) lists the destinations whose *passwords* the hero knows:
 
@@ -94,7 +94,8 @@ touching an object; most items just print their description.
 | 37 | Mapa – map | 14 | vending machine $30 | use: one of two map pictures (random per game) |
 
 Pickups that are not pocket items: coins **$1** (script 224, 127 of them), big coins **$10** (230, 7 of them),
-ammo (231, +⅓ current weapon), energy potions (134/136/137, +⅓), full energy (233), weapons (225–229 =
+ammo (231, +⅓ current weapon), fuel pick-ups (134, +⅓ — 6 of them in the Training Room), energy
+potions (136/137, +⅓), full energy (233), weapons (225–229 =
 weapon 1–5; weapon 3, the Uzi, is also sold for $20).
 
 ## 4.4 Shops and NPCs
@@ -190,7 +191,8 @@ required for the Zaświaty password.
 | 107/108 | | ferryman / no-fly zone (fuel := 0) |
 | 128–131 | | fuel can (+message) / purple card / first-aid kit / fuse |
 | 132 | `1C610` | fuse fitted: "Naprawione!", teleport to hub |
-| 133/134/136/137 | | fuel +⅓ / energy +⅓ |
+| 134 | `1C654` | fuel +⅓ (sprite group 55) |
+| 136/137 | `1C690` | energy +⅓ (group 53) |
 | 138/139/140 | | "too far to jump" / bleeding man / heal him → red card |
 | 141/142 | | magic key 21 / flower 30 |
 | 160 | `1C7B0` | vending machine |

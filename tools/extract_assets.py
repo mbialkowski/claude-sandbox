@@ -10,14 +10,17 @@ Output layout (see assets/README.md for details):
     sprites/     every BOB frame, one sheet + JSON per animation group, sprites.json,
                  labelled overview sheets, Tiled image-collection tileset
     rooms/       json/ (full room data), png/ (tiles only), png_objects/, tiled/ (*.tmj +
-                 lazarus.world), world maps
+                 lazarus.world), debug/ (collision + object paths), world maps (art, regions,
+                 collision)
     sounds/      54 WAV files at native rates + sounds.json (loops, names)
     music/       the two ProTracker modules (+ Ogg previews with --render-music), music.json
     pictures/    PCX stills as PNG
     animations/  FLC/FLI frames as PNG, storyboards/ contact sheets, animations.json
     font/        glyph sheet, gapless atlas, BMFont .fnt, font.json
     text/        messages.json (UTF-8, control codes as tags) + messages.csv for translation
-    gamedata/    weapons, items, scripts, tile animations, misc tables (JSON)
+    gamedata/    weapons, items, scripts, tile animations, misc tables, world graph (room
+                 connectivity, regions, teleports, secret passages), enemies, hero spec, sound usage,
+                 unused content (JSON)
 
 Requires Pillow.
 """
@@ -34,10 +37,12 @@ import wave
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import catalogues  # noqa: E402
 import flc  # noqa: E402
 import lazarus_data as L  # noqa: E402
 import lazarus_names as N  # noqa: E402
 import mazovia  # noqa: E402
+import world_analysis  # noqa: E402
 from lazarus_exe import LazarusExe  # noqa: E402
 
 PALETTES = {"DATA25.RES": "game", "DATA27.RES": "picture", "DATA16.RES": "alarm",
@@ -499,6 +504,10 @@ def mod_info(data):
 def export_music(g, out, render=False):
     d = mkdir(out, "music")
     meta = {}
+    try:  # keep the durations of previews rendered by an earlier --render-music run
+        old = json.load(open(os.path.join(d, "music.json"), encoding="utf-8"))["modules"]
+    except (OSError, ValueError, KeyError):
+        old = {}
     for src, (name, use) in MUSIC.items():
         data = open(os.path.join(g, src), "rb").read()
         shutil.copyfile(os.path.join(g, src), os.path.join(d, name + ".mod"))
@@ -508,6 +517,8 @@ def export_music(g, out, render=False):
             info.update(render_mod(os.path.join(d, name + ".mod"), os.path.join(d, name + ".ogg")))
         elif os.path.exists(os.path.join(d, name + ".ogg")):
             info["preview"] = name + ".ogg"
+            if "duration" in old.get(name, {}):
+                info["duration"] = old[name]["duration"]
         meta[name] = info
     jdump({"note": "4-channel ProTracker modules played by the game's own mixer. *.ogg files are previews "
                    "rendered with libopenmpt (tools/extract_assets.py --render-music), not the original mixer.",
@@ -688,11 +699,7 @@ def export_gamedata(out, exe):
            "hub_room": [0, 0], "hub_pos": [53, 178], "start_room": [7, 0],
            "new_game": {"energy": 0x2F0000, "fuel": 0, "money": 10, "weapon": 0, "pockets": [24],
                         "bomb_timer_ticks": 3000},
-           "hero": {"walk_px": 1, "jump_v0": (0xFFFB1DF3 - 0x100000000) / 65536,
-                    "gravity": 0x3851 / 65536, "fall_cap": 10, "jet_v0": -2.0, "jet_thrust": 0x1800 / 65536,
-                    "jet_gravity": 0x1000 / 65536, "jet_friction": 0x400 / 65536, "jet_cap": 3.0,
-                    "fuel_per_tick": 0x800, "damage_per_hit": 0x6000, "hit_interval_ticks": 4,
-                    "full_bar": 0x2F0000, "bar_pixels": 47}},
+           "hero": catalogues.HERO_PHYSICS},
           d, "misc.json")
 
 
@@ -711,7 +718,10 @@ def main():
     pal = export_palettes(g, out)
     pl, bg = export_tiles(g, out, pal)
     frames, groups = export_sprites(g, out, pal, rooms)
-    export_rooms(g, out, pal, pl, bg, frames, groups, exe.tile_anim_sequences(), rooms)
+    seqs = exe.tile_anim_sequences()
+    export_rooms(g, out, pal, pl, bg, frames, groups, seqs, rooms)
+    world_analysis.export_world(g, out, rooms, frames, groups, seqs)
+    catalogues.export_catalogues(g, out, exe, rooms, frames, groups, seqs, len(pl), len(bg))
     export_sounds(g, out, exe)
     export_music(g, out, render=a.render_music)
     export_pictures(g, out)

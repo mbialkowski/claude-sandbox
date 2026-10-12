@@ -31,12 +31,15 @@ Format details and engine rules are in [`docs/reverse-engineering/`](../docs/rev
 | `sprites/frames/` | all 956 sprite (BOB) frames | `NNNN.png` (global descriptor index; gaps are group separators) |
 | `sprites/groups/` | 227 non-empty animation groups as horizontal strips + frame rectangles, per-frame duration and collision box | `group_NNN.png` + `.json` |
 | `sprites/overview/` | labelled contact sheets of all groups (human reference) | `.png` |
+| `sprites/unused_groups.png` | the 14 sprite groups the game never uses (cut enemies, explosion, hero poses) | `.png` |
 | `sprites/sprites.json` | every frame and group, group names, which rooms/scripts use each group | `.json` |
 | `sprites/tiled/` | image-collection tileset (first frame of each group) used by the room maps | `.tsj` |
 | `rooms/json/` | full data of all 100 rooms: background + platform tile grids, animated tiles, every object with header fields and path steps | `.json` |
 | `rooms/png/`, `rooms/png_objects/` | each room rendered without / with objects (first animation frames) | `.png` 224×228 |
 | `rooms/tiled/` | one Tiled map per room + `lazarus.world` laying them out — open the world in Tiled | `.tmj`, `.world` |
 | `rooms/world_map*.png` | whole world (2240×2280), with objects, and a half-size labelled overview | `.png` |
+| `rooms/world_regions.png`, `rooms/world_collision.png` | regions + open edges + teleports (half size); whole-world collision and object paths | `.png` |
+| `rooms/debug/` | per room at 2×: collision boxes (solid blue, harmful red), animated tiles (fake walls magenta), every object's box and full path coloured by class with its index, open edges | `.png` |
 | `sounds/` | 54 sound effects at their original sample rates; `sounds.json` has loop flags/points and names | `.wav` (8-bit mono) |
 | `music/` | "multifruit juice" (title menu) and "recollection" (intro/credits) by Wojciech Panufnik; Ogg previews rendered with libopenmpt; `music.json` | ProTracker `.mod`, `.ogg` |
 | `pictures/` | GAME OVER, joke ending, intro text pages, end-credits scroller | `.png` |
@@ -44,6 +47,9 @@ Format details and engine rules are in [`docs/reverse-engineering/`](../docs/rev
 | `font/` | dialogue font: RGBA atlas + BMFont descriptor (Unicode, Polish letters mapped), preview, metrics | `.png`, `.fnt`, `.json` |
 | `text/` | all 293 strings (dialogues, items, menus) in UTF-8; CSV with an empty `text_en` column for translation | `.json`, `.csv` |
 | `gamedata/` | weapons, items (names PL/EN, HUD icon, description), script ids with notes, tile-animation sequences, teleports, hero/physics constants, new-game state | `.json` |
+| `gamedata/world_graph.json` | room-edge connectivity with pixel openings and gating doors/lifts, the 7 regions, all teleports, 40 fake walls | `.json` |
+| `gamedata/enemies.json`, `hero.json` | every harmful/shootable object with HP and hits to kill per weapon; hero states, animations, physics | `.json` |
+| `gamedata/sound_usage.json`, `unused_content.json` | who plays each sound (and which ids share a sample); unused sprites, sounds, texts, tiles, files, known bugs | `.json` |
 
 ## Using the Tiled maps
 

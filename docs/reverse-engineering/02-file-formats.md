@@ -140,7 +140,7 @@ object: 14-byte header, then header[1] × 32-byte path step
 | 1 | u8 | number of path steps |
 | 2 | u8 | interaction bits: `0x02` needs item `[13]` *selected* in the inventory, `0x04` activated by **crouching** on it (floor pickups), `0x08` static (never erased) |
 | 3 | u8 | end-of-path mode: `0` stop, `1` vanish, `2` loop from `[0]`, `3` disable forever, `≥4` restart at step 0 |
-| 4–5 | u16 | low byte = sound played when activated |
+| 4–5 | u16 | low byte = sound played when activated. The high byte is `0x08` on the 380 objects that have an activation sound — the editor's "play" command bit (as in path-step sound words); the engine reads only `hdr[4..5] & 0xFF` |
 | 6–7 | u16 | **flags** (below) — the engine writes back into this field, so object state persists between room visits |
 | 8 | u8 | current HP. `0xFF` = indestructible and blocks bullets, `0xFE` = bullets pass through |
 | 9 | u8 | initial HP (copied to `[8]` when the path resets) |
@@ -153,6 +153,7 @@ object: 14-byte header, then header[1] × 32-byte path step
 | bit | name | meaning |
 |---|---|---|
 | `0x0001` | active | object exists / is drawn |
+| `0x0002` | — | set on most objects but **never tested by the engine** (an editor-only bit); `editor-0x0002` in the JSON |
 | `0x0004` | needs-flag | interaction ignored until `g_gameFlags[hdr[13]]` is set |
 | `0x0008` | invisible | never drawn (sound emitters, trigger zones) |
 | `0x0010` | chain | on activation also activates object `index+1` |

@@ -263,7 +263,7 @@ class RoomObject:
 
     def describe_flags(self):
         f, names = self.flags, []
-        table = [(0x0001, "active"), (0x0002, "bit1"), (0x0004, "needs-flag"), (0x0008, "invisible"),
+        table = [(0x0001, "active"), (0x0002, "editor-0x0002"), (0x0004, "needs-flag"), (0x0008, "invisible"),
                  (0x0010, "chain-next"), (0x0020, "touch-activates"), (0x0040, "disabled"),
                  (0x0080, "keep-after-use"), (0x0100, "rearm"), (0x4000, "fires-trigger"),
                  (0x8000, "conditional")]

@@ -33,6 +33,9 @@ engine — the rule set is small and fully specified here.
 * Weapons table 3.6; bullets spawn at (−8,10)/(16,10).
 * Room edge transition offsets (3.2) — they make the seams feel right.
 * Tile collision boxes come from PSIZES, not from the full 16×19 cell.
+* Animated tiles have no collision (only harm) — the secret passages depend on it (7.3).
+* Hero collision box (6,2)-(16,30) inside the sprite; regions/edges in `world_graph.json` are a regression
+  test for a remake's collision code: the same edges must be open.
 * Bomb 3000 ticks; menus wrap; dialogues wait for Ctrl/Enter/Space.
 * Randomised per new game: bomb wire, secret door, sock chest, riddle, shop map.
 
@@ -47,8 +50,6 @@ engine — the rule set is small and fully specified here.
 
 ## 5.5 Open questions / not yet verified
 
-* Exact meaning of object flag `0x0002` and header byte 4's high byte (always `0x08` on animated objects) —
-  no behavioural difference found in the code paths read so far.
 * Enemy AI: the only code that reads the hero position is bullet spawning and the moving-platform carry,
   so enemies are purely path-scripted (they never chase or aim at the player) — worth a quick check in play.
 * The order of the quest chain was reconstructed from data; play through once in DOSBox with

@@ -44,6 +44,10 @@ Everything here is taken from the decompiled code; constants are given in the or
   * box test against the tile's PSIZES rectangle (DATA38) at `(col*16, row*19)`;
   * `1` harmful → **hero is hit** (see 3.6) but not blocked;
   * otherwise (`4`) → solid.
+* **Animated tiles never block.** `TileCollide` reads only the static map; animated tiles are objects
+  whose `TileAnim_Overlaps` (vtable `+0x28`) answers only the hero's harm test (mask `0x11`), so a frame of
+  type 1 hurts the hero but no animated tile is ever solid. Foreground animated tiles over empty cells are
+  the game's fake walls / secret passages (40 of them, see 7.3).
 * Movement is resolved axis by axis: X first (blocked → flag 1), then Y (blocked → flag 2), testing the
   3×3 tile neighbourhood of the hero's box. Then every object with collision class `0x40` (solid
   platform) is tested; touching one sets flag 4 (used by the jetpack bounce and lifts).
@@ -146,8 +150,9 @@ Behaviour is entirely data-driven by OBJECTS.BIN (format in 2.7). Per tick (`Obj
 
 Bullets test objects with mask `0x78`. `hit(damage)`:
 `HP 0xFF` → bullet absorbed, no damage; class `0x20` or `HP 0xFE` → bullet passes; else flash white,
-`HP -= damage`, at 0 → activate (death animation + trigger). 127 objects in the game are killable
-enemies (HP 1–48; one boss-like object has 192).
+`HP -= damage` (clamped at 0), at 0 → activate (death animation + trigger) — so an object with HP 0 dies
+to any hit. 155 objects are shootable enemies: 127 with HP 1–48 (one green stone pillar: 192) and
+28 with HP 0; see the catalogue in 7.5.
 
 Typical object recipes found in the data:
 
