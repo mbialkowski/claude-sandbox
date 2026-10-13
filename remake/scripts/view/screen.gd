@@ -177,12 +177,30 @@ func draw_glyph(ci: CanvasItem, code: int, pos: Vector2, colour: int, outline :=
 	ci.draw_texture_rect_region(D.tex_font_body, dst, src, Color(colour / 255.0, 0, 0, 1))
 
 
+const SHORT_HYPHEN := 0x2010     # drawn as the font's '-' (as wide as a letter) without its middle columns
+const SHORT_HYPHEN_W := 5
+
+
+func _draw_short_hyphen(ci: CanvasItem, pos: Vector2, colour: int, outline: int) -> void:
+	var g = D.glyphs[45]
+	var h: int = D.font["cell"][1]
+	for part in [[0, 0, 2], [4, 2, 3]]:          # [source column, destination column, width]: a 3 px bar
+		var src := Rect2(int(g[0]) + part[0], int(g[1]), part[2], h)
+		var dst := Rect2(pos + Vector2(part[1], 0), src.size)
+		ci.draw_texture_rect_region(D.tex_font_outline, dst, src, Color(outline / 255.0, 0, 0, 1))
+		ci.draw_texture_rect_region(D.tex_font_body, dst, src, Color(colour / 255.0, 0, 0, 1))
+
+
 func draw_string_at(ci: CanvasItem, s: String, pos: Vector2, colour: int, outline := 42) -> void:
 	var x := pos.x
 	var f: Dictionary = D.font
 	var spacing := int(f["letter_spacing"])
 	for i in s.length():
 		var code := s.unicode_at(i)
+		if code == SHORT_HYPHEN:
+			_draw_short_hyphen(ci, Vector2(x, pos.y), colour, outline)
+			x += SHORT_HYPHEN_W + spacing
+			continue
 		if code == 32:
 			x += int(f["space_advance"]) + spacing
 		var g = D.glyphs.get(code)
@@ -199,6 +217,9 @@ func string_width(s: String) -> int:
 	var spacing := int(f["letter_spacing"])
 	for i in s.length():
 		var code := s.unicode_at(i)
+		if code == SHORT_HYPHEN:
+			w += SHORT_HYPHEN_W + spacing
+			continue
 		if code == 32:
 			w += int(f["space_advance"]) + spacing
 		var g = D.glyphs.get(code)
