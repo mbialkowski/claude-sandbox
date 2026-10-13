@@ -970,10 +970,11 @@ func _title() -> void:
 	touch.refresh()
 
 
-# The title menu is a list of text items centred on the screen; the picture behind it (with the original's
-# painted GRA / AUTORZY / WYJŚCIE) is only a background.
+# The title menu is a list of text items centred horizontally; the picture behind it (with the original's
+# painted GRA / AUTORZY / WYJŚCIE) is only a background, but the last item sits on its painted WYJŚCIE.
 const TITLE_ITEMS := ["new", "continue", "options", "controls", "credits", "quit"]
 const TITLE_DY := 17
+const TITLE_LAST_Y := 172          # the painted WYJŚCIE: highlight frame 1180 at y 166, 21 high (centre 177)
 
 
 func _title_enabled(item: String) -> bool:
@@ -982,8 +983,7 @@ func _title_enabled(item: String) -> bool:
 
 
 func _title_row_y(i: int) -> int:
-	var line_h := int(D.font["line_height"])
-	return (H - (TITLE_ITEMS.size() - 1) * TITLE_DY - line_h) / 2 + i * TITLE_DY
+	return TITLE_LAST_Y - (TITLE_ITEMS.size() - 1 - i) * TITLE_DY
 
 
 func _title_rects() -> Array:
