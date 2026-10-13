@@ -84,7 +84,7 @@ There is no pause key — message 279 *"Pauza. Naciśnij fire."* exists but is n
 | 4/5 | jump | 1005 (group 199) | |
 | 6/7 | fall | 1005 | |
 | 8/9 | jetpack | 1005 / 1009 (199/200) | sounds 27 (idle loop) / 28 (thrust loop) |
-| 10/11 | crouch | 1013 (201…) | plays forward while ↓ held, backwards on release |
+| 10/11 | crouch | 1013 (201…) | plays forward while ↓ held, backwards on release; at the end marker the frame index steps back two frames without reloading the picture (hero +0x08), so the hero stays on the last crouch picture while ↓ is held |
 | 12/13 | — | | empty (unused) |
 | 14 | teleport out | 1089 (group 211) | sound 41; at the end moves to the destination room |
 | 15 | teleport in | 1105 (group 211, reversed) | then back to standing |

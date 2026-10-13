@@ -41,8 +41,10 @@ var settings := {
 	"dim_neighbours": true,
 	"smooth_scaling": true,
 	"touch_controls": "auto",           # auto / on / off
+	"sound": true,                      # off: no music or effects (the levels below are kept)
 	"sfx_volume": 0.8,
 	"music_volume": 0.7,
+	"game_music": false,                # the remake's option: the two modules while playing (the original is silent)
 	"show_neighbours": true,
 	"room_edges": "classic",            # classic: the original's room transitions; seamless: no jump
 }
@@ -153,7 +155,7 @@ func _load_media() -> void:
 	music["intro"] = load(DATA_DIR + "music_intro.ogg")
 	for k in music:
 		if music[k]:
-			music[k].loop = (k == "title")
+			music[k].loop = true                       # the intro and the credits end before the tune
 
 
 # ---------------------------------------------------------------------------

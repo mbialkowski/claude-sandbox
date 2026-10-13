@@ -71,7 +71,7 @@ await run("phone", { viewport: { width: 915, height: 412 }, deviceScaleFactor: 2
     await page.touchscreen.tap(457, 200);          // skip the intro
     await sleep(1500);
     await page.screenshot({ path: `${out}/phone_title.png` });
-    await page.touchscreen.tap(457, 172);          // GRA
+    await page.touchscreen.tap(457, 158);          // NOWA GRA (first title row, y 92 of 240)
     await sleep(2500);
     await page.screenshot({ path: `${out}/phone_game.png` });
   });
@@ -82,7 +82,7 @@ await run("portrait", { viewport: { width: 412, height: 915 }, deviceScaleFactor
     await sleep(1000);
     await page.touchscreen.tap(206, 300);          // skip the intro
     await sleep(1500);
-    await page.touchscreen.tap(206, 166);          // GRA
+    await page.touchscreen.tap(206, 156);          // NOWA GRA
     await sleep(2500);
     await page.screenshot({ path: `${out}/portrait_game.png` });
   });

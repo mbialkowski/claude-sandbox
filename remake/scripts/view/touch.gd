@@ -63,7 +63,7 @@ func relayout() -> void:
 	buttons.append({"action": "jetpack", "label": "jet", "center": Vector2(cx_btn, cy - d), "radius": r})
 	var s := r * 0.55
 	buttons.append({"action": "pause", "label": "II", "center": Vector2(s * 1.6, s * 1.6), "radius": s})
-	if not main.is_fullscreen():
+	if main.can_fullscreen() and not main.is_fullscreen():
 		buttons.append({"action": "fullscreen", "label": "full", "center": Vector2(s * 4.2, s * 1.6), "radius": s})
 	var top := cy - d - r * 2.3
 	if main.portrait:
@@ -182,5 +182,8 @@ func _draw() -> void:
 		var label: String = Strings.t(b["label"])
 		var fs := int(maxf(10.0, r * 0.42))
 		var w := font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
+		if w > r * 1.6:                                # long labels (JETPACK) shrink to fit the circle
+			fs = int(fs * r * 1.6 / w)
+			w = font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
 		draw_string(font, c + Vector2(-w / 2.0, fs * 0.35), label, HORIZONTAL_ALIGNMENT_LEFT, -1, fs,
 				Color(1, 1, 1, 0.85))

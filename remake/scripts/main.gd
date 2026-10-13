@@ -21,6 +21,8 @@ const ACTIONS := ["left", "right", "up", "down", "fire", "use", "jetpack", "item
 		"weapon_next", "weapon_1", "weapon_2", "weapon_3", "weapon_4", "weapon_5", "weapon_6", "pause",
 		"fullscreen"]
 const CONTINUE_ACTIONS := ["fire", "use", "jetpack"]
+const LANGS := ["pl", "en"]
+const INTRO_END_TICKS := 200                         # "WYDOSTAŃ MNIE STĄD!" stays 4 s before the title
 
 var D
 var viewport: SubViewport
@@ -63,6 +65,8 @@ var credits_y := 0.0
 var notice := ""
 var notice_ticks := 0
 var last_saved_room := Vector2i(-1, -1)
+var fullscreen_supported = null               # see can_fullscreen()
+var phone = null                              # see is_phone()
 
 const SAVE_PATH := "user://save.json"
 
@@ -205,7 +209,18 @@ func _autotest(dir: String) -> void:
 	action_tap("use")
 	await wait_ticks(5)
 	await _shot(dir, "11_options")
-	action_tap("pause")
+	ui_sel = _option_list().map(func(r): return r[2]).find("sound")
+	_options_input("use")                             # sound off: the levels are greyed out
+	await wait_ticks(3)
+	await _shot(dir, "11b_options_sound_off")
+	_options_input("use")
+	action_tap("pause")                               # back to the pause menu, then Controls
+	await wait_ticks(3)
+	action_tap("down")
+	action_tap("use")
+	await wait_ticks(3)
+	await _shot(dir, "11c_controls")
+	action_tap("use")
 	await wait_ticks(3)
 	action_tap("pause")
 	await wait_ticks(3)
@@ -230,7 +245,7 @@ func _autotest(dir: String) -> void:
 	await _shot(dir, "14_game_over")
 	action_tap("use")
 	await wait_ticks(30)
-	ui_sel = 1
+	ui_sel = TITLE_ITEMS.find("credits")
 	_title_input("use")
 	await wait_ticks(40)
 	await _shot(dir, "15_credits_anim")
@@ -254,7 +269,7 @@ func _intro_shots(dir: String) -> void:
 	D.settings["language"] = "en"
 	_intro()
 	var elapsed := 0
-	for t in [3, 12, 24, 40, 62, 75, 100, 108]:
+	for t in [3, 12, 24, 40, 62, 75, 100, 108, 111, 115]:
 		await wait_ticks(t * 50 - elapsed)
 		elapsed = t * 50
 		await _shot(dir, "intro_%03d" % t)
@@ -354,6 +369,9 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_ENTER and event.alt_pressed:
 			toggle_fullscreen()
 			return
+		if mode == "intro" and not event.is_action("fullscreen"):
+			_skip_intro()
+			return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		tap(event.position)
 		return
@@ -395,6 +413,9 @@ func _on_press(a: String) -> void:
 			"use", "jetpack":
 				_choose(menu["sel"])
 		return
+	if mode == "intro":
+		_skip_intro()
+		return
 	if waiting:
 		if a in CONTINUE_ACTIONS:
 			waiting = false
@@ -402,17 +423,15 @@ func _on_press(a: String) -> void:
 		return
 	match mode:
 		"press":
-			_intro()
-			return
-		"intro":
-			if a in CONTINUE_ACTIONS or a == "pause":
-				intro_skip = true
-				continue_pressed.emit()
+			_press_input(a)
 			return
 		"title":
 			_title_input(a)
 		"options":
 			_options_input(a)
+		"controls":
+			if a in ["use", "jetpack", "fire", "pause"]:
+				_leave_controls()
 		"pause":
 			_pause_input(a)
 		"play":
@@ -438,12 +457,14 @@ func tap(pos: Vector2) -> void:
 				return
 		return
 	if mode == "press":
+		var rects := _lang_rects()
+		for i in rects.size():
+			if rects[i].has_point(p):
+				_set_language(LANGS[i])
 		_intro()
 		return
 	if mode == "intro":
-		intro_skip = true
-		waiting = false
-		continue_pressed.emit()
+		_skip_intro()
 		return
 	if waiting:
 		waiting = false
@@ -451,8 +472,9 @@ func tap(pos: Vector2) -> void:
 		return
 	match mode:
 		"title":
-			for i in _title_rects().size():
-				if _title_rects()[i].has_point(p):
+			var rects := _title_rects()
+			for i in rects.size():
+				if rects[i].has_point(p) and _title_enabled(TITLE_ITEMS[i]):
 					ui_sel = i
 					_title_input("use")
 					return
@@ -460,12 +482,16 @@ func tap(pos: Vector2) -> void:
 			var rows := _ui_rows()
 			for i in rows.size():
 				if rows[i].has_point(p):
+					if mode == "options" and not _option_enabled(_option_list()[i][2]):
+						return
 					ui_sel = i
 					if mode == "options":
 						_options_input("use")
 					else:
 						_pause_input("use")
 					return
+		"controls":
+			_leave_controls()
 		"play":
 			if p.x >= screen.view_w:
 				var hp := p - Vector2(screen.view_w, 0)
@@ -793,9 +819,38 @@ func explode() -> void:
 # modes
 # ---------------------------------------------------------------------------
 func _press_key() -> void:
+	"""The browser's first screen (audio starts only after an input): pick the language, then any key."""
 	mode = "press"
 	palette.set_now("game")
 	screen.refresh_all()
+
+
+func _press_input(a: String) -> void:
+	if a in ["left", "right", "up", "down"]:
+		var i := LANGS.find(D.settings["language"])
+		var step := -1 if a in ["left", "up"] else 1
+		_set_language(LANGS[(i + step + LANGS.size()) % LANGS.size()])
+	else:
+		_intro()
+
+
+func _set_language(lang: String) -> void:
+	if D.settings["language"] == lang:
+		return
+	D.settings["language"] = lang
+	D.save_settings()
+	screen.refresh_all()
+
+
+func _lang_rects() -> Array:
+	"""Where the language names are on the first screen (logical pixels)."""
+	var rects := []
+	for i in LANGS.size():
+		var label: String = Strings.T[LANGS[i]]["lang_name"]
+		var w: int = screen.string_width(label)
+		var cx: int = logical_w / 2 + (i * 2 - 1) * 45
+		rects.append(Rect2(cx - w / 2 - 8, 132, w + 16, 18))
+	return rects
 
 
 func _intro_wait(ticks: int) -> void:
@@ -810,15 +865,22 @@ func _intro_frame(name: String, i: int) -> Texture2D:
 
 
 func _intro_flc(name: String, ticks_per_frame: int, last: int, sub := "") -> void:
-	"""PlayFLC: frames 0..last, looping the file if it is shorter."""
+	"""PlayFLC: frames 0..last, looping the file if it is shorter (its ring frame brings back frame 0).
+	320x240 files play in Mode X, flipping between two video pages, and PlayFLC ends by showing page 0:
+	an odd number of frames leaves the second-to-last one on screen (DATA10 ends on the full sentence)."""
 	if intro_skip:
 		return
 	_subtitle(sub)
-	var n: int = D.game["intro"][name]["frames"]
+	var info: Dictionary = D.game["intro"][name]
+	var n: int = info["frames"]
+	var mode_x: bool = int(info["size"][1]) > 200
 	for f in last + 1:
 		if intro_skip:
 			return
-		show_tex(_intro_frame(name, f % n))
+		var i := f
+		if mode_x and f == last and last % 2 == 0:
+			i = last - 1                                   # drawn on page 1, never seen
+		show_tex(_intro_frame(name, i % n))
 		await _intro_wait(ticks_per_frame)
 
 
@@ -838,6 +900,13 @@ func _intro_still(name: String, hold: int, scroll := 0, after := 0, subs := ["",
 		show_tex(tex, Rect2(0, y + 1, 320, 200))
 		await _intro_wait(3)
 	await _intro_wait(after)
+
+
+func _skip_intro() -> void:
+	"""Any key, button or tap skips the intro, or ends its last picture."""
+	intro_skip = true
+	waiting = false
+	continue_pressed.emit()
 
 
 func _intro() -> void:
@@ -866,9 +935,12 @@ func _intro() -> void:
 	await _intro_flc("DATA13", 8, 30, "intro_7")
 	await _intro_flc("DATA14", 10, 4)
 	await _intro_flc("DATA10", 30, 6, "intro_8")
-	if not intro_skip:
-		waiting = true
-		await continue_pressed
+	# the original waits for Enter/Ctrl/Space here; the remake also goes on by itself after a while
+	waiting = not intro_skip
+	for t in INTRO_END_TICKS:
+		if not waiting:
+			break
+		await get_tree().physics_frame
 	waiting = false
 	audio.stop_music()
 	subtitle.visible = false
@@ -887,7 +959,7 @@ func _title() -> void:
 	picture_frame = -1
 	anim_frame = ""
 	hud_visible = false
-	ui_sel = maxi(0, _title_items().find("continue"))
+	ui_sel = TITLE_ITEMS.find("continue" if _title_enabled("continue") else "new")
 	text.clear()
 	audio.stop_all()
 	audio.pause_all(false)
@@ -898,38 +970,50 @@ func _title() -> void:
 	touch.refresh()
 
 
-func _title_items() -> Array:
-	var items := ["new", "credits", "quit"]
-	if FileAccess.file_exists(SAVE_PATH):
-		items.append("continue")
-	items.append("options")
-	return items
+# The title menu is a list of text items centred horizontally; the picture behind it (with the original's
+# painted GRA / AUTORZY / WYJŚCIE) is only a background, but the last item sits on its painted WYJŚCIE.
+const TITLE_ITEMS := ["new", "continue", "options", "controls", "credits", "quit"]
+const TITLE_DY := 17
+const TITLE_LAST_Y := 172          # the painted WYJŚCIE: highlight frame 1180 at y 166, 21 high (centre 177)
+
+
+func _title_enabled(item: String) -> bool:
+	"""Continue is greyed out until there is a saved game."""
+	return item != "continue" or FileAccess.file_exists(SAVE_PATH)
+
+
+func _title_row_y(i: int) -> int:
+	return TITLE_LAST_Y - (TITLE_ITEMS.size() - 1 - i) * TITLE_DY
 
 
 func _title_rects() -> Array:
-	var ox := (logical_w - 320) / 2
-	var rects := [Rect2(ox + 110, 90, 100, 30), Rect2(ox + 105, 123, 110, 30), Rect2(ox + 105, 161, 110, 30)]
-	for i in range(3, _title_items().size()):
-		rects.append(Rect2(ox + 90, _title_font_y(i) - 3, 140, 15))
+	var rects := []
+	for i in TITLE_ITEMS.size():
+		rects.append(Rect2(logical_w / 2 - 70, _title_row_y(i) - (TITLE_DY - 10) / 2, 140, TITLE_DY))
 	return rects
 
 
-func _title_font_y(i: int) -> int:
-	return 186 + (i - 3) * 14 if _title_items().size() == 5 else 196
+func _next_title(step: int) -> int:
+	var i := ui_sel
+	for k in TITLE_ITEMS.size():
+		i = (i + step + TITLE_ITEMS.size()) % TITLE_ITEMS.size()
+		if _title_enabled(TITLE_ITEMS[i]):
+			break
+	return i
 
 
 func _title_input(a: String) -> void:
-	var items := _title_items()
-	var n := items.size()
 	match a:
 		"up":
-			ui_sel = (ui_sel + n - 1) % n
+			ui_sel = _next_title(-1)
 			audio.play(33)
 		"down":
-			ui_sel = (ui_sel + 1) % n
+			ui_sel = _next_title(1)
 			audio.play(33)
 		"use", "jetpack", "fire":
-			match items[ui_sel]:
+			if not _title_enabled(TITLE_ITEMS[ui_sel]):
+				return
+			match TITLE_ITEMS[ui_sel]:
 				"new":
 					_new_game()
 				"credits":
@@ -944,13 +1028,16 @@ func _title_input(a: String) -> void:
 				"options":
 					options_from = "title"
 					_open_options()
+				"controls":
+					options_from = "title"
+					_open_controls()
 		"pause":
-			ui_sel = 2
+			ui_sel = TITLE_ITEMS.find("quit")
 	screen.overlay_layer.queue_redraw()
 
 
 func _new_game(resume := false) -> void:
-	audio.stop_music()
+	_game_music()
 	mode = "play"
 	sim = Sim.new(D)
 	sim.audio = audio
@@ -977,6 +1064,14 @@ func _new_game(resume := false) -> void:
 	touch.refresh()
 
 
+func _game_music() -> void:
+	"""The original stops the music when a game starts; the remake plays its two modules unless turned off."""
+	if D.settings["game_music"]:
+		audio.play_playlist(["intro", "title"])
+	else:
+		audio.stop_music()
+
+
 func _save_game() -> void:
 	last_saved_room = Vector2i(sim.hero.col, sim.hero.row)
 	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -988,6 +1083,7 @@ func _finish_game() -> void:
 	var how: String = sim.end_state
 	sim.end_state = "handled"
 	audio.stop_all()
+	audio.stop_music()
 	match how:
 		"win":
 			_win_ending()
@@ -1061,6 +1157,8 @@ func _credits_anim() -> void:
 		i = (i + 1) % n
 	if mode == "title":
 		palette.set_now("menu")
+		ui_sel = TITLE_ITEMS.find("credits")
+		screen.overlay_layer.queue_redraw()
 
 
 func _credits_scroller() -> void:
@@ -1094,8 +1192,11 @@ func _open_pause() -> void:
 	touch.refresh()
 
 
+const PAUSE_ITEMS := ["continue", "options", "controls", "quit_title"]
+
+
 func _pause_input(a: String) -> void:
-	var n := 3
+	var n := PAUSE_ITEMS.size()
 	match a:
 		"up":
 			ui_sel = (ui_sel + n - 1) % n
@@ -1104,13 +1205,16 @@ func _pause_input(a: String) -> void:
 		"pause":
 			_close_pause()
 		"use", "jetpack", "fire":
-			match ui_sel:
-				0:
+			match PAUSE_ITEMS[ui_sel]:
+				"continue":
 					_close_pause()
-				1:
+				"options":
 					options_from = "pause"
 					_open_options()
-				2:
+				"controls":
+					options_from = "pause"
+					_open_controls()
+				"quit_title":
 					audio.pause_all(false)
 					_title()
 	screen.overlay_layer.queue_redraw()
@@ -1125,19 +1229,36 @@ func _close_pause() -> void:
 
 
 func _option_list() -> Array:
+	"""[label, value, key] per row of the options screen."""
 	var s: Dictionary = D.settings
 	return [
-		[Strings.t("opt_language"), Strings.t("lang_name")],
-		[Strings.t("opt_neighbours"), Strings.t("on") if s["show_neighbours"] else Strings.t("off")],
-		[Strings.t("opt_dim"), Strings.t("on") if s["dim_neighbours"] else Strings.t("off")],
-		[Strings.t("opt_smooth"), Strings.t("smooth") if s["smooth_scaling"] else Strings.t("sharp")],
-		[Strings.t("opt_edges"), Strings.t("edges_" + str(s["room_edges"]))],
-		[Strings.t("opt_touch"), Strings.t("touch_" + str(s["touch_controls"]))],
-		[Strings.t("opt_music"), "%d%%" % roundi(float(s["music_volume"]) * 100)],
-		[Strings.t("opt_sfx"), "%d%%" % roundi(float(s["sfx_volume"]) * 100)],
-		[Strings.t("opt_fullscreen"), Strings.t("on") if is_fullscreen() else Strings.t("off")],
-		[Strings.t("back"), ""],
-	]
+		[Strings.t("opt_language"), Strings.t("lang_name"), "language"],
+		[Strings.t("opt_neighbours"), Strings.t("on") if s["show_neighbours"] else Strings.t("off"), "show_neighbours"],
+		[Strings.t("opt_dim"), Strings.t("on") if s["dim_neighbours"] else Strings.t("off"), "dim_neighbours"],
+		[Strings.t("opt_smooth"), Strings.t("smooth") if s["smooth_scaling"] else Strings.t("sharp"), "smooth_scaling"],
+		[Strings.t("opt_edges"), Strings.t("edges_" + str(s["room_edges"])), "room_edges"],
+		[Strings.t("opt_touch"), Strings.t("touch_" + str(s["touch_controls"])), "touch_controls"],
+		[Strings.t("opt_sound"), Strings.t("on") if s["sound"] else Strings.t("off"), "sound"],
+		[Strings.t("opt_music"), "%d%%" % roundi(float(s["music_volume"]) * 100), "music_volume"],
+		[Strings.t("opt_game_music"), Strings.t("on") if s["game_music"] else Strings.t("off"), "game_music"],
+		[Strings.t("opt_sfx"), "%d%%" % roundi(float(s["sfx_volume"]) * 100), "sfx_volume"],
+		[Strings.t("opt_fullscreen"), Strings.t("on") if is_fullscreen() else Strings.t("off"), "fullscreen"],
+		[Strings.t("back"), "", "back"],
+	].filter(func(row): return row[2] != "fullscreen" or can_fullscreen())
+
+
+func _option_enabled(key: String) -> bool:
+	"""The music and effect settings do nothing while the sound is off."""
+	return D.settings["sound"] or not key in ["music_volume", "game_music", "sfx_volume"]
+
+
+func _next_option(opts: Array, step: int) -> int:
+	var i := ui_sel
+	for k in opts.size():
+		i = (i + step + opts.size()) % opts.size()
+		if _option_enabled(opts[i][2]):
+			break
+	return i
 
 
 func _open_options() -> void:
@@ -1151,46 +1272,52 @@ func _open_options() -> void:
 
 func _options_input(a: String) -> void:
 	var s: Dictionary = D.settings
-	var n := _option_list().size()
+	var opts := _option_list()
 	var dirn := 1
 	match a:
 		"up":
-			ui_sel = (ui_sel + n - 1) % n
+			ui_sel = _next_option(opts, -1)
 		"down":
-			ui_sel = (ui_sel + 1) % n
+			ui_sel = _next_option(opts, 1)
 		"pause":
 			_leave_options()
 			return
 		"left", "right", "use", "jetpack", "fire":
 			dirn = -1 if a == "left" else 1
-			match ui_sel:
-				0:
+			if not _option_enabled(opts[ui_sel][2]):
+				return
+			match str(opts[ui_sel][2]):
+				"sound":
+					s["sound"] = not s["sound"]
+					audio.apply_volumes()
+				"language":
 					s["language"] = "en" if s["language"] == "pl" else "pl"
-				1:
-					s["show_neighbours"] = not s["show_neighbours"]
-				2:
-					s["dim_neighbours"] = not s["dim_neighbours"]
-				3:
-					s["smooth_scaling"] = not s["smooth_scaling"]
-				4:
+				"show_neighbours", "dim_neighbours", "smooth_scaling":
+					var k: String = opts[ui_sel][2]
+					s[k] = not s[k]
+				"room_edges":
 					s["room_edges"] = "seamless" if s["room_edges"] == "classic" else "classic"
 					if sim:
 						sim.hero.classic = s["room_edges"] == "classic"
-				5:
+				"touch_controls":
 					var modes := ["auto", "on", "off"]
 					s["touch_controls"] = modes[(modes.find(s["touch_controls"]) + dirn + 3) % 3]
 					touch.refresh()
-				6:
+				"music_volume":
 					s["music_volume"] = clampf(snappedf(float(s["music_volume"]) + 0.1 * dirn, 0.1), 0.0, 1.0)
 					audio.apply_volumes()
-				7:
+				"game_music":
+					s["game_music"] = not s["game_music"]
+					if sim:
+						_game_music()
+				"sfx_volume":
 					s["sfx_volume"] = clampf(snappedf(float(s["sfx_volume"]) + 0.1 * dirn, 0.1), 0.0, 1.0)
 					audio.apply_volumes()
 					audio.pause_all(false)
 					audio.play(33)
-				8:
+				"fullscreen":
 					toggle_fullscreen()
-				9:
+				"back":
 					_leave_options()
 					return
 			D.save_settings()
@@ -1202,12 +1329,85 @@ func _leave_options() -> void:
 	D.save_settings()
 	if options_from == "pause":
 		mode = "pause"
-		ui_sel = 1
+		ui_sel = PAUSE_ITEMS.find("options")
 	else:
 		_title()
-		ui_sel = 3
+		ui_sel = TITLE_ITEMS.find("options")
 	screen.overlay_layer.queue_redraw()
 	touch.refresh()
+
+
+func is_phone() -> bool:
+	"""A phone's browser: Android or iPhone, and a screen whose short side is under 600 CSS px (not a tablet)."""
+	if phone == null:
+		phone = OS.has_feature("web") and bool(JavaScriptBridge.eval(
+				"/Android|iPhone|iPod/.test(navigator.userAgent) && Math.min(screen.width, screen.height) < 600", true))
+	return phone
+
+
+func can_fullscreen() -> bool:
+	"""iPhone browsers cannot show a web page full screen (only "Add to Home Screen" gives a full-screen app),
+	so the button and the option are hidden there."""
+	if not OS.has_feature("web"):
+		return true
+	if fullscreen_supported == null:
+		fullscreen_supported = bool(JavaScriptBridge.eval(
+				"!!(document.fullscreenEnabled || document.webkitFullscreenEnabled)", true))
+	return fullscreen_supported
+
+
+func _open_controls() -> void:
+	mode = "controls"
+	if options_from == "title":
+		palette.set_now("game")
+	screen.overlay_layer.queue_redraw()
+	touch.refresh()
+
+
+func _leave_controls() -> void:
+	if options_from == "pause":
+		mode = "pause"
+		ui_sel = PAUSE_ITEMS.find("controls")
+	else:
+		_title()
+		ui_sel = TITLE_ITEMS.find("controls")
+	screen.overlay_layer.queue_redraw()
+	touch.refresh()
+
+
+func _control_rows() -> Array:
+	"""[what, keys] for the controls screen: the touch buttons when the touch controls are on, else keys."""
+	var t: bool = touch.enabled
+	var rows := []
+	for k in ["walk", "jump", "crouch", "fire", "use", "jet", "item", "weapon", "pause", "dialogue", "menu"]:
+		rows.append([Strings.t("ctl_" + k), Strings.t(("ctl_touch_" if t else "ctl_key_") + k)])
+	return rows
+
+
+func _draw_controls(ci: CanvasItem) -> void:
+	if options_from == "title":
+		screen.fill(ci, Rect2(0, 0, logical_w, H), 0)
+	else:
+		screen.fill(ci, Rect2(screen.view_w / 2 - 150, 14, 300, 212), 0)
+	var cx: int = screen.view_w / 2
+	var title := Strings.t("controls").to_upper()
+	screen.draw_string_at(ci, title, Vector2(cx - screen.string_width(title) / 2, 22), 29)
+	var rows := _control_rows()
+	var x0 := cx - 140
+	var x1 := mini(x0 + _max_width(rows, 0) + 12, cx + 145 - _max_width(rows, 1))
+	for i in rows.size():
+		var y := OPT_Y0 + i * OPT_DY
+		screen.draw_string_at(ci, rows[i][0], Vector2(x0, y), 1)
+		screen.draw_string_at(ci, rows[i][1], Vector2(x1, y), 13)
+	var back := Strings.t("back")
+	screen.draw_string_at(ci, back, Vector2(cx - screen.string_width(back) / 2, OPT_Y0 + rows.size() * OPT_DY + 8), 0x10)
+
+
+func _max_width(rows: Array, column: int) -> int:
+	var w := 0
+	for r in rows:
+		w = maxi(w, screen.string_width(r[column]))
+	return w
 
 
 func is_fullscreen() -> bool:
@@ -1227,12 +1427,17 @@ func toggle_fullscreen() -> void:
 # ---------------------------------------------------------------------------
 # overlay drawing (index space)
 # ---------------------------------------------------------------------------
+const OPT_Y0 := 40                                   # options: first row, row spacing
+const OPT_DY := 15
+
+
 func _ui_rows() -> Array:
 	var rows := []
-	var n := _option_list().size() if mode == "options" else 3
-	var y0 := 46 if mode == "options" else 96
+	var n := _option_list().size() if mode == "options" else PAUSE_ITEMS.size()
+	var y0 := OPT_Y0 if mode == "options" else 96
+	var dy := OPT_DY if mode == "options" else 16
 	for i in n:
-		rows.append(Rect2(0, y0 + i * 16 - 3, logical_w, 16))
+		rows.append(Rect2(0, y0 + i * dy - 3, logical_w, dy))
 	return rows
 
 
@@ -1243,22 +1448,32 @@ func draw_overlay(ci: CanvasItem) -> void:
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
 			if mode == "press":
 				var t := "LAZARUS"
-				screen.draw_string_at(ci, t, Vector2(W / 2 - screen.string_width(t) / 2, 100), 29)
+				screen.draw_string_at(ci, t, Vector2(W / 2 - screen.string_width(t) / 2, 88), 29)
+				var h: String = Strings.T["pl"]["opt_language"]
+				screen.draw_string_at(ci, h, Vector2(W / 2 - screen.string_width(h) / 2, 114), 1)
+				var rects := _lang_rects()
+				for i in LANGS.size():
+					var r: Rect2 = rects[i]
+					var label: String = Strings.T[LANGS[i]]["lang_name"]
+					var sel: bool = D.settings["language"] == LANGS[i]
+					screen.draw_string_at(ci, label, Vector2(r.position.x + 8, r.position.y + 4), 0x10 if sel else 1)
+					if sel:
+						screen.fill(ci, Rect2(r.position.x + 6, r.end.y - 2, r.size.x - 12, 1), 0x10)
 				var p := Strings.t("press_key")
-				screen.draw_string_at(ci, p, Vector2(W / 2 - screen.string_width(p) / 2, 124), 12)
+				screen.draw_string_at(ci, p, Vector2(W / 2 - screen.string_width(p) / 2, 164), 12)
+				if is_phone() and portrait:                    # sideways the picture is much larger
+					var tip := Strings.t("landscape_tip")
+					screen.draw_string_at(ci, tip, Vector2(W / 2 - screen.string_width(tip) / 2, 190), 13)
 		"title":
-			var ox := (W - 320) / 2
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
-			screen.draw_frame(ci, 1181, Vector2(ox, 0))
-			var hl := [[1178, 139, 95], [1179, 113, 128], [1180, 116, 166]]   # (x, y + 6): play-field coordinates
-			if ui_sel < 3:
-				screen.draw_frame(ci, hl[ui_sel][0], Vector2(ox + hl[ui_sel][1], hl[ui_sel][2]))
-			var items := _title_items()
-			for i in range(3, items.size()):
-				var label := Strings.t(items[i]).to_upper()
-				var lw: int = screen.string_width(label)
-				screen.draw_string_at(ci, label, Vector2(ox + 160 - lw / 2, _title_font_y(i)),
-						_brightest("menu") if ui_sel == i else _dimmest_text("menu"), 0)
+			screen.draw_frame(ci, 1181, Vector2((W - 320) / 2, 0))
+			var grey := _grey("menu", 270)
+			for i in TITLE_ITEMS.size():
+				var label := Strings.t(TITLE_ITEMS[i]).to_upper()
+				var c := _brightest("menu") if ui_sel == i else _dimmest_text("menu")
+				if not _title_enabled(TITLE_ITEMS[i]):
+					c = grey
+				screen.draw_string_at(ci, label, Vector2(W / 2 - screen.string_width(label) / 2, _title_row_y(i)), c, 0)
 		"options":
 			if options_from == "title":
 				screen.fill(ci, Rect2(0, 0, W, H), 0)
@@ -1268,20 +1483,23 @@ func draw_overlay(ci: CanvasItem) -> void:
 			screen.draw_string_at(ci, title, Vector2(screen.view_w / 2 - screen.string_width(title) / 2, 22), 29)
 			var opts := _option_list()
 			var cx: int = screen.view_w / 2
+			var grey := _grey("game", 300)
 			for i in opts.size():
-				var y := 46 + i * 16
-				var c := 0x10 if i == ui_sel else 1
+				var y := OPT_Y0 + i * OPT_DY
+				var on := _option_enabled(opts[i][2])
+				var c := (0x10 if i == ui_sel else 1) if on else grey
 				screen.draw_string_at(ci, opts[i][0], Vector2(cx - 130, y), c)
 				if opts[i][1] != "":
-					screen.draw_string_at(ci, opts[i][1], Vector2(cx + 40, y), 12 if i == ui_sel else 13)
+					screen.draw_string_at(ci, opts[i][1], Vector2(cx + 40, y), (12 if i == ui_sel else 13) if on else grey)
+		"controls":
+			_draw_controls(ci)
 		"pause":
 			var cx: int = screen.view_w / 2
-			screen.fill(ci, Rect2(cx - 90, 60, 180, 100), 0)
+			screen.fill(ci, Rect2(cx - 90, 60, 180, 116), 0)
 			var t: String = Strings.t("paused")
 			screen.draw_string_at(ci, t, Vector2(cx - screen.string_width(t) / 2, 72), 29)
-			var items := [Strings.t("continue"), Strings.t("options"), Strings.t("quit_title")]
-			for i in 3:
-				var s: String = items[i]
+			for i in PAUSE_ITEMS.size():
+				var s: String = Strings.t(PAUSE_ITEMS[i])
 				screen.draw_string_at(ci, s, Vector2(cx - screen.string_width(s) / 2, 96 + i * 16),
 						0x10 if i == ui_sel else 1)
 		"credits", "gameover":
@@ -1312,9 +1530,28 @@ func _brightest(pal: String) -> int:
 
 
 func _dimmest_text(pal: String) -> int:
+	return _closest_brightness(pal, 300)
+
+
+func _grey(pal: String, target: int) -> int:
+	"""The most neutral palette grey (channels within 24) whose r + g + b is closest to target."""
+	var p: PackedByteArray = D.palettes[pal]
+	var best := _closest_brightness(pal, target)
+	var bd := 9999
+	for i in range(1, 256):
+		var r: int = p[i * 3]
+		var g: int = p[i * 3 + 1]
+		var b: int = p[i * 3 + 2]
+		if maxi(r, maxi(g, b)) - mini(r, mini(g, b)) <= 24 and absi(r + g + b - target) < bd:
+			bd = absi(r + g + b - target)
+			best = i
+	return best
+
+
+func _closest_brightness(pal: String, target: int) -> int:
+	"""The palette entry whose r + g + b (0..765) is closest to target."""
 	var p: PackedByteArray = D.palettes[pal]
 	var best := 0
-	var target := 300
 	var bd := 9999
 	for i in range(1, 256):
 		var v: int = p[i * 3] + p[i * 3 + 1] + p[i * 3 + 2]

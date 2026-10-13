@@ -29,6 +29,8 @@ var vy := 0                   # 0x62
 var state := 0                # 0x7a
 var fresh := true             # 0x6e == -1: run the state's entry code
 var frame := 1025             # 0x10
+var bob := 1025               # 0x08: the picture drawn, loaded with the box (a loop back to an earlier frame
+                              # does not reload it: crouching stays on its last frame while Down is held)
 var fcount := 0               # 0x38
 var bx0 := 0
 var by0 := 0
@@ -81,6 +83,7 @@ func _set_frame(f: int) -> void:
 
 
 func _load_box() -> void:
+	bob = frame
 	bx0 = D.desc_box[frame * 4]
 	by0 = D.desc_box[frame * 4 + 1]
 	bx1 = D.desc_box[frame * 4 + 2]
