@@ -10,8 +10,8 @@ an annotated decompilation, the Python tools that produce them, and the **Godot 
 playable, widescreen, touch controls).
 
 - **License**: MIT (Copyright 2026 mbialkowski) for code/docs; the original game (`original/`) and
-  everything derived from it (`assets/`, `reference/`) belong to their rights holders and are included at
-  the owner's request.
+  everything derived from it (`assets/`, `reference/`, `remake/data/`, screenshots) stay copyrighted by
+  Infinite Dreams and the other original rights holders, and are included at the owner's request.
 - **Primary branch**: `main`
 
 ## Structure
