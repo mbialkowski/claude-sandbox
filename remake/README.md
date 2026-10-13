@@ -141,5 +141,6 @@ the repository's Pages source must be "GitHub Actions").
 | `scripts/main.gd` | title, options, pause, game, pictures, endings, input, layout |
 | `tests/` | the tests above |
 
-The original game's assets are included at the repository owner's request; clarify the rights before
-publishing a build.
+The remake's code is MIT licensed; the original game's content (`data/` and everything converted from the
+original files) is not: all copyrights remain with Infinite Dreams and the other original rights holders
+(see the main README's License section). It is included at the repository owner's request.

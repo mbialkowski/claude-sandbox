@@ -93,6 +93,13 @@ godot --path remake                                                  # play the 
 
 ## License
 
-The code and documentation in this repository are MIT licensed (see `LICENSE`). Lazarus, its files and
-everything derived from them (`original/`, `assets/`, `reference/`) are the property of their respective
-rights holders and are included at the repository owner's request.
+* **Code and documentation written for this project are MIT licensed** (see [`LICENSE`](LICENSE)): the
+  remake's code (`remake/` apart from `remake/data/`), the Python tools (`tools/`), the tests and the docs.
+* **The original game and all of its content are not.** All copyrights to Lazarus and everything in it
+  (the program, graphics, animations, music, sound effects, texts, story and characters) remain with
+  **Infinite Dreams**, the original developer (the game was published in 1996 by TimSoft), and the other
+  original rights holders, such as the composer of the music. That covers the original files in
+  `original/` and everything derived from them: `assets/`, `reference/` (the decompilation),
+  `remake/data/` and the game data of the published web build, the screenshots in `docs/images/`, and the
+  game's texts and pictures quoted in the docs. They are included at the repository owner's request and
+  this repository grants no licence to them.
