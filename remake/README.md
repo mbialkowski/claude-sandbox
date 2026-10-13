@@ -41,7 +41,9 @@ HD, with keyboard, gamepad and on-screen touch controls.
 
 Details that differ from the original on purpose: shots touching harmful tiles do not hurt the hero (an
 original bug); the bullets of the hero's room are drawn clipped to it; there is a pause menu (the
-original's unused "Pauza" text exists) and an options screen; music while playing (above). The game starts
+original's unused "Pauza" text exists) and an options screen; music while playing (above); the title menu
+is a centred text list (Nowa gra, Graj dalej, Opcje, Sterowanie, Autorzy, Wyjście; Graj dalej greyed out
+without a save) over the original picture, whose painted GRA / AUTORZY / WYJŚCIE are only background. The game starts
 in Polish with the original texts; English (`data/text_en.json`) can be chosen on the first screen or in
 the options.
 

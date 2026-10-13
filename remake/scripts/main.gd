@@ -245,7 +245,7 @@ func _autotest(dir: String) -> void:
 	await _shot(dir, "14_game_over")
 	action_tap("use")
 	await wait_ticks(30)
-	ui_sel = 1
+	ui_sel = TITLE_ITEMS.find("credits")
 	_title_input("use")
 	await wait_ticks(40)
 	await _shot(dir, "15_credits_anim")
@@ -472,8 +472,9 @@ func tap(pos: Vector2) -> void:
 		return
 	match mode:
 		"title":
-			for i in _title_rects().size():
-				if _title_rects()[i].has_point(p):
+			var rects := _title_rects()
+			for i in rects.size():
+				if rects[i].has_point(p) and _title_enabled(TITLE_ITEMS[i]):
 					ui_sel = i
 					_title_input("use")
 					return
@@ -958,7 +959,7 @@ func _title() -> void:
 	picture_frame = -1
 	anim_frame = ""
 	hud_visible = false
-	ui_sel = maxi(0, _title_items().find("continue"))
+	ui_sel = TITLE_ITEMS.find("continue" if _title_enabled("continue") else "new")
 	text.clear()
 	audio.stop_all()
 	audio.pause_all(false)
@@ -969,41 +970,50 @@ func _title() -> void:
 	touch.refresh()
 
 
-func _title_items() -> Array:
-	var items := ["new", "credits", "quit"]
-	if FileAccess.file_exists(SAVE_PATH):
-		items.append("continue")
-	items.append("options")
-	items.append("controls")
-	return items
+# The title menu is a list of text items centred on the screen; the picture behind it (with the original's
+# painted GRA / AUTORZY / WYJŚCIE) is only a background.
+const TITLE_ITEMS := ["new", "continue", "options", "controls", "credits", "quit"]
+const TITLE_DY := 17
+
+
+func _title_enabled(item: String) -> bool:
+	"""Continue is greyed out until there is a saved game."""
+	return item != "continue" or FileAccess.file_exists(SAVE_PATH)
+
+
+func _title_row_y(i: int) -> int:
+	var line_h := int(D.font["line_height"])
+	return (H - (TITLE_ITEMS.size() - 1) * TITLE_DY - line_h) / 2 + i * TITLE_DY
 
 
 func _title_rects() -> Array:
-	var ox := (logical_w - 320) / 2
-	var rects := [Rect2(ox + 110, 90, 100, 30), Rect2(ox + 105, 123, 110, 30), Rect2(ox + 105, 161, 110, 30)]
-	for i in range(3, _title_items().size()):
-		rects.append(Rect2(ox + 90, _title_font_y(i) - 2, 140, 13))
+	var rects := []
+	for i in TITLE_ITEMS.size():
+		rects.append(Rect2(logical_w / 2 - 70, _title_row_y(i) - (TITLE_DY - 10) / 2, 140, TITLE_DY))
 	return rects
 
 
-func _title_font_y(i: int) -> int:
-	"""The text items below the picture's three (GRA, AUTORZY, WYJŚCIE), 13 px apart, centred around 193."""
-	var k := _title_items().size() - 3
-	return 193 - (k - 1) * 13 / 2 + (i - 3) * 13
+func _next_title(step: int) -> int:
+	var i := ui_sel
+	for k in TITLE_ITEMS.size():
+		i = (i + step + TITLE_ITEMS.size()) % TITLE_ITEMS.size()
+		if _title_enabled(TITLE_ITEMS[i]):
+			break
+	return i
 
 
 func _title_input(a: String) -> void:
-	var items := _title_items()
-	var n := items.size()
 	match a:
 		"up":
-			ui_sel = (ui_sel + n - 1) % n
+			ui_sel = _next_title(-1)
 			audio.play(33)
 		"down":
-			ui_sel = (ui_sel + 1) % n
+			ui_sel = _next_title(1)
 			audio.play(33)
 		"use", "jetpack", "fire":
-			match items[ui_sel]:
+			if not _title_enabled(TITLE_ITEMS[ui_sel]):
+				return
+			match TITLE_ITEMS[ui_sel]:
 				"new":
 					_new_game()
 				"credits":
@@ -1022,7 +1032,7 @@ func _title_input(a: String) -> void:
 					options_from = "title"
 					_open_controls()
 		"pause":
-			ui_sel = 2
+			ui_sel = TITLE_ITEMS.find("quit")
 	screen.overlay_layer.queue_redraw()
 
 
@@ -1147,6 +1157,8 @@ func _credits_anim() -> void:
 		i = (i + 1) % n
 	if mode == "title":
 		palette.set_now("menu")
+		ui_sel = TITLE_ITEMS.find("credits")
+		screen.overlay_layer.queue_redraw()
 
 
 func _credits_scroller() -> void:
@@ -1320,7 +1332,7 @@ func _leave_options() -> void:
 		ui_sel = PAUSE_ITEMS.find("options")
 	else:
 		_title()
-		ui_sel = _title_items().find("options")
+		ui_sel = TITLE_ITEMS.find("options")
 	screen.overlay_layer.queue_redraw()
 	touch.refresh()
 
@@ -1358,7 +1370,7 @@ func _leave_controls() -> void:
 		ui_sel = PAUSE_ITEMS.find("controls")
 	else:
 		_title()
-		ui_sel = _title_items().find("controls")
+		ui_sel = TITLE_ITEMS.find("controls")
 	screen.overlay_layer.queue_redraw()
 	touch.refresh()
 
@@ -1453,18 +1465,15 @@ func draw_overlay(ci: CanvasItem) -> void:
 					var tip := Strings.t("portrait_tip")
 					screen.draw_string_at(ci, tip, Vector2(W / 2 - screen.string_width(tip) / 2, 190), 13)
 		"title":
-			var ox := (W - 320) / 2
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
-			screen.draw_frame(ci, 1181, Vector2(ox, 0))
-			var hl := [[1178, 139, 95], [1179, 113, 128], [1180, 116, 166]]   # (x, y + 6): play-field coordinates
-			if ui_sel < 3:
-				screen.draw_frame(ci, hl[ui_sel][0], Vector2(ox + hl[ui_sel][1], hl[ui_sel][2]))
-			var items := _title_items()
-			for i in range(3, items.size()):
-				var label := Strings.t(items[i]).to_upper()
-				var lw: int = screen.string_width(label)
-				screen.draw_string_at(ci, label, Vector2(ox + 160 - lw / 2, _title_font_y(i)),
-						_brightest("menu") if ui_sel == i else _dimmest_text("menu"), 0)
+			screen.draw_frame(ci, 1181, Vector2((W - 320) / 2, 0))
+			var grey := _grey("menu", 270)
+			for i in TITLE_ITEMS.size():
+				var label := Strings.t(TITLE_ITEMS[i]).to_upper()
+				var c := _brightest("menu") if ui_sel == i else _dimmest_text("menu")
+				if not _title_enabled(TITLE_ITEMS[i]):
+					c = grey
+				screen.draw_string_at(ci, label, Vector2(W / 2 - screen.string_width(label) / 2, _title_row_y(i)), c, 0)
 		"options":
 			if options_from == "title":
 				screen.fill(ci, Rect2(0, 0, W, H), 0)
