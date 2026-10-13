@@ -147,6 +147,21 @@ func _run() -> void:
 			"room %d,%d state %d" % [sim.hero.col, sim.hero.row, sim.hero.state])
 	_check("teleporting empties the jetpack", sim.state.fuel == 0)
 
+	# holding Down: the hero crouches and stays on the last crouch picture (the original's frame loop
+	# steps back without reloading the picture)
+	sim = _new_sim(8, 1, 36, 80)
+	var pictures := {}
+	for i in 60:
+		sim.state.key_down = true
+		sim.tick()
+		if i >= 20:
+			pictures[sim.hero.bob] = true
+	_check("holding Down keeps the hero crouched", pictures.size() == 1 and sim.hero.state in [10, 11],
+			"pictures %s state %d" % [pictures.keys(), sim.hero.state])
+	sim.state.key_down = false
+	await _ticks(sim, 20)
+	_check("releasing Down stands him up", sim.hero.state in [0, 1], "state %d" % sim.hero.state)
+
 	# damage from the turret shots in the start room, then death
 	sim = _new_sim(7, 0, 40, 117)
 	var e0: int = sim.state.energy

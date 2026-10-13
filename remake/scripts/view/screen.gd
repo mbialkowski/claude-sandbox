@@ -266,7 +266,7 @@ func _draw_hero(ci: CanvasItem, sim) -> void:
 	if not game.hero_visible:
 		return
 	var pos := Vector2(h.col * ROOM_W + h.x, h.row * ROOM_H + h.y)
-	draw_frame(ci, h.frame, pos, null, sim.state.hit_colour if h.hit else -1)
+	draw_frame(ci, h.bob, pos, null, sim.state.hit_colour if h.hit else -1)
 
 
 func _draw_hud(ci: CanvasItem) -> void:
