@@ -18,6 +18,49 @@ The original:
 |---|---|---|
 | ![](docs/images/screenshots/08_title_menu.png) | ![](docs/images/screenshots/09_gameplay_start_room.png) | ![](docs/images/screenshots/11_dialogue_wallet.png) |
 
+## How it was made
+
+Everything in this repository (the reverse engineering of the original executable and data files, the
+documentation, the Python tools, the annotated decompilation and the Godot remake with its tests) was
+produced by **Claude**, Anthropic's AI model, working in Claude Code, under the supervision of a human
+(the repository owner). The human set the direction, played the builds and reported what to change;
+Claude did the analysis, wrote the code and docs, and checked the results against the original running in
+DOSBox.
+
+## Compared to the original
+
+The game rules are the original's, ported from the decompiled code and run at its 50 Hz: hero and object
+movement match the original tick for tick (63 golden traces), the rooms match the original pixel for
+pixel, and a scripted playthrough of the winning route (every item, lock, flag and dialogue on the way)
+reaches the ending. Around that:
+
+**Fixes**
+
+* Shots that touch harmful tiles no longer hurt the hero (an original bug in `TileCollide`). The
+  original's other quirks are kept ([docs 4.8](docs/reverse-engineering/04-game-content.md)).
+
+**Upgrades and new features**
+
+* **Runs anywhere**: in any current browser on computers and phones, with no DOS, DOS4GW or sound-card
+  setup.
+* **Saving**: the game saves each time the hero enters a room and *Graj dalej* (continue) resumes there;
+  in the original one death was the end.
+* **Widescreen and HD**: up to 16:9 and wider, with the neighbouring rooms shown (dimmed) around the
+  hero's room and a camera that glides between rooms; crisp, evenly sized pixels at any resolution; on 4:3
+  screens it looks like the original. The VGA palette effects (fades, the bomb alarm, explosions) are exact.
+* **Touch controls** for phones and tablets (pad and buttons, sideways or upright, tap the HUD to switch
+  item or weapon, tap to continue a dialogue), **gamepad** support and extra keys (WASD and others).
+* **English**: all 293 messages translated, English subtitles for the text painted into the intro, and a
+  language choice on the first screen (the original Polish is the default).
+* **Menus**: a title menu (Nowa gra, Graj dalej, Opcje, Sterowanie, Autorzy, Wyjście), a pause menu, an
+  options screen and a controls screen that lists the keys or the touch buttons.
+* **Options**: seamless room edges (instead of the original's jump at the edges), neighbouring rooms on/off
+  and dimmed, smooth or sharp scaling, touch controls, sound on/off, music and effect volumes, music while
+  playing (the original has none during the game; off by default), full screen.
+* **Phones**: installs as a full-screen app (*Add to Home Screen*), plays sound even with an iPhone in
+  silent mode, and suggests turning the phone sideways.
+* **Intro**: any key or tap skips it, and its last picture goes on to the title by itself.
+
 ## What is here
 
 * [`docs/reverse-engineering/`](docs/reverse-engineering/README.md) — complete write-up of the executable,
