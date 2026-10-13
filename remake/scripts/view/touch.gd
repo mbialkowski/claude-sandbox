@@ -182,5 +182,8 @@ func _draw() -> void:
 		var label: String = Strings.t(b["label"])
 		var fs := int(maxf(10.0, r * 0.42))
 		var w := font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
+		if w > r * 1.6:                                # long labels (JETPACK) shrink to fit the circle
+			fs = int(fs * r * 1.6 / w)
+			w = font.get_string_size(label, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
 		draw_string(font, c + Vector2(-w / 2.0, fs * 0.35), label, HORIZONTAL_ALIGNMENT_LEFT, -1, fs,
 				Color(1, 1, 1, 0.85))

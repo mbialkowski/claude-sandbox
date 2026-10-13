@@ -57,7 +57,7 @@ or the touch buttons when the touch controls are on.
 | crouch (pick up), menu down | ↓ (or S) | d-pad down | pad down |
 | fire | Ctrl (or J, X) | X, right trigger | STRZAŁ (FIRE) |
 | use / talk / confirm | Enter (or E, K) | B | UŻYJ (USE), tap |
-| jetpack on/off | Space (or L) | Y | PLECAK (JET) |
+| jetpack on/off | Space (or L) | Y | JETPACK |
 | previous / next item | , . (or Q, Tab) | LB / RB | RZECZ (ITEM), tap the HUD item |
 | weapon | 1–6, R = next | Back | BROŃ (GUN), tap the HUD weapon |
 | pause / options | Esc (or P) | Start | II |
