@@ -60,6 +60,9 @@ the options.
 | pause / options | Esc (or P) | Start | II |
 | full screen | F11, Alt+Enter | | [ ], options |
 
+On iPhone the browsers cannot show a web page full screen, so the [ ] button and the option are hidden
+there; *Share → Add to Home Screen* installs the game as a full-screen app instead.
+
 Dialogues continue with Fire, Enter, Space or a tap. The original's cheats work (`IDMORT`, `IDSIAR`,
 `IDLUFA`, `IDBULL`). The game is saved each time the hero enters a room; **Continue** on the title screen
 resumes from there (the original had no saving: one death was game over).

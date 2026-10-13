@@ -65,6 +65,7 @@ var credits_y := 0.0
 var notice := ""
 var notice_ticks := 0
 var last_saved_room := Vector2i(-1, -1)
+var fullscreen_supported = null               # see can_fullscreen()
 
 const SAVE_PATH := "user://save.json"
 
@@ -1199,7 +1200,7 @@ func _option_list() -> Array:
 		[Strings.t("opt_sfx"), "%d%%" % roundi(float(s["sfx_volume"]) * 100), "sfx_volume"],
 		[Strings.t("opt_fullscreen"), Strings.t("on") if is_fullscreen() else Strings.t("off"), "fullscreen"],
 		[Strings.t("back"), "", "back"],
-	]
+	].filter(func(row): return row[2] != "fullscreen" or can_fullscreen())
 
 
 func _open_options() -> void:
@@ -1272,6 +1273,17 @@ func _leave_options() -> void:
 		ui_sel = 3
 	screen.overlay_layer.queue_redraw()
 	touch.refresh()
+
+
+func can_fullscreen() -> bool:
+	"""iPhone browsers cannot show a web page full screen (only "Add to Home Screen" gives a full-screen app),
+	so the button and the option are hidden there."""
+	if not OS.has_feature("web"):
+		return true
+	if fullscreen_supported == null:
+		fullscreen_supported = bool(JavaScriptBridge.eval(
+				"!!(document.fullscreenEnabled || document.webkitFullscreenEnabled)", true))
+	return fullscreen_supported
 
 
 func is_fullscreen() -> bool:
