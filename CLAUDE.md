@@ -4,7 +4,7 @@ Context and conventions for AI assistants working in this repository.
 
 ## Repository overview
 
-**claude-sandbox** now hosts the groundwork for a **remake of Lazarus** (Infinite Dreams, 1996, MS-DOS,
+**lazarus-revibed** (formerly claude-sandbox) hosts a **remake of Lazarus** (Infinite Dreams, 1996, MS-DOS,
 Polish). It contains reverse-engineering documentation, the original's assets converted to modern formats,
 an annotated decompilation, the Python tools that produce them, and the **Godot 4 remake** (`remake/`, web
 playable, widescreen, touch controls).
@@ -17,7 +17,7 @@ playable, widescreen, touch controls).
 ## Structure
 
 ```
-claude-sandbox/
+lazarus-revibed/
 ├── README.md
 ├── CLAUDE.md
 ├── LICENSE
@@ -63,6 +63,9 @@ claude-sandbox/
   `remake/scripts/sim/` must keep matching the original: run `remake/tests/golden.gd` and `scenarios.gd`
   (commands in `remake/README.md`) after changing them. GDScript: type variables explicitly when the value
   comes from an untyped object (inference from Variant is an error).
+- Remake menu texts live in `remake/scripts/game/strings.gd` (Polish first, English): only characters of the
+  original font (ASCII + Polish letters) and U+2010 for a short hyphen. The web build is published by CI from
+  `main` to <https://mbialkowski.github.io/lazarus-revibed/>; after UI changes run `remake/tests/web_smoke.mjs`.
 - Tools must run with Python 3.9+ and only `Pillow` + `capstone` (`tools/requirements.txt`); external
   programs are optional extras (`openmpt123`/`oggenc` for `--render-music`, `dosbox`/`Xvfb`/`xdotool` for
   `pixel_check.py`).

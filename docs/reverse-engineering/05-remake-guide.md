@@ -87,8 +87,12 @@ repository owner's request. Clarify the rights situation before shipping any ori
 | quests, dialogue, shops | `script_logic.json` run by a small VM (`script_vm.gd`); dialogues freeze the game like `Dlg_Begin` | `tests/walkthrough.gd`: the 109 steps of `walkthrough.json` reach the Door of Time; `tests/scenarios.gd` |
 | graphics | drawn in palette indices into a 240-px-high off-screen image, coloured by a shader with the VGA palette, so `FadePalette`, the alarm palette and `Hero_Explode` work exactly; sharp scaling to any HD size | rooms on entry match `assets/rooms/png_objects/` |
 | screen | widescreen: the hero's room centred, neighbouring rooms shown dimmed (built as they look on entry, live only when entered), the original HUD panel on the right; 4:3 looks like the original | |
-| controls | keyboard as the original plus WASD, gamepad, multi-touch on-screen pad and buttons; dialogues/menus by tap | `tests/web_smoke.mjs` (headless Chromium, desktop and phone) |
-| extras | Polish/English (chosen on the first screen or in the options), music while playing (an option, off by default: the original has none), options, pause, saving on room entry + Continue | |
+| controls | keyboard as the original plus WASD, gamepad, multi-touch on-screen pad and buttons (over the picture sideways, below it upright; [ ] only where the browser can go full screen); dialogues/menus by tap; a *Sterowanie* screen lists them | `tests/web_smoke.mjs` (headless Chromium, desktop and phone) |
+| hero picture | the hero draws the picture loaded with its frame's box (hero +0x08), not the frame index, so a crouch held with ↓ stays on its last picture (3.4, states 10/11) | `tests/scenarios.gd` |
+| intro | `PlayIntro` timings; the 320×240 files end on page 0 like the original's Mode X page flipping (6.2), so the intro ends on the full "WYDOSTAŃ MNIE STĄD!" | screenshots vs. a DOSBox recording |
+| audio | modules rendered to Ogg, sounds as 8-bit PCM; music only in the intro, title and credits like the original; in the browser the page resumes audio after every input and plays through iPhone silent mode | Chromium audio probes |
+| extras | Polish/English (chosen on the first screen or in the options); a title menu as one text list (Nowa gra, Graj dalej, Opcje, Sterowanie, Autorzy, Wyjście) over the original picture; pause menu; options incl. sound on/off and music while playing (off by default: the original has none); saving on room entry + Graj dalej; on phones held upright a tip to turn them sideways | |
 
 Deliberate differences: shots touching harmful tiles do not hurt the hero (in the original `TileCollide`
-sets `g_heroHit` for them); room edges can optionally be seamless.
+sets `g_heroHit` for them); room edges can optionally be seamless; the menus and saving; the intro's last
+picture goes on to the title by itself after 4 s (the original waits for a key).

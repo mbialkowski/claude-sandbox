@@ -3,7 +3,7 @@
 A remake of **Lazarus** (Infinite Dreams, 1996) in **Godot 4.7**, playable in a web browser, widescreen and
 HD, with keyboard, gamepad and on-screen touch controls.
 
-**Play: <https://mbialkowski.github.io/claude-sandbox/>** (built and published from `main` by CI).
+**Play: <https://mbialkowski.github.io/lazarus-revibed/>** (built and published from `main` by CI).
 
 ![Start room, widescreen](../docs/images/remake/start_room_16x9.png)
 
@@ -29,29 +29,50 @@ HD, with keyboard, gamepad and on-screen touch controls.
   world as one continuous map instead (the hero changes room when his middle crosses the edge).
 
 * **Intro and endings.** The original's 110-second intro (FLC animations and scrolling story pages, with
-  *recollection*) plays at start-up with the original timings — with English subtitles for the painted-in
-  Polish text when the language is English; any key or a tap skips it. Its last picture ("WYDOSTAŃ MNIE
-  STĄD!") stays 4 seconds, or until a key or tap, before the title (the original waits for a key). The credits animation, the game-over
-  picture, the joke ending and the winning ending with the credits scroller are there too. In the browser a
-  "press a key" screen comes first (browsers only start audio after an input); it also picks the language
-  (Polski / English: arrow keys, a click or a tap).
-* **Music while playing.** The original is silent during the game (its two modules play only in the intro,
-  the title menu and the end credits), and so is the remake by default; Options → *Music while playing*
-  plays *recollection* and *multifruit juice* in turn while you play.
+  *recollection*) plays at start-up with the original timings, with English subtitles for the painted-in
+  Polish text when the language is English; any key or a tap skips it. It ends, like the original, on the
+  full "WYDOSTAŃ MNIE STĄD!" (docs 6.2: Mode X page flipping hides the animation's last frame), which stays
+  4 seconds, or until a key or tap, before the title (the original waits for a key). The credits animation,
+  the game-over picture, the joke ending and the winning ending with the credits scroller are there too.
+* **Music only where the original has it.** The two modules play in the intro, on the title screen and
+  in the end credits; the game itself has only sound effects. Options → *Muzyka w grze* (music while
+  playing, off by default) plays *recollection* and *multifruit juice* in turn during the game.
 
 Details that differ from the original on purpose: shots touching harmful tiles do not hurt the hero (an
-original bug); the bullets of the hero's room are drawn clipped to it; there is a pause menu (the
-original's unused "Pauza" text exists) and an options screen; music while playing (above); the title menu
-is a text list (Nowa gra, Graj dalej, Opcje, Sterowanie, Autorzy, Wyjście; Graj dalej greyed out without a
-save) over the original picture, whose painted GRA / AUTORZY / WYJŚCIE are only background (the list's
-Wyjście sits on the painted one). The game starts
-in Polish with the original texts; English (`data/text_en.json`) can be chosen on the first screen or in
-the options.
+original bug); the bullets of the hero's room are drawn clipped to it; the menus below (the original had
+only GRA / AUTORZY / WYJŚCIE and no pause; its unused "Pauza" text exists); music while playing as an
+option; saving. The game starts in Polish with the original texts; English (`data/text_en.json`) can be
+chosen on the first screen or in the options.
+
+## Menus
+
+* **First screen** (in the browser; browsers only start audio after an input): Polski / English, chosen
+  with the arrow keys or a click / tap on the name, then any key. On a phone held upright it also says
+  "Obróć telefon poziomo - wygodniej się gra" (turn the phone sideways: the picture is much larger).
+* **Title menu**: NOWA GRA, GRAJ DALEJ, OPCJE, STEROWANIE, AUTORZY, WYJŚCIE as one list over the original
+  picture, whose painted GRA / AUTORZY / WYJŚCIE are only background (the list's WYJŚCIE sits on the
+  painted one). GRAJ DALEJ (continue) is greyed out until there is a saved game: the game is saved each
+  time the hero enters a room (the original had no saving: one death was game over). In the browser
+  WYJŚCIE only shows "Dzięki za grę w Lazarusa!".
+* **Pause menu** (Esc, Start, the II button): Graj dalej, Opcje, Sterowanie, Wyjdź do menu.
+* **Sterowanie** (controls): what each key does, or each touch button when the touch controls are on.
+* **Opcje** (options), saved in `user://settings.cfg`:
+
+| option | values | |
+|---|---|---|
+| Język / Language | Polski, English | |
+| Sąsiednie komnaty | tak / nie | show the neighbouring rooms |
+| Przyciemnij sąsiednie | tak / nie | dim them |
+| Skalowanie | gładkie / ostre | sharp-bilinear or nearest-pixel scaling |
+| Przejścia między komnatami | jak w oryginale / płynne | room edges (see Design) |
+| Sterowanie dotykowe | auto / tak / nie | touch controls (auto: on touch screens) |
+| Dźwięk | tak / nie | all sound; while off the three rows below are greyed out and skipped |
+| Muzyka | 0–100 % | music volume |
+| Muzyka w grze | nie / tak | music while playing (the original has none) |
+| Efekty | 0–100 % | sound effect volume |
+| Pełny ekran | tak / nie | hidden where the browser cannot go full screen (iPhone) |
 
 ## Controls
-
-The game shows them too: *Sterowanie* (Controls) on the title screen and in the pause menu lists the keys,
-or the touch buttons when the touch controls are on.
 
 | action | keyboard | gamepad | touch |
 |---|---|---|---|
@@ -66,13 +87,13 @@ or the touch buttons when the touch controls are on.
 | pause / options | Esc (or P) | Start | II |
 | full screen | F11, Alt+Enter | | [ ], options |
 
-On iPhone the browsers cannot show a web page full screen, so the [ ] button and the option are hidden
-there; *Share → Add to Home Screen* installs the game as a full-screen app instead.
+Holding ↓ keeps the hero crouched, as in the original. Dialogues continue with Fire, Enter, Space or a
+tap. The original's cheats work (`IDMORT`, `IDSIAR`, `IDLUFA`, `IDBULL`).
 
-Options also has *Dźwięk* (Sound) on/off: off silences everything, and the music and effect settings
-are greyed out until it is back on. Dialogues continue with Fire, Enter, Space or a tap. The original's cheats work (`IDMORT`, `IDSIAR`,
-`IDLUFA`, `IDBULL`). The game is saved each time the hero enters a room; **Continue** on the title screen
-resumes from there (the original had no saving: one death was game over).
+**Phones.** Sideways the touch pad and buttons lie over the picture; upright they sit below it. The
+[ ] button only appears where the browser can go full screen (not on iPhone, where *Share → Add to Home
+Screen* installs the game as a full-screen app locked to landscape). Sound plays even with an iPhone in
+silent mode (see Running).
 
 ## Running
 
@@ -83,8 +104,7 @@ godot --headless --path remake --export-release Web remake/build/web/index.html
 ```
 
 The web export is single-threaded (no special HTTP headers needed), so `remake/build/web/` can be served
-by any static web server or GitHub Pages; it installs as a full-screen landscape app (PWA) on phones. On a
-phone held upright the first screen suggests turning it sideways, where the picture is much larger.
+by any static web server or GitHub Pages; it installs as a full-screen landscape app (PWA) on phones.
 Export templates: Godot 4.7.2 (`Editor → Manage Export Templates`).
 
 Sound in the browser starts with the first key, click or tap. A small script in the page head (the Web
@@ -96,7 +116,7 @@ switches) and makes it play while an iPhone is in silent mode, which otherwise m
 ```bash
 godot --headless --path remake --script res://tests/check.gd       # every script parses
 godot --headless --path remake --script res://tests/golden.gd      # 63/63 golden traces (hero + objects)
-godot --headless --path remake --script res://tests/scenarios.gd   # coins, shop, save/load, shooting, teleport, death
+godot --headless --path remake --script res://tests/scenarios.gd   # coins, shop, save/load, shooting, teleport, crouch, death
 godot --headless --path remake --script res://tests/walkthrough.gd # the solver's winning route, 109 steps
 godot --path remake -- --shots=/tmp/shots                          # screenshots of title, start, walk
 node remake/tests/web_smoke.mjs remake/build/web /tmp/web-shots    # web build in headless Chromium
@@ -107,7 +127,7 @@ decompiled movement code) through the remake's hero and objects and compares eve
 `walkthrough.gd` replays `assets/gamedata/walkthrough.json` (`tools/completability.py`) through the remake's
 room objects and script VM — every item, lock, chain, flag and handler on the way to the Door of Time —
 and must end with the winning ending. CI (`.github/workflows/remake-web.yml`) runs all of them, exports the
-web build and publishes it on GitHub Pages from `main` (<https://mbialkowski.github.io/claude-sandbox/>;
+web build and publishes it on GitHub Pages from `main` (<https://mbialkowski.github.io/lazarus-revibed/>;
 the repository's Pages source must be "GitHub Actions").
 
 ## Layout
@@ -116,7 +136,7 @@ the repository's Pages source must be "GitHub Actions").
 |---|---|
 | `data/` | **generated** by `tools/build_remake_data.py`: index-image atlases, rooms and object records, texts, handlers, sounds, music, pictures (never edit by hand) |
 | `scripts/sim/` | the game rules: `sim.gd` (the 50 Hz GameLoop), `hero.gd`, `room.gd`, `room_object.gd`, `bullet.gd`, `state.gd` |
-| `scripts/game/` | `data.gd` (loading, settings), `script_vm.gd` (quest/dialogue handlers), `audio.gd`, `strings.gd` (menu texts) |
+| `scripts/game/` | `data.gd` (loading, settings), `script_vm.gd` (quest/dialogue handlers), `audio.gd`, `strings.gd` (menu texts, Polish and English: only the original font's characters, U+2010 for a short hyphen) |
 | `scripts/view/` | `screen.gd` (indexed renderer), `palette.gd` + `palette.gdshader`, `text_layer.gd` (dialogue font), `touch.gd` |
 | `scripts/main.gd` | title, options, pause, game, pictures, endings, input, layout |
 | `tests/` | the tests above |

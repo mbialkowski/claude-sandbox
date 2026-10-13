@@ -6,7 +6,7 @@ groundwork it is built on.
 
 **[`remake/`](remake/README.md)** — the game in Godot 4.7: plays in a web browser, widescreen / HD with
 crisp pixels, keyboard, gamepad and on-screen touch controls, Polish or English, the original's rules
-ported tick for tick. **Play it in the browser: <https://mbialkowski.github.io/claude-sandbox/>**
+ported tick for tick. **Play it in the browser: <https://mbialkowski.github.io/lazarus-revibed/>**
 
 | widescreen | phone (touch) |
 |---|---|
