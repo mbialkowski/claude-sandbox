@@ -43,7 +43,7 @@ var settings := {
 	"touch_controls": "auto",           # auto / on / off
 	"sfx_volume": 0.8,
 	"music_volume": 0.7,
-	"game_music": true,                 # the remake's addition: the two modules while playing
+	"game_music": false,                # the remake's option: the two modules while playing (the original is silent)
 	"show_neighbours": true,
 	"room_edges": "classic",            # classic: the original's room transitions; seamless: no jump
 }

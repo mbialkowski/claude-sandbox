@@ -35,8 +35,8 @@ HD, with keyboard, gamepad and on-screen touch controls.
   "press a key" screen comes first (browsers only start audio after an input); it also picks the language
   (Polski / English: arrow keys, a click or a tap).
 * **Music while playing.** The original is silent during the game (its two modules play only in the intro,
-  the title menu and the end credits). The remake plays *recollection* and *multifruit juice* in turn while
-  you play; Options → *Music while playing* turns it off for the original's silence.
+  the title menu and the end credits), and so is the remake by default; Options → *Music while playing*
+  plays *recollection* and *multifruit juice* in turn while you play.
 
 Details that differ from the original on purpose: shots touching harmful tiles do not hurt the hero (an
 original bug); the bullets of the hero's room are drawn clipped to it; there is a pause menu (the
