@@ -28,6 +28,7 @@ const T := {
 		"ctl_dialogue": "Dalej w rozmowie", "ctl_key_dialogue": "Enter, Spacja, Ctrl",
 		"ctl_touch_dialogue": "dotknij ekranu",
 		"ctl_menu": "Wybór w menu", "ctl_key_menu": "strzałki, Enter", "ctl_touch_menu": "dotknij opcji",
+		"portrait_tip": "Obróć telefon pionowo - wygodniej się gra",
 		"press_key": "Naciśnij klawisz lub dotknij ekranu", "skip": "Spacja / Esc / dotknij - pomiń",
 	},
 	"en": {
@@ -55,6 +56,7 @@ const T := {
 		"ctl_dialogue": "Continue a dialogue", "ctl_key_dialogue": "Enter, Space, Ctrl",
 		"ctl_touch_dialogue": "tap the screen",
 		"ctl_menu": "Choose in a menu", "ctl_key_menu": "arrows, Enter", "ctl_touch_menu": "tap an option",
+		"portrait_tip": "Turn your phone upright - it plays better",
 		"press_key": "Press a key or tap the screen", "skip": "Space / Esc / tap - skip",
 		# subtitles for the text painted into the intro's pictures (docs 06, 6.2)
 		"intro_1": "...it all started quite normally, and I would never have guessed it would end so badly...",

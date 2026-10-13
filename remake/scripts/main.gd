@@ -66,6 +66,7 @@ var notice := ""
 var notice_ticks := 0
 var last_saved_room := Vector2i(-1, -1)
 var fullscreen_supported = null               # see can_fullscreen()
+var phone = null                              # see is_phone()
 
 const SAVE_PATH := "user://save.json"
 
@@ -1324,6 +1325,14 @@ func _leave_options() -> void:
 	touch.refresh()
 
 
+func is_phone() -> bool:
+	"""A phone's browser: Android or iPhone, and a screen whose short side is under 600 CSS px (not a tablet)."""
+	if phone == null:
+		phone = OS.has_feature("web") and bool(JavaScriptBridge.eval(
+				"/Android|iPhone|iPod/.test(navigator.userAgent) && Math.min(screen.width, screen.height) < 600", true))
+	return phone
+
+
 func can_fullscreen() -> bool:
 	"""iPhone browsers cannot show a web page full screen (only "Add to Home Screen" gives a full-screen app),
 	so the button and the option are hidden there."""
@@ -1440,6 +1449,9 @@ func draw_overlay(ci: CanvasItem) -> void:
 						screen.fill(ci, Rect2(r.position.x + 6, r.end.y - 2, r.size.x - 12, 1), 0x10)
 				var p := Strings.t("press_key")
 				screen.draw_string_at(ci, p, Vector2(W / 2 - screen.string_width(p) / 2, 164), 12)
+				if is_phone() and not portrait:                # the touch controls fit best below the picture
+					var tip := Strings.t("portrait_tip")
+					screen.draw_string_at(ci, tip, Vector2(W / 2 - screen.string_width(tip) / 2, 190), 13)
 		"title":
 			var ox := (W - 320) / 2
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
