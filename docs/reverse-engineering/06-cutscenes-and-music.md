@@ -28,8 +28,14 @@ Music: `recollection` starts just before the intro and is stopped after it (`mai
 three primitives:
 
 * **`PlayFLC(file, ticks_per_frame, last_frame)`** (`0x1E1C4`) – shows frames `0..last_frame` (looping the
-  file if it has fewer frames), waiting `ticks_per_frame` 50 Hz ticks between frames; `-1` = use the file's
+  file if it has fewer frames: after the last frame comes the file's ring frame, which brings back frame 0,
+  then frame 1…), waiting `ticks_per_frame` 50 Hz ticks before each frame; `-1` = use the file's
   speed converted with `ms * 7 / 100` (66 ms → 4 ticks). Space or Esc aborts the whole intro.
+  The 320×240 files play in Mode X with two video pages: each frame is drawn to the hidden page, which is
+  then shown (`FLC_ShowModeX`, `0x1E140`), and PlayFLC ends by showing page 0 again. With an odd number of
+  frames the last one is therefore never seen: DATA10's seventh frame (the ring frame = the empty balloon)
+  flashes on page 1 and the full "WYDOSTAŃ MNIE STĄD!" (frame 5, page 0) stays on screen — confirmed by
+  recording the original in DOSBox.
 * **`ShowPCX(file, scroll_lines, hold_ticks)`** (`0x1E4D4`) – shows the top 320×200 of a 256-colour PCX,
   waits `hold_ticks`, then scrolls down one line every 3 ticks for `scroll_lines` lines (so a 320×400 PCX is a
   two-page text that scrolls up).
@@ -55,7 +61,7 @@ three primitives:
 | 99.1 | PlayFLC | DATA13 (3 fr) | X | 8, 31 frames | balloon **I-7** |
 | 104.1 | PlayFLC | DATA14 (4 fr) | X | 10, 5 frames | empty balloon |
 | 105.1 | PlayFLC | DATA10 (6 fr) | X | 30 ticks/fr, 7 frames | "WYDOSTAŃ MNIE STĄD!" written out piece by piece (**I-8**) |
-| 109.3 | wait | | | until Enter/Ctrl/Space | |
+| 109.3 | wait | | | until Enter/Ctrl/Space | the full sentence stays (see PlayFLC above) |
 
 Storyboards (every frame): `assets/animations/storyboards/DATAxx.png`; individual frames in
 `assets/animations/DATAxx/`.

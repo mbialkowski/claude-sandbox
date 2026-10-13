@@ -22,6 +22,7 @@ const ACTIONS := ["left", "right", "up", "down", "fire", "use", "jetpack", "item
 		"fullscreen"]
 const CONTINUE_ACTIONS := ["fire", "use", "jetpack"]
 const LANGS := ["pl", "en"]
+const INTRO_END_TICKS := 200                         # "WYDOSTAŃ MNIE STĄD!" stays 4 s before the title
 
 var D
 var viewport: SubViewport
@@ -255,7 +256,7 @@ func _intro_shots(dir: String) -> void:
 	D.settings["language"] = "en"
 	_intro()
 	var elapsed := 0
-	for t in [3, 12, 24, 40, 62, 75, 100, 108]:
+	for t in [3, 12, 24, 40, 62, 75, 100, 108, 111, 115]:
 		await wait_ticks(t * 50 - elapsed)
 		elapsed = t * 50
 		await _shot(dir, "intro_%03d" % t)
@@ -355,6 +356,9 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_ENTER and event.alt_pressed:
 			toggle_fullscreen()
 			return
+		if mode == "intro" and not event.is_action("fullscreen"):
+			_skip_intro()
+			return
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		tap(event.position)
 		return
@@ -396,6 +400,9 @@ func _on_press(a: String) -> void:
 			"use", "jetpack":
 				_choose(menu["sel"])
 		return
+	if mode == "intro":
+		_skip_intro()
+		return
 	if waiting:
 		if a in CONTINUE_ACTIONS:
 			waiting = false
@@ -404,11 +411,6 @@ func _on_press(a: String) -> void:
 	match mode:
 		"press":
 			_press_input(a)
-			return
-		"intro":
-			if a in CONTINUE_ACTIONS or a == "pause":
-				intro_skip = true
-				continue_pressed.emit()
 			return
 		"title":
 			_title_input(a)
@@ -446,9 +448,7 @@ func tap(pos: Vector2) -> void:
 		_intro()
 		return
 	if mode == "intro":
-		intro_skip = true
-		waiting = false
-		continue_pressed.emit()
+		_skip_intro()
 		return
 	if waiting:
 		waiting = false
@@ -844,15 +844,22 @@ func _intro_frame(name: String, i: int) -> Texture2D:
 
 
 func _intro_flc(name: String, ticks_per_frame: int, last: int, sub := "") -> void:
-	"""PlayFLC: frames 0..last, looping the file if it is shorter."""
+	"""PlayFLC: frames 0..last, looping the file if it is shorter (its ring frame brings back frame 0).
+	320x240 files play in Mode X, flipping between two video pages, and PlayFLC ends by showing page 0:
+	an odd number of frames leaves the second-to-last one on screen (DATA10 ends on the full sentence)."""
 	if intro_skip:
 		return
 	_subtitle(sub)
-	var n: int = D.game["intro"][name]["frames"]
+	var info: Dictionary = D.game["intro"][name]
+	var n: int = info["frames"]
+	var mode_x: bool = int(info["size"][1]) > 200
 	for f in last + 1:
 		if intro_skip:
 			return
-		show_tex(_intro_frame(name, f % n))
+		var i := f
+		if mode_x and f == last and last % 2 == 0:
+			i = last - 1                                   # drawn on page 1, never seen
+		show_tex(_intro_frame(name, i % n))
 		await _intro_wait(ticks_per_frame)
 
 
@@ -872,6 +879,13 @@ func _intro_still(name: String, hold: int, scroll := 0, after := 0, subs := ["",
 		show_tex(tex, Rect2(0, y + 1, 320, 200))
 		await _intro_wait(3)
 	await _intro_wait(after)
+
+
+func _skip_intro() -> void:
+	"""Any key, button or tap skips the intro, or ends its last picture."""
+	intro_skip = true
+	waiting = false
+	continue_pressed.emit()
 
 
 func _intro() -> void:
@@ -900,9 +914,12 @@ func _intro() -> void:
 	await _intro_flc("DATA13", 8, 30, "intro_7")
 	await _intro_flc("DATA14", 10, 4)
 	await _intro_flc("DATA10", 30, 6, "intro_8")
-	if not intro_skip:
-		waiting = true
-		await continue_pressed
+	# the original waits for Enter/Ctrl/Space here; the remake also goes on by itself after a while
+	waiting = not intro_skip
+	for t in INTRO_END_TICKS:
+		if not waiting:
+			break
+		await get_tree().physics_frame
 	waiting = false
 	audio.stop_music()
 	subtitle.visible = false

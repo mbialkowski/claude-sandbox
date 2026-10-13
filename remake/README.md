@@ -30,7 +30,8 @@ HD, with keyboard, gamepad and on-screen touch controls.
 
 * **Intro and endings.** The original's 110-second intro (FLC animations and scrolling story pages, with
   *recollection*) plays at start-up with the original timings — with English subtitles for the painted-in
-  Polish text when the language is English; Space/Esc/a tap skips it. The credits animation, the game-over
+  Polish text when the language is English; any key or a tap skips it. Its last picture ("WYDOSTAŃ MNIE
+  STĄD!") stays 4 seconds, or until a key or tap, before the title (the original waits for a key). The credits animation, the game-over
   picture, the joke ending and the winning ending with the credits scroller are there too. In the browser a
   "press a key" screen comes first (browsers only start audio after an input); it also picks the language
   (Polski / English: arrow keys, a click or a tap).

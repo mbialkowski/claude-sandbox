@@ -44,6 +44,13 @@
 159f8 StopModule
 1f034 LoadFont
 1e1c4 PlayFLC
+1e0e0 VGA_SetDisplayStart  # CRTC start address = video page shown
+1e140 FLC_ShowModeX        # frame -> back buffer -> the other Mode X page, then show that page
+1e198 FLC_ShowMode13h      # frame -> A000:0000
+33280 FLC_Open             # (file, 2): whole file in memory if it fits, else streamed
+33b2c FLC_NextFrame        # decodes the next frame; after the ring frame continues with frame 1
+33924 FLC_DeltaFLC         # DELTA_FLC (type 7) chunk
+33de4 FLC_Close
 1e8d0 PlayIntro
 # ---- main loop / input --------------------------------------------------------
 2ade0 GameLoop
