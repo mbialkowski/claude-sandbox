@@ -47,6 +47,9 @@ the options.
 
 ## Controls
 
+The game shows them too: *Sterowanie* (Controls) on the title screen and in the pause menu lists the keys,
+or the touch buttons when the touch controls are on.
+
 | action | keyboard | gamepad | touch |
 |---|---|---|---|
 | walk | ← → (or A D) | d-pad / left stick | pad |
@@ -63,7 +66,8 @@ the options.
 On iPhone the browsers cannot show a web page full screen, so the [ ] button and the option are hidden
 there; *Share → Add to Home Screen* installs the game as a full-screen app instead.
 
-Dialogues continue with Fire, Enter, Space or a tap. The original's cheats work (`IDMORT`, `IDSIAR`,
+Options also has *Dźwięk* (Sound) on/off: off silences everything, and the music and effect settings
+are greyed out until it is back on. Dialogues continue with Fire, Enter, Space or a tap. The original's cheats work (`IDMORT`, `IDSIAR`,
 `IDLUFA`, `IDBULL`). The game is saved each time the hero enters a room; **Continue** on the title screen
 resumes from there (the original had no saving: one death was game over).
 

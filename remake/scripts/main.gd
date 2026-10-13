@@ -208,7 +208,18 @@ func _autotest(dir: String) -> void:
 	action_tap("use")
 	await wait_ticks(5)
 	await _shot(dir, "11_options")
-	action_tap("pause")
+	ui_sel = _option_list().map(func(r): return r[2]).find("sound")
+	_options_input("use")                             # sound off: the levels are greyed out
+	await wait_ticks(3)
+	await _shot(dir, "11b_options_sound_off")
+	_options_input("use")
+	action_tap("pause")                               # back to the pause menu, then Controls
+	await wait_ticks(3)
+	action_tap("down")
+	action_tap("use")
+	await wait_ticks(3)
+	await _shot(dir, "11c_controls")
+	action_tap("use")
 	await wait_ticks(3)
 	action_tap("pause")
 	await wait_ticks(3)
@@ -417,6 +428,9 @@ func _on_press(a: String) -> void:
 			_title_input(a)
 		"options":
 			_options_input(a)
+		"controls":
+			if a in ["use", "jetpack", "fire", "pause"]:
+				_leave_controls()
 		"pause":
 			_pause_input(a)
 		"play":
@@ -466,12 +480,16 @@ func tap(pos: Vector2) -> void:
 			var rows := _ui_rows()
 			for i in rows.size():
 				if rows[i].has_point(p):
+					if mode == "options" and not _option_enabled(_option_list()[i][2]):
+						return
 					ui_sel = i
 					if mode == "options":
 						_options_input("use")
 					else:
 						_pause_input("use")
 					return
+		"controls":
+			_leave_controls()
 		"play":
 			if p.x >= screen.view_w:
 				var hp := p - Vector2(screen.view_w, 0)
@@ -955,6 +973,7 @@ func _title_items() -> Array:
 	if FileAccess.file_exists(SAVE_PATH):
 		items.append("continue")
 	items.append("options")
+	items.append("controls")
 	return items
 
 
@@ -962,12 +981,14 @@ func _title_rects() -> Array:
 	var ox := (logical_w - 320) / 2
 	var rects := [Rect2(ox + 110, 90, 100, 30), Rect2(ox + 105, 123, 110, 30), Rect2(ox + 105, 161, 110, 30)]
 	for i in range(3, _title_items().size()):
-		rects.append(Rect2(ox + 90, _title_font_y(i) - 3, 140, 15))
+		rects.append(Rect2(ox + 90, _title_font_y(i) - 2, 140, 13))
 	return rects
 
 
 func _title_font_y(i: int) -> int:
-	return 186 + (i - 3) * 14 if _title_items().size() == 5 else 196
+	"""The text items below the picture's three (GRA, AUTORZY, WYJŚCIE), 13 px apart, centred around 193."""
+	var k := _title_items().size() - 3
+	return 193 - (k - 1) * 13 / 2 + (i - 3) * 13
 
 
 func _title_input(a: String) -> void:
@@ -996,6 +1017,9 @@ func _title_input(a: String) -> void:
 				"options":
 					options_from = "title"
 					_open_options()
+				"controls":
+					options_from = "title"
+					_open_controls()
 		"pause":
 			ui_sel = 2
 	screen.overlay_layer.queue_redraw()
@@ -1155,8 +1179,11 @@ func _open_pause() -> void:
 	touch.refresh()
 
 
+const PAUSE_ITEMS := ["continue", "options", "controls", "quit_title"]
+
+
 func _pause_input(a: String) -> void:
-	var n := 3
+	var n := PAUSE_ITEMS.size()
 	match a:
 		"up":
 			ui_sel = (ui_sel + n - 1) % n
@@ -1165,13 +1192,16 @@ func _pause_input(a: String) -> void:
 		"pause":
 			_close_pause()
 		"use", "jetpack", "fire":
-			match ui_sel:
-				0:
+			match PAUSE_ITEMS[ui_sel]:
+				"continue":
 					_close_pause()
-				1:
+				"options":
 					options_from = "pause"
 					_open_options()
-				2:
+				"controls":
+					options_from = "pause"
+					_open_controls()
+				"quit_title":
 					audio.pause_all(false)
 					_title()
 	screen.overlay_layer.queue_redraw()
@@ -1195,12 +1225,27 @@ func _option_list() -> Array:
 		[Strings.t("opt_smooth"), Strings.t("smooth") if s["smooth_scaling"] else Strings.t("sharp"), "smooth_scaling"],
 		[Strings.t("opt_edges"), Strings.t("edges_" + str(s["room_edges"])), "room_edges"],
 		[Strings.t("opt_touch"), Strings.t("touch_" + str(s["touch_controls"])), "touch_controls"],
+		[Strings.t("opt_sound"), Strings.t("on") if s["sound"] else Strings.t("off"), "sound"],
 		[Strings.t("opt_music"), "%d%%" % roundi(float(s["music_volume"]) * 100), "music_volume"],
 		[Strings.t("opt_game_music"), Strings.t("on") if s["game_music"] else Strings.t("off"), "game_music"],
 		[Strings.t("opt_sfx"), "%d%%" % roundi(float(s["sfx_volume"]) * 100), "sfx_volume"],
 		[Strings.t("opt_fullscreen"), Strings.t("on") if is_fullscreen() else Strings.t("off"), "fullscreen"],
 		[Strings.t("back"), "", "back"],
 	].filter(func(row): return row[2] != "fullscreen" or can_fullscreen())
+
+
+func _option_enabled(key: String) -> bool:
+	"""The music and effect settings do nothing while the sound is off."""
+	return D.settings["sound"] or not key in ["music_volume", "game_music", "sfx_volume"]
+
+
+func _next_option(opts: Array, step: int) -> int:
+	var i := ui_sel
+	for k in opts.size():
+		i = (i + step + opts.size()) % opts.size()
+		if _option_enabled(opts[i][2]):
+			break
+	return i
 
 
 func _open_options() -> void:
@@ -1215,19 +1260,23 @@ func _open_options() -> void:
 func _options_input(a: String) -> void:
 	var s: Dictionary = D.settings
 	var opts := _option_list()
-	var n := opts.size()
 	var dirn := 1
 	match a:
 		"up":
-			ui_sel = (ui_sel + n - 1) % n
+			ui_sel = _next_option(opts, -1)
 		"down":
-			ui_sel = (ui_sel + 1) % n
+			ui_sel = _next_option(opts, 1)
 		"pause":
 			_leave_options()
 			return
 		"left", "right", "use", "jetpack", "fire":
 			dirn = -1 if a == "left" else 1
+			if not _option_enabled(opts[ui_sel][2]):
+				return
 			match str(opts[ui_sel][2]):
+				"sound":
+					s["sound"] = not s["sound"]
+					audio.apply_volumes()
 				"language":
 					s["language"] = "en" if s["language"] == "pl" else "pl"
 				"show_neighbours", "dim_neighbours", "smooth_scaling":
@@ -1267,10 +1316,10 @@ func _leave_options() -> void:
 	D.save_settings()
 	if options_from == "pause":
 		mode = "pause"
-		ui_sel = 1
+		ui_sel = PAUSE_ITEMS.find("options")
 	else:
 		_title()
-		ui_sel = 3
+		ui_sel = _title_items().find("options")
 	screen.overlay_layer.queue_redraw()
 	touch.refresh()
 
@@ -1284,6 +1333,60 @@ func can_fullscreen() -> bool:
 		fullscreen_supported = bool(JavaScriptBridge.eval(
 				"!!(document.fullscreenEnabled || document.webkitFullscreenEnabled)", true))
 	return fullscreen_supported
+
+
+func _open_controls() -> void:
+	mode = "controls"
+	if options_from == "title":
+		palette.set_now("game")
+	screen.overlay_layer.queue_redraw()
+	touch.refresh()
+
+
+func _leave_controls() -> void:
+	if options_from == "pause":
+		mode = "pause"
+		ui_sel = PAUSE_ITEMS.find("controls")
+	else:
+		_title()
+		ui_sel = _title_items().find("controls")
+	screen.overlay_layer.queue_redraw()
+	touch.refresh()
+
+
+func _control_rows() -> Array:
+	"""[what, keys] for the controls screen: the touch buttons when the touch controls are on, else keys."""
+	var t: bool = touch.enabled
+	var rows := []
+	for k in ["walk", "jump", "crouch", "fire", "use", "jet", "item", "weapon", "pause", "dialogue", "menu"]:
+		rows.append([Strings.t("ctl_" + k), Strings.t(("ctl_touch_" if t else "ctl_key_") + k)])
+	return rows
+
+
+func _draw_controls(ci: CanvasItem) -> void:
+	if options_from == "title":
+		screen.fill(ci, Rect2(0, 0, logical_w, H), 0)
+	else:
+		screen.fill(ci, Rect2(screen.view_w / 2 - 150, 14, 300, 212), 0)
+	var cx: int = screen.view_w / 2
+	var title := Strings.t("controls").to_upper()
+	screen.draw_string_at(ci, title, Vector2(cx - screen.string_width(title) / 2, 22), 29)
+	var rows := _control_rows()
+	var x0 := cx - 140
+	var x1 := mini(x0 + _max_width(rows, 0) + 12, cx + 145 - _max_width(rows, 1))
+	for i in rows.size():
+		var y := OPT_Y0 + i * OPT_DY
+		screen.draw_string_at(ci, rows[i][0], Vector2(x0, y), 1)
+		screen.draw_string_at(ci, rows[i][1], Vector2(x1, y), 13)
+	var back := Strings.t("back")
+	screen.draw_string_at(ci, back, Vector2(cx - screen.string_width(back) / 2, OPT_Y0 + rows.size() * OPT_DY + 8), 0x10)
+
+
+func _max_width(rows: Array, column: int) -> int:
+	var w := 0
+	for r in rows:
+		w = maxi(w, screen.string_width(r[column]))
+	return w
 
 
 func is_fullscreen() -> bool:
@@ -1303,12 +1406,17 @@ func toggle_fullscreen() -> void:
 # ---------------------------------------------------------------------------
 # overlay drawing (index space)
 # ---------------------------------------------------------------------------
+const OPT_Y0 := 40                                   # options: first row, row spacing
+const OPT_DY := 15
+
+
 func _ui_rows() -> Array:
 	var rows := []
-	var n := _option_list().size() if mode == "options" else 3
-	var y0 := 46 if mode == "options" else 96
+	var n := _option_list().size() if mode == "options" else PAUSE_ITEMS.size()
+	var y0 := OPT_Y0 if mode == "options" else 96
+	var dy := OPT_DY if mode == "options" else 16
 	for i in n:
-		rows.append(Rect2(0, y0 + i * 16 - 3, logical_w, 16))
+		rows.append(Rect2(0, y0 + i * dy - 3, logical_w, dy))
 	return rows
 
 
@@ -1354,20 +1462,23 @@ func draw_overlay(ci: CanvasItem) -> void:
 			screen.draw_string_at(ci, title, Vector2(screen.view_w / 2 - screen.string_width(title) / 2, 22), 29)
 			var opts := _option_list()
 			var cx: int = screen.view_w / 2
+			var grey := _grey("game", 300)
 			for i in opts.size():
-				var y := 46 + i * 16
-				var c := 0x10 if i == ui_sel else 1
+				var y := OPT_Y0 + i * OPT_DY
+				var on := _option_enabled(opts[i][2])
+				var c := (0x10 if i == ui_sel else 1) if on else grey
 				screen.draw_string_at(ci, opts[i][0], Vector2(cx - 130, y), c)
 				if opts[i][1] != "":
-					screen.draw_string_at(ci, opts[i][1], Vector2(cx + 40, y), 12 if i == ui_sel else 13)
+					screen.draw_string_at(ci, opts[i][1], Vector2(cx + 40, y), (12 if i == ui_sel else 13) if on else grey)
+		"controls":
+			_draw_controls(ci)
 		"pause":
 			var cx: int = screen.view_w / 2
-			screen.fill(ci, Rect2(cx - 90, 60, 180, 100), 0)
+			screen.fill(ci, Rect2(cx - 90, 60, 180, 116), 0)
 			var t: String = Strings.t("paused")
 			screen.draw_string_at(ci, t, Vector2(cx - screen.string_width(t) / 2, 72), 29)
-			var items := [Strings.t("continue"), Strings.t("options"), Strings.t("quit_title")]
-			for i in 3:
-				var s: String = items[i]
+			for i in PAUSE_ITEMS.size():
+				var s: String = Strings.t(PAUSE_ITEMS[i])
 				screen.draw_string_at(ci, s, Vector2(cx - screen.string_width(s) / 2, 96 + i * 16),
 						0x10 if i == ui_sel else 1)
 		"credits", "gameover":
@@ -1398,9 +1509,28 @@ func _brightest(pal: String) -> int:
 
 
 func _dimmest_text(pal: String) -> int:
+	return _closest_brightness(pal, 300)
+
+
+func _grey(pal: String, target: int) -> int:
+	"""The most neutral palette grey (channels within 24) whose r + g + b is closest to target."""
+	var p: PackedByteArray = D.palettes[pal]
+	var best := _closest_brightness(pal, target)
+	var bd := 9999
+	for i in range(1, 256):
+		var r: int = p[i * 3]
+		var g: int = p[i * 3 + 1]
+		var b: int = p[i * 3 + 2]
+		if maxi(r, maxi(g, b)) - mini(r, mini(g, b)) <= 24 and absi(r + g + b - target) < bd:
+			bd = absi(r + g + b - target)
+			best = i
+	return best
+
+
+func _closest_brightness(pal: String, target: int) -> int:
+	"""The palette entry whose r + g + b (0..765) is closest to target."""
 	var p: PackedByteArray = D.palettes[pal]
 	var best := 0
-	var target := 300
 	var bd := 9999
 	for i in range(1, 256):
 		var v: int = p[i * 3] + p[i * 3 + 1] + p[i * 3 + 2]

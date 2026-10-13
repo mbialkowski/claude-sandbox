@@ -25,6 +25,7 @@ func setup(p_D) -> void:
 
 
 func apply_volumes() -> void:
+	AudioServer.set_bus_mute(0, not D.settings["sound"])     # Options -> Sound off: everything silent
 	var sv := linear_to_db(maxf(float(D.settings["sfx_volume"]), 0.0001))
 	for p in voices:
 		p.volume_db = sv

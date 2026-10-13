@@ -41,6 +41,7 @@ var settings := {
 	"dim_neighbours": true,
 	"smooth_scaling": true,
 	"touch_controls": "auto",           # auto / on / off
+	"sound": true,                      # off: no music or effects (the levels below are kept)
 	"sfx_volume": 0.8,
 	"music_volume": 0.7,
 	"game_music": false,                # the remake's option: the two modules while playing (the original is silent)
