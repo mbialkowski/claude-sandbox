@@ -82,9 +82,8 @@ godot --headless --path remake --export-release Web remake/build/web/index.html
 ```
 
 The web export is single-threaded (no special HTTP headers needed), so `remake/build/web/` can be served
-by any static web server or GitHub Pages; it installs as a full-screen app (PWA) on phones. On a phone held
-sideways the first screen suggests turning it upright: in portrait the picture sits at the top and the
-touch controls below it, so they cover nothing.
+by any static web server or GitHub Pages; it installs as a full-screen landscape app (PWA) on phones. On a
+phone held upright the first screen suggests turning it sideways, where the picture is much larger.
 Export templates: Godot 4.7.2 (`Editor → Manage Export Templates`).
 
 Sound in the browser starts with the first key, click or tap. A small script in the page head (the Web

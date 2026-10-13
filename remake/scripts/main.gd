@@ -1461,8 +1461,8 @@ func draw_overlay(ci: CanvasItem) -> void:
 						screen.fill(ci, Rect2(r.position.x + 6, r.end.y - 2, r.size.x - 12, 1), 0x10)
 				var p := Strings.t("press_key")
 				screen.draw_string_at(ci, p, Vector2(W / 2 - screen.string_width(p) / 2, 164), 12)
-				if is_phone() and not portrait:                # the touch controls fit best below the picture
-					var tip := Strings.t("portrait_tip")
+				if is_phone() and portrait:                    # sideways the picture is much larger
+					var tip := Strings.t("landscape_tip")
 					screen.draw_string_at(ci, tip, Vector2(W / 2 - screen.string_width(tip) / 2, 190), 13)
 		"title":
 			screen.fill(ci, Rect2(0, 0, W, H), 0)
