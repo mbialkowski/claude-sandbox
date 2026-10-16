@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f2ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101418" media="(prefers-color-scheme: dark)">
+  <title>Kino Rodzinne</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍿</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="title" href="#/osoby">🍿 Kino Rodzinne</a>
+    <div id="who"></div>
+  </header>
+
+  <main id="app" aria-live="polite"></main>
+
+  <nav class="tabbar" id="tabs" hidden>
+    <a href="#/osoby" data-tab="osoby"><span class="icon">🎞️</span>Głosowanie</a>
+    <a href="#/wyniki" data-tab="wyniki"><span class="icon">🍿</span>Wyniki</a>
+    <a href="#/wiecej" data-tab="wiecej"><span class="icon">⋯</span>Więcej</a>
+  </nav>
+  <div class="dock" id="dock" hidden></div>
+
+  <template id="confirm-dialog">
+    <dialog class="dialog">
+      <form method="dialog">
+        <p class="dialog-text"></p>
+        <div class="row"></div>
+      </form>
+    </dialog>
+  </template>
+
+  <script src="movies.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
