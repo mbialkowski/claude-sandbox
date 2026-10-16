@@ -74,9 +74,14 @@
       </div>`;
   }
 
+  // Bieżący ekran trzymamy w zmiennej; adres (#/…) to tylko wygoda dla przycisku „Wstecz”.
+  // W ramkach, które nie pozwalają zmieniać adresu, aplikacja działa i bez niego.
+  let current = location.hash;
+
   function go(hash) {
-    if (location.hash === hash) render();
-    else location.hash = hash;
+    current = hash;
+    try { if (location.hash !== hash) history.pushState(null, "", hash); } catch (e) { /* bez historii */ }
+    render();
   }
 
   // Ramka aplikacji: plakietka w nagłówku, dolne zakładki albo pasek akcji.
@@ -491,7 +496,7 @@
 
   function render() {
     const state = loadState();
-    const [, route, arg] = location.hash.split("/");
+    const [, route, arg] = current.split("/");
 
     if (!state || route === "start") return renderStart();
     if (route === "glosuj" && userById(arg)) return renderVote(state, userById(arg));
@@ -500,6 +505,8 @@
     return renderUsers(state);
   }
 
-  window.addEventListener("hashchange", render);
+  const syncFromUrl = () => { current = location.hash; render(); };
+  window.addEventListener("popstate", syncFromUrl);
+  window.addEventListener("hashchange", syncFromUrl);
   render();
 })();

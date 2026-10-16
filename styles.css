@@ -17,11 +17,11 @@
   --gold: rgb(var(--gold-rgb));
   --radius: 14px;
   --shadow: 0 1px 3px rgb(0 0 0 / .08);
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #101418;
     --card: #1a2027;
     --card2: #232a33;
@@ -34,7 +34,23 @@
     --danger: #f87171;
     --ok: #4ade80;
     --shadow: 0 1px 3px rgb(0 0 0 / .4);
+    color-scheme: dark;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #101418;
+  --card: #1a2027;
+  --card2: #232a33;
+  --text: #e8eaed;
+  --muted: #9aa4af;
+  --line: #2c343e;
+  --accent: #f59e0b;
+  --accent-soft: #3a2f12;
+  --on-accent: #1c1400;
+  --danger: #f87171;
+  --ok: #4ade80;
+  --shadow: 0 1px 3px rgb(0 0 0 / .4);
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
