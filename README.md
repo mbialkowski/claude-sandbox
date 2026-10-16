@@ -22,7 +22,7 @@ Lokalnie wystarczy otworzyć `index.html` w przeglądarce. Nie trzeba niczego in
 2. **Głosowanie** (zakładka 🎞️): lista osób. Kto już zagłosował, ma zielony znaczek i liczbę
    wybranych filmów (bez zdradzania, jakich). Ponowne wejście pozwala zmienić głosy.
 3. **Wybór filmów**: dotknij plakatu albo przycisku „🍿 Wybieram”. W nagłówku widać, ile 🍿 zostało do
-   rozdania; „▶” otwiera zwiastun. Na dole: „Anuluj” albo „Zatwierdź głos”.
+   rozdania. Na dole: „Anuluj” albo „Zatwierdź głos”.
 4. **Wyniki** (zakładka 🍿, także przycisk „🏆 Pokaż wyniki”): przycisk „Odsłoń podium” pokazuje 3., 2. i 1. miejsce
    z wybuchem popcornu, a pod nim aktualną tabelę i siatkę plakatów z liczbą głosów i tym, kto na co głosował.
    Każdy wybrany film to 1 punkt; filmy z tą samą liczbą głosów dzielą miejsce.
@@ -42,10 +42,10 @@ Głosy są zapisywane w `localStorage` przeglądarki, więc całe głosowanie od
 | `index.html` | szkielet strony: nagłówek, zakładki                                   |
 | `styles.css` | wygląd (jasny i ciemny motyw)                                         |
 | `app.js`     | logika: ekrany, głosowanie, liczenie wyników                          |
-| `movies.js`  | **lista filmów i osób**: tytuły, plakaty, zwiastuny, kolory osób      |
+| `movies.js`  | **lista filmów i osób**: tytuły, plakaty, kolory osób                 |
 | `manifest.webmanifest`, `icons/` | nazwa i ikony aplikacji na ekranie początkowym    |
 
-## Plakaty i zwiastuny
+## Plakaty
 
 Plakaty są oryginalne, z Filmwebu: pole `poster` w `movies.js` wskazuje plik na `fwcdn.pl`
 (np. `filmweb("88/78/698878/7740691_1")` → `https://fwcdn.pl/fpo/88/78/698878/7740691_1.10.webp`;
@@ -53,6 +53,3 @@ Plakaty są oryginalne, z Filmwebu: pole `poster` w `movies.js` wskazuje plik na
 
 Gdy plakat z Filmwebu się nie wczyta, aplikacja pyta angielską Wikipedię o grafikę z ramki artykułu filmu
 (pole `wiki`) i zapamiętuje jej adres w przeglądarce. Bez internetu zostaje kolorowy „plakat zastępczy” z tytułem.
-
-Pole `trailer` to link do zwiastuna. Domyślnie prowadzi do wyszukiwania polskiego zwiastuna na YouTube,
-ale można tam wkleić bezpośredni link do filmu.

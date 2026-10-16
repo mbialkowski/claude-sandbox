@@ -2,9 +2,7 @@
 // wiki    – tytuł(y) artykułu w angielskiej Wikipedii: zapasowe źródło oryginalnego plakatu.
 // poster  – adres plakatu (z Filmwebu, rozmiar .10); ma pierwszeństwo przed Wikipedią.
 //           Gdy się nie wczyta, aplikacja próbuje Wikipedii, a na końcu pokazuje kolorowy „plakat zastępczy".
-// trailer – link do zwiastuna; tutaj wyszukiwanie polskiego zwiastuna na YouTube.
 const filmweb = (path) => "https://fwcdn.pl/fpo/" + path + ".10.webp";
-const yt = (q) => "https://www.youtube.com/results?search_query=" + encodeURIComponent(q + " zwiastun PL");
 
 window.MOVIES = [
   {
@@ -14,7 +12,6 @@ window.MOVIES = [
     blurb: "Scrat znów goni żołędzia – tym razem w kosmosie, a na Ziemię leci meteoryt.",
     wiki: ["Ice Age: Collision Course"],
     poster: filmweb("88/78/698878/7740691_1"),
-    trailer: yt("Epoka lodowcowa Mocne uderzenie"),
     colors: ["#5bc0eb", "#1d3557"],
     emoji: "🦣",
   },
@@ -25,7 +22,6 @@ window.MOVIES = [
     blurb: "Rodzina superbohaterów musi wrócić do akcji i uratować świat.",
     wiki: ["The Incredibles"],
     poster: filmweb("94/45/99445/6943701_1"),
-    trailer: yt("Iniemamocni 2004"),
     colors: ["#e63946", "#1b1b1b"],
     emoji: "🦸",
   },
@@ -36,7 +32,6 @@ window.MOVIES = [
     blurb: "Peter Parker jedzie na szkolną wycieczkę do Europy, ale wakacje szybko się kończą.",
     wiki: ["Spider-Man: Far From Home"],
     poster: filmweb("98/69/789869/7892960_1"),
-    trailer: yt("Spider-Man Daleko od domu"),
     colors: ["#d62828", "#003049"],
     emoji: "🕷️",
   },
@@ -47,7 +42,6 @@ window.MOVIES = [
     blurb: "Miles Morales poznaje Spider-Manów z innych wymiarów.",
     wiki: ["Spider-Man: Into the Spider-Verse"],
     poster: filmweb("32/33/743233/7866074_2"),
-    trailer: yt("Spider-Man Uniwersum 2018"),
     colors: ["#ff006e", "#3a0ca3"],
     emoji: "🕸️",
   },
@@ -58,7 +52,6 @@ window.MOVIES = [
     blurb: "Minionki trafiają do Hollywood i niechcący wypuszczają na świat potwory.",
     wiki: ["Minions & Monsters", "Minions 3"],
     poster: filmweb("68/36/10056836/8244008"),
-    trailer: yt("Minionki i straszydła"),
     colors: ["#ffd60a", "#0077b6"],
     emoji: "🍌",
   },
@@ -69,7 +62,6 @@ window.MOVIES = [
     blurb: "Sulley i Mike straszą dzieci zawodowo – do czasu, aż poznają Boo.",
     wiki: ["Monsters, Inc."],
     poster: filmweb("15/08/31508/7519129_1"),
-    trailer: yt("Potwory i spółka 2001"),
     colors: ["#2ec4b6", "#6a0dad"],
     emoji: "👾",
   },
@@ -80,7 +72,6 @@ window.MOVIES = [
     blurb: "Syn Zeusa musi zostać prawdziwym bohaterem, by wrócić na Olimp.",
     wiki: ["Hercules (1997 film)"],
     poster: filmweb("05/22/522/7363236_2"),
-    trailer: yt("Herkules Disney 1997"),
     colors: ["#f4a261", "#6d2e46"],
     emoji: "🏛️",
   },
@@ -91,7 +82,6 @@ window.MOVIES = [
     blurb: "Bóg prosi Evana o zbudowanie arki, a zwierzęta już ustawiają się w kolejce.",
     wiki: ["Evan Almighty"],
     poster: filmweb("18/01/201801/7529603_2"),
-    trailer: yt("Evan Wszechmogący"),
     colors: ["#90be6d", "#264653"],
     emoji: "🛶",
   },
@@ -102,7 +92,6 @@ window.MOVIES = [
     blurb: "LeBron James i Zwariowane Melodie grają mecz o wszystko w cyfrowym świecie.",
     wiki: ["Space Jam: A New Legacy"],
     poster: filmweb("48/39/714839/7972764_2"),
-    trailer: yt("Kosmiczny mecz Nowa era"),
     colors: ["#f77f00", "#03045e"],
     emoji: "🏀",
   },
@@ -113,7 +102,6 @@ window.MOVIES = [
     blurb: "Prawdziwa historia kosmicznego strażnika, który zainspirował zabawkę z „Toy Story\".",
     wiki: ["Lightyear (film)"],
     poster: filmweb("68/39/866839/8015439_1"),
-    trailer: yt("Buzz Astral 2022"),
     colors: ["#7b2cbf", "#80ed99"],
     emoji: "🚀",
   },
