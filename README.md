@@ -10,6 +10,10 @@ Aplikacja jest publikowana na GitHub Pages: <https://mbialkowski.github.io/claud
 Każdy push do `main` publikuje ją od nowa (`.github/workflows/pages.yml`). Jednorazowo w ustawieniach
 repozytorium: Settings → Pages → Build and deployment → Source: „GitHub Actions”.
 
+**Na ekran początkowy (iPhone/iPad):** otwórz stronę w Safari → Udostępnij → „Do ekranu początkowego”.
+Aplikacja dostaje ikonę 🍿 i otwiera się na pełnym ekranie, bez pasków Safari. Uwaga: aplikacja z ekranu
+początkowego ma własne głosy, osobne od Safari, więc głosujcie zawsze z tego samego miejsca.
+
 Lokalnie wystarczy otworzyć `index.html` w przeglądarce. Nie trzeba niczego instalować ani budować.
 
 ## Jak działa
@@ -39,6 +43,7 @@ Głosy są zapisywane w `localStorage` przeglądarki, więc całe głosowanie od
 | `styles.css` | wygląd (jasny i ciemny motyw)                                         |
 | `app.js`     | logika: ekrany, głosowanie, liczenie wyników                          |
 | `movies.js`  | **lista filmów i osób**: tytuły, plakaty, zwiastuny, kolory osób      |
+| `manifest.webmanifest`, `icons/` | nazwa i ikony aplikacji na ekranie początkowym    |
 
 ## Plakaty i zwiastuny
 

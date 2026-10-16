@@ -30,7 +30,7 @@ jobs:
       - name: Collect the site
         run: |
           mkdir _site
-          cp index.html styles.css app.js movies.js _site/
+          cp -r index.html styles.css app.js movies.js manifest.webmanifest icons _site/
 
       - uses: actions/upload-pages-artifact@v3
         with:
