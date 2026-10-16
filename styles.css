@@ -240,8 +240,6 @@ body.has-bar main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); 
 .pname { font-weight: 700; font-size: 1.05rem; }
 .pstatus { font-size: .82rem; color: var(--muted); }
 .pstatus.ok { color: var(--ok); font-weight: 600; }
-.thumbs { display: flex; }
-.thumbs .poster { width: 26px; margin-left: -8px; border-radius: 4px; box-shadow: 0 0 0 2px var(--card); }
 .pill {
   flex: none;
   padding: .3rem .7rem;
@@ -251,7 +249,6 @@ body.has-bar main { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom)); 
   font-weight: 600;
 }
 .pill.accent { background: var(--accent); color: var(--on-accent); }
-@media (max-width: 380px) { .thumbs { display: none; } }
 
 /* ---------- start ---------- */
 

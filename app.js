@@ -201,7 +201,6 @@
                     ? `<span class="pstatus ok">✓ ${voted(u)} · ${filmsWord(picks.length)}</span>`
                     : `<span class="pstatus">${notVoted(u)}</span>`}
                 </span>
-                ${picks ? `<span class="thumbs">${picks.map(movieById).filter(Boolean).slice(0, 3).map((m) => posterHTML(m, "thumb")).join("")}</span>` : ""}
                 <span class="pill ${picks ? "" : "accent"}">${picks ? "Zmień" : "Głosuj"} ›</span>
               </button>`;
           }).join("")}

@@ -12,8 +12,8 @@ Można też wrzucić pliki na dowolny hosting statyczny, np. GitHub Pages.
 ## Jak działa
 
 1. **Start**: ustawiasz, ile filmów może wybrać jedna osoba (domyślnie 3), i klikasz „Rozpocznij głosowanie”.
-2. **Głosowanie** (zakładka 🎞️): lista osób. Kto już zagłosował, ma zielony znaczek i miniatury swoich
-   plakatów. Ponowne wejście pozwala zmienić głosy.
+2. **Głosowanie** (zakładka 🎞️): lista osób. Kto już zagłosował, ma zielony znaczek i liczbę
+   wybranych filmów (bez zdradzania, jakich). Ponowne wejście pozwala zmienić głosy.
 3. **Wybór filmów**: dotknij plakatu albo przycisku „🍿 Wybieram”. W nagłówku widać, ile 🍿 zostało do
    rozdania; „▶” otwiera zwiastun. Na dole: „Anuluj” albo „Zatwierdź głos”.
 4. **Wyniki** (zakładka 🍿, także przycisk „🏆 Pokaż wyniki”): przycisk „Odsłoń podium” pokazuje 3., 2. i 1. miejsce
