@@ -65,7 +65,7 @@
       ? `<img src="${esc(movie.poster)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`
       : "";
     return `
-      <div class="poster ${extraClass}" style="--c1:${c1};--c2:${c2}">
+      <div class="poster ${extraClass}" data-movie="${movie.id}" style="--c1:${c1};--c2:${c2}">
         <div class="poster-fallback" aria-hidden="true">
           <span class="poster-emoji">${movie.emoji}</span>
           <span class="poster-title">${esc(movie.title)}</span>
@@ -492,6 +492,66 @@
     });
   }
 
+  // ---------- plakaty z Wikipedii ----------
+
+  // Przeglądarka pyta angielską Wikipedię o grafikę z ramki artykułu (tam jest oryginalny plakat).
+  // Adresy trzymamy w localStorage, żeby nie pytać przy każdym otwarciu. Bez sieci zostają plakaty zastępcze.
+  const POSTERS_KEY = "kino-rodzinne.posters.v1";
+  const WIKI_API = "https://en.wikipedia.org/w/api.php";
+
+  function showPoster(movie) {
+    document.querySelectorAll(`.poster[data-movie="${movie.id}"]`).forEach((el) => {
+      if (el.querySelector("img")) return;
+      const img = document.createElement("img");
+      img.alt = "";
+      img.referrerPolicy = "no-referrer";
+      img.onerror = () => img.remove();
+      img.src = movie.poster;
+      el.appendChild(img);
+    });
+  }
+
+  async function loadPosters() {
+    let cache = {};
+    try { cache = JSON.parse(localStorage.getItem(POSTERS_KEY)) || {}; } catch (e) { /* bez pamięci */ }
+    const missing = [];
+    MOVIES.forEach((m) => {
+      if (m.poster) return;
+      if (cache[m.id]) { m.poster = cache[m.id]; showPoster(m); }
+      else if (m.wiki && m.wiki.length) missing.push(m);
+    });
+    if (!missing.length || window.KINO_NO_REMOTE_POSTERS || !window.fetch) return;
+
+    const titles = [...new Set(missing.flatMap((m) => m.wiki))];
+    const params = new URLSearchParams({
+      action: "query", format: "json", formatversion: "2", origin: "*", redirects: "1",
+      prop: "pageimages", piprop: "thumbnail", pithumbsize: "500", pilicense: "any",
+      titles: titles.join("|"),
+    });
+    let data;
+    try {
+      const res = await fetch(`${WIKI_API}?${params}`);
+      if (!res.ok) return;
+      data = await res.json();
+    } catch (e) { return; }
+
+    const q = (data && data.query) || {};
+    const follow = (list, t) => ((list || []).find((x) => x.from === t) || {}).to || t;
+    const thumbOf = (title) => {
+      const t = follow(q.redirects, follow(q.normalized, title));
+      const page = (q.pages || []).find((p) => p.title === t);
+      return page && page.thumbnail && page.thumbnail.source;
+    };
+    missing.forEach((m) => {
+      const src = m.wiki.map(thumbOf).find(Boolean);
+      if (!src) return;
+      m.poster = src;
+      cache[m.id] = src;
+      showPoster(m);
+    });
+    try { localStorage.setItem(POSTERS_KEY, JSON.stringify(cache)); } catch (e) { /* bez pamięci */ }
+  }
+
   // ---------- routing ----------
 
   function render() {
@@ -509,4 +569,5 @@
   window.addEventListener("popstate", syncFromUrl);
   window.addEventListener("hashchange", syncFromUrl);
   render();
+  loadPosters();
 })();

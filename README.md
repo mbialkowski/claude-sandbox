@@ -39,7 +39,11 @@ Głosy są zapisywane w `localStorage` przeglądarki, więc całe głosowanie od
 
 ## Plakaty i zwiastuny
 
-Plakaty są linkowane z TMDB (`image.tmdb.org`). Jeśli któryś się nie wczyta, aplikacja pokaże kolorowy
-„plakat zastępczy” z tytułem. Aby podmienić plakat, zmień pole `poster` w `movies.js` na dowolny adres
-obrazka (np. skopiowany z Filmwebu lub IMDb). Pole `trailer` to link do zwiastuna. Domyślnie prowadzi do
-wyszukiwania polskiego zwiastuna na YouTube, ale można tam wkleić bezpośredni link do filmu.
+Plakaty są oryginalne: przy otwarciu aplikacja pyta angielską Wikipedię o grafikę z ramki artykułu każdego
+filmu (pole `wiki` w `movies.js`) i wyświetla ją prosto z `upload.wikimedia.org`. Znalezione adresy zapamiętuje
+w przeglądarce. Bez internetu, albo gdy artykuł nie ma plakatu, aplikacja pokazuje kolorowy „plakat zastępczy”
+z tytułem.
+
+Aby użyć innego plakatu, wpisz jego adres w polu `poster` w `movies.js` (np. skopiowany z Filmwebu lub IMDb);
+ma on pierwszeństwo przed Wikipedią. Pole `trailer` to link do zwiastuna. Domyślnie prowadzi do wyszukiwania
+polskiego zwiastuna na YouTube, ale można tam wkleić bezpośredni link do filmu.
