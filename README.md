@@ -16,7 +16,11 @@ Można też wrzucić pliki na dowolny hosting statyczny, np. GitHub Pages.
    Na koniec kliknij „Zatwierdzam ✓”.
 4. **Pokaż wyniki**: podium (3., 2., 1. miejsce) oraz pełna lista. Każdy wybrany film to 1 punkt.
    Filmy z tą samą liczbą głosów dzielą miejsce.
-5. **Nowe głosowanie**: kasuje wszystkie głosy i wraca do ekranu startowego.
+5. **Resetowanie** (z listy osób albo z ekranu wyników): przycisk „↺ Resetuj głosowanie” pozwala
+   - „Wyczyść głosy”: usunąć wszystkie głosy i głosować od nowa z tym samym limitem,
+   - „Zmień limit filmów”: zacząć zupełnie od nowa od ekranu startowego.
+
+   Pojedyncza osoba może też usunąć tylko swój głos przyciskiem „🗑 Usuń mój głos” na ekranie wyboru filmów.
 
 Głosy są zapisywane w `localStorage` przeglądarki, więc całe głosowanie odbywa się na jednym urządzeniu
 (np. wspólnym tablecie). Wyniki zostają po odświeżeniu strony.

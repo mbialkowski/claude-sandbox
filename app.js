@@ -74,19 +74,45 @@
     setTimeout(() => el.remove(), 2600);
   }
 
-  function confirmDialog(text) {
+  // Okno z wyborem; zwraca wartość klikniętego przycisku albo null (Anuluj / Esc).
+  // choices: [{ value, label, gold? }]
+  function choiceDialog(text, choices) {
     const tpl = document.getElementById("confirm-dialog");
     const dlg = tpl.content.firstElementChild.cloneNode(true);
-    if (typeof dlg.showModal !== "function") return Promise.resolve(window.confirm(text));
+    if (typeof dlg.showModal !== "function") {
+      return Promise.resolve(window.confirm(text) ? choices[choices.length - 1].value : null);
+    }
     dlg.querySelector(".dialog-text").textContent = text;
+    dlg.querySelector(".row").innerHTML = [{ value: "", label: "Anuluj" }, ...choices]
+      .map((c) => `<button value="${c.value}" class="btn ${c.gold ? "btn-gold" : "btn-ghost"}">${esc(c.label)}</button>`)
+      .join("");
     document.body.appendChild(dlg);
     return new Promise((resolve) => {
       dlg.addEventListener("close", () => {
-        resolve(dlg.returnValue === "ok");
+        resolve(dlg.returnValue || null);
         dlg.remove();
       });
       dlg.showModal();
     });
+  }
+
+  const confirmDialog = (text, okLabel = "Tak") =>
+    choiceDialog(text, [{ value: "ok", label: okLabel, gold: true }]).then((v) => v === "ok");
+
+  async function resetVoting() {
+    const state = loadState();
+    const choice = await choiceDialog("Resetować głosowanie? Wszystkie oddane głosy zostaną usunięte.", [
+      { value: "new", label: "Zmień limit filmów" },
+      { value: "clear", label: "Wyczyść głosy", gold: true },
+    ]);
+    if (choice === "clear" && state) {
+      saveState({ ...state, startedAt: new Date().toISOString(), votes: {} });
+      toast("Głosy wyczyszczone – można głosować od nowa 🎟️");
+      go("#/osoby");
+    } else if (choice === "new") {
+      clearState();
+      go("#/start");
+    }
   }
 
   // ---------- ekran: start ----------
@@ -156,7 +182,7 @@
         <div class="user-grid">${cards}</div>
         <div class="actions">
           <button class="btn btn-gold btn-xl" id="results">🏆 Pokaż wyniki</button>
-          <button class="btn btn-ghost" id="reset">↺ Nowe głosowanie</button>
+          <button class="btn btn-ghost" id="reset">↺ Resetuj głosowanie</button>
         </div>
       </section>`;
 
@@ -164,12 +190,7 @@
       b.addEventListener("click", () => go(`#/glosuj/${b.dataset.user}`))
     );
     app.querySelector("#results").addEventListener("click", () => go("#/wyniki"));
-    app.querySelector("#reset").addEventListener("click", async () => {
-      if (await confirmDialog("Zacząć od nowa? Wszystkie oddane głosy zostaną usunięte.")) {
-        clearState();
-        go("#/start");
-      }
-    });
+    app.querySelector("#reset").addEventListener("click", resetVoting);
   }
 
   // ---------- ekran: głosowanie ----------
@@ -180,7 +201,10 @@
 
     app.innerHTML = `
       <section class="screen vote">
-        <button class="btn btn-ghost btn-back" id="back">← Zmień osobę</button>
+        <div class="top-row">
+          <button class="btn btn-ghost btn-back" id="back">← Zmień osobę</button>
+          ${state.votes[user.id] ? `<button class="btn btn-ghost btn-back" id="clear-mine">🗑 Usuń mój głos</button>` : ""}
+        </div>
         <h2 class="screen-title"><span class="avatar-sm">${user.emoji}</span> Cześć, ${esc(user.name)}!</h2>
         <p class="subtitle">Wybierz maksymalnie <strong>${filmsWord(max)}</strong>, które chcesz obejrzeć. Dotknij plakatu, aby zaznaczyć.</p>
         <div class="movie-grid">
@@ -240,6 +264,15 @@
     );
 
     app.querySelector("#back").addEventListener("click", () => go("#/osoby"));
+    const clearMine = app.querySelector("#clear-mine");
+    if (clearMine) clearMine.addEventListener("click", async () => {
+      if (!(await confirmDialog(`${user.name}, usunąć Twój głos? Będzie można zagłosować ponownie.`, "Usuń"))) return;
+      const current = loadState() || state;
+      delete current.votes[user.id];
+      saveState(current);
+      toast(`Głos usunięty – ${user.name} może zagłosować ponownie`);
+      go("#/osoby");
+    });
     confirmBtn.addEventListener("click", () => {
       const current = loadState() || state;
       current.votes[user.id] = MOVIES.map((m) => m.id).filter((id) => selected.has(id));
@@ -329,9 +362,13 @@
         </div>
         <h3 class="list-title">Pełne wyniki</h3>
         <ol class="result-list">${list}</ol>
+        <div class="actions">
+          <button class="btn btn-ghost" id="reset">↺ Resetuj głosowanie</button>
+        </div>
       </section>`;
 
     app.querySelector("#back").addEventListener("click", () => go("#/osoby"));
+    app.querySelector("#reset").addEventListener("click", resetVoting);
     window.scrollTo(0, 0);
     if (places.length) setTimeout(confetti, 1900);
   }
