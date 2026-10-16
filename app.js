@@ -242,7 +242,6 @@
               <div class="name">${esc(m.title)} <span class="year">${m.year}</span></div>
               <div class="actions">
                 <button class="pick"></button>
-                ${m.trailer ? `<a class="trailer" href="${esc(m.trailer)}" target="_blank" rel="noopener" title="Zwiastun" aria-label="Zwiastun: ${esc(m.title)}">▶</a>` : ""}
               </div>
             </article>`).join("")}
         </div>
