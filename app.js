@@ -6,6 +6,12 @@
   const STORAGE_KEY = "kino-rodzinne.v1";
   const MAX_LIMIT = MOVIES.length;
   const app = document.getElementById("app");
+  const who = document.getElementById("who");
+  const tabs = document.getElementById("tabs");
+  const dock = document.getElementById("dock");
+
+  // Podium odsłania się przyciskiem; po resecie znowu jest zakryte.
+  let revealed = false;
 
   // ---------- stan (localStorage, z zapasem w pamięci) ----------
 
@@ -34,6 +40,7 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const movieById = (id) => MOVIES.find((m) => m.id === id);
   const userById = (id) => USERS.find((u) => u.id === id);
+  const doneCount = (state) => USERS.filter((u) => state.votes[u.id]).length;
 
   // 1 głos, 2–4 głosy, 5+ głosów (12–14 głosów)
   function plural(n, one, few, many) {
@@ -43,7 +50,14 @@
   }
   const votesWord = (n) => `${n} ${plural(n, "głos", "głosy", "głosów")}`;
   const filmsWord = (n) => `${n} ${plural(n, "film", "filmy", "filmów")}`;
+  const filmsGen = (n) => `${n} ${n === 1 ? "filmu" : "filmów"}`; // „do 1 filmu”, „do 3 filmów”
   const voted = (u) => (u.female ? "zagłosowała" : "zagłosował");
+  const notVoted = (u) => (u.female ? "jeszcze nie głosowała" : "jeszcze nie głosował");
+
+  function badge(u, kind = "") {
+    const inner = kind === "dot" ? esc(u.name[0]) : u.emoji;
+    return `<span class="badge ${kind}" style="--u:${u.color}" title="${esc(u.name)}">${inner}</span>`;
+  }
 
   function posterHTML(movie, extraClass = "") {
     const [c1, c2] = movie.colors;
@@ -55,7 +69,6 @@
         <div class="poster-fallback" aria-hidden="true">
           <span class="poster-emoji">${movie.emoji}</span>
           <span class="poster-title">${esc(movie.title)}</span>
-          <span class="poster-year">${movie.year}</span>
         </div>
         ${img}
       </div>`;
@@ -66,7 +79,21 @@
     else location.hash = hash;
   }
 
+  // Ramka aplikacji: plakietka w nagłówku, dolne zakładki albo pasek akcji.
+  function chrome({ chip = "", tab = null, dockHTML = "" } = {}) {
+    who.innerHTML = chip;
+    tabs.hidden = !tab || !!dockHTML;
+    tabs.querySelectorAll("a").forEach((a) => a.classList.toggle("active", a.dataset.tab === tab));
+    dock.hidden = !dockHTML;
+    dock.innerHTML = dockHTML;
+    document.body.classList.toggle("has-bar", !tabs.hidden || !dock.hidden);
+  }
+
+  const progressChip = (state) =>
+    `<span class="chip"><span class="chip-icon">🎟️</span><span class="chip-name">Głosy</span><span class="tokens ${doneCount(state) === USERS.length ? "full" : ""}">${doneCount(state)}/${USERS.length}</span></span>`;
+
   function toast(text) {
+    document.querySelectorAll(".toast").forEach((t) => t.remove());
     const el = document.createElement("div");
     el.className = "toast";
     el.textContent = text;
@@ -75,7 +102,6 @@
   }
 
   // Okno z wyborem; zwraca wartość klikniętego przycisku albo null (Anuluj / Esc).
-  // choices: [{ value, label, gold? }]
   function choiceDialog(text, choices) {
     const tpl = document.getElementById("confirm-dialog");
     const dlg = tpl.content.firstElementChild.cloneNode(true);
@@ -83,8 +109,8 @@
       return Promise.resolve(window.confirm(text) ? choices[choices.length - 1].value : null);
     }
     dlg.querySelector(".dialog-text").textContent = text;
-    dlg.querySelector(".row").innerHTML = [{ value: "", label: "Anuluj" }, ...choices]
-      .map((c) => `<button value="${c.value}" class="btn ${c.gold ? "btn-gold" : "btn-ghost"}">${esc(c.label)}</button>`)
+    dlg.querySelector(".row").innerHTML = [{ value: "", label: "Anuluj", cls: "secondary" }, ...choices]
+      .map((c) => `<button value="${c.value}" class="btn ${c.cls || ""}">${esc(c.label)}</button>`)
       .join("");
     document.body.appendChild(dlg);
     return new Promise((resolve) => {
@@ -96,188 +122,186 @@
     });
   }
 
-  const confirmDialog = (text, okLabel = "Tak") =>
-    choiceDialog(text, [{ value: "ok", label: okLabel, gold: true }]).then((v) => v === "ok");
-
-  async function resetVoting() {
-    const state = loadState();
-    const choice = await choiceDialog("Resetować głosowanie? Wszystkie oddane głosy zostaną usunięte.", [
-      { value: "new", label: "Zmień limit filmów" },
-      { value: "clear", label: "Wyczyść głosy", gold: true },
-    ]);
-    if (choice === "clear" && state) {
-      saveState({ ...state, startedAt: new Date().toISOString(), votes: {} });
-      toast("Głosy wyczyszczone – można głosować od nowa 🎟️");
-      go("#/osoby");
-    } else if (choice === "new") {
-      clearState();
-      go("#/start");
-    }
-  }
+  const confirmDialog = (text, okLabel = "Tak", cls = "") =>
+    choiceDialog(text, [{ value: "ok", label: okLabel, cls }]).then((v) => v === "ok");
 
   // ---------- ekran: start ----------
 
   function renderStart() {
     let limit = Math.min(3, MAX_LIMIT);
+    chrome();
     app.innerHTML = `
-      <section class="screen start">
-        <div class="ticket big">
-          <div class="ticket-body">
-            <p class="eyebrow">Seans specjalny</p>
-            <h2>Nowe głosowanie</h2>
-            <p>Każdy z nas wybiera swoje ulubione filmy z listy ${filmsWord(MOVIES.length)}. Ile filmów może wybrać jedna osoba?</p>
-            <div class="stepper" role="group" aria-label="Limit głosów">
-              <button class="btn-round" data-step="-1" aria-label="Mniej">−</button>
-              <output id="limit" class="limit">${limit}</output>
-              <button class="btn-round" data-step="1" aria-label="Więcej">+</button>
-            </div>
-            <p class="hint" id="limit-hint">maksymalnie ${filmsWord(limit)} na osobę</p>
-            <button class="btn btn-gold btn-xl" id="start">🎬 Rozpocznij głosowanie</button>
+      <section class="screen">
+        <h1>🎬 Nowe głosowanie</h1>
+        <div class="card start-card">
+          <p>Tata, Mama, Ula i Antek wybierają film na rodzinny wieczór.<br>Ile filmów może wybrać jedna osoba?</p>
+          <div class="stepper" role="group" aria-label="Limit głosów">
+            <button class="step" data-step="-1" aria-label="Mniej">−</button>
+            <output id="limit">${limit}</output>
+            <button class="step plus" data-step="1" aria-label="Więcej">+</button>
           </div>
-          <div class="ticket-stub" aria-hidden="true"><span>BILET WSTĘPU</span><span>№ 001</span></div>
+          <p class="muted center" id="limit-hint"></p>
+          <button class="btn block big" id="start">🍿 Rozpocznij głosowanie</button>
+        </div>
+        <h2>W programie</h2>
+        <div class="grid">
+          ${MOVIES.map((m) => `
+            <div class="tile">
+              <div class="art">${posterHTML(m)}</div>
+              <div class="name">${esc(m.title)}</div>
+            </div>`).join("")}
         </div>
       </section>`;
 
     const out = app.querySelector("#limit");
     const hint = app.querySelector("#limit-hint");
+    const update = () => {
+      out.textContent = limit;
+      hint.textContent = `każdy może wybrać do ${filmsGen(limit)}`;
+      app.querySelector('[data-step="-1"]').disabled = limit <= 1;
+      app.querySelector('[data-step="1"]').disabled = limit >= MAX_LIMIT;
+    };
     app.querySelectorAll("[data-step]").forEach((b) =>
       b.addEventListener("click", () => {
         limit = Math.max(1, Math.min(MAX_LIMIT, limit + Number(b.dataset.step)));
-        out.textContent = limit;
-        hint.textContent = `maksymalnie ${filmsWord(limit)} na osobę`;
+        update();
       })
     );
     app.querySelector("#start").addEventListener("click", () => {
       saveState({ maxVotes: limit, startedAt: new Date().toISOString(), votes: {} });
+      revealed = false;
       go("#/osoby");
     });
+    update();
   }
 
   // ---------- ekran: wybór osoby ----------
 
   function renderUsers(state) {
-    const doneCount = USERS.filter((u) => state.votes[u.id]).length;
-    const cards = USERS.map((u) => {
-      const picks = state.votes[u.id];
-      const status = picks
-        ? `<span class="stamp">Głos oddany</span><span class="status">✓ ${voted(u)} · ${filmsWord(picks.length)}</span>`
-        : `<span class="status waiting">czeka na głos…</span>`;
-      return `
-        <button class="ticket user ${picks ? "is-done" : ""}" data-user="${u.id}">
-          <div class="ticket-body">
-            <span class="avatar">${u.emoji}</span>
-            <span class="name">${esc(u.name)}</span>
-            ${status}
-          </div>
-          <div class="ticket-stub" aria-hidden="true"><span>${picks ? "ZMIEŃ" : "GŁOSUJ"}</span></div>
-        </button>`;
-    }).join("");
-
+    const done = doneCount(state);
+    chrome({ chip: progressChip(state), tab: "osoby" });
     app.innerHTML = `
-      <section class="screen users">
-        <h2 class="screen-title">Kto teraz głosuje?</h2>
-        <p class="subtitle">Każdy może wybrać do <strong>${filmsWord(state.maxVotes)}</strong>.
-          Zagłosowało <strong>${doneCount} z ${USERS.length}</strong> osób.</p>
-        <div class="progress" aria-hidden="true"><span style="width:${(doneCount / USERS.length) * 100}%"></span></div>
-        <div class="user-grid">${cards}</div>
-        <div class="actions">
-          <button class="btn btn-gold btn-xl" id="results">🏆 Pokaż wyniki</button>
-          <button class="btn btn-ghost" id="reset">↺ Resetuj głosowanie</button>
+      <section class="screen">
+        <h1>🎞️ Kto teraz głosuje?</h1>
+        <p class="muted lead">Każdy wybiera do <b>${filmsGen(state.maxVotes)}</b>. Zagłosowało <b>${done} z ${USERS.length}</b> osób.</p>
+        <div class="people">
+          ${USERS.map((u) => {
+            const picks = state.votes[u.id];
+            return `
+              <button class="card person ${picks ? "is-done" : ""}" data-user="${u.id}">
+                ${badge(u, "big")}
+                <span class="pinfo">
+                  <span class="pname">${esc(u.name)}</span>
+                  ${picks
+                    ? `<span class="pstatus ok">✓ ${voted(u)} · ${filmsWord(picks.length)}</span>`
+                    : `<span class="pstatus">${notVoted(u)}</span>`}
+                </span>
+                ${picks ? `<span class="thumbs">${picks.map(movieById).filter(Boolean).slice(0, 3).map((m) => posterHTML(m, "thumb")).join("")}</span>` : ""}
+                <span class="pill ${picks ? "" : "accent"}">${picks ? "Zmień" : "Głosuj"} ›</span>
+              </button>`;
+          }).join("")}
         </div>
+        <button class="btn block big" id="results">🏆 Pokaż wyniki</button>
       </section>`;
 
     app.querySelectorAll("[data-user]").forEach((b) =>
       b.addEventListener("click", () => go(`#/glosuj/${b.dataset.user}`))
     );
     app.querySelector("#results").addEventListener("click", () => go("#/wyniki"));
-    app.querySelector("#reset").addEventListener("click", resetVoting);
   }
 
   // ---------- ekran: głosowanie ----------
 
   function renderVote(state, user) {
     const max = state.maxVotes;
+    const hadVote = !!state.votes[user.id];
     const selected = new Set((state.votes[user.id] || []).filter(movieById));
 
+    chrome({
+      chip: `<button class="chip" id="chip" aria-label="Zmień osobę">${badge(user)}<span class="chip-name">${esc(user.name)}</span><span class="tokens" id="tokens"></span></button>`,
+      dockHTML: `
+        <button class="btn secondary" id="cancel">Anuluj</button>
+        <button class="btn grow" id="confirm">Zatwierdź głos · <span id="cnt"></span></button>`,
+    });
+
     app.innerHTML = `
-      <section class="screen vote">
-        <div class="top-row">
-          <button class="btn btn-ghost btn-back" id="back">← Zmień osobę</button>
-          ${state.votes[user.id] ? `<button class="btn btn-ghost btn-back" id="clear-mine">🗑 Usuń mój głos</button>` : ""}
-        </div>
-        <h2 class="screen-title"><span class="avatar-sm">${user.emoji}</span> Cześć, ${esc(user.name)}!</h2>
-        <p class="subtitle">Wybierz maksymalnie <strong>${filmsWord(max)}</strong>, które chcesz obejrzeć. Dotknij plakatu, aby zaznaczyć.</p>
-        <div class="movie-grid">
+      <section class="screen">
+        <h1>Cześć, ${esc(user.name)}! 👋</h1>
+        <p class="muted lead">Wybierz do <b>${filmsGen(max)}</b> – każdy wybór to jeden 🍿. Dotknij plakatu albo przycisku pod nim.</p>
+        <div class="grid">
           ${MOVIES.map((m) => `
-            <article class="movie" data-movie="${m.id}">
-              <button class="movie-pick" aria-pressed="false" aria-label="${esc(m.title)}">
+            <article class="tile" data-movie="${m.id}">
+              <button class="art" aria-pressed="false" aria-label="${esc(m.title)}">
                 ${posterHTML(m)}
-                <span class="ribbon">✓ Mój wybór</span>
+                <span class="meta"><span class="count">✓ 🍿</span></span>
               </button>
-              <div class="movie-info">
-                <h3>${esc(m.title)} <span class="year">(${m.year})</span></h3>
-                <p>${esc(m.blurb)}</p>
-                ${m.trailer ? `<a class="trailer" href="${esc(m.trailer)}" target="_blank" rel="noopener">▶ Zwiastun</a>` : ""}
+              <div class="name">${esc(m.title)} <span class="year">${m.year}</span></div>
+              <div class="actions">
+                <button class="pick"></button>
+                ${m.trailer ? `<a class="trailer" href="${esc(m.trailer)}" target="_blank" rel="noopener" title="Zwiastun" aria-label="Zwiastun: ${esc(m.title)}">▶</a>` : ""}
               </div>
             </article>`).join("")}
         </div>
-      </section>
-      <div class="vote-bar">
-        <div class="seats" id="seats" aria-hidden="true"></div>
-        <span class="count" id="count"></span>
-        <button class="btn btn-gold" id="confirm">Zatwierdzam ✓</button>
-      </div>`;
+        ${hadVote ? `<div class="center"><button class="btn danger-ghost" id="clear-mine">🗑️ Usuń mój głos</button></div>` : ""}
+      </section>`;
 
-    const cards = [...app.querySelectorAll(".movie")];
-    const seats = app.querySelector("#seats");
-    const count = app.querySelector("#count");
-    const confirmBtn = app.querySelector("#confirm");
+    const tiles = [...app.querySelectorAll(".tile")];
+    const tokens = document.getElementById("tokens");
+    const cnt = document.getElementById("cnt");
+    const confirmBtn = document.getElementById("confirm");
 
     function refresh() {
       const full = selected.size >= max;
-      cards.forEach((card) => {
-        const on = selected.has(card.dataset.movie);
-        card.classList.toggle("is-selected", on);
-        card.classList.toggle("is-locked", full && !on);
-        card.querySelector(".movie-pick").setAttribute("aria-pressed", String(on));
+      tiles.forEach((t) => {
+        const on = selected.has(t.dataset.movie);
+        t.classList.toggle("is-selected", on);
+        t.classList.toggle("is-locked", full && !on);
+        t.querySelector(".art").setAttribute("aria-pressed", String(on));
+        t.querySelector(".pick").textContent = on ? "✓ Wybrany" : "🍿 Wybieram";
       });
-      seats.innerHTML = Array.from({ length: Math.min(max, 10) }, (_, i) =>
-        `<span class="seat ${i < selected.size ? "on" : ""}">🎟️</span>`).join("");
-      count.textContent = `Wybrano ${selected.size} z ${max}`;
+      tokens.textContent = `${max - selected.size} 🍿`;
+      tokens.classList.toggle("full", full);
+      cnt.textContent = `${selected.size}/${max}`;
       confirmBtn.disabled = selected.size === 0;
     }
 
-    cards.forEach((card) =>
-      card.querySelector(".movie-pick").addEventListener("click", () => {
-        const id = card.dataset.movie;
-        if (selected.has(id)) selected.delete(id);
-        else if (selected.size < max) selected.add(id);
-        else {
-          toast(`Można wybrać najwyżej ${filmsWord(max)} – najpierw odznacz któryś.`);
-          card.classList.remove("shake");
-          void card.offsetWidth;
-          card.classList.add("shake");
-          return;
-        }
-        refresh();
-      })
-    );
+    function toggle(tile) {
+      const id = tile.dataset.movie;
+      if (selected.has(id)) selected.delete(id);
+      else if (selected.size < max) selected.add(id);
+      else {
+        toast(`Masz już ${filmsWord(max)} – najpierw odznacz któryś.`);
+        tile.classList.remove("shake");
+        void tile.offsetWidth;
+        tile.classList.add("shake");
+        return;
+      }
+      refresh();
+    }
 
-    app.querySelector("#back").addEventListener("click", () => go("#/osoby"));
-    const clearMine = app.querySelector("#clear-mine");
-    if (clearMine) clearMine.addEventListener("click", async () => {
-      if (!(await confirmDialog(`${user.name}, usunąć Twój głos? Będzie można zagłosować ponownie.`, "Usuń"))) return;
-      const current = loadState() || state;
-      delete current.votes[user.id];
-      saveState(current);
-      toast(`Głos usunięty – ${user.name} może zagłosować ponownie`);
-      go("#/osoby");
+    tiles.forEach((t) => {
+      t.querySelector(".art").addEventListener("click", () => toggle(t));
+      t.querySelector(".pick").addEventListener("click", () => toggle(t));
     });
+
+    const back = () => go("#/osoby");
+    document.getElementById("chip").addEventListener("click", back);
+    document.getElementById("cancel").addEventListener("click", back);
     confirmBtn.addEventListener("click", () => {
       const current = loadState() || state;
       current.votes[user.id] = MOVIES.map((m) => m.id).filter((id) => selected.has(id));
       saveState(current);
-      toast(`Dzięki, ${user.name}! Głos zapisany 🎟️`);
+      toast(`Dzięki, ${user.name}! Głos zapisany 🍿`);
+      go("#/osoby");
+    });
+
+    const clearMine = app.querySelector("#clear-mine");
+    if (clearMine) clearMine.addEventListener("click", async () => {
+      if (!(await confirmDialog(`${user.name}, usunąć Twój głos? Będzie można zagłosować ponownie.`, "Usuń", "danger"))) return;
+      const current = loadState() || state;
+      delete current.votes[user.id];
+      saveState(current);
+      toast(`Głos usunięty – ${user.name} może zagłosować ponownie`);
       go("#/osoby");
     });
 
@@ -296,100 +320,171 @@
     rows.sort((a, b) => b.points - a.points || MOVIES.indexOf(a.movie) - MOVIES.indexOf(b.movie));
 
     // Miejsca: filmy z tą samą liczbą głosów dzielą miejsce.
-    const levels = [...new Set(rows.filter((r) => r.points > 0).map((r) => r.points))].slice(0, 3);
-    const places = levels.map((pts, i) => ({ place: i + 1, points: pts, rows: rows.filter((r) => r.points === pts) }));
+    const levels = [...new Set(rows.filter((r) => r.points > 0).map((r) => r.points))];
+    rows.forEach((r) => (r.place = r.points > 0 ? levels.indexOf(r.points) + 1 : 0));
+    const places = levels.slice(0, 3).map((pts, i) => ({ place: i + 1, points: pts, rows: rows.filter((r) => r.points === pts) }));
     return { rows, places };
+  }
+
+  function podiumHTML(places) {
+    const medal = { 1: "🥇", 2: "🥈", 3: "🥉" };
+    const col = (n) => {
+      const p = places.find((x) => x.place === n);
+      if (!p) return `<div class="podium-col"></div>`;
+      const films = p.rows.length <= 2
+        ? `<div class="podium-films">${p.rows.map((r) => `
+            <figure class="podium-film">${posterHTML(r.movie, "small")}<figcaption>${esc(r.movie.title)}</figcaption></figure>`).join("")}</div>`
+        : `<figure class="podium-film tie">
+             <div class="fan">${p.rows.slice(0, 3).map((r) => posterHTML(r.movie, "thumb")).join("")}</div>
+             <figcaption>${filmsWord(p.rows.length)} ex aequo</figcaption>
+           </figure>`;
+      return `
+        <div class="podium-col place-${n}">
+          ${films}
+          <div class="pstep">
+            <span class="medal">${medal[n]}</span>
+            <span class="place-num">${n}</span>
+            <span class="pts">${votesWord(p.points)}</span>
+          </div>
+        </div>`;
+    };
+    return `<div class="podium" id="podium">${col(2)}${col(1)}${col(3)}</div>`;
   }
 
   function renderResults(state) {
     const { rows, places } = tally(state);
-    const doneCount = USERS.filter((u) => state.votes[u.id]).length;
-    const top = rows[0] ? rows[0].points : 0;
+    const done = doneCount(state);
+    chrome({ chip: progressChip(state), tab: "wyniki" });
 
-    let podium;
+    let top;
     if (!places.length) {
-      podium = `<div class="empty"><span>🍿</span><p>Nikt jeszcze nie zagłosował.<br>Sala czeka na widzów!</p></div>`;
+      top = `<div class="card empty"><span class="big">🍿</span>Nikt jeszcze nie zagłosował.<br>Sala czeka na widzów!</div>`;
+    } else if (revealed) {
+      const first = places[0].rows.map((r) => r.movie.title);
+      top = `
+        <div class="card winner">
+          <p class="winner-head">🎉 ${first.length === 1 ? "Dzisiaj oglądamy…" : "Remis na szczycie!"}</p>
+          ${podiumHTML(places)}
+          <p class="winner-title">${first.map(esc).join(" · ")}</p>
+        </div>`;
     } else {
-      const medal = { 1: "🥇", 2: "🥈", 3: "🥉" };
-      const step = (p) => {
-        if (!p) return `<div class="podium-col empty-col"></div>`;
-        return `
-          <div class="podium-col place-${p.place}">
-            ${p.rows.length <= 2 ? `
-            <div class="podium-films">
-              ${p.rows.map((r) => `
-                <figure class="podium-film">
-                  ${posterHTML(r.movie, "small")}
-                  <figcaption>${esc(r.movie.title)}</figcaption>
-                </figure>`).join("")}
-            </div>` : `
-            <figure class="podium-film podium-tie">
-              <div class="fan">${p.rows.slice(0, 4).map((r) => posterHTML(r.movie, "tiny")).join("")}</div>
-              <figcaption>${filmsWord(p.rows.length)} ex aequo</figcaption>
-            </figure>`}
-            <div class="podium-step">
-              <span class="medal">${medal[p.place]}</span>
-              <span class="place-num">${p.place}</span>
-              <span class="points">${votesWord(p.points)}</span>
-            </div>
-          </div>`;
-      };
-      const byPlace = (n) => places.find((p) => p.place === n);
-      podium = `<div class="podium">${step(byPlace(2))}${step(byPlace(1))}${step(byPlace(3))}</div>`;
+      top = `<button class="btn block big" id="reveal">🏆 Odsłoń podium</button>`;
     }
 
-    const list = rows.map((r) => `
-      <li class="result-row">
-        ${posterHTML(r.movie, "tiny")}
-        <div class="result-main">
-          <div class="result-head">
-            <span class="result-title">${esc(r.movie.title)}</span>
-            <span class="result-pts">${votesWord(r.points)}</span>
-          </div>
-          <div class="bar"><span style="width:${top ? (r.points / top) * 100 : 0}%"></span></div>
-          <div class="voters">${r.voters.map((u) => `<span title="${esc(u.name)}">${u.emoji} ${esc(u.name)}</span>`).join("") || "<em>brak głosów</em>"}</div>
-        </div>
+    const standings = rows.map((r) => `
+      <li class="srow ${r.place === 1 ? "lead" : ""} ${r.points === 0 ? "zero" : ""}">
+        <span class="rank">${r.place ? r.place + "." : "–"}</span>
+        ${posterHTML(r.movie, "thumb")}
+        <span class="sname">${esc(r.movie.title)}</span>
+        <span class="sdots">${r.voters.map((u) => badge(u, "dot")).join("")}</span>
+        <span class="spts">${r.points} 🍿</span>
       </li>`).join("");
 
     app.innerHTML = `
-      <section class="screen results">
-        <button class="btn btn-ghost btn-back" id="back">← Wróć do głosowania</button>
-        <h2 class="screen-title">🏆 A zwycięzcą zostaje…</h2>
-        <p class="subtitle">Zagłosowało <strong>${doneCount} z ${USERS.length}</strong> osób${doneCount < USERS.length ? " – wyniki mogą się jeszcze zmienić" : ""}.</p>
-        <div class="stage">
-          <div class="spotlight" aria-hidden="true"></div>
-          ${podium}
-        </div>
-        <h3 class="list-title">Pełne wyniki</h3>
-        <ol class="result-list">${list}</ol>
-        <div class="actions">
-          <button class="btn btn-ghost" id="reset">↺ Resetuj głosowanie</button>
+      <section class="screen">
+        <h1>🍿 Wieczór filmowy</h1>
+        <p class="muted lead">Zagłosowało <b>${done} z ${USERS.length}</b> osób${done < USERS.length ? " – wyniki mogą się jeszcze zmienić" : ""}.</p>
+        ${top}
+        <h2>Aktualne wyniki</h2>
+        <ol class="card standings">${standings}</ol>
+        <h2>Wszystkie filmy</h2>
+        <div class="grid">
+          ${rows.map((r) => `
+            <div class="tile">
+              <div class="art ${r.place === 1 ? "leading" : ""}">
+                ${posterHTML(r.movie)}
+                ${r.points ? `<span class="meta"><span class="count">${r.points} 🍿</span><span class="dots">${r.voters.map((u) => badge(u, "dot")).join("")}</span></span>` : ""}
+              </div>
+              <div class="name">${esc(r.movie.title)}</div>
+            </div>`).join("")}
         </div>
       </section>`;
 
-    app.querySelector("#back").addEventListener("click", () => go("#/osoby"));
-    app.querySelector("#reset").addEventListener("click", resetVoting);
-    window.scrollTo(0, 0);
-    if (places.length) setTimeout(confetti, 1900);
+    const reveal = app.querySelector("#reveal");
+    if (reveal) reveal.addEventListener("click", () => {
+      revealed = true;
+      renderResults(state);
+      setTimeout(() => {
+        const first = app.querySelector(".place-1 .podium-film");
+        const r = first ? first.getBoundingClientRect() : null;
+        popcornBurst(r ? r.left + r.width / 2 : innerWidth / 2, r ? r.top + r.height / 2 : innerHeight / 3);
+      }, 1500);
+    });
   }
 
-  function confetti() {
+  // Wybuch popcornu: ziarenka i 🍿 rozlatują się z jednego punktu.
+  function popcornBurst(x, y) {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const box = document.createElement("div");
-    box.className = "confetti";
-    const colors = ["#f5c542", "#ff4d6d", "#ffffff", "#ffd60a", "#e63946", "#ffb703"];
-    for (let i = 0; i < 90; i++) {
-      const p = document.createElement("i");
-      p.style.left = Math.random() * 100 + "%";
-      p.style.background = colors[i % colors.length];
-      p.style.animationDelay = Math.random() * 0.8 + "s";
-      p.style.animationDuration = 2.4 + Math.random() * 1.8 + "s";
-      p.style.setProperty("--drift", (Math.random() * 200 - 100).toFixed(0) + "px");
-      p.style.setProperty("--spin", (Math.random() * 1080 - 540).toFixed(0) + "deg");
-      box.appendChild(p);
+    box.className = "nova";
+    for (let i = 0; i < 36; i++) {
+      const el = document.createElement("span");
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 110 + Math.random() * 230;
+      if (i % 5 === 0) {
+        el.className = "emo";
+        el.textContent = "🍿";
+        el.style.fontSize = 20 + Math.random() * 16 + "px";
+      } else {
+        el.className = "pop";
+        const s = 12 + Math.random() * 12;
+        el.style.width = el.style.height = s + "px";
+      }
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+      el.style.setProperty("--tx", Math.cos(angle) * dist + "px");
+      el.style.setProperty("--ty", Math.sin(angle) * dist - 60 + "px");
+      el.style.setProperty("--rot", Math.random() * 720 - 360 + "deg");
+      el.style.animationDelay = Math.random() * 0.12 + "s";
+      box.appendChild(el);
     }
     document.body.appendChild(box);
-    setTimeout(() => box.remove(), 5000);
+    setTimeout(() => box.remove(), 2000);
+  }
+
+  // ---------- ekran: więcej ----------
+
+  function renderMore(state) {
+    chrome({ chip: progressChip(state), tab: "wiecej" });
+    app.innerHTML = `
+      <section class="screen">
+        <h1>Więcej</h1>
+        <div class="card row-card">
+          <span class="rc-title">🎟️ Limit głosów</span>
+          <span class="muted">Każdy wybiera do ${filmsGen(state.maxVotes)}</span>
+        </div>
+        <button class="card row-card link" id="clear">
+          <span class="rc-title">🧹 Wyczyść głosy</span>
+          <span class="muted">Usuwa wszystkie głosy – głosujemy od nowa z tym samym limitem</span>
+        </button>
+        <button class="card row-card link" id="new">
+          <span class="rc-title">🔄 Nowe głosowanie</span>
+          <span class="muted">Zaczyna od początku – można ustawić nowy limit filmów</span>
+        </button>
+        <div class="card row-card">
+          <span class="rc-title">🗑️ Głos jednej osoby</span>
+          <span class="muted">Wybierz osobę w zakładce „Głosowanie” i kliknij „Usuń mój głos” pod listą filmów</span>
+        </div>
+        <div class="card row-card">
+          <span class="rc-title">💾 Gdzie są głosy?</span>
+          <span class="muted">Zapisane w tej przeglądarce, na tym urządzeniu</span>
+        </div>
+      </section>`;
+
+    app.querySelector("#clear").addEventListener("click", async () => {
+      if (!(await confirmDialog("Wyczyścić wszystkie głosy? Limit filmów zostanie bez zmian.", "Wyczyść", "danger"))) return;
+      const current = loadState() || state;
+      saveState({ ...current, startedAt: new Date().toISOString(), votes: {} });
+      revealed = false;
+      toast("Głosy wyczyszczone – można głosować od nowa 🍿");
+      go("#/osoby");
+    });
+    app.querySelector("#new").addEventListener("click", async () => {
+      if (!(await confirmDialog("Zacząć nowe głosowanie? Wszystkie głosy zostaną usunięte.", "Zacznij od nowa", "danger"))) return;
+      clearState();
+      revealed = false;
+      go("#/start");
+    });
   }
 
   // ---------- routing ----------
@@ -401,6 +496,7 @@
     if (!state || route === "start") return renderStart();
     if (route === "glosuj" && userById(arg)) return renderVote(state, userById(arg));
     if (route === "wyniki") return renderResults(state);
+    if (route === "wiecej") return renderMore(state);
     return renderUsers(state);
   }
 

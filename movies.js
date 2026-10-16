@@ -111,8 +111,8 @@ window.MOVIES = [
 ];
 
 window.USERS = [
-  { id: "tata", name: "Tata", emoji: "🧔", female: false },
-  { id: "mama", name: "Mama", emoji: "👩", female: true },
-  { id: "ula", name: "Ula", emoji: "👧", female: true },
-  { id: "antek", name: "Antek", emoji: "👦", female: false },
+  { id: "tata", name: "Tata", emoji: "🧔", female: false, color: "#2563eb" },
+  { id: "mama", name: "Mama", emoji: "👩", female: true, color: "#db2777" },
+  { id: "ula", name: "Ula", emoji: "👧", female: true, color: "#9333ea" },
+  { id: "antek", name: "Antek", emoji: "👦", female: false, color: "#16a34a" },
 ];
