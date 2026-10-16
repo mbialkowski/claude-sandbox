@@ -62,7 +62,7 @@
   function posterHTML(movie, extraClass = "") {
     const [c1, c2] = movie.colors;
     const img = movie.poster
-      ? `<img src="${esc(movie.poster)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">`
+      ? `<img src="${esc(movie.poster)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="kinoPosterFailed(this, '${movie.id}')">`
       : "";
     return `
       <div class="poster ${extraClass}" data-movie="${movie.id}" style="--c1:${c1};--c2:${c2}">
@@ -505,20 +505,29 @@
       const img = document.createElement("img");
       img.alt = "";
       img.referrerPolicy = "no-referrer";
-      img.onerror = () => img.remove();
+      img.onerror = () => window.kinoPosterFailed(img, movie.id);
       img.src = movie.poster;
       el.appendChild(img);
     });
   }
 
-  async function loadPosters() {
+  // Plakat się nie wczytał: zostaje plakat zastępczy, a w tle próbujemy Wikipedii (raz na film).
+  window.kinoPosterFailed = (img, id) => {
+    img.remove();
+    const m = movieById(id);
+    if (!m || img.getAttribute("src") !== m.poster) return;
+    m.poster = "";
+    if (m.wiki && !m.wikiTried) loadPosters([m]);
+  };
+
+  async function loadPosters(movies = MOVIES) {
     let cache = {};
     try { cache = JSON.parse(localStorage.getItem(POSTERS_KEY)) || {}; } catch (e) { /* bez pamięci */ }
     const missing = [];
-    MOVIES.forEach((m) => {
+    movies.forEach((m) => {
       if (m.poster) return;
-      if (cache[m.id]) { m.poster = cache[m.id]; showPoster(m); }
-      else if (m.wiki && m.wiki.length) missing.push(m);
+      if (cache[m.id] && !m.wikiTried) { m.wikiTried = true; m.poster = cache[m.id]; showPoster(m); }
+      else if (m.wiki && m.wiki.length && !m.wikiTried) { m.wikiTried = true; missing.push(m); }
     });
     if (!missing.length || window.KINO_NO_REMOTE_POSTERS || !window.fetch) return;
 

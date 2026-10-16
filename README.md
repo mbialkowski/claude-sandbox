@@ -39,11 +39,12 @@ Głosy są zapisywane w `localStorage` przeglądarki, więc całe głosowanie od
 
 ## Plakaty i zwiastuny
 
-Plakaty są oryginalne: przy otwarciu aplikacja pyta angielską Wikipedię o grafikę z ramki artykułu każdego
-filmu (pole `wiki` w `movies.js`) i wyświetla ją prosto z `upload.wikimedia.org`. Znalezione adresy zapamiętuje
-w przeglądarce. Bez internetu, albo gdy artykuł nie ma plakatu, aplikacja pokazuje kolorowy „plakat zastępczy”
-z tytułem.
+Plakaty są oryginalne, z Filmwebu: pole `poster` w `movies.js` wskazuje plik na `fwcdn.pl`
+(np. `filmweb("88/78/698878/7740691_1")` → `https://fwcdn.pl/fpo/88/78/698878/7740691_1.10.webp`;
+środkowa liczba to numer filmu na Filmwebie, ostatnia to numer plakatu, `.10` to duży rozmiar).
 
-Aby użyć innego plakatu, wpisz jego adres w polu `poster` w `movies.js` (np. skopiowany z Filmwebu lub IMDb);
-ma on pierwszeństwo przed Wikipedią. Pole `trailer` to link do zwiastuna. Domyślnie prowadzi do wyszukiwania
-polskiego zwiastuna na YouTube, ale można tam wkleić bezpośredni link do filmu.
+Gdy plakat z Filmwebu się nie wczyta, aplikacja pyta angielską Wikipedię o grafikę z ramki artykułu filmu
+(pole `wiki`) i zapamiętuje jej adres w przeglądarce. Bez internetu zostaje kolorowy „plakat zastępczy” z tytułem.
+
+Pole `trailer` to link do zwiastuna. Domyślnie prowadzi do wyszukiwania polskiego zwiastuna na YouTube,
+ale można tam wkleić bezpośredni link do filmu.
