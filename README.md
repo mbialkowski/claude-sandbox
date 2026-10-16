@@ -6,8 +6,11 @@ plakatów, licznik 🍿 i dolne zakładki. Działa też w trybie ciemnym (wedłu
 
 ## Jak uruchomić
 
-Wystarczy otworzyć `index.html` w przeglądarce. Nie trzeba niczego instalować ani budować.
-Można też wrzucić pliki na dowolny hosting statyczny, np. GitHub Pages.
+Aplikacja jest publikowana na GitHub Pages: <https://mbialkowski.github.io/claude-sandbox/>.
+Każdy push do `main` publikuje ją od nowa (`.github/workflows/pages.yml`). Jednorazowo w ustawieniach
+repozytorium: Settings → Pages → Build and deployment → Source: „GitHub Actions”.
+
+Lokalnie wystarczy otworzyć `index.html` w przeglądarce. Nie trzeba niczego instalować ani budować.
 
 ## Jak działa
 
